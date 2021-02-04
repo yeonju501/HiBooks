@@ -31,6 +31,7 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/gnb.css" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: Selecao - v3.0.0
@@ -43,7 +44,7 @@
 <body>
 
   <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top d-flex align-items-center  header-transparent ">
+  <header id="header" class="fixed-top d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
 
       <div class="logo">
@@ -54,7 +55,7 @@
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li class="active"><a href="list.html">홈</a></li>
+          <li class="active"><a href="index.html">홈</a></li>
           <li><a href="signin.html">로그인</a></li>
           <li><a href="signup.html">회원가입</a></li>
           <li class="drop-down"><a href="javascript:void(0);">마이페이지</a>
@@ -83,134 +84,50 @@
 
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex flex-column justify-content-end align-items-center">
-
+    
     <form class="search-container">
       <input type="text" id="search-bar" placeholder="저자, 출판사, 책이름 검색">
       <a href="javascript:void(0);"><img class="search-icon" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"></a>
     </form>
-    
-    <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 " preserveAspectRatio="none">
-      <defs>
-        <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z">
-      </defs>
-      <g class="wave1">
-        <use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255, .1)">
-      </g>
-      <g class="wave2">
-        <use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255, .2)">
-      </g>
-      <g class="wave3">
-        <use xlink:href="#wave-path" x="50" y="9" fill="#fff">
-      </g>
-    </svg>
+
+    <div id="gnb" class="gnb">
+      <ul class="gnb-dep01-list">
+        <li>
+          <a href="javascript:void(0);" class="gnb-toggle"><i class="fa fa-bars"></i></a>
+          <div class="gnb-dep02">
+            <div class="gnb-dep02-inner">
+              <ul class="gnb-dep02-list">
+                <li>
+                  <a href="javascript:void(0);" class="gnb-dep02-list-title">전체</a>
+                </li>
+                <li>
+                  <a href="javascript:void(0);" class="gnb-dep02-list-title">인문학</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li>
+          <a href="javascript:void(0);">베스트</a>
+        </li>
+        <li>
+          <a href="javascript:void(0);">신간</a>
+        </li>
+        <li>
+          <a href="javascript:void(0);">추천</a>
+        </li>
+        <li>
+          <a href="javascript:void(0);">커뮤니티</a>
+        </li>
+        <li>
+          <a href="javascript:void(0);">문의</a>
+        </li>
+      </ul>
+    </div>
   </section><!-- End Hero -->
 
   <main id="main">
-    
-    <!-- ======= icon Section ======= -->
-    <div class="social-btns">
-      <a href="javascript:void(0);" class="link">
-        <div class="btn">
-          <i class="fa fa-thumbs-up"></i>
-        </div>
-        <span class="text">베스트</span>
-      </a>
-      <a href="javascript:void(0);" class="link">
-        <div class="btn">
-          <i class="fa fa-bell"></i>
-        </div>
-        <span class="text">신간</span>
-      </a>
-      <a href="javascript:void(0);" class="link">
-        <div class="btn">
-          <i class="fa fa-user-plus"></i>
-        </div>
-        <span class="text">추천</span>
-      </a>
-      <a href="javascript:void(0);" class="link">
-        <div class="btn">
-          <i class="fa fa-comments"></i>
-        </div>
-        <span class="text">커뮤니티</span>
-      </a>
-      <a href="javascript:void(0);" class="link">
-        <div class="btn">
-          <i class="fa fa-question-circle"></i>
-        </div>
-        <span class="text">문의</span>
-      </a>
-    </div><!-- End icon Section -->
-
-    <!-- ======= Carousel Section ======= -->
-    <div id="heroCarousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
-      <div class="slider">
-        <div class="slider-item">
-          <div class="slider-img">
-            <img src="assets/img/test.jpg" alt="" />
-          </div>
-          <div class="slider-title">
-            단단한 지식: 새로운 공부의 세계로 나아가는 사람을 위한 지의 체력 단련법
-          </div>
-        </div>
-        <div class="slider-item">
-          <div class="slider-img">
-            <img src="assets/img/test2.jpg" alt="" />
-          </div>
-          <div class="slider-title">
-            우리가 사랑한 내일들
-          </div>
-        </div>
-        <div class="slider-item">
-          <div class="slider-img">
-            <img src="assets/img/test3.jpg" alt="" />
-          </div>
-          <div class="slider-title">
-            예술과 풍경
-          </div>
-        </div>
-        <div class="slider-item">
-          <div class="slider-img">
-            <img src="assets/img/test4.jpg" alt="" />
-          </div>
-          <div class="slider-title">
-            개발 7년차, 매니저 1일차
-          </div>
-        </div>
-        <div class="slider-item">
-          <div class="slider-img">
-            <img src="assets/img/test.jpg" alt="" />
-          </div>
-          <div class="slider-title">
-            단단한 지식: 새로운 공부의 세계로 나아가는 사람을 위한 지의 체력 단련법
-          </div>
-        </div>
-        <div class="slider-item">
-          <div class="slider-img">
-            <img src="assets/img/test2.jpg" alt="" />
-          </div>
-          <div class="slider-title">
-            우리가 사랑한 내일들
-          </div>
-        </div>
-        <div class="slider-item">
-          <div class="slider-img">
-            <img src="assets/img/test3.jpg" alt="" />
-          </div>
-          <div class="slider-title">
-            예술과 풍경
-          </div>
-        </div>
-        <div class="slider-item">
-          <div class="slider-img">
-            <img src="assets/img/test4.jpg" alt="" />
-          </div>
-          <div class="slider-title">
-            개발 7년차, 매니저 1일차
-          </div>
-        </div>
-      </div>
-    </div><!-- End Carousel Section -->
-
+    <div style="min-height:100vh;"></div>
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
@@ -249,38 +166,12 @@
 
   <script type="text/javascript">
     $(document).ready(function(){
-      $('.slider').slick({
-        dots: true,
-        infinite: false,
-        speed: 300,
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        responsive: [
-          {
-            breakpoint: 1024,
-            settings: {
-              arrows: false,
-              slidesToShow: 1,
-              slidesToScroll: 1,
-              dots: true
-            }
-          },
-          {
-            breakpoint: 600,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1
-            }
-          },
-          {
-            breakpoint: 480,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1
-            }
-          }
-        ]
-      });
+      $('.gnb-toggle').on('click', function(e){
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        console.log('테스트')
+        $('.gnb-dep02-list').toggle('is-active');
+      })
     });
   </script>
 
