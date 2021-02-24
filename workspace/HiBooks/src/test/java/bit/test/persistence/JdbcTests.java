@@ -23,9 +23,9 @@ public class JdbcTests {
 	
 	@Test
 	public void testConnectionJdbc() {
-		String url = "jdbc:oracle:thin:@localhost:1521:JAVA";
+		String url = "jdbc:oracle:thin:@localhost:1521:java";
 		try {
-			Connection con = DriverManager.getConnection(url, "board", "java");
+			Connection con = DriverManager.getConnection(url, "system", "java1019");
 			log.info("#con from Jdbc: " + con);
 		}catch(SQLException se) {
 			log.info("#testConnectionJdbc() exception: " + se);

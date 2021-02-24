@@ -52,8 +52,8 @@
 		</select>
 		
 		<!-- 댓글 -->
-		<select id="getReviewCnt" resultType="long">
-			select count(ROWNUM) from BREVIEW
+		<select id="getReviewCnt" resultType="long" parameterType="ReviewVo">
+			select count(ROWNUM) from BREVIEW where B_ITEMID = #{itemId}
 		</select>
 		<insert id="insertReview" parameterType="BookReview">
 			insert into BREVIEW values

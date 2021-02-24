@@ -23,7 +23,7 @@ public interface BookMapper {
 	//상품상세페이지
 	Book getBook(String itemId);
 	ArrayList<BookReview> getReviewList(ReviewVo reviewVo);
-	long getReviewCnt();
+	long getReviewCnt(ReviewVo reviewVo);
 	
 	//댓글 ajax
 	long getMaxRef();
