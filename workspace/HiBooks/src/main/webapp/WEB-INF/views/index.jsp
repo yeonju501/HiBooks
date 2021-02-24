@@ -420,7 +420,7 @@
     <script src="assets/js/owl.carousel.min.js"></script>
     <script src="assets/js/plugins.js"></script>
     <script src="assets/js/main.js"></script>
-    <script src="assets/ja/service-search.js"></script>
+    <script src="assets/js/service-search.js"></script>
 </body>
 
 </html>
