@@ -171,7 +171,7 @@
                             <div class="mobile-menu">
                                     <nav id="mobile-menu-active">
                                         <ul class="menu-overflow">
-											<li class="active"><a href="book/shop.do">책 <i class="ion-ios-arrow-down"></i></a>
+											<li class="active"><a href="shop.do">책 <i class="ion-ios-arrow-down"></i></a>
 												<ul>
 													<li><a href="shop.do?cate=100">소설</a></li>
 													<li><a href="shop.do?cate=200">경영/경제</a></li>

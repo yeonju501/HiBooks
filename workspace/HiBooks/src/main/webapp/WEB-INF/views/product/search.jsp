@@ -42,7 +42,7 @@
                             <div class="header-top-left">
                                 <ul>
                                     <li>
-                                        <h3 id="logo">H!Books</h3>
+                                        <h3 id="logo"><a href="/">H!Books</a></h3>
                                     </li>
                                     <li>
                                         
@@ -55,19 +55,19 @@
                                 <ul>
                                     <li>
                                         <div class="switcher">
-                                            <span>로그인</span>
-                
+                                        	<c:if test="${empty loginCode}"> <a href="../member/login.do"><span>로그인</span></a></c:if>
+                							<c:if test="${loginCode==3}"><a href="../member/logout.do"><span>로그아웃</span></a> </c:if>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="switcher">
-                                            <span>회원가입</span>
-                                            
+                                            <c:if test="${empty loginCode}"><a href="../member/join.do"><span> 회원가입</span></a></c:if>
+                                            <c:if test="${loginCode==3}"> </c:if>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="switcher">
-                                            <span>장바구니</span>
+                                            <a href="../purchase/cart.do"><span> 장바구니</span></a>
                                             
                                         </div>
                                     </li>
@@ -78,16 +78,16 @@
                                                     <a >마이페이지</a>
                                                     <ul class="switcher__menus">
                                                         <li class="switcher-menu-item">
-                                                            <a >내 정보</a>
+                                                            <a href="">내 정보</a>
                                                         </li>
                                                         <li class="switcher-menu-item">
-                                                            <a >위시리스트</a>
+                                                            <a href="">위시리스트</a>
                                                         </li>
                                                         <li class="switcher-menu-item">
-                                                            <a >커뮤니티</a>
+                                                            <a href="">커뮤니티</a>
                                                         </li>
                                                         <li class="switcher-menu-item">
-                                                            <a >...</a>
+                                                            <a href="">...</a>
                                                         </li>
                                                     </ul>
                                                 </li>
@@ -108,10 +108,12 @@
                         <div class="col-md-6">
                             <div class="search__sidbar">
                                 <div class="input_form">
-                                    <input type="text" id="search_input" name="s" placeholder="제목, 저자, 출판사 검색" class="input_text">
-                                    <button id="blogsearchsubmit" type="submit" class="button">
+                                    <form name="searchinput" method="post" action="search.do">
+                                    <input type="text" class="input_text" name="keyword" placeholder="제목, 저자, 출판사 검색">
+                                    <button id="searchinput" type="button" onclick="check()" class="button">
                                         <i class="fa fa-search fa-lg"></i>
                                     </button>
+                                   </form>
                                 </div>
                             </div>
                         </div>
@@ -130,27 +132,27 @@
                                 <div class="main-menu">
 									<nav>
                                             <ul id="main-custom">
-                                                <li class="active"><a href="#"> <i class="zmdi zmdi-view-column zmdi-hc-lg"></i></a>
+                                                <li class="active"><a href="../book/shop.do">책</a>
                                                     <ul>
-                                                        <li><a href="index.html">소설</a></li>
-                                                        <li><a href="index-2.html">경영/경제</a></li>
-                                                        <li><a href="index-3.html">인문/사회/역사</a></li>
-                                                        <li><a href="index-4.html">자기계발</a></li>
-                                                        <li><a href="index-5.html">에세이/시</a></li>
+                                                        <li><a href="../book/shop.do?cate=100">소설</a></li>
+                                                        <li><a href="../book/shop.do?cate=200">경영/경제</a></li>
+                                                        <li><a href="../book/shop.do?cate=300">인문/사회/역사</a></li>
+                                                        <li><a href="../book/shop.do?cate=400">자기계발</a></li>
+                                                        <li><a href="../book/shop.do?cate=500">에세이/시</a></li>
                                                         
                                                     </ul>
                                                 </li>
 												
-                                                <li><a id="in" href="about-us.html">베스트</a></li>
+                                                <li><a id="in" href="">베스트</a></li>
 												
-                                                <li><a id="in" href="shop.html">추천</a></li>
+                                                <li><a id="in" href="">추천</a></li>
 												
-                                                <li><a id="in" href="blog.html">커뮤니티</a></li>
+                                                <li><a id="in" href="">커뮤니티</a></li>
 
-                                                <li class="active"><a href="contact.html">공지/문의</a>
+                                                <li class="active"><a href="">공지/문의</a>
                                                     <ul>
-                                                        <li><a href="index.html">공지</a></li>
-                                                        <li><a href="index-2.html">문의</a></li>
+                                                        <li><a href="">공지</a></li>
+                                                        <li><a href="../boardq/list.do">문의</a></li>
                                                     </ul>
                                                 </li>
                                             </ul>
@@ -166,28 +168,28 @@
                             <div class="mobile-menu">
                                     <nav id="mobile-menu-active">
                                         <ul class="menu-overflow">
-											<li class="active"><a href="#">카테고리 <i class="ion-ios-arrow-down"></i></a>
+											<li class="active"><a href="../book/shop.do">책 <i class="ion-ios-arrow-down"></i></a>
 												<ul>
-													<li><a href="index.html">소설</a></li>
-													<li><a href="index-2.html">경영/경제</a></li>
-													<li><a href="index-3.html">인문/사회/역사</a></li>
-													<li><a href="index-4.html">자기계발</a></li>
-													<li><a href="index-5.html">에세이/시</a></li>
+													<li><a href="../book/shop.do?cate=100">소설</a></li>
+													<li><a href="../book/shop.do?cate=200">경영/경제</a></li>
+													<li><a href="../book/shop.do?cate=300">인문/사회/역사</a></li>
+													<li><a href="../book/shop.do?cate=400">자기계발</a></li>
+													<li><a href="../book/shop.do?cate=500">에세이/시</a></li>
 													
 												</ul>
 											</li>
 											
-											<li><a href="about-us.html">베스트 </a></li>
+											<li><a href="">베스트 </a></li>
 											
-											<li><a href="shop.html">추천</a></li>
+											<li><a href="">추천</a></li>
 											
-											<li><a href="blog.html">커뮤니티</a></li>
+											<li><a href="">커뮤니티</a></li>
 											
-											<li><a href="#">공지/문의 <i class="ion-ios-arrow-down"></i></a>
+											<li><a href="">공지/문의 <i class="ion-ios-arrow-down"></i></a>
 												<ul>
-													<li><a href="portfolio.html"> 공지</a></li>
-													<li><a href="service.html"> 문의</a></li>
-                                                    <li><a href="service.html"> ....</a></li>
+													<li><a href=""> 공지</a></li>
+													<li><a href="../boardq/list.do"> 문의</a></li>
+                                                    <li><a href=""> ....</a></li>
 												</ul>
 											</li>
 											
@@ -848,6 +850,7 @@
     <script src="../assets/js/owl.carousel.min.js"></script>
     <script src="../assets/js/plugins.js"></script>
     <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/service-search.js"></script>
 </body>
 
 </html>
