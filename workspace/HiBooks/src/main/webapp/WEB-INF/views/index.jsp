@@ -62,13 +62,13 @@
                                     </li>
                                     <li>
                                         <div class="switcher">
-                                            <a href="member/join.do"><span> 회원가입</span></a>
-                                            
+                                            <c:if test="${empty loginCode}"><a href="member/join.do"><span> 회원가입</span></a></c:if>
+                                            <c:if test="${loginCode==3}"> </c:if>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="switcher">
-                                            <a href="member/join.do"><span> 장바구니</span></a>
+                                            <a href="purchase/cart.do"><span> 장바구니</span></a>
                                             
                                         </div>
                                     </li>
@@ -133,27 +133,27 @@
                                 <div class="main-menu">
 									<nav>
                                             <ul id="main-custom">
-                                                <li class="active"><a href="book/shop.do"> <i class="zmdi zmdi-view-column zmdi-hc-lg"></i></a>
+                                                <li class="active"><a href="book/shop.do">책</a>
                                                     <ul>
-                                                        <li><a href="index.html">소설</a></li>
-                                                        <li><a href="index-2.html">경영/경제</a></li>
-                                                        <li><a href="index-3.html">인문/사회/역사</a></li>
-                                                        <li><a href="index-4.html">자기계발</a></li>
-                                                        <li><a href="index-5.html">에세이/시</a></li>
+                                                        <li><a href="book/shop.do?cate=100">소설</a></li>
+                                                        <li><a href="book/shop.do?cate=200">경영/경제</a></li>
+                                                        <li><a href="book/shop.do?cate=300">인문/사회/역사</a></li>
+                                                        <li><a href="book/shop.do?cate=400">자기계발</a></li>
+                                                        <li><a href="book/shop.do?cate=500">에세이/시</a></li>
                                                         
                                                     </ul>
                                                 </li>
 												
-                                                <li><a id="in" href="about-us.html">베스트</a></li>
+                                                <li><a id="in" href="">베스트</a></li>
 												
-                                                <li><a id="in" href="shop.html">추천</a></li>
+                                                <li><a id="in" href="">추천</a></li>
 												
-                                                <li><a id="in" href="blog.html">커뮤니티</a></li>
+                                                <li><a id="in" href="">커뮤니티</a></li>
 
-                                                <li class="active"><a href="contact.html">공지/문의</a>
+                                                <li class="active"><a href="">공지/문의</a>
                                                     <ul>
-                                                        <li><a href="index.html">공지</a></li>
-                                                        <li><a href="index-2.html">문의</a></li>
+                                                        <li><a href="">공지</a></li>
+                                                        <li><a href="boardq/list.do">문의</a></li>
                                                     </ul>
                                                 </li>
                                             </ul>
@@ -169,27 +169,27 @@
                             <div class="mobile-menu">
                                     <nav id="mobile-menu-active">
                                         <ul class="menu-overflow">
-											<li class="active"><a href="#">카테고리 <i class="ion-ios-arrow-down"></i></a>
+											<li class="active"><a href="book/shop.do">책 <i class="ion-ios-arrow-down"></i></a>
 												<ul>
-													<li><a href="index.html">소설</a></li>
-													<li><a href="index-2.html">경영/경제</a></li>
-													<li><a href="index-3.html">인문/사회/역사</a></li>
-													<li><a href="index-4.html">자기계발</a></li>
-													<li><a href="index-5.html">에세이/시</a></li>
+													<li><a href="book/shop.do?cate=100">소설</a></li>
+													<li><a href="book/shop.do?cate=200">경영/경제</a></li>
+													<li><a href="book/shop.do?cate=300">인문/사회/역사</a></li>
+													<li><a href="book/shop.do?cate=400">자기계발</a></li>
+													<li><a href="book/shop.do?cate=500">에세이/시</a></li>
 													
 												</ul>
 											</li>
 											
-											<li><a href="about-us.html">베스트 </a></li>
+											<li><a href="">베스트 </a></li>
 											
-											<li><a href="shop.html">추천</a></li>
+											<li><a href="">추천</a></li>
 											
-											<li><a href="blog.html">커뮤니티</a></li>
+											<li><a href="">커뮤니티</a></li>
 											
-											<li><a href="#">공지/문의 <i class="ion-ios-arrow-down"></i></a>
+											<li><a href="">공지/문의 <i class="ion-ios-arrow-down"></i></a>
 												<ul>
 													<li><a href="portfolio.html"> 공지</a></li>
-													<li><a href="service.html"> 문의</a></li>
+													<li><a href="boardq/list.do"> 문의</a></li>
                                                     <li><a href="service.html"> ....</a></li>
 												</ul>
 											</li>

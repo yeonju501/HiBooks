@@ -45,7 +45,7 @@ public class BookServiceImpl implements BookService {
 	
 	@Override
 	public ReviewResult getReviewList(ReviewVo reviewVo) {
-		long reviewCnt = mapper.getReviewCnt();
+		long reviewCnt = mapper.getReviewCnt(reviewVo);
 		List<BookReview> reviewList = mapper.getReviewList(reviewVo);
 		ReviewResult reviewResult = new ReviewResult(reviewVo.getRcp(), reviewVo.getRps(), reviewCnt, reviewList);
 		return reviewResult;
