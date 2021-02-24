@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<mapper namespace="bit.hibooks.mapper.BoardqMapper">
+	<select id="selectPerPage" resultType="Boardq" parameterType="BoardqVo" >
+	<![CDATA[ 
+	select * from (select ROWNUM rnum, aa.* from (select * from QNA order by QB_SEQ desc) aa) 
+	  where rnum>#{startRow} and rnum<=#{endRow}
+	]]>
+	</select>
+	<select id="selectCount" resultType="long">
+		select count(QB_SEQ) from QNA
+	</select>
+	 <select id="selectBySeq" parameterType="long" resultType="Boardq">
+	    select * from QNA where QB_SEQ=#{qb_seq}
+	</select>
+	<update id="updateCount" parameterType="long">
+	update QNA set QB_COUNT = QB_COUNT + 1 where QB_SEQ = #{qb_seq}
+	</update>
+	<insert id="insert" parameterType="Boardq">
+		<selectKey keyProperty="qb_seq" order="BEFORE" resultType="long">
+              select QNA_SEQ.nextval from dual
+        </selectKey>
+	    insert into QNA values(#{qb_seq},#{m_email},#{qb_subject},#{qb_content},SYSDATE,#{qb_count},#{qb_ref},#{qb_lev},#{qb_sun},#{qb_cat})
+	</insert>
+	<update id="update" parameterType="Boardq">
+	    update QNA set QB_SUBJECT=#{qb_subject}, QB_CONTENT=#{content} where QB_SEQ=#{qb_seq}
+	</update>
+	 <delete id="delete" parameterType="long">
+		delete from QNA where QB_SEQ=#{qb_seq}
+	</delete>
+	<select id="maxSun" parameterType="int" resultType="int" >
+	select NVL(Max(QB_SUN),0) from QNA where QB_LEV=#{qb_lev}
+	</select>
+	<select id="maxRef" resultType="int">
+	select NVL(Max(QB_REF),0) from QNA
+	</select>
+	<select id="selectByRef" resultType="Boardq" parameterType="BoardqVo">
+	<![CDATA[ 
+	select * from (select ROWNUM rnum, aa.* from (select * from QNA order 
+	by QB_REF desc, QB_SUN asc) aa) where rnum>#{startRow} and rnum<=#{endRow}
+	]]>
+	</select>
+	<update id="updateSun" parameterType="Boardq">
+	update QNA set QB_SUN =QB_SUN+1 where QB_REF=#{qb_ref} and QB_SUN > #{qb_sun}
+	</update>
+</mapper>

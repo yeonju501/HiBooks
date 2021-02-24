@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bit.hibooks.mapper.BoardqMapper">
+	<insert id="saveFile" parameterType="Qfile">
+	insert into QFile values(QF_SEQ.nextval,#{qb_seq},#{f_fname},#{f_ofname},#{f_fsize})
+	</insert>
+	<select id = "selectQfile" parameterType="long" resultType="Qfile">
+	select * from QFile where QB_SEQ=#{qb_seq}
+	</select>
+	<select id="selectFname" parameterType="long" resultType="String">
+	select F_FNAME from QFile where QB_SEQ=#{qb_seq}
+	</select>
+	<delete id="deleteFile" parameterType="long">
+	delete from QFile where QB_SEQ=#{qb_seq}
+	</delete>
+</mapper>

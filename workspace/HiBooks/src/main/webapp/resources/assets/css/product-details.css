@@ -1,0 +1,97 @@
+.tab-pane.active >img {
+    width: 100%;
+}
+
+.product-comment-content {
+    border: 1px solid #dedede;
+    border-radius: 3px;
+    padding: 15px 15px 0;
+    position: relative;
+    height: 100%;
+    margin-left: 0;
+}
+.product-review-tab .product-reviews i {
+    color: #fd0000;
+    font-size: 12px;
+    margin: 0 -2px;
+    border: orangered;
+}
+.comment-form-rating {
+    margin-bottom: 20px;
+    margin-top: 0px;
+    text-transform: capitalize;
+}
+.comment-submit input.submit {
+    background: #fff none repeat scroll 0 0;
+    border: 2px solid #e1e1e1;
+    color: #303030;
+    cursor: pointer;
+    font-family: roboto slab;
+    font-weight: 500;
+    height: 30px;
+    text-transform: capitalize;
+    width: 100px;
+    margin-bottom: 20px;
+}
+.more_review_button {
+    display: block;
+    padding: 13px 0;
+    width: 100%;
+    border: 2px solid #d1d5d9;
+    background: #fff;
+    border-radius: 3px;
+    text-align: center;
+    color: #808991;
+    font-size: 13px;
+    font-weight: 700;
+    -webkit-transition: all .1s ease-out;
+    transition: all .1s ease-out;
+    cursor: pointer;
+}
+.reply-and-like{
+	text-align: right;
+    margin: 2px 0 10px 0;
+}
+
+.reply-and-like >button{
+	font-family: ridi-roboto,Helvetica Neue,Apple SD Gothic Neo,"나눔고딕",Nanum Gothic,"돋움",arial,Dotum,Tahoma,Geneva,sans-serif;
+    letter-spacing: -.03em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    padding: 0;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    appearance: none;
+    border: 0;
+    box-shadow: none;
+    outline: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+    border-radius: 4px;
+    font-weight: 700;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    line-height: 1em;
+    vertical-align: baseline;
+    -webkit-transition: background .2s,color .2s;
+    transition: background .2s,color .2s;
+    color: #808991;
+    background: #fff;
+    border: 1px solid #d1d5d9;
+    box-shadow: 0 1px 1px 0 rgb(209 213 217 / 30%);
+    font-size: 11px;
+    padding: 6px 14px;
+}
+
+.comment-submit{
+	text-align : right;
+}
+
+.input-element.re-reply-input{
+	display : none;
+}
+.input-element.show{
+	display : block;
+}

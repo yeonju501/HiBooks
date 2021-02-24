@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="bit.hibooks.mapper.PurchaseMapper">
+	  <insert id="insertOrder" parameterType="Order">
+ 		<selectKey keyProperty="o_seq" order="BEFORE" resultType="long">
+              select ORD_SEQ.nextval from dual
+        </selectKey>
+	  	insert into ORD values(#{o_seq},#{m_email},0,SYSDATE,0,null)
+	  </insert>
+	  <insert id="insertOrderdetail" parameterType="Orderdetail">
+	  	insert into ORD_DETAIL values(#{o_seq},#{b_itemId},#{od_vol},#{od_total})
+	  </insert>
+	   <insert id="insertShipInfo" parameterType="ShipInfo">
+	  	insert into ShipInfo values(#{m_email},#{o_seq},#{s_addr},#{s_name},null,#{s_phone})
+	  </insert>
+  </mapper>
+  
