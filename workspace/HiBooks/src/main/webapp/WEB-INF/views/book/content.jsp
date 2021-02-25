@@ -235,25 +235,27 @@
                                         <i class="ion-ios-star"></i>
                                         <i class="ion-ios-star"></i>
                                         <i class="ion-ios-star"></i>
-                                        <span> ${book.b_rate }</span>
+                                        <span> ${book.b_rate}</span>
                                     </div>
                                 </h5>
-                                <p>${book.b_writer }</p>
-                                <p>${book.b_publisher }</p>
+                                <p>${book.b_writer}</p>
+                                <p>${book.b_publisher}</p>
                             </div>
                             <div class="product-price">
                                 <span class="old">$22.00 </span>
-                                <span>${book.b_price }원</span>
+                                <span>${book.b_price}원</span>
                             </div>
                             
                             <div class="quickview-plus-minus">
                                 <div class="cart-plus-minus">
-                                    <input type="text" value="02" name="qtybutton" class="cart-plus-minus-box">
+                                <form method="post" action="../purchase/add.do?itemId=${book.b_itemId}">
+                                    <input type="text" value="1" name="vol" class="cart-plus-minus-box" >
                                 </div>
                                 <div class="quickview-btn-cart">
-                                    <a class="btn-style cr-btn" href="../purchase/add.do?itemId=${book.b_itemId}&vol=2">
-                                        <span>add to cart</span>
-                                    </a>
+                                    <input type="submit" class="btn-style cr-btn" value="add to cart">
+                                    <!--     <span>add to cart</span> -->
+                                   
+                                    </form>
                                 </div>
                                 
                                 

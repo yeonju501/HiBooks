@@ -1,8 +1,11 @@
 package bit.hibooks.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -20,18 +23,22 @@ public class PurchaseController {
 	private PurchaseService service;
 	
 	@RequestMapping("checkout.do")
-	public String gotoCheckout(HttpSession session) {
+	public String gotoCheckout(HttpSession session, HttpServletResponse response) throws IOException {
 		List<CartVo> list = null;
 		Object listObj=session.getAttribute("list");
-		if(listObj==null) {
-			list=new ArrayList<CartVo>();
-		}else {
-			list=(List<CartVo>)listObj;
+		list=(List<CartVo>)listObj;
+		if(list.size()==0) {
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('선택된 상품이 없습니다.');</script>");
+			out.flush();
+			return "purchase/cart";
 		}
 		session.setAttribute("list",list);
 		return "purchase/checkout";
 		
 	}
+	
 	
 	@RequestMapping("placeorder.do")
 	public String placeOrder(PurchaseVo purchaseVo, HttpSession session) {

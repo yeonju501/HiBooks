@@ -287,7 +287,7 @@
                             </div>
                             <!--Accordion End-->
                             <!--Accordion Start-->
-                            <h3> <i class="fas fa-calendar"></i> 추가정보       <input type="checkbox" id="fill">
+                            <h3> <i class="fas fa-calendar"></i> 추가정보  
                             </h3>
                             <div id="checkout_coupon" class="coupon-checkout-content" style="display:block;">
                                 <div class="coupon-info">
@@ -307,7 +307,8 @@
                     <div class="col-lg-6 col-12">
                         <form name="purchaseinput" method="post" action="placeorder.do" >
                             <div class="checkbox-form">
-                                <h3>배송정보&nbsp; </h3>
+                                <h3>배송정보&nbsp; <label style="font-size:17px;display:float;width:200px;">주문자 정보와 동일 <input type="checkbox" name="fill" id="fill" value="1" style="height:15px;width:10%"></label></h3>
+                                </h3> 
                                 <div class="row">
                                     <div class="col-md-12">
                                         <!-- <div class="country-select clearfix">

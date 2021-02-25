@@ -64,6 +64,18 @@ public class CartController {
 		return "redirect:cart.do";
 	}
 	
+	@RequestMapping("change.do")
+	public String changeVol(int index,int vol, HttpSession session) {
+		List<CartVo> list=(List<CartVo>)session.getAttribute("list");
+		CartVo cartVo= list.get(index);
+		cartVo.setVol(vol);
+		long price=cartVo.getBook().getB_price();
+		long total=vol*price;
+		cartVo.setTotal(total);
+		session.setAttribute("list", list);
+		return "redirect:cart.do";
+	}
+	
 	
 
 
