@@ -52,8 +52,15 @@ public class PurchaseController {
 			list=(List<CartVo>)listObj;
 		}
 		service.placeOrder(list,purchaseVo);
+		list.clear();
+		session.setAttribute("list", list);
 		return "redirect:../";
 		
+	}
+	
+	@RequestMapping("jusoPopup.do")
+	public String getJusopopup() {
+		return "popup/jusoPopup";
 	}
 	
 
