@@ -110,7 +110,7 @@
                                 <div class="input_form">
                                     <form name="searchinput" method="post" action="../product/search.do">
                                     <input type="text" class="input_text" name="keyword" placeholder="제목, 저자, 출판사 검색">
-                                    <button id="searchinput" type="button" onclick="check()" class="button">
+                                    <button id="searchinput" type="button" class="button">
                                         <i class="fa fa-search fa-lg"></i>
                                     </button>
                                    </form>
@@ -490,7 +490,7 @@
                             <div class="col-lg-10 offset-lg-1 col-12">
                                 <!--Footer Logo Start-->
                                 <div class="footer-logo">
-                                    <a href="index.html">
+                                    <a href="/">
                                         <h3>H!Books</h3>
                                     </a>
                                 </div>

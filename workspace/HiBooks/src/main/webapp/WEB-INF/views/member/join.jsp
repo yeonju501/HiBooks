@@ -55,20 +55,17 @@
                                 <ul>
                                     <li>
                                         <div class="switcher">
-                                            <span>로그인</span>
-                
+                                            <a href="login.do"><span>로그인</span></a>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="switcher">
-                                            <span>회원가입</span>
-                                            
+                                            <a href="join.do"><span> 회원가입</span></a>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="switcher">
-                                            <span>장바구니</span>
-                                            
+                                            <a href="../purchase/cart.do"><span> 장바구니</span></a>
                                         </div>
                                     </li>
                                     <li>
@@ -159,7 +156,7 @@
                             <div class="col-lg-10 offset-lg-1 col-12">
                                 <!--Footer Logo Start-->
                                 <div class="footer-logo">
-                                    <a href="index.html">
+                                    <a href="/">
                                         <h3>H!Books</h3>
                                     </a>
                                 </div>

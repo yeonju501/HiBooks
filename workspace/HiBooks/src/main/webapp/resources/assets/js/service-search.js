@@ -11,3 +11,9 @@ function check()
 			  }
 		   document.searchinput.submit();
 	}
+
+$(function(){
+	$("#searchinput").on("click",function(){
+		check();
+	});
+});
