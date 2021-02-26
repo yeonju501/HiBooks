@@ -29,7 +29,9 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/service-index.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
+     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
     <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -110,7 +112,7 @@
                             <div class="search__sidbar">
                                 <div class="input_form">
                                     <form name="searchinput" method="post" action="product/search.do">
-                                    <input type="text" class="input_text" name="keyword" placeholder="제목, 저자, 출판사 검색">
+                                    <input type="text" class="input_text" id="keyword" name="keyword" placeholder="제목, 저자, 출판사 검색" >
                                     <button id="searchinput" type="button" class="button">
                                         <i class="fa fa-search fa-lg"></i>
                                     </button>
@@ -409,6 +411,7 @@
 
     <!-- all js here -->
     <script src="assets/js/vendor/jquery-1.12.0.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script>
     <script src="assets/js/popper.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/isotope.pkgd.min.js"></script>
@@ -420,7 +423,7 @@
     <script src="assets/js/owl.carousel.min.js"></script>
     <script src="assets/js/plugins.js"></script>
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/service-search.js"></script>
+	<script src="assets/js/service-search.js"></script>
 </body>
 
 </html>
