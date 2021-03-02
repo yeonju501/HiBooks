@@ -693,3 +693,11 @@
 
 
 })(jQuery);
+
+
+// 로그아웃버튼(시큐리티)
+var logoutSubmit = function(){
+	$("#log-out").submit();
+}
+
+

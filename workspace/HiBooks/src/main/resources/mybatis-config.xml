@@ -18,6 +18,8 @@
    	   <typeAlias alias="Order" type="bit.hibooks.domain.purchase.Order"/>
    	   <typeAlias alias="Orderdetail" type="bit.hibooks.domain.purchase.Orderdetail"/>
    	   <typeAlias alias="ShipInfo" type="bit.hibooks.domain.purchase.ShipInfo"/>
+   	   
+   	   <typeAlias alias="MemberDetails" type="bit.hibooks.security.MemberDetails"/>
    </typeAliases>
    <mappers>
    	   <mapper resource="bit/hibooks/mapper/MemberMapper.xml"/>

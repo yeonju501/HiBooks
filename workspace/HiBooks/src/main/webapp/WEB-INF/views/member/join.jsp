@@ -133,6 +133,7 @@
                                     <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
                                     <label for="agree-term" class="label-agree-term"><span><span></span></span><a href="#" class="term-service">이용정보 동의약관</a>에 모두 동의합니다.</label>
                                 </div>
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                                 <div class="form-group form-button">
                                     <input onclick="checkAll()" type="button" name="signup" id="signup" class="form-submit" value="가입하기"/>
                                 </div>

@@ -126,11 +126,12 @@
                                     <label for="remember-me" class="label-agree-term">Remember me</label>
                                 </div>
                                 <div class="form-group form-button">
+                                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                                     <input type="submit" name="signin" id="signin" class="form-submit" value="로그인">
                                 </div>
                             </form>
                             <div class="social-login">
-                                <span class="social-label">Or login with</span>
+                                <span class="social-label">Or login with </span>
                                 <ul class="socials">
                                     <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
                                     <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
@@ -342,14 +343,12 @@
     <script src="../assets/js/owl.carousel.min.js"></script>
     <script src="../assets/js/plugins.js"></script>
     <script src="../assets/js/main.js"></script>
-    <c:if test="${!empty loginCode}">
+    
+    <!-- 수정필요 시큐리티 -->
+    <c:if test="${!empty requestScope.loginFailMsg}">
 	    <script type="text/javascript">
-		var loginCode = ${loginCode}; 	//alert(joinCode);
-	    if(loginCode == <%=MemberModeSet.LOGIN_F_NO_MEMBER%>){
-	 		alert("가입되지 않은 이메일입니다");
-		}else if(loginCode == <%=MemberModeSet.LOGIN_F_WRONG_PASSWORD%>){
-			alert("비밀번호가 틀렸습니다");		// alert말고 다른 방식으로 표시하자!
-		}
+			let loginFailMsg = "${requestScope.loginFailMsg}"; 	
+		    alert(loginFailMsg);
 	    </script>
 	</c:if>
 </body>

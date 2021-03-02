@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!doctype html>
 <html class="no-js" lang="zxx">
 
@@ -67,14 +68,22 @@
                                 <ul>
                                     <li>
                                         <div class="switcher">
-                                        	<c:if test="${empty loginCode}"> <a href="../member/login.do"><span>로그인</span></a></c:if>
-                							<c:if test="${loginCode==3}"><a href="../member/logout.do"><span>로그아웃</span></a> </c:if>
+                                        	<sec:authorize access="isAnonymous()">
+                                        		<a href="../member/login.do"><span>로그인</span></a>
+                                        	</sec:authorize> 
+                							<sec:authorize access="isAuthenticated()">
+                								<form id="log-out" action = "../member/logout.do" method = 'post'>
+                									<a onclick="logoutSubmit()" style="cursor: pointer"><span>로그아웃</span></a>
+                									<input type = "hidden" name = "${_csrf.parameterName }" value = "${_csrf.token }"/>
+                								</form>
+                							</sec:authorize> 
                                         </div>
                                     </li>
                                     <li>
                                         <div class="switcher">
-                                            <c:if test="${empty loginCode}"><a href="../member/join.do"><span> 회원가입</span></a></c:if>
-                                            <c:if test="${loginCode==3}"> </c:if>
+                                            <sec:authorize access="isAnonymous()">
+                                        		<a href="../member/join.do"><span> 회원가입</span></a>
+                                        	</sec:authorize> 
                                         </div>
                                     </li>
                                     <li>
@@ -120,11 +129,12 @@
                         <div class="col-md-6">
                             <div class="search__sidbar">
                                 <div class="input_form">
-                                    <form name="searchinput" method="post" action="search.do">
-                                    <input type="text" class="input_text" name="keyword" placeholder="제목, 저자, 출판사 검색">
-                                    <button id="searchinput" type="button" class="button">
-                                        <i class="fa fa-search fa-lg"></i>
-                                    </button>
+                                    <form name="searchinput" method="post" action="../product/search.do">
+	                                    <input type = "hidden" name = "${_csrf.parameterName }" value = "${_csrf.token }"/>
+	                                    <input type="text" class="input_text" name="keyword" placeholder="제목, 저자, 출판사 검색">
+	                                    <button id="searchinput" type="button" class="button">
+	                                        <i class="fa fa-search fa-lg"></i>
+	                                    </button>
                                    </form>
                                 </div>
                             </div>

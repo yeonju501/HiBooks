@@ -2,22 +2,26 @@ package bit.hibooks.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import bit.hibooks.domain.Member;
 import bit.hibooks.mapper.MemberMapper;
+import lombok.AllArgsConstructor;
 
 import static bit.hibooks.setting.MemberModeSet.*;
 
 @Service
+@AllArgsConstructor
 public class MemberServiceImpl implements MemberService {
-	
-	@Autowired
 	private MemberMapper mapperM;
+	private BCryptPasswordEncoder bcryptPwdEncoder;
 	
 	@Override
 	public int join(Member member) {
 		try{
+			String encodedPwd = bcryptPwdEncoder.encode(member.getM_pwd());
+			member.setM_pwd(encodedPwd);
 			mapperM.insertMember(member);
 			return JOIN_SUCCESS;
 		}catch(DataAccessException dae) {
@@ -28,8 +32,7 @@ public class MemberServiceImpl implements MemberService {
 	public int loginCheck(Member member) {
 		Member user = mapperM.selectMemberInfo(member);
 		if(user == null) {
-			//관리자 로그인 로직 만들기 
-			
+			//관리자 로그인 로직 만들기 // 스프링 시큐리티로 해결 가능!!!
 			return LOGIN_F_NO_MEMBER; //아이디가 없음.
 		}else {
 			if(!user.getM_pwd().equals( member.getM_pwd() )) {
