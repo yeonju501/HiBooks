@@ -30,9 +30,21 @@
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/responsive.css">
     <script src="../assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script>
+	function a(x){
+		 var vol=document.getElementById("vol"+x).value;
+		 /* location.href ="change.do?index="+x+"&vol="+vol; */
+		 if(confirm("수량을 변경하시겠습니까?")==true){
+			 location.href ="change.do?index="+x+"&vol="+vol;
+		 }else{
+			 return false;
+		 }
+	}
+</script>
 </head>
 
 <body>
+
     <div class="wrapper">
         <!-- header start -->
         <header id="header_background">
@@ -259,7 +271,8 @@
                                                 <span class="amount">${cartVo.book.b_price}</span>
                                             </td>
                                             <td class="anadi-product-quantity">
-                                                <input value="${cartVo.vol}" type="number">
+                                                <input id="vol<c:out value="${status.index}"/>" value="${cartVo.vol}" type="number" name="vol" min="1" max="100">
+                                                <br/><a class="button" href='javascript:void(0);' onclick="a(<c:out value="${status.index}"/>);" style="padding:5px;margin-top:20px;">변경</a>
                                             </td>
                                             <td class="product-subtotal">
                                                 <span class="amount">${cartVo.total}</span>

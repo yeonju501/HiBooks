@@ -218,7 +218,7 @@
         <!-- breadcrumbs area start -->
         <!-- breadcrumbs area End -->
  <script>
-	function check()
+	function nocheck()
 	{
 	    for(var i=0; i<document.purchaseinput.elements.length; i++)
 		   {
@@ -247,6 +247,19 @@
 		    });
 
 		});
+	
+	function goPopup(){
+		var pop = window.open("jusoPopup.do","pop","width=570,height=420,left=500,top=100, scrollbars=yes, resizable=yes");
+		
+	}
+	
+
+	function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,detBdNmList,bdNm,bdKdcd,siNm,sggNm,emdNm,liNm,rn,udrtYn,buldMnnm,buldSlno,mtYn,lnbrMnnm,lnbrSlno,emdNo){
+		// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
+		document.purchaseinput.roadFullAddr.value = roadFullAddr;
+		document.purchaseinput.zipNo.value = zipNo;
+		
+	}
 
 </script>
  <!--Checkout Area Start-->
@@ -296,8 +309,9 @@
                                 </div>
                             </div>
                             <!--Accordion End-->
+
                             <!--Accordion Start-->
-                            <h3> <i class="fas fa-calendar"></i> 추가정보       <input type="checkbox" id="fill">
+                            <h3> <i class="fas fa-calendar"></i> 추가정보  
                             </h3>
                             <div id="checkout_coupon" class="coupon-checkout-content" style="display:block;">
                                 <div class="coupon-info">
@@ -313,11 +327,13 @@
                         </div>
                     </div>
                 </div>
+                
                 <div class="row">
                     <div class="col-lg-6 col-12">
                         <form name="purchaseinput" method="post" action="placeorder.do" >
                             <div class="checkbox-form">
-                                <h3>배송정보&nbsp; </h3>
+                                <h3>배송정보&nbsp; <label style="font-size:17px;display:float;width:200px;">주문자 정보와 동일 <input type="checkbox" name="fill" id="fill" value="1" style="height:15px;width:10%"></label></h3>
+                                </h3> 
                                 <div class="row">
                                     <div class="col-md-12">
                                         <!-- <div class="country-select clearfix">
@@ -359,13 +375,18 @@
                                             <input placeholder="" type="text">
                                         </div>
                                     </div> -->
+
                                     <div class="col-md-12">
                                         <div class="checkout-form-list">
-                                            <label>주소
+                                            <label>주소 
                                                 <span class="required">*</span>
+                                                 <input type="button"  onClick="goPopup();" value="주소 찾기" style="padding-left:3px;height:30px;font-size:10px;width:10%">
                                             </label>
-                                            <input placeholder="기본주소" type="text" name="s_addr">
+		                                     <input placeholder="우편번호" type="text"  id="zipNo"  name="zipNo" style="width:100px;">
+		                                     <br/> 
+		                                     <input placeholder="기본주소" type="text" name="s_addr"  id="roadFullAddr"> 
                                         </div>
+                                        
                                     </div>
                                     <!-- <div class="col-md-12">
                                         <div class="checkout-form-list">
@@ -640,7 +661,7 @@
                                         </div>
                                     </div>
                                     <div class="order-button-payment">
-                                        <input value="Place order" onclick="check()" >
+                                        <input value="Place order" onclick="nocheck()" >
                                     </div>
                                 </div>
                             </div>

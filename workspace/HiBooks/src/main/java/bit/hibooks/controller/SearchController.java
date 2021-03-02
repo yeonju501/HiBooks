@@ -72,7 +72,6 @@ public class SearchController {
 	@PostMapping("getauto.do")
 	public List<Book> getAuto(String keyword){
 		List<Book> list = service.getAuto(keyword);
-		log.info(list);
 		return list;
 		
 	}
