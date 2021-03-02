@@ -5,10 +5,11 @@
 
   <mapper namespace="bit.hibooks.mapper.MemberMapper">
   		<insert id="insertMember" parameterType="Member">
-  			insert into Member values(#{m_email},#{m_pwd},#{m_name})
+  			insert into Member values(#{m_email},#{m_pwd},#{m_name},#{m_auth},1)
   		</insert>
   		<select id="selectMemberInfo" parameterType="Member" resultType="Member">
   			select * from Member where M_EMAIL = #{m_email}
   		</select>
+  		
   		
   </mapper>

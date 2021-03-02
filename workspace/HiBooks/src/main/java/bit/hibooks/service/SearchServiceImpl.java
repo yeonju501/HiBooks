@@ -30,8 +30,5 @@ public class SearchServiceImpl implements SearchService {
 		SearchVo searchVo = new SearchVo(keyword,cp,ps);
 		List<Book> list = searchMapper.selectAuto(searchVo);
 		return list;
-		
 	}
-	
-
 }

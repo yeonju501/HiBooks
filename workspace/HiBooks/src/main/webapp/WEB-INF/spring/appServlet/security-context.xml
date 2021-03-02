@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+		
+		<context:component-scan base-package="bit.hibooks.security"></context:component-scan>
+		<bean id="bcryptPwdEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></bean>
+		<bean id="memberDetailsService" class="bit.hibooks.security.MemberDetailsService"></bean>
+		<bean id="loginFailHandler" class="bit.hibooks.security.LoginFailHandler"></bean>
+		<security:http>
+			<security:intercept-url pattern="/" access="permitAll"/>
+			<security:form-login login-page="/member/login.do"
+									username-parameter="m_email"
+									password-parameter="m_pwd"
+									login-processing-url="/member/login.do"
+									default-target-url="/" 
+									authentication-failure-handler-ref="loginFailHandler"/>
+			<security:logout logout-url="/member/logout.do"
+								logout-success-url="/" />
+								
+			<!-- max session setting -->
+			<security:session-management invalid-session-url="/">
+	            <security:concurrency-control max-sessions="1"
+	            							  expired-url="/"
+	            							  error-if-maximum-exceeded="true" />
+	        </security:session-management>
+	        
+	        <!-- remember-me -->
+	        <security:remember-me user-service-ref="memberDetailsService" remember-me-parameter="remember-me"
+	        						token-validity-seconds="600000" />
+	        						
+		</security:http>
+		
+		<!-- get UserInfo by MyBatis from DB -->
+		<security:authentication-manager>
+			<security:authentication-provider user-service-ref="memberDetailsService">
+				<security:password-encoder hash="bcrypt"></security:password-encoder>
+			</security:authentication-provider> 
+		</security:authentication-manager>
+
+</beans>
