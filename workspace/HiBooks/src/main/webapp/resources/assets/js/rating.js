@@ -34,13 +34,17 @@ $(function(){
 	// 댓글 작성
 	$("#review").on("submit",function(e){
 		e.preventDefault();	// 원래 submit을 했을 때 동기형식으로 넘어가잖아. 그걸 막아주는 역할이야! 대신 밑에 있는 로직을 실행하겠다는 거지.
-		
+		let token = $("meta[name='_csrf']").attr("content");
+		let header = $("meta[name='_csrf_header']").attr("content");
 		let formData = $(this).serialize();
 		$.ajax({
 			url:"review.do",
 			type:"Post",
 			data: formData,
 			dataType:"json",
+			beforeSend :function(xhr) {
+            	xhr.setRequestHeader(header,token);
+            },
 			success: function(result){
 				//alert("success: "+ result);
 				setReviewListHtml(result);
