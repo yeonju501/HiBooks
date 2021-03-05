@@ -13,7 +13,6 @@
 		<bean id="loginFailHandler" class="bit.hibooks.security.LoginFailHandler"></bean>
 		<security:http>
 			<security:intercept-url pattern="/" access="permitAll"/>
-			<security:intercept-url pattern="/product/getauto.do" access="permitAll"/>
 			<security:form-login login-page="/member/login.do"
 									username-parameter="m_email"
 									password-parameter="m_pwd"
@@ -38,9 +37,16 @@
 		
 		<!-- get UserInfo by MyBatis from DB -->
 		<security:authentication-manager>
+			<security:authentication-provider>
+				<security:user-service>
+					<security:user name="admin" password="admin" authorities="ROLE_ADMIN, ROLE_USER" />
+				</security:user-service>
+				
+			</security:authentication-provider>
+			
 			<security:authentication-provider user-service-ref="memberDetailsService">
 				<security:password-encoder hash="bcrypt"></security:password-encoder>
-			</security:authentication-provider> 
+			</security:authentication-provider>
 		</security:authentication-manager>
 
 </beans>

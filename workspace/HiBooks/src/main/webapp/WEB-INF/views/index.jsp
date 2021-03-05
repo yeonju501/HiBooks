@@ -40,7 +40,6 @@
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script>
         <script src="assets/js/service-search.js"></script>
 </head>
-
 <body>
     <div class="wrapper">
         <!-- header start -->

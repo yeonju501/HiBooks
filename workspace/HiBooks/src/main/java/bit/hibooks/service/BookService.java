@@ -21,4 +21,7 @@ public interface BookService {
 	
 	// ajax이기 때문에 댓글을 작성,수정 할 때 마다 댓글을 다시 리스팅해준다.
 	ReviewResult writeReview(BookReview br, ReviewVo reviewVo) throws DataAccessException;
+	ReviewResult deleteReview(BookReview br, ReviewVo reviewVo);
+	ReviewResult updateReview(BookReview br, ReviewVo reviewVo);
+	ReviewResult likeReview(BookReview br, ReviewVo reviewVo);
 }

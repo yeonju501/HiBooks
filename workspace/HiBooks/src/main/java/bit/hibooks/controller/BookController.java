@@ -86,5 +86,19 @@ public class BookController {
 		return rr;
 	}
 	
-	
+	@ResponseBody
+	@GetMapping("re-delete.do")
+	public ReviewResult ajaxDeleteReview(BookReview br, ReviewVo reviewVo) {
+		return service.deleteReview(br, reviewVo);
+	}
+	@ResponseBody
+	@PostMapping("re-update.do")
+	public ReviewResult ajaxUpdateReview(BookReview br, ReviewVo reviewVo) {
+		return service.updateReview(br, reviewVo);
+	}
+	@ResponseBody
+	@GetMapping("re-like.do")
+	public ReviewResult ajaxLikeReview(BookReview br, ReviewVo reviewVo) {
+		return service.likeReview(br, reviewVo);
+	}
 }

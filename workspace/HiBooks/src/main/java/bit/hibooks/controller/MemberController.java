@@ -52,6 +52,10 @@ public class MemberController {
 	public void logout(){
 	}
 	
+	@GetMapping("termPopup.do")
+	public String popupTermPage() {
+		return "member/popup";
+	}
 	
 	/* 로그인 전달 시큐리티 적용 전
 	 * @PostMapping("login.do") public ModelAndView login(Member member, HttpSession

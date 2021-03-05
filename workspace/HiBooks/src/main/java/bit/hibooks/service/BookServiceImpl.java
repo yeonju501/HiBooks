@@ -58,4 +58,24 @@ public class BookServiceImpl implements BookService {
 		
 		return getReviewList(reviewVo);
 	}
+
+	@Override
+	public ReviewResult deleteReview(BookReview br, ReviewVo reviewVo) {
+		mapper.deleteReview(br);
+		reviewVo.setItemId(br.getB_itemId());
+		return getReviewList(reviewVo);
+	}
+
+	@Override
+	public ReviewResult updateReview(BookReview br, ReviewVo reviewVo) {
+		mapper.updateReview(br);
+		return getReviewList(reviewVo);
+	}
+
+	@Override
+	public ReviewResult likeReview(BookReview br, ReviewVo reviewVo) {
+		mapper.insertRecommend(br);
+		mapper.updateLike(br);
+		return getReviewList(reviewVo);
+	}
 }

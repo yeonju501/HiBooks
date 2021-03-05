@@ -1,4 +1,11 @@
 
+var popupTerms = function(){
+	 var url = "termPopup.do";
+     var name = "popup test";
+     var option = "width = 500, height = 500, top = 100, left = 200, location = no"
+     window.open(url, name, option);
+}
+
 
 var checkName = function(){
 	let reg_name = /^[가-힣]{2,20}$/;	//정확한 한글, 2~20자
@@ -86,16 +93,22 @@ var checkPhone = function(){
 }
 var checkAll = function(){
     //document.getElementById("print").innerHTML = "가입";
-	if(!checkName()){
-		document.getElementById("name").focus();
-	}else if(!checkEmail()){
-		document.getElementById("email").focus();
-	}else if(!checkPass()){
-		document.getElementById("pass").focus();
-	}else if(!checkRePass()){
-		document.getElementById("re_pass").focus();
+	if(!$("#agree-term").is(":checked")){
+		alert("이용약관을 체크해주세요");
+		$("#agree-term").focus();
+		return false;
 	}else{
-		document.getElementById("register-form").submit();
+		if(!checkName()){
+			document.getElementById("name").focus();
+		}else if(!checkEmail()){
+			document.getElementById("email").focus();
+		}else if(!checkPass()){
+			document.getElementById("pass").focus();
+		}else if(!checkRePass()){
+			document.getElementById("re_pass").focus();
+		}else{
+			document.getElementById("register-form").submit();
+		}
 	}
 }
 var checkLogin = function(){
