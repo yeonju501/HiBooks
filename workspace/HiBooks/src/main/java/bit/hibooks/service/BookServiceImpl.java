@@ -74,8 +74,12 @@ public class BookServiceImpl implements BookService {
 
 	@Override
 	public ReviewResult likeReview(BookReview br, ReviewVo reviewVo) {
-		mapper.insertRecommend(br);
-		mapper.updateLike(br);
-		return getReviewList(reviewVo);
+		try {
+			mapper.insertRecommend(br);
+			mapper.updateLike(br);
+			return getReviewList(reviewVo);
+		}catch(DataAccessException dae) {
+			return null;
+		}
 	}
 }

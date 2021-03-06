@@ -24,7 +24,7 @@ $(document).on("click","#re-like-it",function(){
 			setReviewListHtml(result);
 		},
 		error : function(a,b,c){
-			alert("실패 :" + a.responseText);
+			alert("같은 댓글에 좋아요는 한번만!");
 		} 
 	});
 });
