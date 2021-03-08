@@ -6,4 +6,5 @@ public interface MemberService {
 	int join(Member member);
 	int loginCheck(Member member);
 	Member getMemberInfo(Member member);
+	int checkMailAuth(Member member);
 }

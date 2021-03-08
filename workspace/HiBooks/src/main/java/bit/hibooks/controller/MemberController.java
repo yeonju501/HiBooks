@@ -37,9 +37,14 @@ public class MemberController {
 			//log.info(joinCode);
 			return new ModelAndView("member/join","joinCode", joinCode);	// 회원가입 실패 메세지
 		}else if(joinCode == JOIN_SUCCESS){
-			return new ModelAndView("redirect:/member/login.do");
+			return new ModelAndView("member/login","joinCode", joinCode);	// 회원가입 성공, 이메일 인증 요구 메세지
 		}
 		return null;
+	}
+	@GetMapping("joinConfirm")
+	public ModelAndView joinConfirm(Member member) {
+		int joinCode = service.checkMailAuth(member);
+		return new ModelAndView("member/login","joinCode",joinCode);	// 인증 성공, 또는 실패
 	}
 	@GetMapping("login.do")
 	public String loginPage() {
@@ -51,13 +56,12 @@ public class MemberController {
 	@PostMapping("logout.do")
 	public void logout(){
 	}
-	
 	@GetMapping("termPopup.do")
 	public String popupTermPage() {
-		return "member/popup";
+		return "member/term-popup";
 	}
 	
-	/* 로그인 전달 시큐리티 적용 전
+	/* 로그인 시큐리티 적용 전
 	 * @PostMapping("login.do") public ModelAndView login(Member member, HttpSession
 	 * session) { int loginCode = service.loginCheck(member); ModelAndView mv = new
 	 * ModelAndView(); if(loginCode == LOGIN_SUCCESS) { Member loginUser =

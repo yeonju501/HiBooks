@@ -8,4 +8,6 @@ public class MemberModeSet {
 	
 	public final static int JOIN_F_EMAIL_EXIST = 10;
 	public final static int JOIN_SUCCESS = 11;
+	public final static int MAIL_AUTH_SUCCESS = 12;
+	public final static int MAIL_AUTH_FAIL =13;
 }

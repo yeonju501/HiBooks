@@ -344,7 +344,19 @@
     <script src="../assets/js/plugins.js"></script>
     <script src="../assets/js/main.js"></script>
     
-    <!-- 수정필요 시큐리티 -->
+    <c:if test="${!empty joinCode}">
+	    <script type="text/javascript">
+		var joinCode = ${joinCode}; 	//alert(joinCode);
+	    	if(joinCode == <%=MemberModeSet.JOIN_SUCCESS%>){
+	 			alert("가입하신 이메일로 인증을 해주세요!");
+			}else if(joinCode == <%=MemberModeSet.MAIL_AUTH_SUCCESS%>){
+				alert("인증에 성공하셨습니다, 로그인 해주세요");
+			}else if(joinCode == <%=MemberModeSet.MAIL_AUTH_FAIL%>){
+				alert("인증 실패, 이메일을 다시 확인해주세요")
+			}
+	    </script>
+	</c:if>
+    
     <c:if test="${!empty requestScope.loginFailMsg}">
 	    <script type="text/javascript">
 			let loginFailMsg = "${requestScope.loginFailMsg}"; 	

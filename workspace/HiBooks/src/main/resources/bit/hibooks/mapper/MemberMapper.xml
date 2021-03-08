@@ -5,11 +5,24 @@
 
   <mapper namespace="bit.hibooks.mapper.MemberMapper">
   		<insert id="insertMember" parameterType="Member">
-  			insert into Member values(#{m_email},#{m_pwd},#{m_name},#{m_auth},1)
+  			insert into Member values(
+  				#{m_email},
+  				#{m_pwd},
+  				#{m_name},
+  				SYSDATE,
+  				#{m_auth},
+  				#{enabled},
+  				#{m_mailAuth},
+  				null,
+  				null,
+  				null,
+  				null)
   		</insert>
   		<select id="selectMemberInfo" parameterType="Member" resultType="Member">
   			select * from Member where M_EMAIL = #{m_email}
   		</select>
-  		
+  		<update id="updateEnabled" parameterType="Member">
+  			update Member set ENABLED = 1 where M_EMAIL = #{m_email}
+  		</update>
   		
   </mapper>

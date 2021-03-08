@@ -26,6 +26,22 @@
 		<property name="configLocation" value="classpath:/mybatis-config.xml"/>
 	</bean>
 	
+	<!-- send email for authentication when join  -->
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="smtp.gmail.com" />
+        <property name="port" value="587" />
+        <property name="username" value="accForHibooks@gmail.com"/>
+        <property name="password" value="1q2w3e4r!@#$" />
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.transport.protocol">smtp</prop>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+                <prop key="mail.debug">true</prop>
+            </props>
+        </property>
+    </bean>
+    
 	<context:component-scan base-package="bit.hibooks.service"></context:component-scan>
 	<context:component-scan base-package="bit.hibooks.mapper"></context:component-scan>
 	<context:component-scan base-package="bit.hibooks.service.admin"></context:component-scan>
