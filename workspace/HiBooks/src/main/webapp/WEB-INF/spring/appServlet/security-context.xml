@@ -11,7 +11,9 @@
 		<bean id="bcryptPwdEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></bean>
 		<bean id="memberDetailsService" class="bit.hibooks.security.MemberDetailsService"></bean>
 		<bean id="loginFailHandler" class="bit.hibooks.security.LoginFailHandler"></bean>
+		<!-- <bean id="csrfSecurityRequestMatcher" class="bit.hibooks.security.CsrfSecurityRequestMatcher"/> -->
 		<security:http>
+			<security:csrf disabled="true"/>	
 			<security:intercept-url pattern="/" access="permitAll"/>
 			<security:form-login login-page="/member/login.do"
 									username-parameter="m_email"
@@ -21,14 +23,15 @@
 									authentication-failure-handler-ref="loginFailHandler"/>
 			<security:logout logout-url="/member/logout.do"
 								logout-success-url="/" />
-								
+			
+							
 			<!-- max session setting -->
 			<security:session-management invalid-session-url="/">
 	            <security:concurrency-control max-sessions="1"
 	            							  expired-url="/"
 	            							  error-if-maximum-exceeded="true" />
 	        </security:session-management>
-	        
+	  
 	        <!-- remember-me -->
 	        <security:remember-me user-service-ref="memberDetailsService" remember-me-parameter="remember-me"
 	        						token-validity-seconds="600000" />

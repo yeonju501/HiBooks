@@ -7,4 +7,7 @@ public interface MemberService {
 	int loginCheck(Member member);
 	Member getMemberInfo(Member member);
 	int checkMailAuth(Member member);
+	int checkPwd(Member member);
+	void updateMemberInfo(Member member);
+	void updatePwd(Member member);
 }

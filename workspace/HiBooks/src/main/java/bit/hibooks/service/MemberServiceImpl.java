@@ -75,6 +75,27 @@ public class MemberServiceImpl implements MemberService {
 			return MAIL_AUTH_FAIL;
 		}
 	}
+	@Override
+	public int checkPwd(Member member) {
+		String pwdGet = mapperM.selectMemberInfo(member).getM_pwd();
+		if(bcryptPwdEncoder.matches(member.getM_pwd(), pwdGet)) {
+			return UPDATE_ACCESS_SUC;
+		}else {
+			return UPDATE_ACCESS_FAIL;
+		}
+	}
+	@Override
+	public void updateMemberInfo(Member member) {
+		mapperM.updateMember(member);
+		
+	}
+	public void updatePwd(Member member) {
+		String encodedPwd = bcryptPwdEncoder.encode(member.getM_pwd());
+		member.setM_pwd(encodedPwd);
+		System.out.println(encodedPwd);
+		mapperM.updatePwd(member);
+		
+	}
 	private String sendAuthMail(String email) {
 		//6자리 난수 인증번호 생성
         String authKey = getKey(6);
