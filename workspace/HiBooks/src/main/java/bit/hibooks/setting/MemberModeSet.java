@@ -15,4 +15,6 @@ public class MemberModeSet {
 	public final static int UPDATE_ACCESS_FAIL = 15;
 	public final static int UPDATE_PWD_SUC = 16;
 	public final static int UPDATE_INFO_SUC = 17;
+	
+	public final static int NO_AUTH = 20;
 }

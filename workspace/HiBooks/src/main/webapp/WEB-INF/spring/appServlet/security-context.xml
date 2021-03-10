@@ -12,15 +12,18 @@
 		<bean id="memberDetailsService" class="bit.hibooks.security.MemberDetailsService"></bean>
 		<bean id="loginFailHandler" class="bit.hibooks.security.LoginFailHandler"></bean>
 		<!-- <bean id="csrfSecurityRequestMatcher" class="bit.hibooks.security.CsrfSecurityRequestMatcher"/> -->
+		
 		<security:http>
 			<security:csrf disabled="true"/>	
 			<security:intercept-url pattern="/" access="permitAll"/>
+			<security:intercept-url pattern="/member/moveMyInfo.do" access="hasRole('ROLE_USER')"/>
 			<security:form-login login-page="/member/login.do"
 									username-parameter="m_email"
 									password-parameter="m_pwd"
 									login-processing-url="/member/login.do"
 									default-target-url="/" 
 									authentication-failure-handler-ref="loginFailHandler"/>
+			<security:access-denied-handler error-page="/"/>
 			<security:logout logout-url="/member/logout.do"
 								logout-success-url="/" />
 			

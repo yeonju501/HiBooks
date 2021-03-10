@@ -91,5 +91,4 @@ public class MemberController {
 		int checkPwdCode = UPDATE_PWD_SUC;
 		return new ModelAndView("member/my-info","checkPwdCode",checkPwdCode);
 	}
-	
 }
