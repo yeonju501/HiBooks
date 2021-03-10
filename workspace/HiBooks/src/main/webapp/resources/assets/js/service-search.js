@@ -34,10 +34,16 @@ $(function(){
 			
 	//input 태그 id가 name
     $( "#keyword" ).autocomplete({
-        source : function( request, response ) {
-             $.ajax({
+        
+    	source : function( request, response ) {
+    		var token = $("meta[name='_csrf']").attr("content");
+    		var header = $("meta[name='_csrf_header']").attr("content"); 
+    		$.ajax({
                     type: 'post',
                     url: "product/getauto.do",
+                    beforeSend :function(xhr) {
+                    	xhr.setRequestHeader(header,token);
+                    },
                     dataType: "json",
                     //request.term = $("#autocomplete").val()
                     data: { "keyword" : $("#keyword").val()},
@@ -53,7 +59,11 @@ $(function(){
 										 }		                               
                             })
                         );
-                    }
+                    },
+                    error: function(a,b,c){
+        				alert("XMLHttpRequest: "+ a.responseText);
+        				alert("예외 원인: "+ c);
+        			}
                });
             },
         //조회를 위한 최소글자수

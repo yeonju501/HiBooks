@@ -241,8 +241,7 @@
 		           $("#s_phone").val(m_phone);
 		        }else{
 		        	 $("#s_name").val(name);
-			           $("#s_phone").val(phone);
-		        	
+			         $("#s_phone").val(phone);
 		        }
 		    });
 
@@ -250,7 +249,6 @@
 	
 	function goPopup(){
 		var pop = window.open("jusoPopup.do","pop","width=570,height=420,left=500,top=100, scrollbars=yes, resizable=yes");
-		
 	}
 	
 

@@ -3,6 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+   
    <typeAliases>
    	   <typeAlias alias="Member" type="bit.hibooks.domain.Member"/>
    	   <typeAlias alias="Book" type="bit.hibooks.domain.book.Book"/>

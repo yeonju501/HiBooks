@@ -13,7 +13,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.png">
-
+	
+	<!-- security and ajax 403 -->
+	<meta name="_csrf" content="${_csrf.token}">
+	<meta name="_csrf_header" content="${_csrf.headerName}">
+	
     <!-- all css here -->
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/animate.css">
@@ -33,9 +37,24 @@
     <link rel="stylesheet" href="../assets/css/responsive.css">
     <script src="../assets/js/vendor/modernizr-2.8.3.min.js"></script>
     <script src="https://use.fontawesome.com/5fb42bb368.js"></script>
+	
+	
+	
 </head>
 
 <body>
+	<!-- login user in session by spring security -->
+	<sec:authorize access="isAuthenticated()">
+		<sec:authentication property="principal.username" var="loginUser"/>
+		<input type="hidden" value="${loginUser}" id="login-user-for-js">
+		<c:forEach items="${reviewResult.reviewList}" var="review">
+			<c:if test="${review.m_email == loginUser}">
+				<c:set value="${review}" var="loginUserReview"></c:set>
+				
+			</c:if>
+		</c:forEach>
+	</sec:authorize>
+	
     <div class="wrapper">
         <!-- header start -->
         <header id="header_background">
@@ -257,17 +276,15 @@
                             </div>
                             
                             <div class="quickview-plus-minus">
-                                <div class="cart-plus-minus">
-                                <form method="post" action="../purchase/add.do?itemId=${book.b_itemId}">
-                                    <input type="text" value="1" name="vol" class="cart-plus-minus-box" >
-                                </div>
-                                <div class="quickview-btn-cart">
-                                    <input type="submit" class="btn-style cr-btn" value="add to cart">
-                                    <!--     <span>add to cart</span> -->
-                                   
-                                    </form>
-                                </div>
-                                
+                            	<form method="post" action="../purchase/add.do?itemId=${book.b_itemId}">	
+	                                <div class="cart-plus-minus">
+	                                    <input type="text" value="1" name="vol" class="cart-plus-minus-box" >
+	                                </div>
+	                                <div class="quickview-btn-cart">
+	                                    <input type = "hidden" name = "${_csrf.parameterName }" value = "${_csrf.token }"/>
+	                                    <input type="submit" class="btn-style cr-btn" value="add to cart">
+	                                </div>
+                                </form>
                                 
                             </div>
                             <div class="quickview-plus-minus">
@@ -319,36 +336,79 @@
                                         <!-- 댓글 작성 부분 >> 한 상품에 한사람 당 한 댓글 >> 작성한 사람은 자신의 댓글 수정 폼-->
                                         <div class="review-form-wrapper">
                                             <div class="review-form">
-                                                <span class="comment-reply-title">리뷰를 남겨주세요(로그인 후에 가능)</span>
+                                                <span class="comment-reply-title">리뷰를 남겨주세요</span>
                                                 <form id="review" action="">
                                                     <div class="row">
                                                         <div class="col-md-2">
                                                             <div class="comment-form-rating">
                                                                 <label>Your rating</label>
                                                                 <div class="rating">
-                                                                    <i id="star1" class="far fa-star"></i>
-                                                                    <i id="star2" class="far fa-star"></i>
-                                                                    <i id="star3" class="far fa-star"></i>
-                                                                    <i id="star4" class="far fa-star"></i>
-                                                                    <i id="star5" class="far fa-star"></i>    
-                                                                    <input type="hidden" value="" name="br_rate" id="your-rate">                               
-                                                                </div>
+	                                                                <c:forEach begin="1" end="5" var='k'>    
+	                                                                    <c:if test="${empty loginUserReview}">
+	                                                                    	<i id="star${k}" class="far fa-star"></i>
+	                                                                    </c:if>
+	                                                                    <c:if test="${k <= loginUserReview.br_rate}">
+	                                                                    	<i id="star${k}" class="fa fa-star"></i>
+	                                                                    </c:if>
+	                                                                    <c:if test="${k > loginUserReview.br_rate}">
+	                                                                    	<i id="star${k}" class="far fa-star"></i>
+	                                                                    </c:if>
+	                                                                </c:forEach>
+                                                                    <sec:authorize access="isAnonymous()">
+                                                                		<input type="hidden" value="" name="br_rate" id="your-rate"> 
+                                                                	</sec:authorize>
+                                                                    <sec:authorize access="isAuthenticated()">
+                                                                		<c:if test="${empty loginUserReview }">
+                                                                			<input type="hidden" value="" name="br_rate" id="your-rate">
+                                                                		</c:if>
+                                                                		<c:if test="${!empty loginUserReview }">
+                                                                			<input type="hidden" value="${loginUserReview.br_rate }" name="br_rate" id="your-rate">
+                                                                		</c:if>
+                                                                	</sec:authorize>
+                                                                                               
+                                                               	 </div>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-10">
                                                             <div class="input-element">
                                                                 <div class="comment-form-comment">
                                                                     <label>Comment</label>
-                                                                    
-                                                                    <textarea name="br_comment" cols="40" rows="8"></textarea>
+                                                                    <sec:authorize access="isAnonymous()">
+                                                                		<textarea id="your-comment" name="br_comment" cols="40" rows="8"></textarea>
+                                                                	</sec:authorize>
+                                                                    <sec:authorize access="isAuthenticated()">
+                                                                		<c:if test="${empty loginUserReview }">
+                                                                			<textarea id="your-comment" name="br_comment" cols="40" rows="8"></textarea>
+                                                                		</c:if>
+                                                                		<c:if test="${!empty loginUserReview }">
+                                                                			<textarea id="your-comment" name="br_comment" cols="40" rows="8" readonly>${loginUserReview.br_comment}</textarea>
+                                                                		</c:if>
+                                                                	</sec:authorize>
                                                                 </div>
                                                                 <div class="comment-submit">
                                                                 	<input type="hidden" id="itemId" name="itemId" value="${book.b_itemId}">
                                                                 	<input type="hidden" name="b_itemId" value="${book.b_itemId}">
-                                                                	<input type="hidden" name="m_email" value="${sessionScope.loginUser.m_email}">
-                                                                    <input type="submit" class="submit" id="submit" value="리뷰 작성">
-                                                                    <input type="button" class="submit" id="" value="삭제">
-                                                                    <input type="button" class="submit" id="" value="수정">
+                                                                	
+                                                                	<sec:authorize access="isAnonymous()">
+                                                                		<input id="login-check" type="hidden" name="m_email" value="${loginUser}">
+                                                                		<input type="button" class="submit" id="review-write" value="리뷰 작성">
+                                                                	</sec:authorize>
+                                                                	<sec:authorize access="isAuthenticated()">
+                                                                		<c:if test="${empty loginUserReview }">
+                                                                			<input id="login-check" type="hidden" name="m_email" value="${loginUser}">
+                                                                    		<input type="button" class="submit" id="review-write" value="리뷰 작성">
+                                                                    		<input type="hidden" class="submit" id="review-delete" value="삭제">
+                                                                    		<input type="hidden" class="submit" id="review-update-form" value="수정">
+                                                                    		<input type="hidden" class="submit" id="review-update-submit" value="수정하기">
+                                                                		</c:if>
+                                                                		<c:if test="${!empty loginUserReview }">
+                                                                			<input id="login-check" type="hidden" name="m_email" value="${loginUser}">
+                                                                			<input type="hidden" class="submit" id="review-write" value="리뷰 작성">
+                                                                			<input type="button" class="submit" id="review-delete" value="삭제">
+                                                                    		<input type="button" class="submit" id="review-update-form" value="수정">
+                                                                    		<input type="hidden" class="submit" id="review-update-submit" value="수정하기">
+                                                                		</c:if>
+                                                                	</sec:authorize>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -370,12 +430,14 @@
 		                                                           <div class="row">
 		                                                               <div class="col-lg-2">
 		                                                                   <div class="product-reviews">
-		                                                                       ${bookReview.br_rate }
-		                                                                       <i class="fa fa-star" aria-hidden="true"></i>
-		                                                                       <i class="fa fa-star" aria-hidden="true"></i>
-		                                                                       <i class="fa fa-star" aria-hidden="true"></i>
-		                                                                       <i class="fa fa-star-half-o" aria-hidden="true"></i>
-		                                                                       <i class="fa fa-star-o" aria-hidden="true"></i>
+		                                                                       <c:forEach begin="1" end="5" var="k">
+		                                                                       		<c:if test="${k <= bookReview.br_rate}">
+		                                                                       			<i class="fa fa-star" aria-hidden="true"></i>
+		                                                                       		</c:if>
+		                                                                       		<c:if test="${k > bookReview.br_rate}">
+		                                                                       			<i class="far fa-star" aria-hidden="true"></i>
+		                                                                       		</c:if>
+		                                                                       </c:forEach>
 																		   </div>
 		                                                                   <strong>${bookReview.m_email }</strong>
 		                                                                   <p class="meta">
@@ -388,10 +450,13 @@
 		                                                                           <p>${bookReview.br_comment }</p>
 		                                                                       </div>
 		                                                                       <div class="reply-and-like">
-		                                                                           <button class="re-reply" seq="${bookReview.br_seq}">댓글 </button>
-		                                                                           <button id="re-like-it">좋아요!</button>
+		                                                                           <%-- <button class="re-reply" seq="${bookReview.br_seq}">댓글 </button> --%>
+			                                                                       <sec:authorize access="isAuthenticated()">
+			                                                                           <input type="hidden" id="whose-review" seq="${bookReview.br_seq}" value="${bookReview.m_email }">
+			                                                                           <button id="re-like-it" seq="${bookReview.br_seq}">좋아요! &nbsp; ${bookReview.br_like} </button>
+			                                                                       </sec:authorize>
 			                                                                   </div>
-			                                                                    <!-- 대댓글 작성 -->   	
+			                                                                    <!-- 대댓글 작성 우선 취소-->   	
 	                                                                           	<div class="input-element re-reply-input" seq="${bookReview.br_seq}">
 					                                                                <div class="comment-form-comment">
 																						<textarea name="br_comment" cols="40" rows="8"></textarea>
@@ -1042,7 +1107,7 @@
     <script src="../assets/js/owl.carousel.min.js"></script>
     <script src="../assets/js/plugins.js"></script>
     <script src="../assets/js/main.js"></script>
-    <script src="../assets/js/rating.js"></script>
+    <script src="../assets/js/service-book-content.js"></script>
     <script src="../assets/js/service-search.js"></script>
 </body>
 

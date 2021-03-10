@@ -57,6 +57,7 @@ public class MemberDetails implements UserDetails {
 	
 	// 회원정보를 불러와야할 경우
 	public Member getMember() {
+		member.setM_pwd(null);
 		return member;
 	}
 	public void setMember(Member member) {

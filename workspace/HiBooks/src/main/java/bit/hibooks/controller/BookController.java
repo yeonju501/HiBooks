@@ -86,5 +86,24 @@ public class BookController {
 		return rr;
 	}
 	
-	
+	@ResponseBody
+	@GetMapping("re-delete.do")
+	public ReviewResult ajaxDeleteReview(BookReview br, ReviewVo reviewVo) {
+		return service.deleteReview(br, reviewVo);
+	}
+	@ResponseBody
+	@PostMapping("re-update.do")
+	public ReviewResult ajaxUpdateReview(BookReview br, ReviewVo reviewVo) {
+		return service.updateReview(br, reviewVo);
+	}
+	@ResponseBody
+	@GetMapping("re-like.do")
+	public ReviewResult ajaxLikeReview(BookReview br, ReviewVo reviewVo) {
+		ReviewResult rr = service.likeReview(br, reviewVo);
+		if(rr== null) {
+			return null;	// 한 책에 한 사람이 두번의 댓글을 단 경우.
+		}else {
+			return rr;
+		}
+	}
 }

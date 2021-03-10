@@ -56,8 +56,8 @@ public class BookListResult {
 		switch(cate) {
 			case NOVEL: tpc = Math.toIntExact(novelCnt)/ps; if(novelCnt%ps != 0) tpc++;break;
 			case ECONOMY: tpc = Math.toIntExact(economyCnt)/ps; if(economyCnt%ps != 0) tpc++;break;
-			case ADVICE: tpc = Math.toIntExact(adviceCnt)/ps; if(adviceCnt%ps != 0) tpc++;break;
 			case HUMAN: tpc = Math.toIntExact(humanCnt)/ps; if(humanCnt%ps != 0) tpc++;break;
+			case ADVICE: tpc = Math.toIntExact(adviceCnt)/ps; if(adviceCnt%ps != 0) tpc++;break;
 			case POEM: tpc = Math.toIntExact(poemCnt)/ps; if(poemCnt%ps != 0) tpc++;break;
 			default : tpc = Math.toIntExact(totalCnt)/ps; if(totalCnt%ps != 0) tpc++;
 		}

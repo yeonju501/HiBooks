@@ -28,5 +28,8 @@ public interface BookMapper {
 	//댓글 ajax
 	long getMaxRef();
 	void insertReview(BookReview br);
-	
+	void deleteReview(BookReview br);
+	void updateReview(BookReview br);
+	void insertRecommend(BookReview br);
+	void updateLike(BookReview br);
 }

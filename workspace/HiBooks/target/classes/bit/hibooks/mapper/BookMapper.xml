@@ -63,5 +63,18 @@
 		<select id="getMaxRef" resultType="long">
 			select nvl(max(BR_REF), 0) from BREVIEW
 		</select>
+		<delete id="deleteReview" parameterType="BookReview">
+			delete from BREVIEW where B_ITEMID = #{b_itemId} and M_EMAIL = #{m_email}
+		</delete>
+		<update id="updateReview" parameterType="BookReview">
+			update BREVIEW set BR_RATE = #{br_rate}, BR_COMMENT = #{br_comment}, BR_UDATE = SYSDATE 
+				where  B_ITEMID = #{b_itemId} and M_EMAIL = #{m_email}
+		</update>
 		
+		<insert id="insertRecommend" parameterType="BookReview">
+			insert into BRLIKE values(#{br_seq}, #{m_email})
+		</insert>
+		<update id="updateLike" parameterType="BookReview">
+			update BREVIEW set BR_LIKE = (select nvl(COUNT(BR_SEQ),0) from BRLIKE where BR_SEQ= #{br_seq}) where BR_SEQ= #{br_seq}
+		</update>
   </mapper>
