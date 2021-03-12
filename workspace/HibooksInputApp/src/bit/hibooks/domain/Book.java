@@ -15,7 +15,11 @@ public class Book {
 	private String b_img;
 	private double b_rate;
 	private String b_writer;
+	private String b_translator;
 	private String b_publisher;
 	private long b_price;
 	private String b_desc;
+	//세부카테고리, 키워드,
+	private String b_cate2;
+	private String b_keyword;
 }

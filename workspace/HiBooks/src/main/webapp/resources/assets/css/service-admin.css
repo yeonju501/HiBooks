@@ -1,0 +1,26 @@
+.cate-cbox{
+    height: auto;
+    width: auto;
+}
+.input-group.cate{
+    display: contents;
+}
+#recommend .table-responsive{
+    overflow-y: scroll;
+    height: 300px;
+}
+#select-keyword{
+    width: 163px;
+    height: 100%;
+}
+
+#recommend .input-group{
+    margin-bottom: 20px;
+}
+#recommend .btn-group-lg{
+    text-align: end;
+}
+
+.input-group >label{
+	font-size:10px;
+}

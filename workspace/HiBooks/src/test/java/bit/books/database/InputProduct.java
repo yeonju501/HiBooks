@@ -36,32 +36,7 @@ public class InputProduct {
 			//  getItemInfo(itemId)를 호출.
 		}
 	}
-	@Test
-	public void getItemInfo() {	// itemId를 이용해 그 상품의 정보를 추출한다.
-		Document doc = null;
-		String url = "https://ridibooks.com/books/1648000309";
-		try {
-			doc = Jsoup.connect(url).get();
-		}catch(IOException e) {
-			e.printStackTrace();
-		}
-		Elements metaTags = doc.select("meta[property]");
-		for(Element meta: metaTags) {
-			if(meta.attr("property").equals("og:title")){
-				log.info(meta.attr("content"));
-			}
-			if(meta.attr("property").equals("og:image")){
-				log.info(meta.attr("content"));
-			}
-			if(meta.attr("property").equals("books:rating:value")){
-				log.info(meta.attr("content"));
-			}
-		}
-		log.info(doc.selectFirst("p.metadata.metadata_writer").text());				// 저자
-		log.info(doc.selectFirst("a.publisher_detail_link").text());				// 출판사
-		log.info(doc.selectFirst("tr.selling_price_row > td.book_price > span").text()); 	// 가격(숫자만)
-		log.info(doc.selectFirst("div #introduce_book > p").text()); 				// 책소개
-	}
+	
 	
 }
  

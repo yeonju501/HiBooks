@@ -11,7 +11,6 @@ function check()
 				 return false;
 			  }
 		   document.searchinput.submit();
-		   localStorage.setItem('keyword','key');
 	}
 
 $(function(){
@@ -48,6 +47,9 @@ $(function(){
                     //request.term = $("#autocomplete").val()
                     data: { "keyword" : $("#keyword").val()},
                     //select * from BOARD where writer like %?%;
+                    beforeSend :function(xhr) {
+                        xhr.setRequestHeader(header,token);
+                     },
                     success: function(data) {
                         //서버에서 json 데이터 response 후 목록에 뿌려주기 위함
                         response(

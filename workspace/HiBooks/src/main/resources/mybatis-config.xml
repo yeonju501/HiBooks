@@ -24,6 +24,8 @@
    	   
    	   <typeAlias alias="WishVo" type="bit.hibooks.domain.purchase.WishVo"/>
    	   
+   	   <typeAlias alias="RecommendVo" type="bit.hibooks.domain.admin.RecommendVo"/>
+   	   <typeAlias alias="RecomListResult" type="bit.hibooks.domain.admin.RecomListResult"/>
    </typeAliases>
    <mappers>
    	   <mapper resource="bit/hibooks/mapper/MemberMapper.xml"/>
@@ -34,5 +36,6 @@
    	   <mapper resource="bit/hibooks/mapper/BoardqMapper.xml"/>
    	   <mapper resource="bit/hibooks/mapper/QfileMapper.xml"/>
    	   <mapper resource="bit/hibooks/mapper/WishListMapper.xml"/>
+	   <mapper resource="bit/hibooks/mapper/AdminMapper.xml"/>
    </mappers>
 </configuration>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<mapper namespace="bit.hibooks.mapper.AdminMapper">
+	<select id="getBookList" resultType="Book" parameterType="RecommendVo">
+	    select * from book where
+	        <choose>
+	            <when test="keyword.size != 0">
+	                <foreach collection="keyword" item="keyword" index="index" separator=" or ">
+	                     b_keyword like '%'||#{keyword}||'%'
+	                </foreach>
+	            </when>
+	        </choose>
+	         <choose>
+	            <when test="cat.size != 0">
+	            and b_cate2 in
+	                <foreach collection="cat" item="cat" separator="," open="(" close=")">
+	                     #{cat}
+	                </foreach>
+	            </when>
+	        </choose>
+	        order by b_rate desc
+	</select>
+	<select id="getBook" resultType="Book" parameterType="long">
+	select * from book where b_seq=#{b_seq}
+	</select>
+	
+	<insert id="insertRecom" parameterType="RecomListResult">
+	insert into RECOM values(#{re_title},#{re_seq1},#{re_seq2},#{re_seq3},#{re_seq4},#{re_seq5},#{re_seq6},#{re_seq7},#{re_seq8},#{re_loc},1)
+	</insert>
+	</mapper>

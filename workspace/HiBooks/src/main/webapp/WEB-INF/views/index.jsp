@@ -100,6 +100,9 @@
                                                         </li>
                                                         <li class="switcher-menu-item">
                                                             <a href="wishList/moveWishPage.do">위시리스트</a>
+                                                        </li>  
+                                                        <li class="switcher-menu-item">
+                                                            <a href="admin/recommend.do">관리자페이지</a>
                                                         </li>
                                                         <li class="switcher-menu-item">
                                                             <a href="">커뮤니티</a>
@@ -332,7 +335,8 @@
     <script src="assets/js/owl.carousel.min.js"></script>
     <script src="assets/js/plugins.js"></script>
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/service-search.js"></script>
+
+
 </body>
 
 </html>
