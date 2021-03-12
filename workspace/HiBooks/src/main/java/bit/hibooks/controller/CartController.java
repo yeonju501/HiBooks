@@ -16,7 +16,9 @@ import bit.hibooks.domain.book.Book;
 import bit.hibooks.domain.purchase.CartVo;
 import bit.hibooks.service.CartService;
 import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
 
+@Log4j
 @Controller
 @RequestMapping("purchase")
 @AllArgsConstructor
@@ -25,6 +27,7 @@ public class CartController {
 	
 	@RequestMapping("add.do")
 	public String addtoCart(CartVo cartVo, HttpSession session) {
+		log.info(cartVo);
 		List<CartVo> list = null;
 		Object listObj=session.getAttribute("list");
 		if(listObj==null) {
@@ -34,6 +37,7 @@ public class CartController {
 		}
 		String itemId= cartVo.getItemId();
 		Book book= service.getBook(itemId);
+		log.info(book);
 		cartVo.setBook(book);
 		int vol=cartVo.getVol();
 		long price= book.getB_price();

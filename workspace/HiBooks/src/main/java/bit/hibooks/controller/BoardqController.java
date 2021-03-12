@@ -26,14 +26,6 @@ import lombok.AllArgsConstructor;
 public class BoardqController {
 	private BoardqService service;
 	
-	/*
-	 * @RequestMapping("newlist.do") public String newlist() {
-	 * return"boardq/newlist"; }
-	 * 
-	 * @RequestMapping("noticelist.do") public String noticelist() {
-	 * return"boardq/noticelist"; }
-	 */
-	
 	@RequestMapping("list.do")
 	public ModelAndView list(HttpServletRequest request, HttpSession session){
 		

@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+.cart-plus-minus{
+	display: flex;
+	height: 65px;
+}
+
+.cart-plus-minus .qtybutton{
+	line-height: 35px;
+    margin-top: 2px;
+}

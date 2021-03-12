@@ -17,10 +17,12 @@
 			<security:csrf disabled="true"/>	
 			<security:intercept-url pattern="/" access="permitAll"/>
 			<security:intercept-url pattern="/member/moveMyInfo.do" access="hasRole('ROLE_USER')"/>
+			<security:intercept-url pattern="/wishList/*" access="hasRole('ROLE_USER')"/>
 			<security:form-login login-page="/member/login.do"
 									username-parameter="m_email"
 									password-parameter="m_pwd"
 									login-processing-url="/member/login.do"
+									always-use-default-target="true"
 									default-target-url="/" 
 									authentication-failure-handler-ref="loginFailHandler"/>
 			<security:access-denied-handler error-page="/"/>

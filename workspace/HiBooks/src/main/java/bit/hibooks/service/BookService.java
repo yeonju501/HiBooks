@@ -8,6 +8,7 @@ import bit.hibooks.domain.book.Book;
 import bit.hibooks.domain.book.BookListResult;
 import bit.hibooks.domain.book.BookReview;
 import bit.hibooks.domain.book.BookVo;
+import bit.hibooks.domain.purchase.WishVo;
 import bit.hibooks.domain.review.ReviewResult;
 import bit.hibooks.domain.review.ReviewVo;
 
@@ -24,4 +25,7 @@ public interface BookService {
 	ReviewResult deleteReview(BookReview br, ReviewVo reviewVo);
 	ReviewResult updateReview(BookReview br, ReviewVo reviewVo);
 	ReviewResult likeReview(BookReview br, ReviewVo reviewVo);
+	
+	// 사용자별 위시리스트 품목 확인, 상세페이지에서
+	String isBookInWish(WishVo wishVo);
 }
