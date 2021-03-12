@@ -117,7 +117,12 @@ public class BookDataManagerImpl implements BookDataManager {
 		
 		String b_itemId = itemId.trim();	// 책 아이디번호
 		book.setB_itemId(b_itemId);
-		book.setB_writer(doc.selectFirst("p.metadata.metadata_writer").text());				// 저자
+		String writer =doc.selectFirst("p.metadata.metadata_writer").text();
+		int writerDiv=writer.indexOf("저");
+		String b_writer=writer.substring(0, writerDiv);
+		String b_translator=writer.substring(writerDiv+1);
+		book.setB_writer(b_writer);
+		book.setB_translator(b_translator); //저자 역자
 		book.setB_publisher(doc.selectFirst("a.publisher_detail_link").text());				// 출판사
 		String price = (doc.selectFirst("tr.selling_price_row > td.book_price > span").text()).trim(); 	// 가격(숫자만)
 		try {	

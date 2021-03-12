@@ -20,6 +20,9 @@
    	   <typeAlias alias="ShipInfo" type="bit.hibooks.domain.purchase.ShipInfo"/>
    	   
    	   <typeAlias alias="MemberDetails" type="bit.hibooks.security.MemberDetails"/>
+   	   
+   	   <typeAlias alias="RecommendVo" type="bit.hibooks.domain.admin.RecommendVo"/>
+   	   <typeAlias alias="RecomListResult" type="bit.hibooks.domain.admin.RecomListResult"/>
    </typeAliases>
    <mappers>
    	   <mapper resource="bit/hibooks/mapper/MemberMapper.xml"/>
@@ -29,5 +32,6 @@
    	   <mapper resource="bit/hibooks/mapper/SearchMapper.xml"/>
    	   <mapper resource="bit/hibooks/mapper/BoardqMapper.xml"/>
    	   <mapper resource="bit/hibooks/mapper/QfileMapper.xml"/>
+	   <mapper resource="bit/hibooks/mapper/AdminMapper.xml"/>
    </mappers>
 </configuration>

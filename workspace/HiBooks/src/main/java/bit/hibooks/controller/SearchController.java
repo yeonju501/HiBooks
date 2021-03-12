@@ -2,7 +2,6 @@ package bit.hibooks.controller;
 
 import java.util.List;
 
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -10,7 +9,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
 import bit.hibooks.domain.book.Book;
 import bit.hibooks.domain.search.SearchListResult;
 import bit.hibooks.domain.search.SearchVo;
@@ -71,7 +69,9 @@ public class SearchController {
 	@ResponseBody
 	@PostMapping("getauto.do")
 	public List<Book> getAuto(String keyword){
+		System.out.println(keyword);
 		List<Book> list = service.getAuto(keyword);
+		System.out.println(list);
 		return list;
 		
 	}

@@ -11,6 +11,10 @@
     <title>Hibooks</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- security and ajax 403 -->
+    <meta name="_csrf" content="${_csrf.token}">
+    <meta name="_csrf_header" content="${_csrf.headerName}">
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
 
@@ -32,6 +36,7 @@
      <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
     <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="assets/js/service-search.js"></script>
 </head>
 
 <body>
@@ -93,7 +98,7 @@
                                                             <a href="">내 정보</a>
                                                         </li>
                                                         <li class="switcher-menu-item">
-                                                            <a href="">위시리스트</a>
+                                                            <a href="admin/recommend.do">관리자페이지</a>
                                                         </li>
                                                         <li class="switcher-menu-item">
                                                             <a href="">커뮤니티</a>
@@ -122,8 +127,8 @@
                                 <div class="input_form">
                                     <form name="searchinput" method="post" action="product/search.do">
 
-	                                    <input type="text" class="input_text" name="keyword" placeholder="제목, 저자, 출판사 검색">
-	                                    <input type = "hidden" name = "${_csrf.parameterName }" value = "${_csrf.token }"/>
+	                                    <input type="text" class="input_text" id="keyword" name="keyword" placeholder="제목, 저자, 출판사 검색">
+	                                   <input type = "hidden" name = "${_csrf.parameterName }" value = "${_csrf.token }"/>
 	                                    <button id="searchinput" type="button" class="button">
 	                                        <i class="fa fa-search fa-lg"></i>
 	                                    </button>
@@ -435,7 +440,6 @@
     <script src="assets/js/plugins.js"></script>
     <script src="assets/js/main.js"></script>
 
-    <script src="assets/js/service-search.js"></script>
 
 </body>
 

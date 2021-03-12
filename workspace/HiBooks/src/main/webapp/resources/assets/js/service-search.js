@@ -11,7 +11,6 @@ function check()
 				 return false;
 			  }
 		   document.searchinput.submit();
-		   localStorage.setItem('keyword','key');
 	}
 
 $(function(){
@@ -35,13 +34,18 @@ $(function(){
 	//input 태그 id가 name
     $( "#keyword" ).autocomplete({
         source : function( request, response ) {
-             $.ajax({
+        	var token = $("meta[name='_csrf']").attr("content");
+            var header = $("meta[name='_csrf_header']").attr("content");
+        	$.ajax({
                     type: 'post',
                     url: "product/getauto.do",
                     dataType: "json",
                     //request.term = $("#autocomplete").val()
                     data: { "keyword" : $("#keyword").val()},
                     //select * from BOARD where writer like %?%;
+                    beforeSend :function(xhr) {
+                        xhr.setRequestHeader(header,token);
+                     },
                     success: function(data) {
                         //서버에서 json 데이터 response 후 목록에 뿌려주기 위함
                         response(
