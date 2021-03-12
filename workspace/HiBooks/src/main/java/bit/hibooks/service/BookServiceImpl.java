@@ -9,9 +9,11 @@ import bit.hibooks.domain.book.Book;
 import bit.hibooks.domain.book.BookListResult;
 import bit.hibooks.domain.book.BookReview;
 import bit.hibooks.domain.book.BookVo;
+import bit.hibooks.domain.purchase.WishVo;
 import bit.hibooks.domain.review.ReviewResult;
 import bit.hibooks.domain.review.ReviewVo;
 import bit.hibooks.mapper.BookMapper;
+import bit.hibooks.mapper.WishListMapper;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
@@ -21,6 +23,7 @@ import lombok.extern.log4j.Log4j;
 public class BookServiceImpl implements BookService {
 	
 	private BookMapper mapper;
+	private WishListMapper mapperWish;
 	
 	@Override
 	public BookListResult getList(BookVo bookVo) {
@@ -81,5 +84,13 @@ public class BookServiceImpl implements BookService {
 		}catch(DataAccessException dae) {
 			return null;
 		}
+	}
+
+	@Override
+	public String isBookInWish(WishVo wishVo) {
+		int cnt = mapperWish.isBookInWishList(wishVo);
+		if(cnt == 0) {
+			return "unselected";
+		}else return "selected";
 	}
 }

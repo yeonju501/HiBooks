@@ -21,6 +21,9 @@
    	   <typeAlias alias="ShipInfo" type="bit.hibooks.domain.purchase.ShipInfo"/>
    	   
    	   <typeAlias alias="MemberDetails" type="bit.hibooks.security.MemberDetails"/>
+   	   
+   	   <typeAlias alias="WishVo" type="bit.hibooks.domain.purchase.WishVo"/>
+   	   
    </typeAliases>
    <mappers>
    	   <mapper resource="bit/hibooks/mapper/MemberMapper.xml"/>
@@ -30,5 +33,6 @@
    	   <mapper resource="bit/hibooks/mapper/SearchMapper.xml"/>
    	   <mapper resource="bit/hibooks/mapper/BoardqMapper.xml"/>
    	   <mapper resource="bit/hibooks/mapper/QfileMapper.xml"/>
+   	   <mapper resource="bit/hibooks/mapper/WishListMapper.xml"/>
    </mappers>
 </configuration>

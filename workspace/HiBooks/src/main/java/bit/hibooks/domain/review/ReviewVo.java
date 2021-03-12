@@ -11,7 +11,6 @@ public class ReviewVo {
 	private int rcp = 1;
 	private int rps = 10;
 	private String itemId;
-	
 	public int getInitRow() {
 		return 0;
 	}

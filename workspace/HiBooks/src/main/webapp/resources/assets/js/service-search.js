@@ -41,9 +41,9 @@ $(function(){
     		$.ajax({
                     type: 'post',
                     url: "product/getauto.do",
-                    beforeSend :function(xhr) {
-                    	xhr.setRequestHeader(header,token);
-                    },
+//                    beforeSend :function(xhr) {
+//                    	xhr.setRequestHeader(header,token);
+//                    },
                     dataType: "json",
                     //request.term = $("#autocomplete").val()
                     data: { "keyword" : $("#keyword").val()},

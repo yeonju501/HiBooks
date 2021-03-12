@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="bit.hibooks.setting.MemberModeSet"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+    pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!doctype html>
 <html class="no-js" lang="zxx">
 
@@ -11,36 +11,33 @@
     <title>Hibooks</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <!-- security and ajax 403 -->
-	<meta name="_csrf" content="${_csrf.token}">
-	<meta name="_csrf_header" content="${_csrf.headerName}">
-	
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
-	
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.png">
+
     <!-- all css here -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/animate.css">
-    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="assets/css/chosen.min.css">
-    <link rel="stylesheet" href="assets/css/themify-icons.css">
-    <link rel="stylesheet" href="assets/css/fontawesome-all.css">
-    <link rel="stylesheet" href="assets/css/ionicons.min.css">
-    <link rel="stylesheet" href="assets/css/material-design-iconic-font.css">
-    <link rel="stylesheet" href="assets/css/meanmenu.min.css">
-    <link rel="stylesheet" href="assets/css/tippy.css">
-    <link rel="stylesheet" href="assets/css/bundle.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/service-index.css">
-    <link rel="stylesheet" href="assets/css/responsive.css">
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-    <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
-    <script src="assets/js/vendor/jquery-1.12.0.min.js"></script>
-    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script>
-        <script src="assets/js/service-search.js"></script>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/animate.css">
+    <link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../assets/css/chosen.min.css">
+    <link rel="stylesheet" href="../assets/css/themify-icons.css">
+    <link rel="stylesheet" href="../assets/css/fontawesome-all.css">
+    <link rel="stylesheet" href="../assets/css/ionicons.min.css">
+    <link rel="stylesheet" href="../assets/css/jquery-ui.css">
+    <link rel="stylesheet" href="../assets/css/material-design-iconic-font.css">
+    <link rel="stylesheet" href="../assets/css/meanmenu.min.css">
+    <link rel="stylesheet" href="../assets/css/tippy.css">
+    <link rel="stylesheet" href="../assets/css/bundle.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/service-wish-list.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <script src="../assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script>
+		
+	</script>
 </head>
+
 <body>
+	
     <div class="wrapper">
         <!-- header start -->
         <header id="header_background">
@@ -64,12 +61,11 @@
                                 <ul>
                                     <li>
                                         <div class="switcher">
-                                  
                                         	<sec:authorize access="isAnonymous()">
-                                        		<a href="member/login.do"><span>로그인</span></a>
+                                        		<a href="../member/login.do"><span>로그인</span></a>
                                         	</sec:authorize> 
                 							<sec:authorize access="isAuthenticated()">
-                								<form id="log-out" action = "member/logout.do" method = 'post'>
+                								<form id="log-out" action = "../member/logout.do" method = 'post'>
                 									<a onclick="logoutSubmit()" style="cursor: pointer"><span>로그아웃</span></a>
                 									<input type = "hidden" name = "${_csrf.parameterName }" value = "${_csrf.token }"/>
                 								</form>
@@ -78,15 +74,15 @@
                                     </li>
                                     <li>
                                         <div class="switcher">
-                                        	<sec:authorize access="isAnonymous()">
-                                        		<a href="member/join.do"><span> 회원가입</span></a>
+                                            <sec:authorize access="isAnonymous()">
+                                        		<a href="../member/join.do"><span> 회원가입</span></a>
                                         	</sec:authorize> 
-                							
                                         </div>
                                     </li>
                                     <li>
                                         <div class="switcher">
-                                            <a href="purchase/cart.do"><span> 장바구니</span></a>
+                                            <a href="../purchase/cart.do"><span> 장바구니</span></a>
+                                            
                                         </div>
                                     </li>
                                     <li>
@@ -96,10 +92,10 @@
                                                     <a >마이페이지</a>
                                                     <ul class="switcher__menus">
                                                         <li class="switcher-menu-item">
-                                                            <a href="member/moveMyInfo.do">내 정보</a>
+                                                            <a href="">내 정보</a>
                                                         </li>
                                                         <li class="switcher-menu-item">
-                                                            <a href="wishList/moveWishPage.do">위시리스트</a>
+                                                            <a href="">위시리스트</a>
                                                         </li>
                                                         <li class="switcher-menu-item">
                                                             <a href="">커뮤니티</a>
@@ -126,13 +122,13 @@
                         <div class="col-md-6">
                             <div class="search__sidbar">
                                 <div class="input_form">
-                                    <form name="searchinput" method="post" action="product/search.do">
-	                                    <input type="text" id="keyword" class="input_text" name="keyword" placeholder="제목, 저자, 출판사 검색">
+                                    <form name="searchinput" method="post" action="../product/search.do">
 	                                    <input type = "hidden" name = "${_csrf.parameterName }" value = "${_csrf.token }"/>
+	                                    <input type="text" class="input_text" name="keyword" placeholder="제목, 저자, 출판사 검색">
 	                                    <button id="searchinput" type="button" class="button">
 	                                        <i class="fa fa-search fa-lg"></i>
 	                                    </button>
-                                    </form>
+                                   </form>
                                 </div>
                             </div>
                         </div>
@@ -151,13 +147,13 @@
                                 <div class="main-menu">
 									<nav>
                                             <ul id="main-custom">
-                                                <li class="active"><a href="book/shop.do">책</a>
+                                                <li class="active"><a href="../book/shop.do">책</a>
                                                     <ul>
-                                                        <li><a href="book/shop.do?cate=100">소설</a></li>
-                                                        <li><a href="book/shop.do?cate=200">경영/경제</a></li>
-                                                        <li><a href="book/shop.do?cate=300">인문/사회/역사</a></li>
-                                                        <li><a href="book/shop.do?cate=400">자기계발</a></li>
-                                                        <li><a href="book/shop.do?cate=500">에세이/시</a></li>
+                                                        <li><a href="../book/shop.do?cate=100">소설</a></li>
+                                                        <li><a href="../book/shop.do?cate=200">경영/경제</a></li>
+                                                        <li><a href="../book/shop.do?cate=300">인문/사회/역사</a></li>
+                                                        <li><a href="../book/shop.do?cate=400">자기계발</a></li>
+                                                        <li><a href="../book/shop.do?cate=500">에세이/시</a></li>
                                                         
                                                     </ul>
                                                 </li>
@@ -171,7 +167,7 @@
                                                 <li class="active"><a href="">공지/문의</a>
                                                     <ul>
                                                         <li><a href="">공지</a></li>
-                                                        <li><a href="boardq/list.do">문의</a></li>
+                                                        <li><a href="../boardq/list.do">문의</a></li>
                                                     </ul>
                                                 </li>
                                             </ul>
@@ -187,13 +183,13 @@
                             <div class="mobile-menu">
                                     <nav id="mobile-menu-active">
                                         <ul class="menu-overflow">
-											<li class="active"><a href="book/shop.do">책 <i class="ion-ios-arrow-down"></i></a>
+											<li class="active"><a href="../book/shop.do">책 <i class="ion-ios-arrow-down"></i></a>
 												<ul>
-													<li><a href="book/shop.do?cate=100">소설</a></li>
-													<li><a href="book/shop.do?cate=200">경영/경제</a></li>
-													<li><a href="book/shop.do?cate=300">인문/사회/역사</a></li>
-													<li><a href="book/shop.do?cate=400">자기계발</a></li>
-													<li><a href="book/shop.do?cate=500">에세이/시</a></li>
+													<li><a href="../book/shop.do?cate=100">소설</a></li>
+													<li><a href="../book/shop.do?cate=200">경영/경제</a></li>
+													<li><a href="../book/shop.do?cate=300">인문/사회/역사</a></li>
+													<li><a href="../book/shop.do?cate=400">자기계발</a></li>
+													<li><a href="../book/shop.do?cate=500">에세이/시</a></li>
 													
 												</ul>
 											</li>
@@ -206,9 +202,9 @@
 											
 											<li><a href="">공지/문의 <i class="ion-ios-arrow-down"></i></a>
 												<ul>
-													<li><a href="portfolio.html"> 공지</a></li>
-													<li><a href="boardq/list.do"> 문의</a></li>
-                                                    <li><a href="service.html"> ....</a></li>
+													<li><a href=""> 공지</a></li>
+													<li><a href="../boardq/list.do"> 문의</a></li>
+                                                    <li><a href=""> ....</a></li>
 												</ul>
 											</li>
 											
@@ -223,7 +219,78 @@
             </div>
         </header>
         <!-- header end -->
-               
+        <!-- WishList Area Start -->
+        <sec:authorize access="isAuthenticated()">
+			<sec:authentication property="principal.username" var="loginUser"/>
+		</sec:authorize>
+        <div class="Shopping-cart-area ptb-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="pg___title">
+                            <h2>WishList</h2>
+                        </div>
+                       	    <div class="table-content table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th class="anadi-product-remove">remove</th>
+                                            <th class="anadi-product-thumbnail">images</th>
+                                            <th class="cart-product-name">Product</th>
+                                            <th class="anadi-product-price">Unit Price</th>
+                                            <th class="anadi-product-quantity">Quantity</th>
+                                            <th class="anadi-product-quantity">add to cart</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <c:forEach items="${bookListInWish}" var="book" varStatus="i">
+                                         
+                                         <tr>
+                                            <td class="anadi-product-remove">
+                                                <a href="removeItem.do?b_itemId=${book.b_itemId}&m_email=${loginUser}">
+                                                    <i class="fa fa-times"></i>
+                                                </a>
+                                            </td>
+                                            <td class="anadi-product-thumbnail">
+                                                <a href="../book/content.do?itemId=${book.b_itemId}">
+                                                    <img src="${book.b_img}" style="max-width:100px;" alt="">
+                                                </a>
+                                            </td>
+                                            <td class="anadi-product-name">
+                                                <a href="../book/content.do?itemId=${book.b_itemId}">${book.b_title}</a>
+                                            </td>
+                                            <td class="anadi-product-price">
+                                                <span class="amount">${book.b_price}</span>
+                                            </td>
+                                            
+	                                            <td class="anadi-product-quantity">
+	                                                <div class="cart-plus-minus">
+		                                    			<input type="text" value="1" id="vol${i.index}" name="vol" class="cart-plus-minus-box" >
+		                                    			
+		                                			</div>
+	                                            </td>
+	                                            <td class="product-subtotal">
+	                                                <div class="quickview-btn-cart">
+	                                                	<input id="itemId${i.index}" type="hidden" value="${book.b_itemId}">
+	                                                	<button id="cart-plus${i.index}" onclick="javascript:addToCart(${i.index})" type="button"><i class="zmdi zmdi-shopping-cart-plus"></i></button>
+					                                </div>
+	                                            </td>
+									                                   
+                                        	</tr>
+                                        	 
+                                    </c:forEach>
+                                    </tbody>
+                                </table>
+                            </div>
+                   
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Shopping Cart Area End-->
+
+        <!-- footer -->
         <footer class="footer-color">
             <div class="footer-container">
                 <!--Footer Top Area Start-->
@@ -312,27 +379,38 @@
                 </div>
                 <!--Footer Bottom Area End-->
             </div>
-        </footer>
-        <!-- modal -->
-        
-        </div>
+        </footer>   
     </div>
 
+
     <!-- all js here -->
-    <script src="assets/js/vendor/jquery-1.12.0.min.js"></script>
-    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script>
-    <script src="assets/js/popper.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/isotope.pkgd.min.js"></script>
-    <script src="assets/js/imagesloaded.pkgd.min.js"></script>
-    <script src="assets/js/jquery.counterup.min.js"></script>
-    <script src="assets/js/waypoints.min.js"></script>
-    <script src="assets/js/tippy.min.js"></script>
-    <script src="assets/js/ajax-mail.js"></script>
-    <script src="assets/js/owl.carousel.min.js"></script>
-    <script src="assets/js/plugins.js"></script>
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/service-search.js"></script>
+    
+    <script src="../assets/js/vendor/jquery-1.12.0.min.js"></script>
+    
+    <script src="../assets/js/popper.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/isotope.pkgd.min.js"></script>
+    <script src="../assets/js/imagesloaded.pkgd.min.js"></script>
+    <script src="../assets/js/jquery.counterup.min.js"></script>
+    <script src="../assets/js/waypoints.min.js"></script>
+    <script src="../assets/js/ajax-mail.js"></script>
+    <script src="../assets/js/owl.carousel.min.js"></script>
+    <script src="../assets/js/plugins.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/service-search.js"></script>
+    <!-- javascript -->
+    <script>
+    	function addToCart(i){
+    		let vol = document.getElementById("vol"+i).value;
+    		
+    		let itemId = document.getElementById("itemId"+i).value;
+    		if(confirm("카트로 상품을 옮기시겠습니까?")==true){
+    			location.href = "../purchase/add.do?vol="+vol+"&itemId="+itemId;
+    		}else{
+    			return false;
+    		}
+    	}
+    </script>
 </body>
 
 </html>

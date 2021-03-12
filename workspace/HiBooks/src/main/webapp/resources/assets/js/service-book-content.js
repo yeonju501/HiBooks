@@ -1,4 +1,73 @@
-
+//안되는 이유를 알고 싶다.
+//function addWishList(b_itemId, m_email){
+//	alert("hi");
+//	$.ajax({
+//		url : "../wishList/addItem.do",
+//		type : "Get",
+//		data : {b_itemId : b_itemId, m_email : m_email},
+//		dataType : "text",
+//		success : function(selectWish){
+//			let html = '';
+//			html += '<span>';
+//			if(selectWish =="selected"){
+//				html += '<i class="ion-ios-heart"></i>';
+//			}else{
+//				html += '<i class="ion-ios-heart-outline"></i>';
+//			}
+//			html += '</span>';
+//			$("#in-wish-list").html(html);
+//			if(selectWish=="selected"){
+//				if(confirm("위시리스트 페이지로 이동하시겠습니까?")==true){
+//					location.href = "../wishList/moveWishPage.do";
+//				}else{
+//					return false;
+//				}
+//			}
+//		},
+//		error : function(a,b,c){
+//			alert("실패 :" + a.responseText);
+//			alert("실패 :" + c);
+//		}
+//	});
+//}
+$(document).on("click","#in-wish-list",function(){
+	let loginUser = $("#login-user-for-js").val();
+	let b_itemId = $("#itemId").val();
+	if(loginUser == undefined){
+		alert("로그인이 필요한 서비스입니다.");
+		location.href = "../member/login.do";
+		return false;
+	}
+	$.ajax({
+		url : "../wishList/addItem.do",
+		type : "Get",
+		data : {b_itemId : b_itemId, m_email : loginUser},
+		dataType : "text",
+		success : function(selectWish){
+			//alert(selectWish);
+			let html = '';
+			html += '<span>';
+			if(selectWish == "selected"){
+				html += '<i class="ion-ios-heart" style="color:red"></i>';
+			}else{
+				html += '<i class="ion-ios-heart-outline"></i>';
+			}
+			html += '</span>';
+			$("#in-wish-list").html(html);
+			if(selectWish == "selected" ){
+				if(confirm("위시리스트 페이지로 이동하시겠습니까?")==true){
+					location.href = "../wishList/moveWishPage.do";
+				}else{
+					return false;
+				}
+			}
+		},
+		error : function(a,b,c){
+			alert("실패 :" + a.responseText);
+			alert("실패 :" + c);
+		}
+	});
+});
 //대댓글 입력 폼 보이게 하기(대댓글 일단 보류)
 $(document).on("click",".re-reply[seq]",function(){
 	let bSeq = $(this).attr("seq");
@@ -55,9 +124,9 @@ $(document).on("click","#review-update-submit",function(){
 		type : "Post",
 		data : formData,
 		dataType : "json",
-		beforeSend :function(xhr) {
-        	xhr.setRequestHeader(header,token);
-        },
+//		beforeSend :function(xhr) {
+//        	xhr.setRequestHeader(header,token);
+//        },
 		success : function(result){
 			for(var review in result.reviewList){
 				if(review.m_email == loginUser){
@@ -159,9 +228,6 @@ $(document).on("click","#review-write",function(e){
 		type:"Post",
 		data: formData,
 		dataType:"json",
-		beforeSend :function(xhr) {
-        	xhr.setRequestHeader(header,token);
-        },
 		success: function(result){
 			//alert("success: "+ result);
 			setReviewListHtml(result);
@@ -181,9 +247,6 @@ $(document).on("click","#review-write",function(e){
 
 
 $(function(){
-		
-	
-	
 	// 평점, 별 클릭 시 점수값 입력
 	$("#star1").click(function(){
         $("#star1").attr("class","fa fa-star");
