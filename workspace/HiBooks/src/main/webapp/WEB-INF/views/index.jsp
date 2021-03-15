@@ -34,6 +34,9 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/service-index.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/swiper-bundle.css">
+    <link rel="stylesheet" href="assets/css/swiper-bundle2.css">
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
     <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
     <script src="assets/js/vendor/jquery-1.12.0.min.js"></script>
@@ -226,6 +229,111 @@
             </div>
         </header>
         <!-- header end -->
+        
+            
+	        <!-- Swiper 1번시작  -->
+	        <div class = "board_slide">
+			<div class = "inner">
+			<h3 class="swiper-title">슬라이더 1</h3>
+			<div class="swiper-container swiper1">
+				<div class="swiper-wrapper">
+			 		<div class="swiper-slide">
+			    		<div class = "board_thumb">
+							<img src="assets/img/개.jpeg" alt="">
+						</div>
+					</div>
+				  	<div class="swiper-slide">
+				  		<div class="board_thumb">
+				    		<img src="assets/img/고양이.jpeg" alt="">
+				    	</div>
+				    </div>
+				  	<div class="swiper-slide">
+				  		<div class="board_thumb">
+				    		<img src="assets/img/돼지.png" alt="">
+				    	</div>
+				  	</div>
+				  	<div class="swiper-slide">
+				  		<div class="board_thumb">
+				    		<img src="assets/img/고양이.jpeg" alt="">
+				    	</div>
+				    </div>
+				    <div class="swiper-slide">
+				  		<div class="board_thumb">
+				    		<img src="assets/img/돼지.png" alt="">
+				    	</div>
+				  	</div>
+				    <div class="swiper-slide">
+				    		<div class = "board_thumb">
+								<img src="assets/img/개.jpeg" alt="">
+							</div>
+					</div>
+					<div class="swiper-slide">
+				  		<div class="board_thumb">
+				    		<img src="assets/img/돼지.png" alt="">
+				    	</div>
+				    </div>
+				    <div class="swiper-slide">
+				  		<div class="board_thumb">
+				    		<img src="assets/img/고양이.jpeg" alt="">
+				    	</div>
+				  	</div>
+				</div>
+			</div>
+			</div>
+			</div>		
+        <!-- Swiper 1번 끝-->
+        
+        <!-- Swiper 2번 시작 -->
+        <div class = "board_slide2">
+		<div class = "inner">
+		<h3 class="swiper-title"> 슬라이더 2</h3>
+        <div class="swiper-container swiper2">
+				<div class="swiper-wrapper">
+			 		<div class="swiper-slide">
+			    		<div class = "board_thumb">
+							<img src="assets/img/고양이.jpeg" alt="">
+						</div>
+					</div>
+				  	<div class="swiper-slide">
+				  		<div class="board_thumb">
+				    		<img src="assets/img/개.jpeg" alt="">
+				    	</div>
+				    </div>
+				  	<div class="swiper-slide">
+				  		<div class="board_thumb">
+				    		<img src="assets/img/고양이.jpeg" alt="">
+				    	</div>
+				  	</div>
+				  	<div class="swiper-slide">
+				  		<div class="board_thumb">
+				    		<img src="assets/img/돼지.png" alt="">
+				    	</div>
+				    </div>
+				    <div class="swiper-slide">
+				  		<div class="board_thumb">
+				    		<img src="assets/img/고양이.jpeg" alt="">
+				    	</div>
+				  	</div>
+				    <div class="swiper-slide">
+				    		<div class = "board_thumb">
+								<img src="assets/img/개.jpeg" alt="">
+							</div>
+					</div>
+					<div class="swiper-slide">
+				  		<div class="board_thumb">
+				    		<img src="assets/img/돼지.png" alt="">
+				    	</div>
+				    </div>
+				    <div class="swiper-slide">
+				  		<div class="board_thumb">
+				    		<img src="assets/img/고양이.jpeg" alt="">
+				    	</div>
+				  	</div>
+				</div>
+			</div>
+			</div>
+			</div>		
+  		 <!-- Swiper 2번 끝-->
                
         <footer class="footer-color">
             <div class="footer-container">
@@ -335,6 +443,8 @@
     <script src="assets/js/owl.carousel.min.js"></script>
     <script src="assets/js/plugins.js"></script>
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/swiper-bundle.js"></script>
+    <script src="assets/js/swiper-bundle.min.js"></script>
 
 
 </body>
