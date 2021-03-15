@@ -34,14 +34,21 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/service-index.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
-    <link rel="stylesheet" href="assets/css/swiper-bundle.css">
-    <link rel="stylesheet" href="assets/css/swiper-bundle2.css">
-    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
     <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
     <script src="assets/js/vendor/jquery-1.12.0.min.js"></script>
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script>
-        <script src="assets/js/service-search.js"></script>
+    <script src="assets/js/service-search.js"></script>
+    <link rel="stylesheet" href="assets/css/swiper-bundle.css" />
+	<link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+		.swiper-title {font-family: 'Noto Sans KR', sans-serif;}
+		.swiper-container > * {font-family: 'Noto Sans KR', sans-serif;}
+		.board_slide {margin-top: 40px;}
+		.board_slide2 {margin-top: 100px;}
+		.board_thumb {width: 200px; height: 400px;}
+	</style>
 </head>
 <body>
     <div class="wrapper">
@@ -229,9 +236,7 @@
             </div>
         </header>
         <!-- header end -->
-        
-            
-	        <!-- Swiper 1번시작  -->
+        <!-- Swiper 1번시작  -->
 	        <div class = "board_slide">
 			<div class = "inner">
 			<h3 class="swiper-title">슬라이더 1</h3>
@@ -281,60 +286,7 @@
 			</div>
 			</div>
 			</div>		
-        <!-- Swiper 1번 끝-->
-        
-        <!-- Swiper 2번 시작 -->
-        <div class = "board_slide2">
-		<div class = "inner">
-		<h3 class="swiper-title"> 슬라이더 2</h3>
-        <div class="swiper-container swiper2">
-				<div class="swiper-wrapper">
-			 		<div class="swiper-slide">
-			    		<div class = "board_thumb">
-							<img src="assets/img/고양이.jpeg" alt="">
-						</div>
-					</div>
-				  	<div class="swiper-slide">
-				  		<div class="board_thumb">
-				    		<img src="assets/img/개.jpeg" alt="">
-				    	</div>
-				    </div>
-				  	<div class="swiper-slide">
-				  		<div class="board_thumb">
-				    		<img src="assets/img/고양이.jpeg" alt="">
-				    	</div>
-				  	</div>
-				  	<div class="swiper-slide">
-				  		<div class="board_thumb">
-				    		<img src="assets/img/돼지.png" alt="">
-				    	</div>
-				    </div>
-				    <div class="swiper-slide">
-				  		<div class="board_thumb">
-				    		<img src="assets/img/고양이.jpeg" alt="">
-				    	</div>
-				  	</div>
-				    <div class="swiper-slide">
-				    		<div class = "board_thumb">
-								<img src="assets/img/개.jpeg" alt="">
-							</div>
-					</div>
-					<div class="swiper-slide">
-				  		<div class="board_thumb">
-				    		<img src="assets/img/돼지.png" alt="">
-				    	</div>
-				    </div>
-				    <div class="swiper-slide">
-				  		<div class="board_thumb">
-				    		<img src="assets/img/고양이.jpeg" alt="">
-				    	</div>
-				  	</div>
-				</div>
-			</div>
-			</div>
-			</div>		
-  		 <!-- Swiper 2번 끝-->
-               
+        <!-- Swiper 1번 끝-->      
         <footer class="footer-color">
             <div class="footer-container">
                 <!--Footer Top Area Start-->
@@ -443,9 +395,32 @@
     <script src="assets/js/owl.carousel.min.js"></script>
     <script src="assets/js/plugins.js"></script>
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/swiper-bundle.js"></script>
-    <script src="assets/js/swiper-bundle.min.js"></script>
-
+	<script src="assets/js/swiper-bundle.js"></script>
+	<script src="assets/js/swiper-bundle.min.js"></script>
+	<script>
+	    var swiper1 = new Swiper('.swiper1', {
+	      slidesPerView: 5,
+	      slidesPerGroup: 1,
+	      observer: true,
+	      observerParents:true,
+	      loop: true,
+	      centeredSlides: true,
+	      autoplay: {
+	    	  dalay: 3
+	      },	      
+	    });
+    var swiper2 = new Swiper('.swiper2', {
+	      slidesPerView: 5,
+	      slidesPerGroup: 1,
+	      observer: true,
+	      observerParents:true,
+	      loop: true,
+	      centeredSlides: true,
+	      autoplay: {
+	    	  dalay: 3
+	      },
+	    });
+  	</script>
 
 </body>
 
