@@ -18,4 +18,6 @@ public class Book {
 	private long b_price;
 	private String b_desc;
 	private int b_cate;
+	private String b_cate2;
+	private String b_keyword;
 }

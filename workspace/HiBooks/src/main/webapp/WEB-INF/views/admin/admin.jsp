@@ -35,11 +35,65 @@
     <link rel="stylesheet" href="../assets/css/service-index.css">
    <link rel="stylesheet" href="../assets/css/service-admin.css">
     <link rel="stylesheet" href="../assets/css/responsive.css">
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />  
+    <link rel="stylesheet" href="../assets/css/summernote-lite.css">
+    <link rel="stylesheet" href="../assets/css/summernote-lite.min.css"> 
+ <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.css" rel="stylesheet">
+
     <script src="../assets/js/vendor/modernizr-2.8.3.min.js"></script>
     <script src="../assets/js/vendor/jquery-1.12.0.min.js"></script>
     <script type="text/javascript" language="javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 	 <script src="../assets/js/service-admin.js"></script> 
+	 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script>
+	function ajaxData() {
+		$.ajax({
+			url: './chartData.json',
+			dataType: "json",
+			type: 'post',
+			async: false,
+			success: function(list) {
+				google.charts.load('current', {'packages':['corechart']});
+				google.charts.setOnLoadCallback(drawChart);
+				function drawChart() {
+					var dataChart = [['Task', 'Hours per Day']];
+					if(list.length != 0) {
+						$.each(list, function(i, item){
+							dataChart.push([item.item, item.number]);
+						});
+					}else {
+						dataChart.push(['입력해주세요', 1]);
+					}
+					var data = google.visualization.arrayToDataTable(dataChart);
+					var view = new google.visualization.DataView(data);
+					var options = {
+							title: "제목",
+							width: 900, // 넓이 옵션
+							height: 200, // 높이 옵션
+					};
+					var chart1 = new google.visualization.PieChart(
+							document.getElementById('piechart'));
+					var chart2 = new google.visualization.LineChart(
+							document.getElementById('linechart'));
+					var chart3 = new google.visualization.BarChart(
+							document.getElementById('barchart'));
+					var chart4 = new google.visualization.ColumnChart(
+							document.getElementById('columnchart'));
+					
+					chart1.draw(view, options);
+					chart2.draw(view, options);
+					chart3.draw(view, options);
+					chart4.draw(view, options);
+				}
+			}
+		});
+	}
+	
+	$(document).ready(function(){
+		ajaxData();
+	});
+	</script>
 </head>
 <body>
 	
@@ -138,6 +192,50 @@
 			     });  */
 			 });
 		
+		$(document).ready(function() {
+			//여기 아래 부분
+			$('#summernote').summernote({
+				  height: 300,                 // 에디터 높이
+				  minHeight: null,             // 최소 높이
+				  maxHeight: null,             // 최대 높이
+				  focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
+				  lang: "ko-KR",					// 한글 설정
+				  placeholder: '최대 2048자까지 쓸 수 있습니다',
+				  callbacks : { 
+		            	onImageUpload : function(files, editor, welEditable) {
+		            // 파일 업로드(다중업로드를 위해 반복문 사용)
+		            for (var i = files.length - 1; i >= 0; i--) {
+		            uploadSummernoteImageFile(files[i],
+		            this);
+		            		}
+		            	}
+		            }
+		          
+			});
+		});
+		
+		function uploadSummernoteImageFile(file, editor) {
+			data = new FormData();
+			data.append("file", file);
+			$.ajax({
+				data : data,
+				type : "POST",
+				url : "upload.do",
+				contentType : false,
+				enctype : 'multipart/form-data',
+				processData : false,
+				success : function(data) {
+					$('#summernote').summernote('editor.insertImage', data.url);
+				}
+			});
+		}
+	
+		$("div.note-editable").on('drop',function(e){
+	         for(i=0; i< e.originalEvent.dataTransfer.files.length; i++){
+	         	uploadSummernoteImageFile(e.originalEvent.dataTransfer.files[i],$("#summernote")[0]);
+	         }
+	        e.preventDefault();
+	   })
 
 		</script>
 		<div class="my-account white-bg ptb-100">
@@ -151,16 +249,13 @@
                                     <a class="nav-link active" data-toggle="tab" href="#dashboard">오버뷰</a>
                                 </li>
                                 <li>
-                                    <a class="nav-link" data-toggle="tab" href="#orders">크롤링</a>
-                                </li>
-                                <li>
                                     <a class="nav-link" data-toggle="tab" href="#recommend">추천상품선택</a>
                                 </li>
                                 <li>
                                     <a class="nav-link" data-toggle="tab" href="#address">배송관리</a>
                                 </li>
                                 <li>
-                                    <a class="nav-link" data-toggle="tab" href="#account-details">계정관리</a>
+                                    <a class="nav-link" data-toggle="tab" href="#account-details">공지사항 작성</a>
                                 </li>
                                 <li>
                                     <a class="nav-link" href="login-register.html">로그아웃</a>
@@ -172,48 +267,14 @@
                             <div class="tab-content dashboard-content">
                                 <div id="dashboard" class="tab-pane active in">
                                     <h3>오버뷰 </h3>
+                                    <input type="button" value="데이터호출" onclick="ajaxData()"/>
                                     <p>From your account dashboard. you can easily check &amp; view your
                                         <a href="#">recent orders</a>, manage your
                                         <a href="#">shipping and billing addresses</a> and
                                         <a href="#">edit your password and account details.</a>
                                     </p>
                                 </div>
-                                <div id="orders" class="tab-pane">
-                                    <h3>Orders</h3>
-                                    <div class="table-responsive">
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th>Order</th>
-                                                    <th>Date</th>
-                                                    <th>Status</th>
-                                                    <th>Total</th>
-                                                    <th>Actions</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>May 10, 2018</td>
-                                                    <td>Processing</td>
-                                                    <td>$25.00 for 1 item </td>
-                                                    <td>
-                                                        <a class="view" href="cart.html">view</a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>May 10, 2018</td>
-                                                    <td>Processing</td>
-                                                    <td>$17.00 for 1 item </td>
-                                                    <td>
-                                                        <a class="view" href="cart.html">view</a>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
+                             
                                 <div id="recommend" class="tab-pane">
                                     <h4>추천상품선택</h4>
                                     <!-- 분류 -->
@@ -374,7 +435,7 @@
                                         </div>
                                     </form>
                                     ${fn:length(list)} 건의 책
-                                    <div class="table-responsive" style="height:800px">
+                                    <div class="table-responsive" style="height:800px;">
                                         
                                         <!-- 리스팅 -->
                                         <table class="table">
@@ -494,60 +555,30 @@
                                     </form>
                                 </div>
                                 <div id="address" class="tab-pane">
-                                    <p>The following addresses will be used on the checkout page by default.</p>
-                                    <h4 class="billing-address">Billing address</h4>
-                                    <a class="view" href="#">edit</a>
-                                    <p>Bayazid Hasan</p>
-                                    <p>Bangladesh</p>
+
                                 </div>
                                 <div id="account-details" class="tab-pane">
-                                    <h3>Account details </h3>
-                                    <div class="login">
-                                        <div class="login-form-container">
-                                            <div class="account-login-form">
-                                                <form action="#">
-                                                    <p>Already have an account?
-                                                        <a href="#">Log in instead!</a>
-                                                    </p>
-                                                    <label>Social title</label>
-                                                    <div class="input-radio">
-                                                        <span class="custom-radio">
-                                                            <input name="id_gender" value="1" type="radio"> Mr.</span>
-                                                        <span class="custom-radio">
-                                                            <input name="id_gender" value="1" type="radio"> Mrs.</span>
-                                                    </div>
-                                                    <label>First Name</label>
-                                                    <input name="first-name" type="text">
-                                                    <label>Last Name</label>
-                                                    <input name="last-name" type="text">
-                                                    <label>Email</label>
-                                                    <input name="email-name" type="text">
-                                                    <label>Password</label>
-                                                    <input name="user-password" type="password">
-                                                    <label>Birthdate</label>
-                                                    <input name="birthday" value="" placeholder="MM/DD/YYYY" type="text">
-                                                    <span class="example">
-                                                        (E.g.: 05/31/1970)
-                                                    </span>
-                                                    <span class="custom-checkbox">
-                                                        <input name="optin" value="1" type="checkbox">
-                                                        <label>Receive offers from our partners</label>
-                                                    </span>
-                                                    <span class="custom-checkbox">
-                                                        <input name="newsletter" value="1" type="checkbox">
-                                                        <label>Sign up for our newsletter
-                                                            <br>
-                                                            <em>You may unsubscribe at any moment. For that purpose, please find our
-                                                                contact info in the legal notice.</em>
-                                                        </label>
-                                                    </span>
-                                                    <div class="button-box">
-                                                        <button type="submit" class="default-btn">save</button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <form method="post">
+                                    &nbsp;<h3>공지사항 작성</h3>
+                                     <select name="nb_subject" >
+									    <option value="0">말머리</option>
+									    <option value="1">1</option>
+									    <option value="2">2</option>
+									    <option value="3">3</option>
+									    <option value="4">4</option>
+									    <option value="5">5</option>
+								    </select>
+								    <br/><br/><br/>
+								    &nbsp;<label>제목</label>
+                                    <input type="text" name="nb_title" class="form-control">
+                                    <br/>
+									 <div id="summernote" class="note-editable" contenteditable="true" role="textbox" 
+									 aria-multiline="true" spellcheck="true">Hello Summernote</div>
+									   <br/>
+									  <button type="submit" class="btn btn-primary">등록</button>
+									 
+
+									</form>
                                 </div>
                             </div>
                         </div>
@@ -656,6 +687,9 @@
     <script src="../assets/js/owl.carousel.min.js"></script>
     <script src="../assets/js/plugins.js"></script>
     <script src="../assets/js/main.js"></script>
+	 <script src="../assets/js/summernote-lite.js"></script>
+    <script src="../assets/js/summernote-lite.min.js"></script>
+	<script src="../assets/js/summernote-ko-KR.js"></script>
 	
 </body>
 

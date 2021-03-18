@@ -26,6 +26,7 @@
    	   
    	   <typeAlias alias="RecommendVo" type="bit.hibooks.domain.admin.RecommendVo"/>
    	   <typeAlias alias="RecomListResult" type="bit.hibooks.domain.admin.RecomListResult"/>
+
    </typeAliases>
    <mappers>
    	   <mapper resource="bit/hibooks/mapper/MemberMapper.xml"/>

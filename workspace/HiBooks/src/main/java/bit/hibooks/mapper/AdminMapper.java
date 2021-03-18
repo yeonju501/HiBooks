@@ -11,4 +11,7 @@ public interface AdminMapper {
 	List<Book> getBookList(RecommendVo recommendVo);
 	Book getBook(long b_seq);
 	void insertRecom(RecomListResult recomListResult);
+	RecomListResult getSec(int re_loc);
+
+	
 }
