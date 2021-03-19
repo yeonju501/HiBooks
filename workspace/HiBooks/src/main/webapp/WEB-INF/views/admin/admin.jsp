@@ -49,41 +49,55 @@
 	<script>
 	function ajaxData() {
 		$.ajax({
-			url: './chartData.json',
+			url: 'chart.do',
 			dataType: "json",
 			type: 'post',
-			async: false,
 			success: function(list) {
 				google.charts.load('current', {'packages':['corechart']});
 				google.charts.setOnLoadCallback(drawChart);
 				function drawChart() {
-					var dataChart = [['Task', 'Hours per Day']];
-					if(list.length != 0) {
-						$.each(list, function(i, item){
-							dataChart.push([item.item, item.number]);
-						});
-					}else {
-						dataChart.push(['입력해주세요', 1]);
-					}
+					var dataChart = [
+						 ['카테고리', '권 수', { role: 'style' }],
+			                ['소설', list[0].b_count,'Red'],
+			                ['경영/경제', list[1].b_count,'Orange'],
+			                ['자기계발', list[2].b_count,'Yellow'],
+			                ['인문/사회/역사', list[3].b_count,'Green'],
+			                ['에세이/시', list[4].b_count,'Blue']
+			             
+					];
 					var data = google.visualization.arrayToDataTable(dataChart);
 					var view = new google.visualization.DataView(data);
-					var options = {
-							title: "제목",
-							width: 900, // 넓이 옵션
-							height: 200, // 높이 옵션
-					};
-					var chart1 = new google.visualization.PieChart(
-							document.getElementById('piechart'));
-					var chart2 = new google.visualization.LineChart(
-							document.getElementById('linechart'));
-					var chart3 = new google.visualization.BarChart(
-							document.getElementById('barchart'));
+					 var options = {
+							   title : '카테고리 별 도서 현황',
+				               height :260,
+				               width :500,
+				               legend: { position: "top" },
+				               isStacked: false,
+				               tooltip:{textStyle : {fontSize:12}, showColorCode : true},
+				               animation: { //차트가 뿌려질때 실행될 애니메이션 효과
+				                 startup: true,
+				                 duration: 1000,
+				                 easing: 'linear' },
+				                 vAxis: {
+				                     viewWindow: {
+				                         max: 2500,
+				                         min: 1000
+				                     }
+				                 },
+				               annotations: {
+				                   textStyle: {
+				                     fontSize: 15,
+				                     bold: true,
+				                     italic: true,
+				                     color: '#871b47',
+				                     auraColor: '#d799ae',
+				                     opacity: 0.8
+				                   }
+				              }
+				        };
+
 					var chart4 = new google.visualization.ColumnChart(
 							document.getElementById('columnchart'));
-					
-					chart1.draw(view, options);
-					chart2.draw(view, options);
-					chart3.draw(view, options);
 					chart4.draw(view, options);
 				}
 			}
@@ -93,6 +107,7 @@
 	$(document).ready(function(){
 		ajaxData();
 	});
+	
 	</script>
 </head>
 <body>
@@ -214,7 +229,7 @@
 			});
 		});
 		
-		function uploadSummernoteImageFile(file, editor) {
+		function uploadSummernoteImageFile(file, editor, welEditable) {
 			data = new FormData();
 			data.append("file", file);
 			$.ajax({
@@ -266,13 +281,15 @@
                             <!-- Tab panes -->
                             <div class="tab-content dashboard-content">
                                 <div id="dashboard" class="tab-pane active in">
-                                    <h3>오버뷰 </h3>
-                                    <input type="button" value="데이터호출" onclick="ajaxData()"/>
-                                    <p>From your account dashboard. you can easily check &amp; view your
-                                        <a href="#">recent orders</a>, manage your
-                                        <a href="#">shipping and billing addresses</a> and
-                                        <a href="#">edit your password and account details.</a>
-                                    </p>
+                              
+							        <h1>Google Chart</h1>
+							        &nbsp;&nbsp;
+							
+								    <br/><br/>
+									<div id="columnchart"></div>
+									
+						
+								
                                 </div>
                              
                                 <div id="recommend" class="tab-pane">

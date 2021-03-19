@@ -11,7 +11,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class IndexListResult {
+	private String titleSec1;
 	private List<Book> sec1;
+	private String titleSec2;
 	private List<Book> sec2;
 
 }

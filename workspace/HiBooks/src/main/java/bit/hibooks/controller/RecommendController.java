@@ -3,7 +3,9 @@ package bit.hibooks.controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,6 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.JsonObject;
 
+import bit.hibooks.domain.admin.Chart;
 import bit.hibooks.domain.admin.RecomListResult;
 import bit.hibooks.domain.admin.RecommendVo;
 import bit.hibooks.domain.book.Book;
@@ -65,6 +68,13 @@ public class RecommendController {
 		service.sendRecom(recomListResult);
 		return "redirect:recommend.do";
 		
+	}
+	
+	@PostMapping(value= "chart.do", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE, MediaType.APPLICATION_XML_VALUE})
+	public @ResponseBody List<Chart> getChartData(){
+		List<Chart> list = new ArrayList<Chart>();
+		list = service.getChart();
+		return list;
 	}
 	
 	

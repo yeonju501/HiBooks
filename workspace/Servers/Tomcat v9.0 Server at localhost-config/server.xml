@@ -151,7 +151,7 @@
 
       
      <Context docBase="HiBooks" path="/" reloadable="true" source="org.eclipse.jst.jee.server:HiBooks"/></Host>
-    	<Context path="/summernoteImage" reloadable="true" docBase="C:\summernote_image\"/>
+    	<Context path="/summernote_image" reloadable="true" docBase="C:\summernote_image\"/>
     </Engine>
   </Service>
 </Server>
