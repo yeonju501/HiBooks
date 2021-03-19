@@ -14,13 +14,26 @@
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
-	<resources location="/resources/assets/" mapping="/assets/**"></resources>
+	<resources location="/resources/assets/" mapping="/assets/**"/>
+	<resources mapping= "/summernote_image/**" location="C:\summernote_image\"/>
 	
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
+	
+	<!-- 파일 업로드용 resolver -->
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="defaultEncoding" value="UTF-8" />
+		<beans:property name="maxUploadSize" value="100000000" />
+	</beans:bean>
+	<!-- 파일 다운로드 -->
+	<!-- <beans:bean id="fileDownloadView" class="soo.md.filesetting.FileDownloadView" />
+	<beans:bean id="fileViewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver">
+	    <beans:property name="order" value="0" />
+	</beans:bean> -->
+	
 	
 	
     

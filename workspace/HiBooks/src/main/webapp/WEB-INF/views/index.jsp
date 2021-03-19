@@ -38,7 +38,17 @@
     <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
     <script src="assets/js/vendor/jquery-1.12.0.min.js"></script>
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script>
-        <script src="assets/js/service-search.js"></script>
+    <script src="assets/js/service-search.js"></script>
+    <link rel="stylesheet" href="assets/css/swiper-bundle.css" />
+	<link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+		.swiper-title {font-family: 'Noto Sans KR', sans-serif;}
+		.swiper-container > * {font-family: 'Noto Sans KR', sans-serif;}
+		.board_slide {margin-top: 40px;}
+		.board_slide2 {margin-top: 100px;}
+		.board_thumb {width: 200px; height: 400px;}
+	</style>
 </head>
 <body>
     <div class="wrapper">
@@ -226,7 +236,486 @@
             </div>
         </header>
         <!-- header end -->
-               
+       <div>               
+                      <!-- may also like product start -->
+        <div class="product-area pb-65   product-padding" style="padding-bottom: 0px;">
+            <div class="container">
+                <div class="section-title-2 text-center mb-25">
+                    <br/>
+                    <h2 class="m-0">${indexLR.titleSec1}</h2>
+                  <!--   <p></p> -->
+                </div>
+                <div class="row">
+                    <div class="product-slider-active owl-carousel">
+                    <c:forEach items="${indexLR.sec1}" var="book">
+                        <div class="col-lg-4 col-md-6 col-12" style="max-width:80%;">
+                            <div class="product-wrapper mb-35">
+                                <div class="product-img">
+                                    <a href="product-details.html">
+                                     <!--    <span class="onsale"></span> -->
+                                        <img alt="" src="${book.b_img}" style="height:300px;" >
+                                    </a>
+                                    <div class="product-action-2">
+                                        <a href="#" title="Add to Compare" class="action-plus-2 tooltip">
+                                            <i class="zmdi zmdi-refresh"></i>
+                                        </a>
+                                        <a href="#" title="Add to Wishlist" class="action-plus-2 tooltip">
+                                            <i class="zmdi zmdi-favorite-outline"></i>
+                                        </a>
+                                        <a href="#" title="Quick View" data-target="#exampleModal" data-toggle="modal" class="action-plus-2 tooltip">
+                                            <i class="zmdi zmdi-search"></i>
+                                        </a>
+                                        <a href="#" title="Add To Cart"  class="action-plus-2 tooltip">
+                                            <i class="zmdi zmdi-shopping-cart-plus"></i>
+                                        </a>
+                                    </div>
+                                    <div class="rating-box">
+                                        <a href="#" title="1 star">
+                                            <i class="far fa-star"></i>
+                                        </a>
+                                        <a href="#" title="2 star">
+                                            <i class="far fa-star"></i>
+                                        </a>
+                                        <a href="#" title="3 star">
+                                            <i class="far fa-star"></i>
+                                        </a>
+                                        <a href="#" title="4 star">
+                                            <i class="far fa-star"></i>
+                                        </a>
+                                        <a href="#" title="5 star">
+                                            <i class="far fa-star"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="product-content text-center">
+                                    <h4>
+                                        <a href="product-details.html">${book.b_title}</a>
+                                    </h4>
+                                    <div class="product-price-2">
+                                        <div class="price-box">
+                                            <del>
+                                                <span class="amount">
+                                                    <span class="Price-currencySymbol"></span>${book.b_price}</span>
+                                            </del>
+                                            <ins>
+                                                <span class="amount">
+                                                    <span class="Price-currencySymbol"></span>${book.b_price}</span>
+                                            </ins>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                         </c:forEach>
+
+                        <!-- <div class="col-lg-4 col-md-6 col-12">
+                            <div class="product-wrapper mb-35">
+                                <div class="product-img">
+                                    <a href="product-details.html">
+                                        <img alt="" src="https://img.ridicdn.net/cover/754029570/xxlarge" style="height:400px;" >
+                                    </a>
+                                    <div class="product-action-2">
+                                        <a href="#" title="Add to Compare" class="action-plus-2 tooltip">
+                                            <i class="zmdi zmdi-refresh"></i>
+                                        </a>
+                                        <a href="#" title="Add to Wishlist" class="action-plus-2 tooltip">
+                                            <i class="zmdi zmdi-favorite-outline"></i>
+                                        </a>
+                                        <a href="#" title="Quick View" data-target="#exampleModal" data-toggle="modal" class="action-plus-2 tooltip">
+                                            <i class="zmdi zmdi-search"></i>
+                                        </a>
+                                        <a href="#" title="Add To Cart"  class="action-plus-2 tooltip">
+                                            <i class="zmdi zmdi-shopping-cart-plus"></i>
+                                        </a>
+                                    </div>
+                                    <div class="rating-box">
+                                        <a href="#" class="rated" title="1 star">
+                                            <i class="far fa-star"></i>
+                                        </a>
+                                        <a href="#" class="rated" title="2 star">
+                                            <i class="far fa-star"></i>
+                                        </a>
+                                        <a href="#" class="rated" title="3 star">
+                                            <i class="far fa-star"></i>
+                                        </a>
+                                        <a href="#" title="4 star">
+                                            <i class="far fa-star"></i>
+                                        </a>
+                                        <a href="#" title="5 star">
+                                            <i class="far fa-star"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="product-content text-center">
+                                    <h4>
+                                        <a href="product-details.html">2</a>
+                                    </h4>
+                                    <div class="product-price-2">
+                                        <div class="price-box">
+                                            <ins>
+                                                <span class="amount">
+                                                    <span class="Price-currencySymbol">$</span>195.00</span>
+                                            </ins>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 col-12">
+                            <div class="product-wrapper mb-35">
+                                <div class="product-img">
+                                    <a href="product-details.html">
+                                        <img alt="" src="https://img.ridicdn.net/cover/754029570/xxlarge" style="height:400px;" >
+                                    </a>
+                                    <div class="product-action-2">
+                                        <a href="#" title="Add to Compare" class="action-plus-2 tooltip">
+                                            <i class="zmdi zmdi-refresh"></i>
+                                        </a>
+                                        <a href="#" title="Add to Wishlist" class="action-plus-2 tooltip">
+                                            <i class="zmdi zmdi-favorite-outline"></i>
+                                        </a>
+                                        <a href="#" title="Quick View" data-target="#exampleModal" data-toggle="modal" class="action-plus-2 tooltip">
+                                            <i class="zmdi zmdi-search"></i>
+                                        </a>
+                                        <a href="#" title="Add To Cart"  class="action-plus-2 tooltip">
+                                            <i class="zmdi zmdi-shopping-cart-plus"></i>
+                                        </a>
+                                    </div>
+                                    <div class="rating-box">
+                                        <a href="#" class="rated" title="1 star">
+                                            <i class="far fa-star"></i>
+                                        </a>
+                                        <a href="#" title="2 star">
+                                            <i class="far fa-star"></i>
+                                        </a>
+                                        <a href="#" title="3 star">
+                                            <i class="far fa-star"></i>
+                                        </a>
+                                        <a href="#" title="4 star">
+                                            <i class="far fa-star"></i>
+                                        </a>
+                                        <a href="#" title="5 star">
+                                            <i class="far fa-star"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="product-content text-center">
+                                    <h4>
+                                        <a href="product-details.html">3</a>
+                                    </h4>
+                                    <div class="product-price-2">
+                                        <div class="price-box">
+                                            <ins>
+                                                <span class="amount">
+                                                    <span class="Price-currencySymbol">$</span>85.00</span>
+                                            </ins>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 col-12">
+                            <div class="product-wrapper mb-35">
+                                <div class="product-img">
+                                    <a href="product-details.html">
+                                        <img alt="" src="https://img.ridicdn.net/cover/754029570/xxlarge" style="height:400px;" >
+                                    </a>
+                                    <div class="product-action-2">
+                                        <a href="#" title="Add to Compare" class="action-plus-2 tooltip">
+                                            <i class="zmdi zmdi-refresh"></i>
+                                        </a>
+                                        <a href="#" title="Add to Wishlist" class="action-plus-2 tooltip">
+                                            <i class="zmdi zmdi-favorite-outline"></i>
+                                        </a>
+                                        <a href="#" title="Quick View" data-target="#exampleModal" data-toggle="modal" class="action-plus-2 tooltip">
+                                            <i class="zmdi zmdi-search"></i>
+                                        </a>
+                                        <a href="#" title="Add To Cart"  class="action-plus-2 tooltip">
+                                            <i class="zmdi zmdi-shopping-cart-plus"></i>
+                                        </a>
+                                    </div>
+                                    <div class="rating-box">
+                                        <a href="#" class="rated" title="1 star">
+                                            <i class="far fa-star"></i>
+                                        </a>
+                                        <a href="#" class="rated" title="2 star">
+                                            <i class="far fa-star"></i>
+                                        </a>
+                                        <a href="#" class="rated">
+                                            <i class="far fa-star"></i>
+                                        </a>
+                                        <a href="#" title="4 star">
+                                            <i class="far fa-star"></i>
+                                        </a>
+                                        <a href="#" title="5 star">
+                                            <i class="far fa-star"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="product-content text-center">
+                                    <h4>
+                                        <a href="product-details.html">4</a>
+                                    </h4>
+                                    <div class="product-price-2">
+                                        <div class="price-box">
+                                            <ins>
+                                                <span class="amount">
+                                                    <span class="Price-currencySymbol">$</span>55.00</span>
+                                            </ins>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="col-lg-4 col-md-6 col-12">
+                            <div class="product-wrapper mb-35">
+                                <div class="product-img">
+                                    <a href="product-details.html">
+                                        <img alt="" src="https://img.ridicdn.net/cover/754029570/xxlarge" style="height:400px;" >
+                                    </a>
+                                    <div class="product-action-2">
+                                        <a href="#" title="Add to Compare" class="action-plus-2 tooltip">
+                                            <i class="zmdi zmdi-refresh"></i>
+                                        </a>
+                                        <a href="#" title="Add to Wishlist" class="action-plus-2 tooltip">
+                                            <i class="zmdi zmdi-favorite-outline"></i>
+                                        </a>
+                                        <a href="#" title="Quick View" data-target="#exampleModal" data-toggle="modal" class="action-plus-2 tooltip">
+                                            <i class="zmdi zmdi-search"></i>
+                                        </a>
+                                        <a href="#" title="Add To Cart"  class="action-plus-2 tooltip">
+                                            <i class="zmdi zmdi-shopping-cart-plus"></i>
+                                        </a>
+                                    </div>
+                                    <div class="rating-box">
+                                        <a href="#" class="rated" title="1 star">
+                                            <i class="far fa-star"></i>
+                                        </a>
+                                        <a href="#" title="2 star">
+                                            <i class="far fa-star"></i>
+                                        </a>
+                                        <a href="#" title="3 star">
+                                            <i class="far fa-star"></i>
+                                        </a>
+                                        <a href="#" title="4 star">
+                                            <i class="far fa-star"></i>
+                                        </a>
+                                        <a href="#" title="5 star">
+                                            <i class="far fa-star"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="product-content text-center">
+                                    <h4>
+                                        <a href="product-details.html">5</a>
+                                    </h4>
+                                    <div class="product-price-2">
+                                        <div class="price-box">
+                                            <ins>
+                                                <span class="amount">
+                                                    <span class="Price-currencySymbol">$</span>85.00</span>
+                                            </ins>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="col-lg-4 col-md-6 col-12">
+                            <div class="product-wrapper mb-35">
+                                <div class="product-img">
+                                    <a href="product-details.html">
+                                        <img alt="" src="https://img.ridicdn.net/cover/754029570/xxlarge" style="height:400px;" >
+                                    </a>
+                                    <div class="product-action-2">
+                                        <a href="#" title="Add to Compare" class="action-plus-2 tooltip">
+                                            <i class="zmdi zmdi-refresh"></i>
+                                        </a>
+                                        <a href="#" title="Add to Wishlist" class="action-plus-2 tooltip">
+                                            <i class="zmdi zmdi-favorite-outline"></i>
+                                        </a>
+                                        <a href="#" title="Quick View" data-target="#exampleModal" data-toggle="modal" class="action-plus-2 tooltip">
+                                            <i class="zmdi zmdi-search"></i>
+                                        </a>
+                                        <a href="#" title="Add To Cart"  class="action-plus-2 tooltip">
+                                            <i class="zmdi zmdi-shopping-cart-plus"></i>
+                                        </a>
+                                    </div>
+                                    <div class="rating-box">
+                                        <a href="#" class="rated" title="1 star">
+                                            <i class="far fa-star"></i>
+                                        </a>
+                                        <a href="#" title="2 star">
+                                            <i class="far fa-star"></i>
+                                        </a>
+                                        <a href="#" title="3 star">
+                                            <i class="far fa-star"></i>
+                                        </a>
+                                        <a href="#" title="4 star">
+                                            <i class="far fa-star"></i>
+                                        </a>
+                                        <a href="#" title="5 star">
+                                            <i class="far fa-star"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="product-content text-center">
+                                    <h4>
+                                        <a href="product-details.html">6</a>
+                                    </h4>
+                                    <div class="product-price-2">
+                                        <div class="price-box">
+                                            <ins>
+                                                <span class="amount">
+                                                    <span class="Price-currencySymbol">$</span>85.00</span>
+                                            </ins>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 col-12">
+                            <div class="product-wrapper mb-35">
+                                <div class="product-img">
+                                    <a href="product-details.html">
+                                       <img alt="" src="https://img.ridicdn.net/cover/754029570/xxlarge" style="height:400px;" >
+                                    </a>
+                                    <div class="product-action-2">
+                                        <a href="#" title="Add to Compare" class="action-plus-2 tooltip">
+                                            <i class="zmdi zmdi-refresh"></i>
+                                        </a>
+                                        <a href="#" title="Add to Wishlist" class="action-plus-2 tooltip">
+                                            <i class="zmdi zmdi-favorite-outline"></i>
+                                        </a>
+                                        <a href="#" title="Quick View" data-target="#exampleModal" data-toggle="modal" class="action-plus-2 tooltip">
+                                            <i class="zmdi zmdi-search"></i>
+                                        </a>
+                                        <a href="#" title="Add To Cart"  class="action-plus-2 tooltip">
+                                            <i class="zmdi zmdi-shopping-cart-plus"></i>
+                                        </a>
+                                    </div>
+                                    <div class="rating-box">
+                                        <a href="#" class="rated" title="1 star">
+                                            <i class="far fa-star"></i>
+                                        </a>
+                                        <a href="#" class="rated" title="2 star">
+                                            <i class="far fa-star"></i>
+                                        </a>
+                                        <a href="#" class="rated">
+                                            <i class="far fa-star"></i>
+                                        </a>
+                                        <a href="#" title="4 star">
+                                            <i class="far fa-star"></i>
+                                        </a>
+                                        <a href="#" title="5 star">
+                                            <i class="far fa-star"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="product-content text-center">
+                                    <h4>
+                                        <a href="product-details.html">7</a>
+                                    </h4>
+                                    <div class="product-price-2">
+                                        <div class="price-box">
+                                            <ins>
+                                                <span class="amount">
+                                                    <span class="Price-currencySymbol">$</span>60.00</span>
+                                            </ins>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>-->
+                    </div>
+                </div>
+            </div>
+        </div>  
+     </div>               
+       <div>               
+                      <!-- may also like product start -->
+        <div class="product-area pb-65   product-padding" style="padding-bottom: 0px;">
+            <div class="container">
+                <div class="section-title-2 text-center mb-25">
+                <br/>
+                    <h2 class="m-0">${indexLR.titleSec2}</h2>
+                  <!--   <p></p> -->
+                </div>
+
+                <div class="row">
+                    <div class="product-slider-active owl-carousel">
+                    <c:forEach items="${indexLR.sec2}" var="book">
+                        <div class="col-lg-4 col-md-6 col-12" style="max-width:80%;">
+                            <div class="product-wrapper mb-35">
+                                <div class="product-img">
+                                    <a href="product-details.html">
+                                        <span class="onsale">Sale!</span>
+                                        <img alt="" src="${book.b_img}" style="height:300px;" >
+                                    </a>
+                                    <div class="product-action-2">
+                                        <a href="#" title="Add to Compare" class="action-plus-2 tooltip">
+                                            <i class="zmdi zmdi-refresh"></i>
+                                        </a>
+                                        <a href="#" title="Add to Wishlist" class="action-plus-2 tooltip">
+                                            <i class="zmdi zmdi-favorite-outline"></i>
+                                        </a>
+                                        <a href="#" title="Quick View" data-target="#exampleModal" data-toggle="modal" class="action-plus-2 tooltip">
+                                            <i class="zmdi zmdi-search"></i>
+                                        </a>
+                                        <a href="#" title="Add To Cart"  class="action-plus-2 tooltip">
+                                            <i class="zmdi zmdi-shopping-cart-plus"></i>
+                                        </a>
+                                    </div>
+                                    <div class="rating-box">
+                                        <a href="#" title="1 star">
+                                            <i class="far fa-star"></i>
+                                        </a>
+                                        <a href="#" title="2 star">
+                                            <i class="far fa-star"></i>
+                                        </a>
+                                        <a href="#" title="3 star">
+                                            <i class="far fa-star"></i>
+                                        </a>
+                                        <a href="#" title="4 star">
+                                            <i class="far fa-star"></i>
+                                        </a>
+                                        <a href="#" title="5 star">
+                                            <i class="far fa-star"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="product-content text-center">
+                                    <h4>
+                                        <a href="product-details.html">${book.b_title}</a>
+                                    </h4>
+                                    <div class="product-price-2">
+                                        <div class="price-box">
+                                            <del>
+                                                <span class="amount">
+                                                    <span class="Price-currencySymbol"></span>${book.b_price}</span>
+                                            </del>
+                                            <ins>
+                                                <span class="amount">
+                                                    <span class="Price-currencySymbol"></span>${book.b_price}</span>
+                                            </ins>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                         </div>
+                        </c:forEach>
+                    </div>
+                </div>
+            </div>
+        </div> 
+      </div>            
+        
         <footer class="footer-color">
             <div class="footer-container">
                 <!--Footer Top Area Start-->
@@ -335,7 +824,32 @@
     <script src="assets/js/owl.carousel.min.js"></script>
     <script src="assets/js/plugins.js"></script>
     <script src="assets/js/main.js"></script>
-
+	<script src="assets/js/swiper-bundle.js"></script>
+	<script src="assets/js/swiper-bundle.min.js"></script>
+	<script>
+	    var swiper1 = new Swiper('.swiper1', {
+	      slidesPerView: 5,
+	      slidesPerGroup: 1,
+	      observer: true,
+	      observerParents:true,
+	      loop: true,
+	      centeredSlides: true,
+	      autoplay: {
+	    	  dalay: 3
+	      },	      
+	    });
+    var swiper2 = new Swiper('.swiper2', {
+	      slidesPerView: 5,
+	      slidesPerGroup: 1,
+	      observer: true,
+	      observerParents:true,
+	      loop: true,
+	      centeredSlides: true,
+	      autoplay: {
+	    	  dalay: 3
+	      },
+	    });
+  	</script>
 
 </body>
 

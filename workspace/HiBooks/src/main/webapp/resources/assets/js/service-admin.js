@@ -61,6 +61,7 @@ var index=1;
 							html += '<span class="amount">';
 							html += ' <span class="Price-currencySymbol"></span>'+responseData.b_price+'</span>';
 							html += '</ins>';
+							html += '<input type="button" class="delete" onclick="">'
 							html += '</div>';
 							html += '</div>';
 							html += '</div>';
@@ -80,3 +81,13 @@ var index=1;
 					   }
 				   });
 			   });
+/*		var book = function(event) {
+			   var thisBook = $(event.target);
+			   // thisEle 변수에 이벤트 객체를 제이쿼리 요소로 전달받음
+			   thisBook.remove();
+			} */
+		$(document).on("click",".delete", function (){
+			 var i = $(".delete").index(this);
+			 alert(index+","+i);
+		   });
+		

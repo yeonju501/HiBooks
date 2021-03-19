@@ -29,4 +29,16 @@
 	<insert id="insertRecom" parameterType="RecomListResult">
 	insert into RECOM values(#{re_title},#{re_seq1},#{re_seq2},#{re_seq3},#{re_seq4},#{re_seq5},#{re_seq6},#{re_seq7},#{re_seq8},#{re_loc},1)
 	</insert>
+	
+	<update id="deleteSec" parameterType="int">
+	update RECOM set RE_VALID = 0 where RE_LOC = #{re_loc} and RE_VALID = 1 
+	</update>
+	<select id="getSec" resultType="RecomListResult" parameterType="int">
+	select * from RECOM where RE_LOC = #{re_loc} and RE_VALID = 1
+	</select>
+	
+	<select id="getCount" resultType="long" parameterType="int">
+	select count(b_seq) from book where b_cate = #{b_cate}
+	</select>
+	
 	</mapper>

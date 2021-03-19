@@ -13,13 +13,13 @@ import lombok.AllArgsConstructor;
 @Service
 @AllArgsConstructor
 public class SearchServiceImpl implements SearchService {
-	private SearchMapper searchMapper;
+	private SearchMapper Mapper;
 	
 	@Override
 	public SearchListResult getSearchListResult(String keyword, int cp, int ps) {
-		long totalCount = searchMapper.selectCount(keyword);
+		long totalCount = Mapper.selectCount(keyword);
 		SearchVo searchVo = new SearchVo(keyword,cp,ps);
-		List<Book> list = searchMapper.selectByKey(searchVo);
+		List<Book> list = Mapper.selectByKey(searchVo);
 		return new SearchListResult(cp,totalCount,ps,list);
 	}
 	
@@ -28,7 +28,8 @@ public class SearchServiceImpl implements SearchService {
 		int cp=1;
 		int ps=6;
 		SearchVo searchVo = new SearchVo(keyword,cp,ps);
-		List<Book> list = searchMapper.selectAuto(searchVo);
+		List<Book> list = Mapper.selectAuto(searchVo);
 		return list;
 	}
+	
 }
