@@ -30,10 +30,15 @@
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/responsive.css">
     <script src="../assets/js/vendor/modernizr-2.8.3.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+    
 </head>
 
 <body>
+	<sec:authorize access="isAuthenticated()">
+		<sec:authentication property="principal.member" var="loginUser"/>
+	</sec:authorize>
     <div class="wrapper">
         <!-- header start -->
          <header id="header_background">
@@ -218,48 +223,36 @@
         <!-- breadcrumbs area start -->
         <!-- breadcrumbs area End -->
  <script>
-	function nocheck()
-	{
-	    for(var i=0; i<document.purchaseinput.elements.length; i++)
-		   {
-		      if(document.purchaseinput.elements[i].value == "")
-			  {
-			     alert("모든 값을 입력 하셔야 합니다. ");
-				 return false;
-			  }
-		   }
-		   document.purchaseinput.submit();
-	}
-	
-	$(document).ready(function(){
-		var name=""; var phone="";
+ 	$(document).ready(function(){
+		var name=""; var phone="";var zipNum="";var addr1 = "";
 		var m_name = $("#m_name").val();
 		var m_phone = $("#m_phone").val();
+		var m_zipNum ="${loginUser.m_zipNum}";
+		var m_addr1 ="${loginUser.m_addr1}";
 		$("#fill").change(function(){         
 		        if($("#fill").is(":checked")){
-		           $("#s_name").val(m_name);
-		           $("#s_phone").val(m_phone);
+		             $("#s_name").val(m_name);
+		             $("#s_phone").val(m_phone);
+		             $("#s_zipNo").val(m_zipNum);
+		             $("#roadFullAddr").val(m_addr1);
 		        }else{
 		        	 $("#s_name").val(name);
 			         $("#s_phone").val(phone);
+			         $("#s_zipNo").val(zipNum);
+			         $("#roadFullAddr").val(addr1);
 		        }
 		    });
-
 		});
-	
 	function goPopup(){
 		var pop = window.open("jusoPopup.do","pop","width=570,height=420,left=500,top=100, scrollbars=yes, resizable=yes");
 	}
-	
-
 	function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,detBdNmList,bdNm,bdKdcd,siNm,sggNm,emdNm,liNm,rn,udrtYn,buldMnnm,buldSlno,mtYn,lnbrMnnm,lnbrSlno,emdNo){
 		// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
 		document.purchaseinput.roadFullAddr.value = roadFullAddr;
 		document.purchaseinput.zipNo.value = zipNo;
-		
 	}
-
 </script>
+
  <!--Checkout Area Start-->
         <div class="checkout-area pt-100 pb-70">
             <div class="container">
@@ -279,19 +272,19 @@
                                             <label>주문하시는 분
                                                 <span class="required">*</span>
                                             </label>
-                                            <input type="text" id="m_name" value="${sessionScope.loginUser.m_name}" readonly>
+                                            <input type="text" id="m_name" value="${loginUser.m_name}" readonly>
                                         </p>
                                         <p class="form-row-last">
                                             <label>휴대전화
                                                 <span class="required">*</span>
                                             </label>
-                                            <input type="text" id="m_phone" value="${sessionScope.loginUser.m_phone}" readonly>
+                                            <input type="text" id="m_phone" value="${loginUser.m_phone}" readonly>
                                         </p>
                                          <p class="form-row-last">
                                             <label>이메일
                                                 <span class="required">*</span>
                                             </label>
-                                            <input type="text" value="${sessionScope.loginUser.m_email}" readonly>
+                                            <input type="text" id="m_email" value="${loginUser.m_email}" readonly>
                                         </p>
                                         
                                         <!-- <p class="form-row">
@@ -328,27 +321,13 @@
                 
                 <div class="row">
                     <div class="col-lg-6 col-12">
-                        <form name="purchaseinput" method="post" action="placeorder.do" >
+                        <form name="purchaseinput" method="post" action="" >
                             <div class="checkbox-form">
                                 <h3>배송정보&nbsp; <label style="font-size:17px;display:float;width:200px;">주문자 정보와 동일 <input type="checkbox" name="fill" id="fill" value="1" style="height:15px;width:10%"></label></h3>
                                 </h3> 
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <!-- <div class="country-select clearfix">
-                                            <label>Country
-                                                <span class="required">*</span>
-                                            </label>
-                                            <select class="wide">
-                                                <option value="volvo">Bangladesh</option>
-                                                <option value="saab">Algeria</option>
-                                                <option value="mercedes">Afghanistan</option>
-                                                <option value="audi">Ghana</option>
-                                                <option value="audi2">Albania</option>
-                                                <option value="audi3">Bahrain</option>
-                                                <option value="audi4">Colombia</option>
-                                                <option value="audi5">Dominican Republic</option>
-                                            </select>
-                                        </div> -->
+                                        
                                     </div>
                                     <div class="col-md-6">
                                         <div class="checkout-form-list">
@@ -356,41 +335,21 @@
                                                 <span class="required">*</span>
                                             </label>
                                             <input type="text" id="s_name" name="s_name" value="">
-                                            <input type="hidden" name="m_email" value="${sessionScope.loginUser.m_email}">
+                                            
                                         </div>
                                     </div>
-                                    <!-- <div class="col-md-12">
-                                        <div class="checkout-form-list">
-                                            <label>
-                                                <span class="required">*</span>
-                                            </label>
-                                            <input placeholder="" type="text">
-                                        </div>
-                                    </div> -->
-                                   <!-- <div class="col-md-12">
-                                        <div class="checkout-form-list">
-                                            <label>Company Name</label>
-                                            <input placeholder="" type="text">
-                                        </div>
-                                    </div> -->
-
                                     <div class="col-md-12">
                                         <div class="checkout-form-list">
                                             <label>주소 
                                                 <span class="required">*</span>
                                                  <input type="button"  onClick="goPopup();" value="주소 찾기" style="padding-left:3px;height:30px;font-size:10px;width:10%">
                                             </label>
-		                                     <input placeholder="우편번호" type="text"  id="zipNo"  name="zipNo" style="width:100px;">
+		                                     <input placeholder="우편번호" value="" type="text"  id="s_zipNo"  name="s_zipNo" style="width:100px;">
 		                                     <br/> 
-		                                     <input placeholder="기본주소" type="text" name="s_addr"  id="roadFullAddr"> 
+		                                     <input placeholder="기본주소" value="" type="text" name="s_addr"  id="roadFullAddr"> 
                                         </div>
                                         
                                     </div>
-                                    <!-- <div class="col-md-12">
-                                        <div class="checkout-form-list">
-                                            <input placeholder="나머지주소" type="text" name="s_addr2">
-                                        </div>
-                                    </div> -->
                                     <div class="col-md-12">
                                         <div class="checkout-form-list">
                                             <label>휴대전화
@@ -400,164 +359,11 @@
                                         </div>
                                     </div>
                                     </div>
-                                     <!-- <div class="col-md-12">
-                                        <div class="checkout-form-list">
-                                            <label>배송메세지
-                                            </label>
-                                            <input placeholder="" type="text">
-                                        </div>
-                                    </div> -->
-                                   <!-- <div class="col-md-6">
-                                        <div class="checkout-form-list">
-                                            <label>Postcode / Zip
-                                                <span class="required">*</span>
-                                            </label>
-                                            <input placeholder="" type="text">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="checkout-form-list">
-                                            <label>Email Address
-                                                <span class="required">*</span>
-                                            </label>
-                                            <input placeholder="" type="email">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="checkout-form-list">
-                                            <label>Phone
-                                                <span class="required">*</span>
-                                            </label>
-                                            <input type="text">
-                                        </div>
-                                    </div>  -->
-                                   <!-- <div class="col-md-12">
-                                        <div class="checkout-form-list create-acc">
-                                            <input id="cbox" type="checkbox">
-                                            <label>Create an account?</label>
-                                        </div> 
-                                          <div id="cbox-info" class="checkout-form-list create-account">
-                                            <p>Create an account by entering the information below. If you are a returning customer
-                                                please login at the top of the page.</p>
-                                            <label>Account password
-                                                <span class="required">*</span>
-                                            </label>
-                                            <input placeholder="password" type="password">
-                                        </div>
-                                    </div>-->
-                     
-                                <!--  <div class="different-address">
-                                    <div class="ship-different-title">
-                                        <h3>
-                                            <label>Ship to a different address?</label>
-                                            <input id="ship-box" type="checkbox">
-                                        </h3>
-                                    </div>
-                                    <div id="ship-box-info" class="row">
-                                        <div class="col-md-12">
-                                            <div class="country-select clearfix">
-                                                <label>Country
-                                                    <span class="required">*</span>
-                                                </label>
-                                                <select class="wide">
-                                                    <option value="volvo">bangladesh</option>
-                                                    <option value="saab">Algeria</option>
-                                                    <option value="mercedes">Afghanistan</option>
-                                                    <option value="audi">Ghana</option>
-                                                    <option value="audi2">Albania</option>
-                                                    <option value="audi3">Bahrain</option>
-                                                    <option value="audi4">Colombia</option>
-                                                    <option value="audi5">Dominican Republic</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="checkout-form-list">
-                                                <label>First Name
-                                                    <span class="required">*</span>
-                                                </label>
-                                                <input placeholder="" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="checkout-form-list">
-                                                <label>Last Name
-                                                    <span class="required">*</span>
-                                                </label>
-                                                <input placeholder="" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="checkout-form-list">
-                                                <label>Company Name</label>
-                                                <input placeholder="" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="checkout-form-list">
-                                                <label>Address
-                                                    <span class="required">*</span>
-                                                </label>
-                                                <input placeholder="Street address" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="checkout-form-list">
-                                                <input placeholder="Apartment, suite, unit etc. (optional)" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="checkout-form-list">
-                                                <label>Town / City
-                                                    <span class="required">*</span>
-                                                </label>
-                                                <input type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="checkout-form-list">
-                                                <label>State / County
-                                                    <span class="required">*</span>
-                                                </label>
-                                                <input placeholder="" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="checkout-form-list">
-                                                <label>Postcode / Zip
-                                                    <span class="required">*</span>
-                                                </label>
-                                                <input placeholder="" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="checkout-form-list">
-                                                <label>Email Address
-                                                    <span class="required">*</span>
-                                                </label>
-                                                <input placeholder="" type="email">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="checkout-form-list">
-                                                <label>Phone
-                                                    <span class="required">*</span>
-                                                </label>
-                                                <input type="text">
-                                            </div>
-                                        </div> 
-                                    </div> 
-                                    <div class="order-notes">
-                                        <div class="checkout-form-list">
-                                            <label>Order Notes</label>
-                                            <textarea id="checkout-mess" cols="30" rows="10" placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
-                                        </div>
-                                    </div>
-                                </div>-->
+                                     
                             		<div class="order-notes">
                                         <div class="checkout-form-list">
                                             <label>Order Notes</label>
-                                            <textarea id="checkout-mess" name="s_msg"cols="30" rows="10" placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
+                                            <textarea id="s_msg" name="s_msg"cols="30" rows="10" placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
                                         </div>
                                     </div>
                             </div>
@@ -599,7 +405,7 @@
                                             <th>Order Total</th>
                                             <td>
                                                 <strong>
-                                                    <span class="amount"><c:out value="${sum}"/> </span>
+                                                    <span id="amount" class="amount"><c:out value="${sum}"/> </span>
                                                 </strong>
                                             </td>
                                         </tr>
@@ -659,7 +465,7 @@
                                         </div>
                                     </div>
                                     <div class="order-button-payment">
-                                        <input value="Place order" onclick="nocheck()" >
+                                        <button id="place-order" type="button">주문하기</button>
                                     </div>
                                 </div>
                             </div>
@@ -759,111 +565,11 @@
                 </div>
                 <!--Footer Bottom Area End-->
             </div>
-        </footer>
-        
-        <!-- modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            
-                            <span class="ion-android-close" aria-hidden="true"></span>
-                        </button>
-                        
-                        <div class="qwick-view-left">
-                            <div class="quick-view-learg-img">
-                                <div class="quick-view-tab-content tab-content">
-                                    <div class="tab-pane active show fade" id="modal1" role="tabpanel">
-                                        <img src="../assets/img/quick-view/l1.jpg" alt="">
-                                    </div>
-                                    <div class="tab-pane fade" id="modal2" role="tabpanel">
-                                        <img src="../assets/img/quick-view/l2.jpg" alt="">
-                                    </div>
-                                    <div class="tab-pane fade" id="modal3" role="tabpanel">
-                                        <img src="../assets/img/quick-view/l3.jpg" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="quick-view-list nav" role="tablist">
-                                <a class="active" href="#modal1" data-toggle="tab">
-                                    <img src="assets/img/quick-view/s1.jpg" alt="">
-                                </a>
-                                <a href="#modal2" data-toggle="tab">
-                                    <img src="assets/img/quick-view/s2.jpg" alt="">
-                                </a>
-                                <a href="#modal3" data-toggle="tab">
-                                    <img src="assets/img/quick-view/s3.jpg" alt="">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="qwick-view-right">
-                            <div class="qwick-view-content">
-                                <h3>Handcrafted Supper Mug</h3>
-                                <div class="price">
-                                    <span class="new">$90.00</span>
-                                    <span class="old">$120.00 </span>
-                                </div>
-                                <div class="rating-number">
-                                    <div class="quick-view-rating">
-                                        <i class="ion-ios-star red-star"></i>
-                                        <i class="ion-ios-star red-star"></i>
-                                        <i class="ion-ios-star red-star"></i>
-                                        <i class="ion-ios-star red-star"></i>
-                                        <i class="ion-ios-star red-star"></i>
-                                    </div>
-                                </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adip elit, sed do tempor incididun ut labore et dolore
-                                    magna aliqua. Ut enim ad mi , quis nostrud veniam exercitation .</p>
-                                <div class="quick-view-select">
-                                    <div class="select-option-part">
-                                        <label>Size*</label>
-                                        <select class="select">
-                                            <option value="">- Please Select -</option>
-                                            <option value="">900</option>
-                                            <option value="">700</option>
-                                        </select>
-                                    </div>
-                                    <div class="select-option-part">
-                                        <label>Color*</label>
-                                        <select class="select">
-                                            <option value="">- Please Select -</option>
-                                            <option value="">orange</option>
-                                            <option value="">pink</option>
-                                            <option value="">yellow</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="quickview-plus-minus">
-                                    <div class="cart-plus-minus">
-                                        <input type="text" value="02" name="qtybutton" class="cart-plus-minus-box">
-                                    </div>
-                                    <div class="quickview-btn-cart">
-                                        <a class="btn-style cr-btn" href="#">
-                                            <span>add to cart</span>
-                                        </a>
-                                    </div>
-                                    <div class="quickview-btn-wishlist">
-                                        <a class="btn-hover cr-btn" href="#">
-                                            <span>
-                                                <i class="ion-ios-heart-outline"></i>
-                                            </span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-   
+        </footer>  
     </div>
 
 
     <!-- all js here -->
-    
-    <script src="../assets/js/vendor/jquery-1.12.0.min.js"></script>
     <script src="../assets/js/popper.js"></script>
     <script src="../assets/js/bootstrap.min.js"></script>
     <script src="../assets/js/isotope.pkgd.min.js"></script>
@@ -874,9 +580,84 @@
     <script src="../assets/js/owl.carousel.min.js"></script>
     <script src="../assets/js/plugins.js"></script>
     <script src="../assets/js/main.js"></script>
-    <script src="../assets/js/service-search.js"></script>
+    <!-- <script src="../assets/js/service-search.js"></script> -->
     <!-- javascript -->
-    
+    <script>
+    $("#place-order").click(function(){
+		for(var i=0; i<document.purchaseinput.elements.length; i++)
+		{
+			if(document.purchaseinput.elements[i].value == "")
+			{
+				alert("모든 값을 입력 하셔야 합니다. ");
+				document.purchaseinput.elements[i].focus();
+				return false;
+			}
+		}
+		let m_email = $("#m_email").val();
+		let s_name = $("#s_name").val();
+		let s_addr = $("#roadFullAddr").val();
+		let s_phone = $("#s_phone").val();
+		let s_msg = $("#s_msg").val();
+		let s_zipNo = $("#s_zipNo").val();
+		//alert(m_email +s_name +s_addr +s_phone +s_msg +s_zipNo);
+		
+		var IMP = window.IMP; // 생략가능
+		IMP.init('imp55458654');
+		IMP.request_pay({
+			//pg: 'inicis', // version 1.1.0부터 지원.
+			pay_method: 'card',
+			merchant_uid: 'merchant_' + new Date().getTime(),
+			name: '주문명 : 하이북스 테스트',
+			amount: 100,	//테스트 완료 후 가격정보 넣기
+			buyer_email: m_email,
+			buyer_name: s_name,
+			buyer_tel: s_phone,
+			buyer_addr: s_addr,
+			buyer_postcode: s_zipNo
+			}, function (rsp) {
+				console.log(rsp);
+				if (rsp.success) {
+					var msg = '결제가 완료되었습니다.';
+					msg += '고유ID : ' + rsp.imp_uid;
+					msg += '상점 거래ID : ' + rsp.merchant_uid;
+					msg += '결제 금액 : ' + rsp.paid_amount;
+					msg += '카드 승인번호 : ' + rsp.apply_num;
+					let purchaseVo = {
+							m_email: m_email,
+							s_name: s_name,
+							s_addr: s_addr,
+							s_phone: s_phone,
+							s_msg: s_msg,
+							s_zipNo: s_zipNo,
+							o_shipno: rsp.merchant_uid,
+							o_paidAmount: rsp.paid_amount,
+							o_paytype: rsp.pay_method
+						}
+					
+					$.ajax({
+						url : "placeorder.do",
+						type : "get",
+						data : purchaseVo,
+						dataType : "text",
+						success : function(result){
+							if(result == "y") {
+								alert(msg);
+								location.href = "orderComplete.do"; 
+							}else{
+								alert("디비입력실패");
+								return false;
+							}
+						},
+						error : function(a,b,c){}
+					});
+				} else {
+					var msg = '결제에 실패하였습니다.';
+					msg += '에러내용 : ' + rsp.error_msg;
+				}
+				alert(msg);
+			});
+		});
+    </script>
 </body>
 
 </html>

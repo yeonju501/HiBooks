@@ -13,5 +13,8 @@ public class PurchaseVo {
 	private String s_addr;
 	private String s_phone;
 	private String s_msg;
-	//private int o_paytype;
+	private String s_zipNo;
+	private String o_shipno;
+	private long o_paidAmount;
+	private String o_paytype;
 }

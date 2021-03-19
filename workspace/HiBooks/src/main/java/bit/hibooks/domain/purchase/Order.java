@@ -14,6 +14,7 @@ public class Order {
 	private String m_email;
 	private int o_status;
 	private Date o_odate;
-	private int o_paytype;
+	private String o_paytype;
 	private String o_shipno;
+	private long o_paidAmount;
 }

@@ -19,6 +19,8 @@
    	   <typeAlias alias="Order" type="bit.hibooks.domain.purchase.Order"/>
    	   <typeAlias alias="Orderdetail" type="bit.hibooks.domain.purchase.Orderdetail"/>
    	   <typeAlias alias="ShipInfo" type="bit.hibooks.domain.purchase.ShipInfo"/>
+   	   <typeAlias alias="PurchaseResult" type="bit.hibooks.domain.purchase.PurchaseResult"/>
+   	   <typeAlias alias="OrderDetailResult" type="bit.hibooks.domain.purchase.OrderDetailResult"/>
    	   
    	   <typeAlias alias="MemberDetails" type="bit.hibooks.security.MemberDetails"/>
    	   
@@ -26,7 +28,10 @@
    	   
    	   <typeAlias alias="RecommendVo" type="bit.hibooks.domain.admin.RecommendVo"/>
    	   <typeAlias alias="RecomListResult" type="bit.hibooks.domain.admin.RecomListResult"/>
-		<typeAlias alias="Chart" type="bit.hibooks.domain.admin.Chart"/>
+	   <typeAlias alias="Chart" type="bit.hibooks.domain.admin.Chart"/>
+   	   
+   	   <typeAlias alias="BoardN" type="bit.hibooks.domain.boardn.BoardN"/>
+   	   <typeAlias alias="BNFile" type="bit.hibooks.domain.boardn.BNFile"/>
    </typeAliases>
    <mappers>
    	   <mapper resource="bit/hibooks/mapper/MemberMapper.xml"/>
@@ -38,5 +43,6 @@
    	   <mapper resource="bit/hibooks/mapper/QfileMapper.xml"/>
    	   <mapper resource="bit/hibooks/mapper/WishListMapper.xml"/>
 	   <mapper resource="bit/hibooks/mapper/AdminMapper.xml"/>
+	   <mapper resource="bit/hibooks/mapper/BoardNoticeMapper.xml"/>
    </mappers>
 </configuration>

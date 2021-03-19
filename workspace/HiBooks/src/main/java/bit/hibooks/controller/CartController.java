@@ -50,8 +50,8 @@ public class CartController {
 		//CartListResult cartLR = new CartListResult(book,cartVo);
 		//session.setAttribute("cartLR",cartLR);
 		
-		
-		return "redirect:cart.do";
+		//return listCart(session);
+		return "redirect:../purchase/cart.do";
 	}
 	
 	@RequestMapping("cart.do")
