@@ -63,7 +63,6 @@ public class SearchController {
 		} else {
 			return mv;
 		}
-
 	}
 	
 	@ResponseBody

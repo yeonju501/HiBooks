@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import bit.hibooks.domain.purchase.CartVo;
 import bit.hibooks.domain.purchase.WishVo;
 import bit.hibooks.security.MemberDetails;
 import bit.hibooks.service.WishListService;
@@ -39,6 +40,14 @@ public class WishListController {
 	public String removeItem(WishVo wishVo) {
 		service.removeItem(wishVo);
 		return "redirect: moveWishPage.do";
+	}
+	@GetMapping("moveCart.do")
+	public String moveCart(CartVo cartVo, Authentication auth) {
+		MemberDetails memberDetails = (MemberDetails) auth.getPrincipal();
+		WishVo wishVo = new WishVo(cartVo.getItemId(), memberDetails.getUsername());
+		service.removeItem(wishVo);
+		log.info(cartVo);
+		return "forward:../purchase/add.do";
 	}
 }
 

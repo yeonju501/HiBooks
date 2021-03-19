@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<mapper namespace="bit.hibooks.mapper.BoardNoticeMapper">
+		<insert id="insert" parameterType="BoardN">
+			<selectKey keyProperty="bn_seq" order="BEFORE" resultType="long">
+				select BOARDN_SEQ.nextval from dual
+			</selectKey>
+			insert into BOARDN values(
+				#{bn_seq},
+				#{bn_topic, jdbcType=VARCHAR},
+				#{bn_writer, jdbcType=VARCHAR},
+				#{bn_email, jdbcType=VARCHAR},
+				#{bn_subject, jdbcType=VARCHAR},
+				#{bn_content, jdbcType=VARCHAR},
+				SYSDATE,
+				#{bn_udate, jdbcType=DATE},
+				#{bn_count, jdbcType=INTEGER}
+			)
+		</insert>
+		<insert id="insertFile" parameterType="BNFile">
+			insert into BNFILE values(
+				BNFILE_SEQ.nextval,
+				#{bn_seq},
+				#{nf_fname, jdbcType=VARCHAR},
+				#{nf_ofname, jdbcType=VARCHAR},
+				#{nf_fsize, jdbcType=INTEGER}
+			)
+		</insert>
+	
+	
+	
+	</mapper>

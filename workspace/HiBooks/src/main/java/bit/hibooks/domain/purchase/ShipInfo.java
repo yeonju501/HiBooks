@@ -14,4 +14,5 @@ public class ShipInfo {
 	private String s_name;
 	private String s_msg;
 	private String s_phone;
+	private String s_zipNo;
 }

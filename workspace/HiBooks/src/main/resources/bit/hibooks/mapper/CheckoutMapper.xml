@@ -8,13 +8,62 @@
  		<selectKey keyProperty="o_seq" order="BEFORE" resultType="long">
               select ORD_SEQ.nextval from dual
         </selectKey>
-	  	insert into ORD values(#{o_seq},#{m_email},0,SYSDATE,0,null)
+	  	insert into ORD values(
+	  		#{o_seq},
+	  		#{m_email},
+	  		#{o_status, jdbcType=VARCHAR},
+	  		SYSDATE,
+	  		#{o_paytype, jdbcType=VARCHAR},
+	  		#{o_shipno, jdbcType=VARCHAR},
+	  		#{o_paidAmount, jdbcType=INTEGER}
+	  		)
 	  </insert>
 	  <insert id="insertOrderdetail" parameterType="Orderdetail">
-	  	insert into ORD_DETAIL values(#{o_seq},#{b_itemId},#{od_vol},#{od_total})
+	  	insert into ORD_DETAIL values(
+	  		#{o_seq},
+	  		#{b_itemId},
+	  		#{od_vol},
+	  		#{od_total}
+	  		)
 	  </insert>
 	   <insert id="insertShipInfo" parameterType="ShipInfo">
-	  	insert into ShipInfo values(#{m_email},#{o_seq},#{s_addr},#{s_name},null,#{s_phone})
+	  	insert into ShipInfo values(
+	  		#{m_email},
+	  		#{o_seq},
+	  		#{s_addr},
+	  		#{s_name},
+	  		#{s_msg, jdbcType=VARCHAR},
+	  		#{s_phone},
+	  		#{s_zipNo}
+	  		)
 	  </insert>
+	  
+	  <select id="selectShipIng" parameterType="String" resultType="PurchaseResult">
+	  		select ord.o_seq, ord.o_odate, aa.b_title, ord.o_paidamount, ord.o_shipno from ORD ord
+		  		join 
+		  			(select od.o_seq, b.b_title from ORD_DETAIL od join BOOK b on od.b_itemid = b.b_itemid) aa
+	    		on ord.o_seq = aa.o_seq
+	    		where m_email = #{m_email} and o_staus = -1
+	  </select>
+	  <select id="selectShipComplete" parameterType="String" resultType="PurchaseResult">
+	  		select ord.o_seq, ord.o_odate, aa.b_title, ord.o_paidamount, ord.o_shipno from ORD ord
+    			join 
+    				(select od.o_seq, b.b_title from ORD_DETAIL od join BOOK b on od.b_itemid = b.b_itemid) aa
+    			on ord.o_seq = aa.o_seq
+    			where m_email = #{m_email} and o_staus = 1
+	  </select>
+	  
+	  <select id="selectCount" parameterType="long" resultType="int">
+	  		select COUNT(o_seq) from ORD_DETAIL where o_seq = #{o_seq}
+	  </select>
+	  
+	  <select id="selectOrderDetail" parameterType="long" resultType="OrderDetailResult">
+	  		select b.b_itemid, b.b_img, b.b_title, b.b_price, od.od_vol, od.od_total 
+	  			from ORD_DETAIL od 
+				join BOOK b
+				on od.b_itemid = b.b_itemid
+				where o_seq = #{o_seq}
+	  </select>
+	  
   </mapper>
   

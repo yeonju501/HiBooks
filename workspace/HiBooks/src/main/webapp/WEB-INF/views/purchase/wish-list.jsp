@@ -405,7 +405,7 @@
     		
     		let itemId = document.getElementById("itemId"+i).value;
     		if(confirm("카트로 상품을 옮기시겠습니까?")==true){
-    			location.href = "../purchase/add.do?vol="+vol+"&itemId="+itemId;
+    			location.href = "moveCart.do?vol="+vol+"&itemId="+itemId;
     		}else{
     			return false;
     		}

@@ -91,7 +91,7 @@ public class BookController {
 	@ResponseBody
 	@GetMapping("review.do")
 	public ReviewResult ajaxReview(ReviewVo reviewVo) {
-		log.info(reviewVo);
+		//log.info(reviewVo);
 		ReviewResult rr= service.getReviewList(reviewVo);
 		//log.info(rr);
 		return rr;
@@ -112,7 +112,7 @@ public class BookController {
 	public ReviewResult ajaxLikeReview(BookReview br, ReviewVo reviewVo) {
 		ReviewResult rr = service.likeReview(br, reviewVo);
 		if(rr== null) {
-			return null;	// 한 책에 한 사람이 두번의 댓글을 단 경우.
+			return null;	// 한 책에 한 사람이 두번의 좋아요을 한 경우.
 		}else {
 			return rr;
 		}

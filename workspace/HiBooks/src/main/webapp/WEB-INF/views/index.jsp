@@ -38,7 +38,8 @@
     <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
     <script src="assets/js/vendor/jquery-1.12.0.min.js"></script>
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script>
-        <script src="assets/js/service-search.js"></script>
+    <script src="assets/js/service-search.js"></script>
+    
 </head>
 <body>
     <div class="wrapper">
@@ -105,7 +106,7 @@
                                                             <a href="admin/recommend.do">관리자페이지</a>
                                                         </li>
                                                         <li class="switcher-menu-item">
-                                                            <a href="">커뮤니티</a>
+                                                            <a href="purchase/orderComplete.do">결제내역</a>
                                                         </li>
                                                         <li class="switcher-menu-item">
                                                             <a href="">...</a>
@@ -173,7 +174,7 @@
 
                                                 <li class="active"><a href="">공지/문의</a>
                                                     <ul>
-                                                        <li><a href="">공지</a></li>
+                                                        <li><a href="boardNotice/write.do">공지</a></li>
                                                         <li><a href="boardq/list.do">문의</a></li>
                                                     </ul>
                                                 </li>
@@ -226,7 +227,7 @@
             </div>
         </header>
         <!-- header end -->
-               
+             
         <footer class="footer-color">
             <div class="footer-container">
                 <!--Footer Top Area Start-->
@@ -335,7 +336,7 @@
     <script src="assets/js/owl.carousel.min.js"></script>
     <script src="assets/js/plugins.js"></script>
     <script src="assets/js/main.js"></script>
-
+	
 
 </body>
 
