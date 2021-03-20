@@ -39,7 +39,7 @@ $(function(){
     		var header = $("meta[name='_csrf_header']").attr("content"); 
     		$.ajax({
                     type: 'post',
-                    url: "../product/getauto.do",
+                    url: "product/getauto.do",
                     dataType: "json",
                     //request.term = $("#autocomplete").val()
                     data: { "keyword" : $("#keyword").val()},

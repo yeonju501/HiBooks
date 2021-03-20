@@ -227,7 +227,56 @@
             </div>
         </header>
         <!-- header end -->
-             
+        <div class="Shopping-cart-area ptb-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="pg___title">
+                            <h2>공지게시판</h2>
+                        </div>
+                        <div class="table-content table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="anadi-product-remove">글번호</th>
+                                        <th class="anadi-product-price">말머리</th>
+                                        <th class="anadi-product-thumbnail">글제목</th>
+                                        <th class="cart-product-name">작성자</th>
+                                        <th class="anadi-product-quantity">등록일</th>
+                                        <th class="anadi-product-subtotal">조회수</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                   	<c:forEach items="${noticeListResult.list}" var="boardN">
+                                   	<tr>
+                                       <td class="anadi-product-remove">
+                                       		${boardN.bn_seq}
+                                       </td>
+                                       <td class="anadi-product-thumbnail">
+                                           ${boardN.bn_topic}
+                                       </td>
+                                       <td class="anadi-product-name">
+                                           <a href="content.do?bn_seq=${boardN.bn_seq}">${boardN.bn_subject}</a>
+                                       </td>
+                                       <td class="anadi-product-price">
+                                           ${boardN.bn_writer}
+                                       </td>
+                                       <td class="anadi-product-quantity">
+                                           ${boardN.bn_rdate}
+                                       </td>
+                                       <td class="product-subtotal">
+                                           ${boardN.bn_count}
+                                       </td>
+                                   </tr>
+                                   </c:forEach>
+                                </tbody>
+                            </table>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <footer class="footer-color">
             <div class="footer-container">
                 <!--Footer Top Area Start-->
@@ -317,11 +366,8 @@
                 <!--Footer Bottom Area End-->
             </div>
         </footer>
-        <!-- modal -->
-        
-        </div>
+               
     </div>
-
     <!-- all js here -->
     <script src="../assets/js/vendor/jquery-1.12.0.min.js"></script>
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script>

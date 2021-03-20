@@ -1,7 +1,7 @@
 var index=1;
 
-		$(document).on("click","button", function (){
-			       var j = $("button").index(this);  
+		$(document).on("click",".selectRecom", function (){
+			       var j = $(".selectRecom").index(this);  
 				   $.ajax({
 					   url: "../admin/showbook.do", 
 					   type: "GET",

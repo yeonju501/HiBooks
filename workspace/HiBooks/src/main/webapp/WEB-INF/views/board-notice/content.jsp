@@ -1,8 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="bit.hibooks.setting.MemberModeSet"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="bit.hibooks.setting.MemberModeSet"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!doctype html>
 <html class="no-js" lang="zxx">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -18,8 +20,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.png">
 	
     <!-- all css here -->
-    <!-- <link rel="stylesheet" href="../assets/css/bootstrap.min.css"> -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/animate.css">
     <link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
     <link rel="stylesheet" href="../assets/css/chosen.min.css">
@@ -33,16 +34,14 @@
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/service-index.css">
     <link rel="stylesheet" href="../assets/css/responsive.css">
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"/>
-    <link rel="stylesheet" href="../assets/summernote/summernote-lite.css"/>
+    <link rel="stylesheet" href="../assets/css/sub.css">
+    <link rel="stylesheet" href="../assets/css/service-board-notice.css">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
     <script src="../assets/js/vendor/modernizr-2.8.3.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="../assets/js/vendor/jquery-1.12.0.min.js"></script>
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script>
     <script src="../assets/js/service-search.js"></script>
     
-    
-    
-	
 </head>
 <body>
     <div class="wrapper">
@@ -177,7 +176,7 @@
 
                                                 <li class="active"><a href="">공지/문의</a>
                                                     <ul>
-                                                        <li><a href="">공지</a></li>
+                                                        <li><a href="boardNotice/list.do">공지</a></li>
                                                         <li><a href="boardq/list.do">문의</a></li>
                                                     </ul>
                                                 </li>
@@ -230,44 +229,67 @@
             </div>
         </header>
         <!-- header end -->
-        <div class="contact-form-area pt-100 pb-65">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-1"></div>
-                    <div class="col-lg-10">
-                        <div class="contact-form-inner">
-                            <h2>Write</h2>
-                            <form name="input" method="post" action ="write.do" enctype="multipart/form-data">
-                                &nbsp;<h3>공지사항 작성</h3>
-                                <select name="bn_topic" >
-								    <option value="">말머리</option>
-								    <option value="1">이벤트</option>
-								    <option value="2">2</option>
-								    <option value="3">3</option>
-								    <option value="4">4</option>
-								    <option value="5">5</option>
-							    </select>
-							    <br/><br/><br/>
-							    &nbsp;<label>제목</label>
-                                   <input type="text" name="bn_subject" class="form-control">
-                                   <br/>
-                                   <input type="text" class="form-control" name="bn_writer" value="관리자">
-                                   <br/>
-								 <div id="summernote" class="note-editable" contenteditable="true" role="textbox" 
-								 aria-multiline="true" spellcheck="true" name="bn_content">Hello Summernote</div>
-								   <br/>
-								 <input type ="file" name="fs" multiple>
-                                <div class="contact-submit">
-                                    <input type="submit" value="글쓰기 등록" class="wpcf7-form-control wpcf7-submit button">
-                                </div>
-                            </form>
+       <!-- contents -->
+    <div class="contents" id="content">
+        <!-- sub -->
+        <section class="sub sub--notice">
+            <!-- section__03 -->
+            <div class="section section__03">
+                <div class="title__wrap">
+                    <h2 class="title title--h2" data-title="공지사항"><span>공지사항</span></h2>
+                </div>
+                <div class="board">
+                    <div class="board__head">
+                        <h3 class="title title--h3">[${ncr.boardN.bn_topic}]<wbr>${ncr.boardN.bn_subject} </h3>
+                        <div class="info">
+                            <h4>
+                            <span class="info__item info__item--date">${ncr.boardN.bn_rdate}</span>&nbsp;&nbsp;
+                            <span class="info__item info__item--author">${ncr.boardN.bn_writer}</span>
+                            </h4>
+                            <br/>
+                            <c:forEach items="${ncr.fileList}" var="bNFile">
+                            	<a class="info__item info__item--link" href="download.do?nf_seq=${bNFile.nf_seq}">
+                            		<i class="zmdi zmdi-download zmdi-hc-2x"></i>&nbsp;${bNFile.nf_ofname}&nbsp;&nbsp;${bNFile.nf_fsize}KB
+                            	</a>
+                            	
+                        	</c:forEach>
                         </div>
                     </div>
-                    <div class="col-lg-1"></div>
-                 </div>
+                    <div class="board__body">
+                    <br>
+                        ${ncr.boardN.bn_content}
+                    </div>
+                    <div class="board__footer">
+                        <a href="list.do">
+                        	<button type="button" class="button button--list">목록</button>
+                        </a>
+                        <%-- <div class="navigation">
+                            <table class="table">
+                                <colgroup>
+                                    <col>
+                                    <col>
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <th>이전글</th>
+                                        <td><a href="#" class="bar">석유 및 석유대체연료사업법 위반 석유판매업(주유소) 행정처분 공표</a></td>
+                                    </tr>
+                                    <tr>
+                                        <th>다음글</th>
+                                        <td><a href="#" class="bar">공개감사 안내문</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div> --%>
+                    </div>
+                </div>
             </div>
-        </div>
-             
+            <!-- //section__03 -->
+        </section>
+        <!-- //sub -->
+    </div>
+    <!-- //contents -->
+        
         <footer class="footer-color">
             <div class="footer-container">
                 <!--Footer Top Area Start-->
@@ -357,7 +379,7 @@
                 <!--Footer Bottom Area End-->
             </div>
         </footer>
-        <!-- modal -->
+    
         
     </div>
     
@@ -376,46 +398,8 @@
     <script src="../assets/js/owl.carousel.min.js"></script>
     <script src="../assets/js/plugins.js"></script>
     <script src="../assets/js/main.js"></script>
-    <script src="../assets/summernote/summernote-lite.js"></script>
-    <script src="../assets/summernote/lang/summernote-ko-KR.js"></script>
 	
-    <script type="text/javascript">
-	    $(document).ready(function() {
-			//여기 아래 부분
-			$('#summernote').summernote({
-				  height: 300,                 // 에디터 높이
-				  minHeight: null,             // 최소 높이
-				  maxHeight: null,             // 최대 높이
-				  focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
-				  lang: "ko-KR",					// 한글 설정
-				  placeholder: '최대 2048자까지 쓸 수 있습니다',
-				  callbacks: {
-			  			onImageUpload : function(files, editor, welEditable){
-			  				for (var i = files.length - 1; i >= 0; i--) {
-			  		            uploadSummernoteImageFile(files[i], editor, welEditable);
-			  				}
-			  			}
-			  		}
-			});
-		});
-		function uploadSummernoteImageFile(file, editor, welEditable ) {
-			data = new FormData();
-			data.append("file", file);
-			$.ajax({
-				data : data,
-				type : "POST",
-				url : "uploadImgTemp.do",
-				contentType : false,
-				enctype : 'multipart/form-data',
-				processData : false,
-				success : function(result){
-					result = JSON.parse(result);
-					$("#summernote").summernote('insertImage', result.url);
-				}
-			});
-		}
-	</script>
-	
+
 </body>
 
 </html>

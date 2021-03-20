@@ -29,6 +29,19 @@
 			)
 		</insert>
 	
-	
-	
+		<select id="selectNotice" resultType="BoardN">
+			select * from BOARDN
+		</select>
+		<select id="selectNoticeContent" parameterType="long" resultType="BoardN">
+			select * from BOARDN where BN_SEQ = #{bn_seq}
+		</select>
+		<select id="selectContentFile" parameterType="long" resultType="BNFile">
+			select * from BNFILE where BN_SEQ = #{bn_seq}
+		</select>
+		<select id="selectFName" parameterType="long" resultType="String">
+			select NF_FNAME from BNFILE where NF_SEQ = #{nf_seq}
+		</select>
+		<update id="updateCnt" parameterType="long">
+			update BOARDN set BN_COUNT = BN_COUNT + 1 where BN_SEQ = #{bn_seq}
+		</update>
 	</mapper>

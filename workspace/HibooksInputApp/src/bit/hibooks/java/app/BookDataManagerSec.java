@@ -26,7 +26,7 @@ public class BookDataManagerSec implements BookDataManager {
 		String url = "jdbc:oracle:thin:@localhost:1521:JAVA";
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			con = DriverManager.getConnection(url, "SPRING", "JAVA");
+			con = DriverManager.getConnection(url, "board", "java");
 		}catch(ClassNotFoundException cnfe) {
 			System.out.println("#오라클 드라이버 인식 실패");
 		}catch(SQLException se) {

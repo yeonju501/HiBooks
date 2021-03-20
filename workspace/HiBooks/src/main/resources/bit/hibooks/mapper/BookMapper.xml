@@ -30,10 +30,10 @@
 	 		select COUNT(ROWNUM) from BOOK where b_cate = 200
 	 	</select>
 		<select id="getAdviceCnt" resultType="long">
-	 		select COUNT(ROWNUM) from BOOK where b_cate = 300
+	 		select COUNT(ROWNUM) from BOOK where b_cate = 400
 	 	</select>
 	 	<select id="getHumanCnt" resultType="long">
-	 		select COUNT(ROWNUM) from BOOK where b_cate = 400
+	 		select COUNT(ROWNUM) from BOOK where b_cate = 300
 	 	</select>
 	 	<select id="getPoemCnt" resultType="long">
 	 		select COUNT(ROWNUM) from BOOK where b_cate = 500

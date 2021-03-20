@@ -22,16 +22,12 @@ public class IndexController {
 	
 	private RecommendService service;
 	
-//	@RequestMapping("/")
-//	public String index() {
-//		return "index";
-//	}
-	
-	  @RequestMapping("/") 
-	  public ModelAndView index() {
-	  IndexListResult indexLR= service.getSec();
-	  ModelAndView mv = new ModelAndView("index", "indexLR", indexLR);
-	  return mv; 
-	  }
-	 }
+
+	@RequestMapping("/") 
+	public ModelAndView index() {
+		IndexListResult indexLR= service.getSec();
+		ModelAndView mv = new ModelAndView("index", "indexLR", indexLR);
+		return mv; 
+	}
+}
  

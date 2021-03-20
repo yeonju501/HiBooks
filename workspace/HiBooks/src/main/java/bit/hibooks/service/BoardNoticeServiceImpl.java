@@ -10,6 +10,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import bit.hibooks.domain.boardn.BNFile;
 import bit.hibooks.domain.boardn.BoardN;
+import bit.hibooks.domain.boardn.NoticeContentResult;
+import bit.hibooks.domain.boardn.NoticeListResult;
 import bit.hibooks.mapper.BoardNoticeMapper;
 import bit.hibooks.setting.Filepath;
 import lombok.AllArgsConstructor;
@@ -52,7 +54,22 @@ public class BoardNoticeServiceImpl implements BoardNoticeService {
 			}
 		}
 	}
-	
+	public NoticeListResult getList() {
+		NoticeListResult noticeLR = new NoticeListResult();
+		noticeLR.setList(mapperBN.selectNotice());
+		return noticeLR;
+	}
+	public NoticeContentResult getContent(long bn_seq) {
+		mapperBN.updateCnt(bn_seq);
+		NoticeContentResult ncr = new NoticeContentResult();
+		ncr.setBoardN(mapperBN.selectNoticeContent(bn_seq));
+		ncr.setFileList(mapperBN.selectContentFile(bn_seq));
+		return ncr;
+	}
+	public String getFileName(long nf_seq) {
+		String nf_fname = mapperBN.selectFName(nf_seq);
+		return nf_fname;
+	}
 	private void saveStore(MultipartFile file, long bn_seq) {
 		String ofname = file.getOriginalFilename();
 		int idx = ofname.lastIndexOf(".");

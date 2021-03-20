@@ -1,0 +1,31 @@
+@charset "UTF-8";
+.board__head {
+    padding: 50px 30px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #222;
+}
+.board__head .info {
+    display: block;
+    font-size: 0;
+    width: 100%;
+}
+.board__head .info__item {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 16px;
+    color: #666;
+}
+.board__head .info__item+.info__item {
+    position: relative;
+    margin-left: 18px;
+}
+.board__body {
+    padding: 40px 0 60px;
+    border-bottom: 1px solid #ddd;
+    display: -webkit-inline-box;
+}
+.board__footer {
+    padding: 40px 0 60px;
+    text-align: center;
+    
+}
