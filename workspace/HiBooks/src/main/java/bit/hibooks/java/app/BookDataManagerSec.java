@@ -142,7 +142,7 @@ public class BookDataManagerSec implements BookDataManager {
 				}
 		}
 		
-		Komoran komoran = new Komoran(DEFAULT_MODEL.LIGHT);
+		Komoran komoran = new Komoran(DEFAULT_MODEL.STABLE);
 		String b_desc= doc.selectFirst("div #introduce_book > p").text();
 		KomoranResult analyzeResultList= komoran.analyze(b_desc);
 		ArrayList<String> list=(ArrayList<String>)analyzeResultList.getNouns();
