@@ -226,14 +226,6 @@
 			<artifactId>spring-security-taglibs</artifactId>
 			<version>${spring.security.version}</version>
 		</dependency>
-		
-		<!-- Komoran -->
-	 	<dependency>
-		    <groupId>com.github.shin285</groupId>
-		    <artifactId>KOMORAN</artifactId>
-		    <version>3.3.4</version>
-	 	</dependency>
-		  
 		<!-- File Upload -->
 		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
 		<dependency>

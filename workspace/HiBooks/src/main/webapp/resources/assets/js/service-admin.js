@@ -1,7 +1,8 @@
-var index=1;
+var index=0;
+var i;
 
-		$(document).on("click","button", function (){
-			       var j = $("button").index(this);  
+		$(document).on("click",".selectRecom", function (){
+			       var j = $(".selectRecom").index(this) + 1;  
 				   $.ajax({
 					   url: "../admin/showbook.do", 
 					   type: "GET",
@@ -13,7 +14,7 @@ var index=1;
 							  return false;
 						  }
 						  var html= "";
-							html += '<div class="col-lg-3 col-md-6 col-12">';
+							html += '<div class="col-lg-3 col-md-6 col-12" id="recom">';
 							html += '<div class="product-wrapper mb-60">';
 							html += '<div class="product-img">';
 							html += '<input type="hidden" name="re_seq'+index+'" value="'+responseData.b_seq+'">';
@@ -69,8 +70,8 @@ var index=1;
 							html +=	'</div>';
 							html +=	'</div>';
 
-						  if(index<9){
-							  $("#Recommend-ajax").after(html);
+						  if(index<8){
+							  $("#Recommend-ajax").before(html);
 							  index++;
 						  }else{
 							  alert("8권을 초과할 수 없습니다.");
@@ -81,13 +82,11 @@ var index=1;
 					   }
 				   });
 			   });
-/*		var book = function(event) {
-			   var thisBook = $(event.target);
-			   // thisEle 변수에 이벤트 객체를 제이쿼리 요소로 전달받음
-			   thisBook.remove();
-			} */
+
 		$(document).on("click",".delete", function (){
-			 var i = $(".delete").index(this);
-			 alert(index+","+i);
+			 $(this).parents("#recom").remove();
+			 index--;
 		   });
+		
+
 		

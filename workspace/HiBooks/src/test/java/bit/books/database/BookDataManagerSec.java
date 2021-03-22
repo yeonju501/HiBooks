@@ -66,7 +66,7 @@ public class BookDataManagerSec {
 //		log.info(doc.selectFirst("tr.selling_price_row > td.book_price > span").text()); 	// 가격(숫자만)
 //		log.info(doc.selectFirst("div #introduce_book > p").text()); // 책소개
 		
-		Komoran komoran = new Komoran(DEFAULT_MODEL.FULL);
+		Komoran komoran = new Komoran(DEFAULT_MODEL.STABLE);
 		String b_desc= doc.selectFirst("div #introduce_book > p").text();
 		KomoranResult analyzeResultList= komoran.analyze(b_desc);
 		ArrayList<String> list=(ArrayList<String>)analyzeResultList.getNouns();

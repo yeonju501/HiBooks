@@ -9,6 +9,7 @@ import bit.hibooks.domain.IndexListResult;
 import bit.hibooks.domain.admin.Chart;
 import bit.hibooks.domain.admin.RecomListResult;
 import bit.hibooks.domain.admin.RecommendVo;
+import bit.hibooks.domain.admin.UpdateListResult;
 import bit.hibooks.domain.book.Book;
 import bit.hibooks.mapper.AdminMapper;
 import lombok.AllArgsConstructor;
@@ -80,5 +81,17 @@ public class RecommendServiceImpl implements RecommendService {
 		return list;
 		
 	}
+	
+	@Override
+	public UpdateListResult getNewBook() {
+		List<Book> listNovel = mapper.getNewBook(100);
+		List<Book> listEconomy = mapper.getNewBook(200);
+		List<Book> listSociety = mapper.getNewBook(300);
+		List<Book> listSelf = mapper.getNewBook(400);
+		List<Book> listEssay = mapper.getNewBook(500);
+		return new UpdateListResult(listNovel, listEconomy, listSociety, listSelf, listEssay);
+		
+	}
+	
 
 }

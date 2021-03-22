@@ -267,7 +267,7 @@
                                     <a class="nav-link" data-toggle="tab" href="#recommend">추천상품선택</a>
                                 </li>
                                 <li>
-                                    <a class="nav-link" data-toggle="tab" href="#address">배송관리</a>
+                                    <a class="nav-link" data-toggle="tab" href="#address">신간 업데이트</a>
                                 </li>
                                 <li>
                                     <a class="nav-link" data-toggle="tab" href="#account-details">공지사항 작성</a>
@@ -477,7 +477,7 @@
        												</c:otherwise>
 													</c:choose>
                                                     <td>
-                                                        <button class="select"id="select${status.count}" name="${status.count}" value="${book.b_seq}">선택</button>
+                                                        <button class="selectRecom"id="select${status.count}" name="${status.count}" value="${book.b_seq}">선택</button>
                                                     </td>
                                                 </tr>
 												  </c:forEach>
@@ -495,7 +495,7 @@
                                                   <input type="text" name="re_title" class="form-control" aria-label="...">
                                                   <div class="input-group-btn">
                                                      <select name="re_loc" >
-													    <option value="0">=== 선택 ===</option>
+													    <option value="0">선택</option>
 													    <option value="1">1</option>
 													    <option value="2">2</option>
 													    <option value="3">3</option>
@@ -572,7 +572,111 @@
                                     </form>
                                 </div>
                                 <div id="address" class="tab-pane">
-
+                                <div class="container">
+								  <div class="row">
+								    <div class="col-xs-12">
+								    <h3 style="width:700px;">이 달의 신간</h3>
+								    <select id="bcate">
+								    	<option value="none">선택</option>
+								    	<option value="100">소설</option>
+								    	<option value="200">경영/경제</option>
+								    	<option value="300">인문/사회/역사</option>
+								    	<option value="400">자기계발</option>
+								    	<option value="500">에세이/시</option>
+								    </select>
+								    <br/><br/><br/>
+								      <table class="table table-bordered table-hover dt-responsive" style="max-width:75%;">
+								        <thead>
+								          <tr>
+								            <th style="width:20%">책 제목</th>
+								            <th style="width:10%">이미지</th>
+								            <th style="width:40%">소개</th>
+								            <th style="width:20%">작가</th>
+								            <th style="width:10%">가격</th>
+								          </tr>
+								        </thead>
+								        <tbody>
+								         <c:forEach items="${updateLR.listNovel}" var="book" varStatus="status">
+								          <tr id="novel" >
+								            <td>${book.b_title}</td>
+								            <td><img style="display:block;width:100%;" src="${book.b_img}"></td>
+								            <c:choose>
+                                             <c:when test="${fn:length(book.b_desc) gt 100}">
+                                             <td><c:out value="${fn:substring(book.b_desc, 0, 100)}"></c:out>...</td>
+                                             </c:when><c:otherwise>
+                                              <td><c:out value="${book.b_desc}"></c:out></td>
+												</c:otherwise>
+											</c:choose>
+								            <td>${book.b_writer}, ${book.b_translator}</td>
+								        	<td>${book.b_price}원</td>
+								          </tr>
+								          </c:forEach>
+								          <c:forEach items="${updateLR.listEconomy}" var="book" varStatus="status">
+								          <tr id="economy">
+								            <td>${book.b_title}</td>
+								            <td><img style="display:block;width:100%;" src="${book.b_img}"></td>
+								            <c:choose>
+                                             <c:when test="${fn:length(book.b_desc) gt 100}">
+                                             <td><c:out value="${fn:substring(book.b_desc, 0, 100)}"></c:out>...</td>
+                                             </c:when><c:otherwise>
+                                              <td><c:out value="${book.b_desc}"></c:out></td>
+												</c:otherwise>
+											</c:choose>
+								            <td>${book.b_writer}, ${book.b_translator}</td>
+								        	<td>${book.b_price}원</td>
+								          </tr>
+								          </c:forEach>
+								          <c:forEach items="${updateLR.listSociety}" var="book" varStatus="status">
+								          <tr id="society">
+								            <td>${book.b_title}</td>
+								            <td><img style="display:block;width:100%;" src="${book.b_img}"></td>
+								            <c:choose>
+                                             <c:when test="${fn:length(book.b_desc) gt 100}">
+                                             <td><c:out value="${fn:substring(book.b_desc, 0, 100)}"></c:out>...</td>
+                                             </c:when><c:otherwise>
+                                              <td><c:out value="${book.b_desc}"></c:out></td>
+												</c:otherwise>
+											</c:choose>
+								            <td>${book.b_writer}, ${book.b_translator}</td>
+								        	<td>${book.b_price}원</td>
+								          </tr>
+								          </c:forEach>
+								         <c:forEach items="${updateLR.listSelf}" var="book" varStatus="status">
+								          <tr id="self">
+								            <td>${book.b_title}</td>
+								            <td><img style="display:block;width:100%;" src="${book.b_img}"></td>
+								            <c:choose>
+                                             <c:when test="${fn:length(book.b_desc) gt 100}">
+                                             <td><c:out value="${fn:substring(book.b_desc, 0, 100)}"></c:out>...</td>
+                                             </c:when><c:otherwise>
+                                              <td><c:out value="${book.b_desc}"></c:out></td>
+												</c:otherwise>
+											</c:choose>
+								            <td>${book.b_writer}, ${book.b_translator}</td>
+								        	<td>${book.b_price}원</td>
+								          </tr>
+								          </c:forEach>
+								         <c:forEach items="${updateLR.listEssay}" var="book" varStatus="status">
+								          <tr id="essay">
+								            <td>${book.b_title}</td>
+								            <td><img style="display:block;width:100%;" src="${book.b_img}"></td>
+								            <c:choose>
+                                             <c:when test="${fn:length(book.b_desc) gt 100}">
+                                             <td><c:out value="${fn:substring(book.b_desc, 0, 100)}"></c:out>...</td>
+                                             </c:when><c:otherwise>
+                                              <td><c:out value="${book.b_desc}"></c:out></td>
+												</c:otherwise>
+											</c:choose>
+								            <td>${book.b_writer}, ${book.b_translator}</td>
+								        	<td>${book.b_price}원</td>
+								          </tr>
+								          </c:forEach>
+								        </tbody>
+								      </table>
+								    </div>
+								  </div>
+								</div>
+								
                                 </div>
                                 <div id="account-details" class="tab-pane">
                                     <form method="post">
