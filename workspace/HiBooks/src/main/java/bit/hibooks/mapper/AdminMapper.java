@@ -14,6 +14,7 @@ public interface AdminMapper {
 	void deleteSec(int re_loc);
 	RecomListResult getSec(int re_loc);
 	long getCount(int b_cate);
+	List<Book> getNewBook (int b_cate);
 
 	
 }

@@ -1,13 +1,14 @@
 package bit.hibooks.java.app;
 
-import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
 
-@EnableScheduling
+@Component
 public class BookDataUserNew {
 	
-	@Scheduled(fixedDelay = 5000)
-	public static void main(String[] args) {
+	@Scheduled(cron = "0 0 0 1 * *")
+	public void updateBook() {
+	
 	BookDataManager bdm = new BookDataManagerSec();
 	String urlNovel = "https://ridibooks.com/category/new-releases/100?&page=";	// 선택한 카테고리 url 지정(리스트 페이지)
 	String urlEconomy = "https://ridibooks.com/category/new-releases/200?page=";

@@ -15,4 +15,5 @@ public interface RecommendService {
 	void sendRecom(RecomListResult recomListResult);
 	IndexListResult getSec();
 	List<Chart> getChart();
+	UpdateListResult getNewBook();
 }

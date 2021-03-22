@@ -41,4 +41,10 @@
 	select count(b_seq) from book where b_cate = #{b_cate}
 	</select>
 	
+	<select id="getNewBook" resultType="Book" parameterType="int">
+	<![CDATA[ 
+	select * from (select * from book where b_cate= #{b_cate} order by b_seq desc) where ROWNUM <= 20
+	]]>
+	</select>
+	
 	</mapper>

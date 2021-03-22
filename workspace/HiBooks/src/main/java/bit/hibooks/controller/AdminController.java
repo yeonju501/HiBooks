@@ -26,6 +26,7 @@ import com.google.gson.JsonObject;
 import bit.hibooks.domain.admin.Chart;
 import bit.hibooks.domain.admin.RecomListResult;
 import bit.hibooks.domain.admin.RecommendVo;
+import bit.hibooks.domain.admin.UpdateListResult;
 import bit.hibooks.domain.book.Book;
 import bit.hibooks.service.RecommendService;
 import lombok.AllArgsConstructor;
@@ -39,8 +40,10 @@ public class AdminController {
 	private RecommendService service;
 	
 	@RequestMapping("recommend.do")
-	public String recommend() {
-		return "admin/admin";
+	public ModelAndView recommend() {
+		UpdateListResult updateLR = service.getNewBook();
+		ModelAndView mv = new ModelAndView("admin/admin", "updateLR", updateLR);
+		return mv;
 	}
 	
 	@RequestMapping ("recomsearch.do")

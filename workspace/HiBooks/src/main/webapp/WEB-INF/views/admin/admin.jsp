@@ -576,68 +576,101 @@
 								  <div class="row">
 								    <div class="col-xs-12">
 								    <h3 style="width:700px;">이 달의 신간</h3>
-								    <select>
+								    <select id="bcate">
 								    	<option value="none">선택</option>
 								    	<option value="100">소설</option>
 								    	<option value="200">경영/경제</option>
-								    	<option value="300">자기 계발</option>
-								    	<option value="400">인문/사회/역사</option>
+								    	<option value="300">인문/사회/역사</option>
+								    	<option value="400">자기계발</option>
 								    	<option value="500">에세이/시</option>
 								    </select>
 								    <br/><br/><br/>
 								      <table class="table table-bordered table-hover dt-responsive" style="max-width:75%;">
 								        <thead>
 								          <tr>
-								            <th>카테고리</th>
-								            <th>이미지</th>
-								            <th>책 제목</th>
-								            <th>작가</th>
-								            <th>가격</th>
+								            <th style="width:20%">책 제목</th>
+								            <th style="width:10%">이미지</th>
+								            <th style="width:40%">소개</th>
+								            <th style="width:20%">작가</th>
+								            <th style="width:10%">가격</th>
 								          </tr>
 								        </thead>
 								        <tbody>
-								          <tr>
-								            <td>Argentina</td>
-								            <td>Spanish (official), English, Italian, German, French</td>
-								            <td>41,803,125</td>
-								            <td>31.3</td>
-								            <td>2,780,387</td>
+								         <c:forEach items="${updateLR.listNovel}" var="book" varStatus="status">
+								          <tr id="novel" >
+								            <td>${book.b_title}</td>
+								            <td><img style="display:block;width:100%;" src="${book.b_img}"></td>
+								            <c:choose>
+                                             <c:when test="${fn:length(book.b_desc) gt 100}">
+                                             <td><c:out value="${fn:substring(book.b_desc, 0, 100)}"></c:out>...</td>
+                                             </c:when><c:otherwise>
+                                              <td><c:out value="${book.b_desc}"></c:out></td>
+												</c:otherwise>
+											</c:choose>
+								            <td>${book.b_writer}, ${book.b_translator}</td>
+								        	<td>${book.b_price}원</td>
 								          </tr>
-								          <tr>
-								            <td>Australia</td>
-								            <td>English 79%, native and other languages</td>
-								            <td>23,630,169</td>
-								            <td>37.3</td>
-								            <td>7,739,983</td>
+								          </c:forEach>
+								          <c:forEach items="${updateLR.listEconomy}" var="book" varStatus="status">
+								          <tr id="economy">
+								            <td>${book.b_title}</td>
+								            <td><img style="display:block;width:100%;" src="${book.b_img}"></td>
+								            <c:choose>
+                                             <c:when test="${fn:length(book.b_desc) gt 100}">
+                                             <td><c:out value="${fn:substring(book.b_desc, 0, 100)}"></c:out>...</td>
+                                             </c:when><c:otherwise>
+                                              <td><c:out value="${book.b_desc}"></c:out></td>
+												</c:otherwise>
+											</c:choose>
+								            <td>${book.b_writer}, ${book.b_translator}</td>
+								        	<td>${book.b_price}원</td>
 								          </tr>
-								          <tr>
-								            <td>Greece</td>
-								            <td>Greek 99% (official), English, French</td>
-								            <td>11,128,404</td>
-								            <td>43.2</td>
-								            <td>131,956</td>
+								          </c:forEach>
+								          <c:forEach items="${updateLR.listSociety}" var="book" varStatus="status">
+								          <tr id="society">
+								            <td>${book.b_title}</td>
+								            <td><img style="display:block;width:100%;" src="${book.b_img}"></td>
+								            <c:choose>
+                                             <c:when test="${fn:length(book.b_desc) gt 100}">
+                                             <td><c:out value="${fn:substring(book.b_desc, 0, 100)}"></c:out>...</td>
+                                             </c:when><c:otherwise>
+                                              <td><c:out value="${book.b_desc}"></c:out></td>
+												</c:otherwise>
+											</c:choose>
+								            <td>${book.b_writer}, ${book.b_translator}</td>
+								        	<td>${book.b_price}원</td>
 								          </tr>
-								          <tr>
-								            <td>Luxembourg</td>
-								            <td>Luxermbourgish (national) French, German (both administrative)</td>
-								            <td>536,761</td>
-								            <td>39.1</td>
-								            <td>2,586</td>
+								          </c:forEach>
+								         <c:forEach items="${updateLR.listSelf}" var="book" varStatus="status">
+								          <tr id="self">
+								            <td>${book.b_title}</td>
+								            <td><img style="display:block;width:100%;" src="${book.b_img}"></td>
+								            <c:choose>
+                                             <c:when test="${fn:length(book.b_desc) gt 100}">
+                                             <td><c:out value="${fn:substring(book.b_desc, 0, 100)}"></c:out>...</td>
+                                             </c:when><c:otherwise>
+                                              <td><c:out value="${book.b_desc}"></c:out></td>
+												</c:otherwise>
+											</c:choose>
+								            <td>${book.b_writer}, ${book.b_translator}</td>
+								        	<td>${book.b_price}원</td>
 								          </tr>
-								          <tr>
-								            <td>Russia</td>
-								            <td>Russian, others</td>
-								            <td>142,467,651</td>
-								            <td>38.4</td>
-								            <td>17,076,310</td>
+								          </c:forEach>
+								         <c:forEach items="${updateLR.listEssay}" var="book" varStatus="status">
+								          <tr id="essay">
+								            <td>${book.b_title}</td>
+								            <td><img style="display:block;width:100%;" src="${book.b_img}"></td>
+								            <c:choose>
+                                             <c:when test="${fn:length(book.b_desc) gt 100}">
+                                             <td><c:out value="${fn:substring(book.b_desc, 0, 100)}"></c:out>...</td>
+                                             </c:when><c:otherwise>
+                                              <td><c:out value="${book.b_desc}"></c:out></td>
+												</c:otherwise>
+											</c:choose>
+								            <td>${book.b_writer}, ${book.b_translator}</td>
+								        	<td>${book.b_price}원</td>
 								          </tr>
-								          <tr>
-								            <td>Sweden</td>
-								            <td>Swedish, small Sami- and Finnish-speaking minorities</td>
-								            <td>9,631,261</td>
-								            <td>41.1</td>
-								            <td>449,954</td>
-								          </tr>
+								          </c:forEach>
 								        </tbody>
 								      </table>
 								    </div>
