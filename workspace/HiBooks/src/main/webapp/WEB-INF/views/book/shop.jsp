@@ -244,11 +244,12 @@
                                                     <span class="count">${bookLR.economyCnt}</span>
                                                 </li>
                                                 <li class="cat-item">
-                                                    <a href="shop.do?cate=<%=BookModeSet.ADVICE %>&cp=1">자기 계발</a>
+                                                	<a href="shop.do?cate=<%=BookModeSet.HUMAN %>&cp=1">인문/사회/역사</a>
+                                                    
                                                     <span class="count">${bookLR.adviceCnt}</span>
                                                 </li>
                                                 <li class="cat-item">
-                                                    <a href="shop.do?cate=<%=BookModeSet.HUMAN %>&cp=1">인문/사회/역사</a>
+                                                    <a href="shop.do?cate=<%=BookModeSet.ADVICE %>&cp=1">자기 계발</a>
                                                     <span class="count">${bookLR.humanCnt}</span>
                                                 </li>
                                                 <li class="cat-item">

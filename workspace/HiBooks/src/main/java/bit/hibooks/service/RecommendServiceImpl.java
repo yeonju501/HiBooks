@@ -45,29 +45,33 @@ public class RecommendServiceImpl implements RecommendService {
 
 	@Override
 	public IndexListResult getSec() {
-		RecomListResult recomLRSec1 = mapper.getSec(1);
-		log.info(recomLRSec1.getRe_seq1());
-		List<Book> list1 = new ArrayList <Book>();
-		list1.add(mapper.getBook(recomLRSec1.getRe_seq1()));
-		list1.add(mapper.getBook(recomLRSec1.getRe_seq2()));
-		list1.add(mapper.getBook(recomLRSec1.getRe_seq3()));
-		list1.add(mapper.getBook(recomLRSec1.getRe_seq4()));
-		list1.add(mapper.getBook(recomLRSec1.getRe_seq5()));
-		list1.add(mapper.getBook(recomLRSec1.getRe_seq6()));
-		list1.add(mapper.getBook(recomLRSec1.getRe_seq7()));
-		list1.add(mapper.getBook(recomLRSec1.getRe_seq8()));
-		
-		RecomListResult recomLRSec2 = mapper.getSec(2);
-		ArrayList<Book> list2 = new ArrayList <Book>();
-		list2.add(mapper.getBook(recomLRSec2.getRe_seq1()));
-		list2.add(mapper.getBook(recomLRSec2.getRe_seq2()));
-		list2.add(mapper.getBook(recomLRSec2.getRe_seq3()));
-		list2.add(mapper.getBook(recomLRSec2.getRe_seq4()));
-		list2.add(mapper.getBook(recomLRSec2.getRe_seq5()));
-		list2.add(mapper.getBook(recomLRSec2.getRe_seq6()));
-		list2.add(mapper.getBook(recomLRSec2.getRe_seq7()));
-		list2.add(mapper.getBook(recomLRSec2.getRe_seq8()));
-		return new IndexListResult(recomLRSec1.getRe_title(),list1,recomLRSec2.getRe_title(),list2);	
+		try {
+			RecomListResult recomLRSec1 = mapper.getSec(1);
+			log.info(recomLRSec1.getRe_seq1());
+			List<Book> list1 = new ArrayList <Book>();
+			list1.add(mapper.getBook(recomLRSec1.getRe_seq1()));
+			list1.add(mapper.getBook(recomLRSec1.getRe_seq2()));
+			list1.add(mapper.getBook(recomLRSec1.getRe_seq3()));
+			list1.add(mapper.getBook(recomLRSec1.getRe_seq4()));
+			list1.add(mapper.getBook(recomLRSec1.getRe_seq5()));
+			list1.add(mapper.getBook(recomLRSec1.getRe_seq6()));
+			list1.add(mapper.getBook(recomLRSec1.getRe_seq7()));
+			list1.add(mapper.getBook(recomLRSec1.getRe_seq8()));
+			
+			RecomListResult recomLRSec2 = mapper.getSec(2);
+			ArrayList<Book> list2 = new ArrayList <Book>();
+			list2.add(mapper.getBook(recomLRSec2.getRe_seq1()));
+			list2.add(mapper.getBook(recomLRSec2.getRe_seq2()));
+			list2.add(mapper.getBook(recomLRSec2.getRe_seq3()));
+			list2.add(mapper.getBook(recomLRSec2.getRe_seq4()));
+			list2.add(mapper.getBook(recomLRSec2.getRe_seq5()));
+			list2.add(mapper.getBook(recomLRSec2.getRe_seq6()));
+			list2.add(mapper.getBook(recomLRSec2.getRe_seq7()));
+			list2.add(mapper.getBook(recomLRSec2.getRe_seq8()));
+			return new IndexListResult(recomLRSec1.getRe_title(),list1,recomLRSec2.getRe_title(),list2);
+		}catch(NullPointerException npe) {
+			return null;
+		}
 	}
 	
 	@Override

@@ -30,7 +30,11 @@
 		<beans:property name="maxUploadSize" value="100000000"></beans:property>
 		<beans:property name="maxInMemorySize" value="10485756"/>
 	</beans:bean>
-    
+    <!-- file download -->
+	<beans:bean id="fileDownloadView" class="bit.hibooks.setting.FileDownloadView" />
+	<beans:bean id="fileViewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver">
+	    <beans:property name="order" value="0" />
+	</beans:bean>
 	<context:component-scan base-package="bit.hibooks.controller" />
 	<context:component-scan base-package="bit.hibooks.java.app" />
 	<task:scheduler id="jobScheduler" pool-size="10"/>

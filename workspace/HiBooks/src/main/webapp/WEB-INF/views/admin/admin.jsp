@@ -33,14 +33,12 @@
     <link rel="stylesheet" href="../assets/css/bundle.css">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/service-index.css">
-   <link rel="stylesheet" href="../assets/css/service-admin.css">
+   	<link rel="stylesheet" href="../assets/css/service-admin.css">
     <link rel="stylesheet" href="../assets/css/responsive.css">
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />  
-    <link rel="stylesheet" href="../assets/css/summernote-lite.css">
-    <link rel="stylesheet" href="../assets/css/summernote-lite.min.css"> 
- <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-  <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="../assets/summernote/summernote-lite.css">
+    <link rel="stylesheet" href="../assets/summernote/summernote-lite.min.css"> 
+ 
     <script src="../assets/js/vendor/modernizr-2.8.3.min.js"></script>
     <script src="../assets/js/vendor/jquery-1.12.0.min.js"></script>
     <script type="text/javascript" language="javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
@@ -205,54 +203,9 @@
 					 $('.nav flex-column dashboard-list').find('li').eq(2).addClass('active').siblings().removeClass(); 
 				     $('.tab-content dashboard-content').find('#recommend').addClass('active in').siblings().removeClass('active in');
 			     });  */
-			 });
-		
-		$(document).ready(function() {
-			//여기 아래 부분
-			$('#summernote').summernote({
-				  height: 300,                 // 에디터 높이
-				  minHeight: null,             // 최소 높이
-				  maxHeight: null,             // 최대 높이
-				  focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
-				  lang: "ko-KR",					// 한글 설정
-				  placeholder: '최대 2048자까지 쓸 수 있습니다',
-				  callbacks : { 
-		            	onImageUpload : function(files, editor, welEditable) {
-		            // 파일 업로드(다중업로드를 위해 반복문 사용)
-		            for (var i = files.length - 1; i >= 0; i--) {
-		            uploadSummernoteImageFile(files[i],
-		            this);
-		            		}
-		            	}
-		            }
-		          
-			});
-		});
-		
-		function uploadSummernoteImageFile(file, editor, welEditable) {
-			data = new FormData();
-			data.append("file", file);
-			$.ajax({
-				data : data,
-				type : "POST",
-				url : "upload.do",
-				contentType : false,
-				enctype : 'multipart/form-data',
-				processData : false,
-				success : function(data) {
-					$('#summernote').summernote('editor.insertImage', data.url);
-				}
-			});
-		}
-	
-		$("div.note-editable").on('drop',function(e){
-	         for(i=0; i< e.originalEvent.dataTransfer.files.length; i++){
-	         	uploadSummernoteImageFile(e.originalEvent.dataTransfer.files[i],$("#summernote")[0]);
-	         }
-	        e.preventDefault();
-	   })
-
+			 });			
 		</script>
+		
 		<div class="my-account white-bg ptb-100">
             <div class="container">
                 <div class="account-dashboard">
@@ -679,27 +632,33 @@
 								
                                 </div>
                                 <div id="account-details" class="tab-pane">
-                                    <form method="post">
-                                    &nbsp;<h3>공지사항 작성</h3>
-                                     <select name="nb_subject" >
-									    <option value="0">말머리</option>
-									    <option value="1">1</option>
-									    <option value="2">2</option>
-									    <option value="3">3</option>
-									    <option value="4">4</option>
-									    <option value="5">5</option>
-								    </select>
-								    <br/><br/><br/>
-								    &nbsp;<label>제목</label>
-                                    <input type="text" name="nb_title" class="form-control">
-                                    <br/>
-									 <div id="summernote" class="note-editable" contenteditable="true" role="textbox" 
-									 aria-multiline="true" spellcheck="true">Hello Summernote</div>
-									   <br/>
-									  <button type="submit" class="btn btn-primary">등록</button>
-									 
-
-									</form>
+                                    <form name="input" method="post" action ="../boardNotice/write.do" enctype="multipart/form-data">
+		                                &nbsp;<h3>공지사항 작성</h3>
+		                                <select name="bn_topic" >
+										    <option value="">말머리</option>
+										    <option value="1">이벤트</option>
+										    <option value="2">2</option>
+										    <option value="3">3</option>
+										    <option value="4">4</option>
+										    <option value="5">5</option>
+									    </select>
+									    <br/><br/><br/>
+									    &nbsp;<label>제목</label>
+		                                   <input type="text" name="bn_subject" class="form-control">
+		                                   <br/>
+		                                   <input type="text" class="form-control" name="bn_writer" value="관리자">
+		                                   <br/>
+										 <textarea id="summernote" class="note-editable" contenteditable="true" role="textbox" 
+										 aria-multiline="true" spellcheck="true" name="bn_content"></textarea>
+										   <br/>
+										 <input id="fs" type ="file" name="fs" multiple>
+										 <div class="preview">
+										 <p></p>
+										</div>		                                
+										<div class="contact-submit">
+		                                    <input type="submit" value="글쓰기 등록" class="wpcf7-form-control wpcf7-submit button">
+		                                </div>
+                            		</form>
                                 </div>
                             </div>
                         </div>
@@ -808,10 +767,75 @@
     <script src="../assets/js/owl.carousel.min.js"></script>
     <script src="../assets/js/plugins.js"></script>
     <script src="../assets/js/main.js"></script>
-	 <script src="../assets/js/summernote-lite.js"></script>
-    <script src="../assets/js/summernote-lite.min.js"></script>
-	<script src="../assets/js/summernote-ko-KR.js"></script>
+	<script src="../assets/summernote/summernote-lite.js"></script>
+    <script src="../assets/summernote/lang/summernote-ko-KR.js"></script>
 	
+    <script type="text/javascript">
+	    $(document).ready(function() {
+			//여기 아래 부분
+			$('#summernote').summernote({
+				  height: 300,                 // 에디터 높이
+				  minHeight: null,             // 최소 높이
+				  maxHeight: null,             // 최대 높이
+				  focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
+				  lang: "ko-KR",					// 한글 설정
+				  placeholder: '최대 2048자까지 쓸 수 있습니다',
+				  callbacks: {
+			  			onImageUpload : function(files, editor, welEditable){
+			  				for (var i = files.length - 1; i >= 0; i--) {
+			  		            uploadSummernoteImageFile(files[i], editor, welEditable);
+			  				}
+			  			}
+			  		}
+			});
+		});
+		function uploadSummernoteImageFile(file, editor, welEditable ) {
+			data = new FormData();
+			data.append("file", file);
+			$.ajax({
+				data : data,
+				type : "POST",
+				url : "../boardNotice/uploadImgTemp.do",
+				contentType : false,
+				enctype : 'multipart/form-data',
+				processData : false,
+				success : function(result){
+					result = JSON.parse(result);
+					$("#summernote").summernote('insertImage', result.url);
+				}
+			});
+		}
+		
+		var fs = document.querySelector('#fs');
+		var preview = document.querySelector('.preview');
+		fs.addEventListener('change', showTextFile);
+		function showTextFile() {
+			while(preview.hasChildNodes()){
+				preview.removeChild(preview.firstChild);
+			}
+			var sF = fs.files;
+			var list = document.createElement('ul');
+			preview.appendChild(list);
+			for(var i=0; i< sF.length; i++) {
+				let file = sF[i];
+				var listItem = document.createElement('li');
+				var summary = document.createElement('div');
+				summary.textContent = '파일명 : '+ file.name + ' , 파일 크기 : ' + returnFileSize(file.size);
+				listItem.appendChild(summary);
+				list.appendChild(listItem);
+			}
+		}
+		
+		function returnFileSize(number) {
+			if(number < 1024) {
+				return number + 'bytes';
+			} else if(number > 1024 && number < 1048576) {
+				return (number/1024).toFixed(1) + 'KB';
+			} else if(number > 1048576) {
+				return (number/1048576).toFixed(1) + 'MB';
+			}
+		}
+	</script>
 </body>
 
 </html>
