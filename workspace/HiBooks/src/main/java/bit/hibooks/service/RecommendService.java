@@ -6,6 +6,7 @@ import bit.hibooks.domain.IndexListResult;
 import bit.hibooks.domain.admin.Chart;
 import bit.hibooks.domain.admin.RecomListResult;
 import bit.hibooks.domain.admin.RecommendVo;
+import bit.hibooks.domain.admin.UpdateListResult;
 import bit.hibooks.domain.book.Book;
 
 public interface RecommendService {
@@ -14,5 +15,4 @@ public interface RecommendService {
 	void sendRecom(RecomListResult recomListResult);
 	IndexListResult getSec();
 	List<Chart> getChart();
-
 }

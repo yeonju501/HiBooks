@@ -9,7 +9,10 @@ import bit.hibooks.domain.IndexListResult;
 import bit.hibooks.domain.admin.Chart;
 import bit.hibooks.domain.admin.RecomListResult;
 import bit.hibooks.domain.admin.RecommendVo;
+import bit.hibooks.domain.admin.UpdateListResult;
 import bit.hibooks.domain.book.Book;
+import bit.hibooks.java.app.BookDataManager;
+import bit.hibooks.java.app.BookDataManagerSec;
 import bit.hibooks.mapper.AdminMapper;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -80,5 +83,6 @@ public class RecommendServiceImpl implements RecommendService {
 		return list;
 		
 	}
+	
 
 }
