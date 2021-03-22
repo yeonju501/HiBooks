@@ -14,4 +14,5 @@ public interface BoardNoticeService {
 	NoticeListResult getList();
 	NoticeContentResult getContent(long bn_seq);
 	String getFileName(long nf_seq);
+	void updateNotice(BoardN boardN, ArrayList<MultipartFile> files);
 }

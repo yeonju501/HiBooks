@@ -31,12 +31,6 @@ import lombok.extern.log4j.Log4j;
 public class BoardNoticeController {
 	private BoardNoticeService serviceBN;
 	
-/*	@GetMapping("write.do")
-	public String moveWriteP(Principal principal, Model model) {
-		
-		return "board-notice/write";
-	}
-	*/
 	@ResponseBody
 	@PostMapping("uploadImgTemp.do")
 	public String uploadImgTemp(MultipartFile file) {
@@ -48,7 +42,7 @@ public class BoardNoticeController {
 		return jsonObject.toString();
 	}
 	
-	
+		
 	@PostMapping("write.do")
 	public String writeNotice(BoardN boardN, ArrayList<MultipartFile> fs) {
 		log.info(fs);
@@ -77,4 +71,16 @@ public class BoardNoticeController {
     		return new ModelAndView("redirect:list.do");
     	}
     }
+	
+	@GetMapping("update.do")
+	public String updatePage(long bn_seq, Model model) {
+		log.info(bn_seq);
+		model.addAttribute("ncr",serviceBN.getContent(bn_seq));
+		return "board-notice/update";
+	}
+	@PostMapping("update.do")
+	public String update(BoardN boardN, ArrayList<MultipartFile> fs) {
+		serviceBN.updateNotice(boardN, fs);
+		return "redirect:content.do?bn_seq="+ boardN.getBn_seq();
+	}
 }

@@ -1,6 +1,7 @@
 package bit.hibooks.domain.boardn;
 
-import java.util.ArrayList;
+
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,5 +11,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class NoticeListResult {
-	ArrayList<BoardN> list;
+	List<BoardN> list;
 }

@@ -547,8 +547,11 @@
 										 <textarea id="summernote" class="note-editable" contenteditable="true" role="textbox" 
 										 aria-multiline="true" spellcheck="true" name="bn_content"></textarea>
 										   <br/>
-										 <input type ="file" name="fs" multiple>
-		                                <div class="contact-submit">
+										 <input id="fs" type ="file" name="fs" multiple>
+										 <div class="preview">
+										 <p></p>
+										</div>		                                
+										<div class="contact-submit">
 		                                    <input type="submit" value="글쓰기 등록" class="wpcf7-form-control wpcf7-submit button">
 		                                </div>
                             		</form>
@@ -697,6 +700,36 @@
 					$("#summernote").summernote('insertImage', result.url);
 				}
 			});
+		}
+		
+		var fs = document.querySelector('#fs');
+		var preview = document.querySelector('.preview');
+		fs.addEventListener('change', showTextFile);
+		function showTextFile() {
+			while(preview.hasChildNodes()){
+				preview.removeChild(preview.firstChild);
+			}
+			var sF = fs.files;
+			var list = document.createElement('ul');
+			preview.appendChild(list);
+			for(var i=0; i< sF.length; i++) {
+				let file = sF[i];
+				var listItem = document.createElement('li');
+				var summary = document.createElement('div');
+				summary.textContent = '파일명 : '+ file.name + ' , 파일 크기 : ' + returnFileSize(file.size);
+				listItem.appendChild(summary);
+				list.appendChild(listItem);
+			}
+		}
+		
+		function returnFileSize(number) {
+			if(number < 1024) {
+				return number + 'bytes';
+			} else if(number > 1024 && number < 1048576) {
+				return (number/1024).toFixed(1) + 'KB';
+			} else if(number > 1048576) {
+				return (number/1048576).toFixed(1) + 'MB';
+			}
 		}
 	</script>
 </body>

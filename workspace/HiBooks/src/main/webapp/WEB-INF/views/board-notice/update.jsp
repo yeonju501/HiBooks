@@ -236,31 +236,34 @@
                     <div class="col-lg-1"></div>
                     <div class="col-lg-10">
                         <div class="contact-form-inner">
-                            <h2>Write</h2>
-                            <form name="input" method="post" action ="write.do" enctype="multipart/form-data">
-                                &nbsp;<h3>공지사항 작성</h3>
+                            <form name="input" method="post" action ="update.do" enctype="multipart/form-data">
+                                &nbsp;<h3>공지 수정</h3>
                                 <select name="bn_topic" >
 								    <option value="">말머리</option>
-								    <option value="1">이벤트</option>
-								    <option value="2">2</option>
-								    <option value="3">3</option>
-								    <option value="4">4</option>
-								    <option value="5">5</option>
+								    <option value="1" <c:if test="${ncr.boardN.bn_topic == 1}">selected</c:if>>이벤트</option>
+								    <option value="2" <c:if test="${ncr.boardN.bn_topic == 2}">selected</c:if>>2</option>
+								    <option value="3" <c:if test="${ncr.boardN.bn_topic == 3}">selected</c:if>>3</option>
+								    <option value="4" <c:if test="${ncr.boardN.bn_topic == 4}">selected</c:if>>4</option>
+								    <option value="5" <c:if test="${ncr.boardN.bn_topic == 5}">selected</c:if>>5</option>
 							    </select>
 							    <br/><br/><br/>
 							    &nbsp;<label>제목</label>
-                                   <input type="text" name="bn_subject" class="form-control">
+							    	<input type="hidden" name="bn_seq" value="${ncr.boardN.bn_seq}">
+                                   <input type="text" name="bn_subject" class="form-control" value="${ncr.boardN.bn_subject }">
                                    <br/>
-                                   <input type="text" class="form-control" name="bn_writer" value="관리자">
+                                   <input type="text" class="form-control" name="bn_writer" value="관리자" value="${ncr.boardN.bn_writer }">
                                    <br/>
-								 <div id="summernote" class="note-editable" contenteditable="true" role="textbox" 
-								 aria-multiline="true" spellcheck="true" name="bn_content">Hello Summernote</div>
+								 <textarea id="summernote" class="note-editable" contenteditable="true" role="textbox" 
+								 aria-multiline="true" spellcheck="true" name="bn_content">${ncr.boardN.bn_content}</textarea>
 								   <br/>
-								 <input type ="file" name="fs" multiple>
+								<input id="fs" type ="file" name="fs" multiple>
+								 <div class="preview">
+								 	<p></p>
+								</div>
                                 <div class="contact-submit">
-                                    <input type="submit" value="글쓰기 등록" class="wpcf7-form-control wpcf7-submit button">
+                                    <input type="submit" value="글 수정" class="wpcf7-form-control wpcf7-submit button">
                                 </div>
-                            </form>
+                          	</form>
                         </div>
                     </div>
                     <div class="col-lg-1"></div>
@@ -379,9 +382,11 @@
     <script src="../assets/summernote/summernote-lite.js"></script>
     <script src="../assets/summernote/lang/summernote-ko-KR.js"></script>
 	
-    <script type="text/javascript">
-	    $(document).ready(function() {
-			//여기 아래 부분
+	
+    <script type="text/javascript" >
+	   	$(document).ready(function() {
+			showInitFile();
+	   		//여기 아래 부분
 			$('#summernote').summernote({
 				  height: 300,                 // 에디터 높이
 				  minHeight: null,             // 최소 높이
@@ -413,6 +418,59 @@
 					$("#summernote").summernote('insertImage', result.url);
 				}
 			});
+		}
+		var fs = document.querySelector('#fs');
+		var preview = document.querySelector('.preview');
+		fs.addEventListener('change', showTextFile);
+		function showTextFile() {
+			while(preview.hasChildNodes()){
+				preview.removeChild(preview.firstChild);
+			}
+			var sF = fs.files;
+			var list = document.createElement('ul');
+			preview.appendChild(list);
+			for(var i=0; i< sF.length; i++) {
+				let file = sF[i];
+				var listItem = document.createElement('li');
+				var summary = document.createElement('div');
+				summary.textContent = '파일명 : '+ file.name + ' , 파일 크기 : ' + returnFileSize(file.size);
+				listItem.appendChild(summary);
+				list.appendChild(listItem);
+			}
+		}
+		
+		function returnFileSize(number) {
+			if(number < 1024) {
+				return number + 'bytes';
+			} else if(number > 1024 && number < 1048576) {
+				return (number/1024).toFixed(1) + 'KB';
+			} else if(number > 1048576) {
+				return (number/1048576).toFixed(1) + 'MB';
+			}
+		}
+		var ofL = new Array();
+		<c:forEach items="${ncr.fileList}" var ="file">
+			var obj = new Object();
+			obj.fileName = "${file.nf_ofname}";
+			obj.fileSize = "${file.nf_fsize}";
+			ofL.push(obj);
+		</c:forEach>
+		
+		function showInitFile() {
+			while(preview.hasChildNodes()){
+				preview.removeChild(preview.firstChild);
+			}
+			var list = document.createElement('ul');
+			preview.appendChild(list);
+			for(var i=0; i< ofL.length; i++) {
+				let fileName = ofL[i].fileName;
+				let fileSize = ofL[i].fileSize;
+				var listItem = document.createElement('li');
+				var summary = document.createElement('div');
+				summary.textContent = '파일명 : '+ fileName + ' , 파일 크기 : ' + returnFileSize(fileSize);
+				listItem.appendChild(summary);
+				list.appendChild(listItem);
+			}
 		}
 	</script>
 	

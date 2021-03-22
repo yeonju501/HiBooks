@@ -13,4 +13,6 @@ public interface BoardNoticeMapper {
 	ArrayList<BNFile> selectContentFile(long bn_seq);
 	String selectFName(long nf_seq);
 	void updateCnt(long bn_seq);
+	void updateNotice(BoardN boardN);
+	void deleteFileInfo(long bn_seq);
 }

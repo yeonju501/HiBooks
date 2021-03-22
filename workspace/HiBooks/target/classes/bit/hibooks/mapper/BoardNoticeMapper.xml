@@ -44,4 +44,16 @@
 		<update id="updateCnt" parameterType="long">
 			update BOARDN set BN_COUNT = BN_COUNT + 1 where BN_SEQ = #{bn_seq}
 		</update>
+		<update id="updateNotice" parameterType="BoardN">
+			update BOARDN set
+				BN_TOPIC = #{bn_topic},
+				BN_WRITER = #{bn_writer},
+				BN_SUBJECT = #{bn_subject},
+				BN_CONTENT = #{bn_content},
+				BN_UDATE = SYSDATE
+				where BN_SEQ = #{bn_seq}
+		</update>
+		<delete id="deleteFileInfo" parameterType="long">
+			delete from BNFILE where BN_SEQ = #{bn_seq}
+		</delete>
 	</mapper>

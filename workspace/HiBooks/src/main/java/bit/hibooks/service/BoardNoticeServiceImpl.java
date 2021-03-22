@@ -70,6 +70,16 @@ public class BoardNoticeServiceImpl implements BoardNoticeService {
 		String nf_fname = mapperBN.selectFName(nf_seq);
 		return nf_fname;
 	}
+	public void updateNotice(BoardN boardN, ArrayList<MultipartFile> files) {
+		mapperBN.updateNotice(boardN);
+		long bn_seq = boardN.getBn_seq();
+		mapperBN.deleteFileInfo(bn_seq);
+		if(files.size() != 0) {
+			for(MultipartFile file : files) {
+				saveStore(file, bn_seq);
+			}
+		}
+	}
 	private void saveStore(MultipartFile file, long bn_seq) {
 		String ofname = file.getOriginalFilename();
 		int idx = ofname.lastIndexOf(".");

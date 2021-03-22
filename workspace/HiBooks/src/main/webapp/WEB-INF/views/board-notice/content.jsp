@@ -251,7 +251,6 @@
                             	<a class="info__item info__item--link" href="download.do?nf_seq=${bNFile.nf_seq}">
                             		<i class="zmdi zmdi-download zmdi-hc-2x"></i>&nbsp;${bNFile.nf_ofname}&nbsp;&nbsp;${bNFile.nf_fsize}KB
                             	</a>
-                            	
                         	</c:forEach>
                         </div>
                     </div>
@@ -263,24 +262,10 @@
                         <a href="list.do">
                         	<button type="button" class="button button--list">목록</button>
                         </a>
-                        <%-- <div class="navigation">
-                            <table class="table">
-                                <colgroup>
-                                    <col>
-                                    <col>
-                                </colgroup>
-                                <tbody>
-                                    <tr>
-                                        <th>이전글</th>
-                                        <td><a href="#" class="bar">석유 및 석유대체연료사업법 위반 석유판매업(주유소) 행정처분 공표</a></td>
-                                    </tr>
-                                    <tr>
-                                        <th>다음글</th>
-                                        <td><a href="#" class="bar">공개감사 안내문</a></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div> --%>
+                        <a href="update.do?bn_seq=${ncr.boardN.bn_seq}">
+                        	<button type="button" class="button button--list">수정</button>
+                        </a>
+                       
                     </div>
                 </div>
             </div>
