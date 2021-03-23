@@ -35,8 +35,11 @@
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/product-details.css">
     <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
     <script src="../assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    
     <script src="https://use.fontawesome.com/5fb42bb368.js"></script>
+    
 	
 	
 	
@@ -109,16 +112,20 @@
                                                     <a >마이페이지</a>
                                                     <ul class="switcher__menus">
                                                         <li class="switcher-menu-item">
-                                                            <a href="">내 정보</a>
+                                                            <a href="../member/moveMyInfo.do">내 정보</a>
                                                         </li>
                                                         <li class="switcher-menu-item">
-                                                            <a href="">위시리스트</a>
-                                                        </li>
+                                                            <a href="../wishList/moveWishPage.do">위시리스트</a>
+                                                        </li>  
+                                                        <sec:authorize access="isAuthenticated()">
+	                                                        <sec:authorize access="hasRole([ROLE_ADMIN])">
+	                                                        <li class="switcher-menu-item">
+	                                                            <a href="../admin/recommend.do">관리자페이지</a>
+	                                                        </li>
+	                                                        </sec:authorize>
+                                                        </sec:authorize>
                                                         <li class="switcher-menu-item">
-                                                            <a href="">커뮤니티</a>
-                                                        </li>
-                                                        <li class="switcher-menu-item">
-                                                            <a href="">...</a>
+                                                            <a href="../purchase/orderComplete.do">결제내역</a>
                                                         </li>
                                                     </ul>
                                                 </li>
@@ -183,7 +190,7 @@
 
                                                 <li class="active"><a href="">공지/문의</a>
                                                     <ul>
-                                                        <li><a href="">공지</a></li>
+                                                        <li><a href="../boardNotice/list.do">공지</a></li>
                                                         <li><a href="../boardq/list.do">문의</a></li>
                                                     </ul>
                                                 </li>
@@ -219,9 +226,9 @@
 											
 											<li><a href="">공지/문의 <i class="ion-ios-arrow-down"></i></a>
 												<ul>
-													<li><a href=""> 공지</a></li>
+													<li><a href="../boardNotice/list.do"> 공지</a></li>
 													<li><a href="../boardq/list.do"> 문의</a></li>
-                                                    <li><a href=""> ....</a></li>
+                                                    
 												</ul>
 											</li>
 											
@@ -271,12 +278,11 @@
                                 <p>${book.b_publisher}</p>
                             </div>
                             <div class="product-price">
-                                <span class="old">$22.00 </span>
                                 <span>${book.b_price}원</span>
                             </div>
                             
                             <div class="quickview-plus-minus">
-                            	<form method="post" action="../purchase/add.do?itemId=${book.b_itemId}">	
+                            	<form id="input-cart-form" method="post" action="../purchase/add.do?itemId=${book.b_itemId}">	
 	                                <div class="cart-plus-minus">
 	                                    <input type="text" value="1" name="vol" class="cart-plus-minus-box" >
 	                                </div>
@@ -298,7 +304,7 @@
                                     </a>
                                 </div>
                                 <div class="quickview-btn-cart">
-                                    <a class="btn-style cr-btn" href="#">
+                                    <a class="btn-style cr-btn" href="../purchase/purchase.do?itemId=${book.b_itemId}">
                                         <span>구매</span>
                                     </a>
                                 </div>
@@ -1005,6 +1011,7 @@
 
     <!-- all js here -->
     <script src="../assets/js/vendor/jquery-1.12.0.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script>
     <script src="../assets/js/popper.js"></script>
     <script src="../assets/js/bootstrap.min.js"></script>
     <script src="../assets/js/isotope.pkgd.min.js"></script>
@@ -1016,7 +1023,11 @@
     <script src="../assets/js/plugins.js"></script>
     <script src="../assets/js/main.js"></script>
     <script src="../assets/js/service-book-content.js"></script>
+    
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script>
     <script src="../assets/js/service-search.js"></script>
+    
+    
 </body>
 
 </html>

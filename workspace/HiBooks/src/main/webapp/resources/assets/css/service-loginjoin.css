@@ -70,9 +70,10 @@ figure >img {
     font-size: 14px;
     color: #222;
     display: block;
-    text-align: center;
+    text-align: left;
     cursor: pointer;
     text-decoration: underline;
+    margin-left: 100px;
 }
 .signin-form {
     margin-right: 90px;
@@ -156,7 +157,7 @@ input[type=checkbox]:not(old) + label {
     margin-top: 6px;
 }
 label.label-agree-term{
-    top: -16px !important;
+    top: 57px !important;
     left: 20px !important;
 }
 .form-group:last-child {

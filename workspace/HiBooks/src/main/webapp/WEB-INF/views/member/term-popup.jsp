@@ -30,15 +30,24 @@
     <script src="../assets/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body>
-<div module="member_join">
-    <!--@css(/css/module/member/join_agree.css)-->
-    <h2>이용약관</h2>
+<div>
+    <h2>이용약관</h2>
     <div class="wrap">
     	<div id="agreeTerms">
+    	1. 이 웹 애플리케이션은 웹 개발 연습을 위해 만든 모델링 사이트입니다.<br>
+    	2. 실제 거래가 이뤄지지 않으니 조심해주세요!<br>
+    	3. 상품을 결제하시면 당일 24:00 이전에 환불됩니다.<br>
     	</div>
     </div>
     <div class="btnArea">
-        <button type="button" class="btnNormal" onclick="self.close();">ë«ê¸°</button>
+    	<br>
+        <button type="button" class="btnNormal" onclick="returnTrue();">동의</button>
     </div>
 </div>
+<script type="text/javascript">
+	function returnTrue(){
+		opener.document.getElementById("agree-term").checked = true;
+		self.close();
+	}
+</script>
 </body>

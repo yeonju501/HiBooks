@@ -17,7 +17,11 @@
 						b_cate = #{cate}	
 					</if>
 				</where>
-				order by b_rate desc, b_cate) b)
+				order by b_cate
+				<if test="sort != null">
+					,${sort}
+				</if>
+				) b)
 				where rnum &gt; #{initRow} and rnum &lt;= #{endRow}
 		</select>  
 	  	<select id="getTotalCnt" resultType="long">

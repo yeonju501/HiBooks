@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="bit.hibooks.setting.*"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!doctype html>
 <html class="no-js" lang="zxx">
 
@@ -11,9 +12,14 @@
     <title>Hibooks</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- security and ajax 403 -->
+	<meta name="_csrf" content="${_csrf.token}">
+	<meta name="_csrf_header" content="${_csrf.headerName}">
+	
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.png">
-
+	
     <!-- all css here -->
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/animate.css">
@@ -22,17 +28,25 @@
     <link rel="stylesheet" href="../assets/css/themify-icons.css">
     <link rel="stylesheet" href="../assets/css/fontawesome-all.css">
     <link rel="stylesheet" href="../assets/css/ionicons.min.css">
-    <link rel="stylesheet" href="../assets/css/jquery-ui.css">
     <link rel="stylesheet" href="../assets/css/material-design-iconic-font.css">
     <link rel="stylesheet" href="../assets/css/meanmenu.min.css">
     <link rel="stylesheet" href="../assets/css/tippy.css">
     <link rel="stylesheet" href="../assets/css/bundle.css">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
     <script src="../assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="../assets/js/vendor/jquery-1.12.0.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script>
+    <script src="../assets/js/service-search.js"></script>
+    
 </head>
 
 <body>
+<sec:authorize access="isAuthenticated()">
+		<sec:authentication property="principal.username" var="loginUser"/>
+		<input type="hidden" value="${loginUser}" id="login-user-for-js">
+</sec:authorize>
     <div class="wrapper">
         <!-- header start -->
         <header id="header_background">
@@ -87,16 +101,20 @@
                                                     <a >마이페이지</a>
                                                     <ul class="switcher__menus">
                                                         <li class="switcher-menu-item">
-                                                            <a href="">내 정보</a>
+                                                            <a href="../member/moveMyInfo.do">내 정보</a>
                                                         </li>
                                                         <li class="switcher-menu-item">
-                                                            <a href="">위시리스트</a>
-                                                        </li>
+                                                            <a href="../wishList/moveWishPage.do">위시리스트</a>
+                                                        </li>  
+                                                        <sec:authorize access="isAuthenticated()">
+	                                                        <sec:authorize access="hasRole([ROLE_ADMIN])">
+	                                                        <li class="switcher-menu-item">
+	                                                            <a href="../admin/recommend.do">관리자페이지</a>
+	                                                        </li>
+	                                                        </sec:authorize>
+                                                        </sec:authorize>
                                                         <li class="switcher-menu-item">
-                                                            <a href="">커뮤니티</a>
-                                                        </li>
-                                                        <li class="switcher-menu-item">
-                                                            <a href="">...</a>
+                                                            <a href="../purchase/orderComplete.do">결제내역</a>
                                                         </li>
                                                     </ul>
                                                 </li>
@@ -161,7 +179,7 @@
 
                                                 <li class="active"><a href="">공지/문의</a>
                                                     <ul>
-                                                        <li><a href="">공지</a></li>
+                                                        <li><a href="../boardNotice/list.do">공지</a></li>
                                                         <li><a href="../boardq/list.do">문의</a></li>
                                                     </ul>
                                                 </li>
@@ -197,9 +215,9 @@
 											
 											<li><a href="">공지/문의 <i class="ion-ios-arrow-down"></i></a>
 												<ul>
-													<li><a href=""> 공지</a></li>
+													<li><a href="../boardNotice/list.do"> 공지</a></li>
 													<li><a href="../boardq/list.do"> 문의</a></li>
-                                                    <li><a href=""> ....</a></li>
+                                                    
 												</ul>
 											</li>
 											
@@ -232,7 +250,7 @@
                                             <h5> 카테고리 </h5>
                                             <ul class="product-categories">
                                                 <li class="cat-item">
-                                                    <a href="shop.do?cp=1">전체</a>
+                                                    <a href="shop.do?cp=1&cate=1000">전체</a>
                                                     <span class="count">${bookLR.totalCnt}</span>
                                                 </li>
                                                 <li class="cat-item">
@@ -256,11 +274,7 @@
                                                     <a href="shop.do?cate=<%=BookModeSet.POEM %>&cp=1">에세이/시</a>
                                                     <span class="count">${bookLR.poemCnt }</span>
                                                 </li>
-                                                <li class="cat-item">
-                                                    <a href="#">....</a>
-                                                    <span class="count">(4)</span>
-                                                </li>
-                                                
+                                                                                               
                                             </ul>
                                         </div>
                                         
@@ -280,7 +294,8 @@
                                         <div class="tolbar__area">
                                             <div class="toolbar clearfix">
                                                 <div class="toolbar-inner">
-
+												<div class="row">
+                                                    <div class="col-4">
                                                     <div class="shop-tab view-mode nav" role=tablist>
                                                         <a class="active" href="#product-grid" data-toggle="tab" role="tab" aria-selected="false">
                                                             <i class="ion-grid"></i>
@@ -289,27 +304,29 @@
                                                             <i class="ion-navicon"></i>
                                                         </a>
                                                     </div>
-                                                    <p class="woocommerce-result-count">
-                                                         All pages: ${bookLR.totalPage}, All books: ${bookLR.totalCnt} 
-                                                    </p>
-                                                    <form method="get" class="woocommerce-ordering hidden-xs">
+                                                    </div>
+                                                    <div class="col-4">
+                                                    <form method="get" action="shop.do" class="woocommerce-ordering hidden-xs">
                                                         <div class="orderby-wrapper">
-                                                            <select class="orderby">
-                                                                <option value="popularity">Sort by popularity</option>
-                                                                <option value="rating">Sort by average rating</option>
-                                                                <option value="date">Sort by newness</option>
-                                                                <option value="price">Sort by price: low to high</option>
-                                                                <option value="price-desc">Sort by price: high to low</option>
+                                                            <select name="sort" class="orderby" onchange="submit()">
+                                                                <option value="b_rate desc" <c:if test="${bookVo.sort== 'b_rate desc'}">selected</c:if>>평점순</option>
+                                                                <option value="b_seq" <c:if test="${bookVo.sort== 'b_seq'}">selected</c:if>>인기순
+                                                         
                                                             </select>
                                                         </div>
                                                     </form>
-
+                                                    </div>
+                                                    <div class="col-4">
+                                                    <p class="woocommerce-result-count">
+                                                         All pages: ${bookLR.totalPage}, All books: ${bookLR.totalCnt} 
+                                                    </p>
+                                                    </div>
+												</div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                
                                 <!-- 상품 실제 foreach -->
                                 <div class="shop-product-content tab-content">
                                      <!-- 그리드 뷰 -->
@@ -323,31 +340,18 @@
                                                             <img alt="" src="${book.b_img}">
                                                         </a>
                                                         <div class="product-action-2">
-                                                            
-                                                            <a href="#" title="Add to Wishlist" class="action-plus-2 tooltip">
-                                                                <i class="zmdi zmdi-favorite-outline"></i>
-                                                            </a>
-                                                            
-                                                            <a href="#" title="Add To Cart"  class="action-plus-2 tooltip">
+                                                        	<input type="hidden" id="itemId" value="${book.b_itemId }"/>
+                                                            <a href="../purchase/add.do?itemId=${book.b_itemId}" title="Add To Cart"  class="action-plus-2 tooltip">
                                                                 <i class="zmdi zmdi-shopping-cart-plus"></i>
                                                             </a>
                                                         </div>
                                                         <div class="rating-box">
-                                                            <a href="#" class="rated" title="1 star">
-                                                                <i class="far fa-star"> </i>
-                                                            </a>
-                                                            <a href="#" class="rated" title="2 star">
-                                                                <i class="far fa-star"> </i>
-                                                            </a>
-                                                            <a href="#" title="3 star">
-                                                                <i class="far fa-star"> </i>
-                                                            </a>
-                                                            <a href="#" title="4 star">
-                                                                <i class="far fa-star"> </i>
-                                                            </a>
-                                                            <a href="#" title="5 star">
-                                                                <i class="far fa-star"> </i>
-                                                            </a>
+                                                             <c:forEach begin="1" end="${book.b_rate-(book.b_rate%1)}">
+                                                                 <i class="fa fa-star" style="color: red;"> </i>
+                                                             </c:forEach>
+                                                             <c:forEach begin="${book.b_rate-(book.b_rate%1)+1}" end="5">
+                                                                 <i class="far fa-star"> </i>
+                                                             </c:forEach>
                                                         </div>
                                                     </div>
                                                     <div class="product-content text-center">
@@ -388,21 +392,13 @@
 	                                                        <div class="row" id="row-product-info">
 	                                                            <div class="col-md-12" id="col-product-info">
 	                                                                <div class="rating-box">
-	                                                                    <a class="rated" title="1 star">
-	                                                                        <i class="far fa-star"> </i>
-	                                                                    </a>
-	                                                                    <a  class="rated" title="2 star">
-	                                                                        <i class="far fa-star"> </i>
-	                                                                    </a>
-	                                                                    <a  title="3 star">
-	                                                                        <i class="far fa-star"> </i>
-	                                                                    </a>
-	                                                                    <a  title="4 star">
-	                                                                        <i class="far fa-star"> </i>
-	                                                                    </a>
-	                                                                    <a title="5 star">
-	                                                                        <i class="far fa-star"> </i>
-	                                                                    </a>
+	                                                                    <br>                                                                        
+	                                                                    <c:forEach begin="1" end="${book.b_rate-(book.b_rate%1)}">
+		                                                                    <i class="fa fa-star" style="color: red;"> </i>
+		                                                                </c:forEach>
+		                                                                <c:forEach begin="${book.b_rate-(book.b_rate%1)+1}" end="5">
+		                                                                    <i class="far fa-star"> </i>
+		                                                                </c:forEach>
 	                                                                    <span>&nbsp;${book.b_rate }</span>
 	                                                                    &nbsp;|&nbsp;
 	                                                                    <span>${book.b_writer}</span>&nbsp;|&nbsp;
@@ -414,7 +410,18 @@
 	
 	                                                        </div>
 	                                                        
-	                                                        <p>${book.b_desc}</p>
+	                                                        <p>
+	                                                        <c:choose>
+		                                                        <c:when test="${fn:length(book.b_desc) gt 451}">
+		                                                           	${fn:substring(book.b_desc, 0, 451)}...
+		                                                        </c:when>
+		                                                        <c:otherwise>
+		                                                        	${book.b_desc}
+		                                                        	<c:forEach begin="0" end="${(451- fn:length(book.b_desc)) / 52 + 1}"><br></c:forEach>
+		                                                        </c:otherwise>
+	                                                        </c:choose>
+	                                                        </p>
+	                                                        
 	                                                        <div class="product-price-2">
 	                                                            <div class="price-box">
 	                                                                <ins>
@@ -429,7 +436,7 @@
 	                                                                <i class="zmdi zmdi-shopping-cart-plus"></i> Add to cart
 	                                                            </a>
 	                                                            
-	                                                            <a href="#" title="Add to Wishlist" class="action-plus-2 tooltip">
+	                                                            <a id="in-wish-list" href="javascript:void()" title="Add to Wishlist" class="action-plus-2 tooltip">
 	                                                                <i class="zmdi zmdi-favorite-outline"></i>
 	                                                            </a>
 	                                                            
@@ -585,22 +592,22 @@
 
 
     <!-- all js here -->
-    
     <script src="../assets/js/vendor/jquery-1.12.0.min.js"></script>
-    
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script>
     <script src="../assets/js/popper.js"></script>
     <script src="../assets/js/bootstrap.min.js"></script>
     <script src="../assets/js/isotope.pkgd.min.js"></script>
     <script src="../assets/js/imagesloaded.pkgd.min.js"></script>
     <script src="../assets/js/jquery.counterup.min.js"></script>
     <script src="../assets/js/waypoints.min.js"></script>
+    <script src="../assets/js/tippy.min.js"></script>
     <script src="../assets/js/ajax-mail.js"></script>
     <script src="../assets/js/owl.carousel.min.js"></script>
     <script src="../assets/js/plugins.js"></script>
     <script src="../assets/js/main.js"></script>
-    <script src="../assets/js/service-search.js"></script>
-    <!-- javascript -->
     
+    
+        
 </body>
 
 </html>

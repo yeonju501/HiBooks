@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="bit.hibooks.setting.MemberModeSet"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!doctype html>
 <html class="no-js" lang="zxx">
 
@@ -75,16 +76,20 @@
                                                     <a >마이페이지</a>
                                                     <ul class="switcher__menus">
                                                         <li class="switcher-menu-item">
-                                                            <a >내 정보</a>
+                                                            <a href="../member/moveMyInfo.do">내 정보</a>
                                                         </li>
                                                         <li class="switcher-menu-item">
-                                                            <a >위시리스트</a>
-                                                        </li>
+                                                            <a href="../wishList/moveWishPage.do">위시리스트</a>
+                                                        </li>  
+                                                        <sec:authorize access="isAuthenticated()">
+	                                                        <sec:authorize access="hasRole([ROLE_ADMIN])">
+	                                                        <li class="switcher-menu-item">
+	                                                            <a href="../admin/recommend.do">관리자페이지</a>
+	                                                        </li>
+	                                                        </sec:authorize>
+                                                        </sec:authorize>
                                                         <li class="switcher-menu-item">
-                                                            <a >커뮤니티</a>
-                                                        </li>
-                                                        <li class="switcher-menu-item">
-                                                            <a >...</a>
+                                                            <a href="../purchase/orderComplete.do">결제내역</a>
                                                         </li>
                                                     </ul>
                                                 </li>
@@ -108,7 +113,7 @@
                     <div class="signin-content">
                         <div class="signin-image">
                             <figure><img src="../assets/img/signin-image.jpg" alt="sing up image"></figure>
-                            <a href="#" class="signup-image-link">Create an account</a>
+                            <a href="join.do" class="signup-image-link">계정을 만들거에요.</a>
                         </div>
                         <div class="signin-form">
                             <h2 class="form-title">로그인</h2>
@@ -122,8 +127,8 @@
                                     <input type="password" name="m_pwd" id="pass" placeholder="비밀번호">
                                 </div>
                                 <div class="form-group">
-                                    <input type="checkbox" name="remember-me" id="remember-me" class="agree-term">
                                     <label for="remember-me" class="label-agree-term">Remember me</label>
+                                    <input type="checkbox" name="remember-me" id="remember-me" class="agree-term">
                                 </div>
                                 <div class="form-group form-button">
                                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
@@ -233,101 +238,7 @@
                 <!--Footer Bottom Area End-->
             </div>
         </footer>
-        <!-- modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span class="ion-android-close" aria-hidden="true"></span>
-                        </button>
-                        <div class="qwick-view-left">
-                            <div class="quick-view-learg-img">
-                                <div class="quick-view-tab-content tab-content">
-                                    <div class="tab-pane active show fade" id="modal1" role="tabpanel">
-                                        <img src="../assets/img/quick-view/l1.jpg" alt="">
-                                    </div>
-                                    <div class="tab-pane fade" id="modal2" role="tabpanel">
-                                        <img src="../assets/img/quick-view/l2.jpg" alt="">
-                                    </div>
-                                    <div class="tab-pane fade" id="modal3" role="tabpanel">
-                                        <img src="../assets/img/quick-view/l3.jpg" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="quick-view-list nav" role="tablist">
-                                <a class="active" href="#modal1" data-toggle="tab" role="tab" aria-selected="true">
-                                    <img src="../assets/img/quick-view/s1.jpg" alt="">
-                                </a>
-                                <a href="#modal2" data-toggle="tab" role="tab" aria-selected="false">
-                                    <img src="../assets/img/quick-view/s2.jpg" alt="">
-                                </a>
-                                <a href="#modal3" data-toggle="tab" role="tab" aria-selected="false">
-                                    <img src="../assets/img/quick-view/s3.jpg" alt="">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="qwick-view-right">
-                            <div class="qwick-view-content">
-                                <h3>Handcrafted Supper Mug</h3>
-                                <div class="price">
-                                    <span class="new">$90.00</span>
-                                    <span class="old">$120.00 </span>
-                                </div>
-                                <div class="rating-number">
-                                    <div class="quick-view-rating">
-                                        <i class="ion-ios-star red-star"></i>
-                                        <i class="ion-ios-star red-star"></i>
-                                        <i class="ion-ios-star red-star"></i>
-                                        <i class="ion-ios-star red-star"></i>
-                                        <i class="ion-ios-star red-star"></i>
-                                    </div>
-                                </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adip elit, sed do tempor incididun ut labore et dolore
-                                    magna aliqua. Ut enim ad mi , quis nostrud veniam exercitation .</p>
-                                <div class="quick-view-select">
-                                    <div class="select-option-part">
-                                        <label>Size*</label>
-                                        <select class="select">
-                                            <option value="">- Please Select -</option>
-                                            <option value="">900</option>
-                                            <option value="">700</option>
-                                        </select>
-                                    </div>
-                                    <div class="select-option-part">
-                                        <label>Color*</label>
-                                        <select class="select">
-                                            <option value="">- Please Select -</option>
-                                            <option value="">orange</option>
-                                            <option value="">pink</option>
-                                            <option value="">yellow</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="quickview-plus-minus">
-                                    <div class="cart-plus-minus">
-                                        <input type="text" value="02" name="qtybutton" class="cart-plus-minus-box">
-                                    </div>
-                                    <div class="quickview-btn-cart">
-                                        <a class="btn-style cr-btn" href="#">
-                                            <span>add to cart</span>
-                                        </a>
-                                    </div>
-                                    <div class="quickview-btn-wishlist">
-                                        <a class="btn-hover cr-btn" href="#">
-                                            <span>
-                                                <i class="ion-ios-heart-outline"></i>
-                                            </span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
     </div>
 
     <!-- all js here -->
