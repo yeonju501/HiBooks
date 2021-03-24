@@ -23,6 +23,13 @@ public class IndexController {
 	private RecommendService service;
 	
 
+	@RequestMapping("recommend/list.do") 
+	public ModelAndView recommend() {
+		IndexListResult indexLR= service.getSec();
+		ModelAndView mv = new ModelAndView("recommend/list", "indexLR", indexLR);
+		return mv; 
+	}
+	
 	@RequestMapping("/") 
 	public ModelAndView index() {
 		IndexListResult indexLR= service.getSec();

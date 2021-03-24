@@ -35,6 +35,7 @@
     <link rel="stylesheet" href="../assets/css/service-index.css">
    	<link rel="stylesheet" href="../assets/css/service-admin.css">
     <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="../assets/css/semantic.css">
     <link rel="stylesheet" href="../assets/css/dropdown.css">
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />  
     <link rel="stylesheet" href="../assets/summernote/summernote-lite.css">
@@ -43,7 +44,9 @@
     <script src="../assets/js/vendor/modernizr-2.8.3.min.js"></script>
     <script src="../assets/js/vendor/jquery-1.12.0.min.js"></script>
     <script type="text/javascript" language="javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+	<script src="../assets/js/semantic.js"></script> 
 	 <script src="../assets/js/service-admin.js"></script> 
+	  <script src="../assets/js/dropdown.js"></script>
 	 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	<script>
 	function ajaxData() {
@@ -107,7 +110,9 @@
 		ajaxData();
 	});
 	
-	$('#bcate').dropdown();
+	$('#select')
+	  .dropdown()
+	;
 	
 	</script>
 </head>
@@ -532,18 +537,11 @@
 								  <div class="row">
 								    <div class="col-xs-12">
 								    <h3 style="width:700px;">이 달의 신간</h3>
-								    <div class="ui selection dropdown" id="bcate">
-								    <input type="hidden" name="bcate">
-								    <i class="dropdown icon"></i>
-								    <div class="default text">카테고리</div>
-								    	<div class="menu">
-								    	<div class="item" data-value="100">소설</div>
-								    	<div class="item" data-value="200">경영/경제</div>
-								    	<div class="item" data-value="300">인문/사회/역사</div>
-								    	<div class="item" data-value="400">자기 계발</div>
-								    	<div class="item" data-value="500">에세이/시</div>
-								    	</div>
-								    </div>
+								   <select name="gender" class="ui dropdown" id="select">
+									  <option value="">Gender</option>
+									  <option value="male">Male</option>
+									  <option value="female">Female</option>
+									</select>
 								    <br/><br/><br/>
 								      <table class="table table-bordered table-hover dt-responsive" style="max-width:75%;">
 								        <thead>
@@ -774,7 +772,6 @@
     <script src="../assets/js/owl.carousel.min.js"></script>
     <script src="../assets/js/plugins.js"></script>
     <script src="../assets/js/main.js"></script>
-    <script src="../assets/js/dropdown.js"></script>
     
 	<script src="../assets/summernote/summernote-lite.js"></script>
     <script src="../assets/summernote/lang/summernote-ko-KR.js"></script>

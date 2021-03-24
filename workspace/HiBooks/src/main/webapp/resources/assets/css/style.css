@@ -37,11 +37,15 @@
 -----------------------------------------------------------------------------------*/
 
 /*1. Custom Font*/
-
+@font-face{
+	src:url("../fonts/RIDIBatang.otf");
+	font-family: "ridi"
+	
+} 
 @font-face {
-    font-family: 'DroidSerifRegular';
-    src: url('../fonts/DroidSerifRegular.eot');
-    src: url('../fonts/DroidSerifRegular.eot') format('embedded-opentype'), url('../fonts/DroidSerifRegular.woff2') format('woff2'), url('../fonts/DroidSerifRegular.woff') format('woff'), url('../fonts/DroidSerifRegular.ttf') format('truetype'), url('../fonts/DroidSerifRegular.svg#DroidSerifRegular') format('svg');
+    font-family: 'ridi';
+    src: url('../fonts/ridi.eot');
+    src: url('../fonts/ridi.eot') format('embedded-opentype'), url('../fonts/ridi.woff2') format('woff2'), url('../fonts/ridi.woff') format('woff'), url('../fonts/ridi.ttf') format('truetype'), url('../fonts/ridi.svg#ridi') format('svg');
 }
 
 @font-face {
@@ -98,7 +102,7 @@ p{
 }
 .header-topbar ul li strong {
   color: #333;
-  font-family: DroidSerifRegular;
+  font-family: ridi;
   font-weight: normal;
 }
 
@@ -111,7 +115,7 @@ p{
   color: rgb(255, 255, 255) !important; 
   display: inline-block;
   float: left;
-  font-family: droidserifregular;
+  font-family: ridi;
   font-size: 13px;
   margin-right: 0;
   padding: 14px 20px;
@@ -130,7 +134,7 @@ h2.switchertitle span {
 
 h2.switchertitle {
   color: #a1a1a1;
-  font-family: droidserifregular;
+  font-family: ridi;
   font-size: 11px;
   font-weight: 300;
 }
@@ -147,7 +151,7 @@ h2.switchertitle {
 
 ul.switcher__menus.switcher__menus {
   background: #fff none repeat scroll 0 0;
-  border: 1px solid #084b84;
+  border: 1px solid #FFFFFF;
   padding: 13px;
   z-index: 9;
 }
@@ -155,7 +159,7 @@ ul.switcher__menus.switcher__menus {
 .switcher_menus ul li.switcher-menu-item>a {
   color: #7e7e7e;
   display: block;
-  font-family: droidserifregular;
+  font-family: ridi;
   font-size: 12px;
   
   font-weight: 400;
@@ -209,7 +213,7 @@ ul.switcher__menus li.switcher-menu-item {
 
 .switcher ul > li.switcher-menu-active > a {
   color: #fff;
-  font-family: DroidSerifRegular;
+  font-family: ridi;
   font-size: 13px;
   padding: 0 9px 0 4px;
   position: relative;
@@ -218,8 +222,7 @@ ul.switcher__menus li.switcher-menu-item {
 
 .switcher ul>li.switcher-menu-active>a:after {
   background: transparent none repeat scroll 0 0;
-  content: "";
-  font-family: "themify";
+  font-family: ridi;
   font-size: 8px;
   font-style: normal;
   position: absolute;
@@ -235,7 +238,7 @@ ul.switcher__menus li.switcher-menu-item {
 ul.switcher__menus li.switcher-menu-item>a {
   color: #fff;
   display: block;
-  font-family: droidserifregular;
+  font-family: ridi;
   font-size: 12px;
   
   margin-bottom: 10px;
@@ -257,7 +260,7 @@ ul.switcher__menus li.switcher-menu-item:last-child>a {
 .menu_page ul.switcher__menus {
   background: #084b84 none repeat scroll 0 0;
   text-align: right;
-  width: 181px;
+  width: 150px;
 }
 
 .main-menu ul li {
@@ -268,7 +271,7 @@ ul.switcher__menus li.switcher-menu-item:last-child>a {
 
 .main-menu ul li a#in {
   color: #fff;
-  font-family: Roboto Slab;
+  font-family: ridi;
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0;
@@ -277,7 +280,7 @@ ul.switcher__menus li.switcher-menu-item:last-child>a {
 }
 .main-menu ul li a {
   color: #303030;
-  font-family: Roboto Slab;
+  font-family: ridi;
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0;
@@ -378,7 +381,7 @@ ul#main-custom{
 
 .main-menu nav ul li > ul.mega-menu li ul > li.mega-menu-title {
   color: #1a1a1a;
-  font-family: droidserifregular;
+  font-family: ridi;
   font-size: 14px;
   font-weight: 700;
   margin-bottom: 15px;
@@ -646,7 +649,7 @@ ul#main-custom{
   border-radius: 5px;
   color: #303030;
   display: block;
-  font-family: roboto slab;
+  font-family: ridi;
   font-size: 14px;
   font-weight: bold;
   line-height: 1;
@@ -695,7 +698,7 @@ ul#main-custom{
 .cart-content>span {
   color: #686868;
   display: block;
-  font-family: droidserifregular;
+  font-family: ridi;
   font-size: 14px;
   font-weight: 500;
   margin-bottom: 5px;
@@ -738,7 +741,7 @@ ul#main-custom{
 
 .slider-content p {
   color: #303030;
-  font-family: droidserifregular;
+  font-family: ridi;
   font-size: 14px;
   
   line-height: 24px;
@@ -749,7 +752,7 @@ ul#main-custom{
 a.slider-btn {
   color: #303030;
   display: inline-block;
-  font-family: roboto slab;
+  font-family: ridi;
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 2px;
@@ -1116,7 +1119,7 @@ a.slider-btn:hover:before {
 
 .product-tab-list a h4 {
   color: #303030;
-  font-family: roboto slab;
+  font-family: ridi;
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 0;
@@ -1336,7 +1339,7 @@ a.slider-btn:hover:before {
 
 .product-wrapper .price-box {
   color: #303030;
-  font-family: Roboto Slab;
+  font-family: ridi;
   font-size: 14px;
   font-weight: bold;
 }
@@ -1359,7 +1362,7 @@ a.slider-btn:hover:before {
   background-color: #303030;
   border-radius: 0 !important;
   color: #fff;
-  font-family: roboto slab;
+  font-family: ridi;
   font-size: 12px;
   padding: 6px 8px 11px;
 }
@@ -1631,7 +1634,7 @@ input.cart-plus-minus-box {
 .modal .price span.new {
   color: #303030;
   margin-right: 12px;
-  font-family: roboto slab;
+  font-family: ridi;
   font-size: 25px;
   font-weight: bold;
 }
@@ -1641,7 +1644,7 @@ input.cart-plus-minus-box {
   font-size: 20px;
   font-weight: normal;
   text-decoration: line-through;
-  font-family: roboto slab;
+  font-family: ridi;
 }
 
 .tooltip {
@@ -1781,7 +1784,7 @@ input.cart-plus-minus-box {
 .banner_Right_text .wpb_wrapper .text a {
   color: #303030;
   display: inline-block;
-  font-family: Roboto Slab;
+  font-family: ridi;
   font-size: 14px;
   font-weight: 700;
   margin-top: 48px;
@@ -1828,12 +1831,12 @@ input.cart-plus-minus-box {
   text-transform: uppercase;
   top: 12px;
   z-index: 3;
-  font-family: roboto slab;
+  font-family: ridi;
 }
 
 a.nrb_btn {
   color: #fff;
-  font-family: droidserifregular;
+  font-family: ridi;
   font-weight: 700;
   text-transform: uppercase;
   font-size: 14px;
@@ -1898,7 +1901,7 @@ a.nrb_btn:hover:after {
 .Hot_deals_area .hot_timer span {
   color: #fff;
   display: block;
-  font-family: Roboto Slab;
+  font-family: ridi;
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
@@ -1962,7 +1965,7 @@ a.nrb_btn:hover:after {
 .header-site-icon .same-style a .count-style {
   color: #303030;
   display: block;
-  font-family: droidserifregular;
+  font-family: ridi;
   font-size: 12px;
   font-weight: normal;
   position: absolute;
@@ -1983,7 +1986,7 @@ a.nrb_btn:hover:after {
 
 .home_blog_area .post-date.large {
   color: #303030;
-  font-family: Roboto Slab;
+  font-family: ridi;
   left: 0;
   line-height: 1;
   padding-top: 3px;
@@ -2021,7 +2024,7 @@ a.nrb_btn:hover:after {
 
 .home_blog_area .post-meta .post-author {
   color: #666;
-  font-family: Roboto Slab;
+  font-family: ridi;
   font-size: 10px;
   font-weight: 700;
   margin-bottom: 0;
@@ -2035,7 +2038,7 @@ a.nrb_btn:hover:after {
 
 .home_blog_area .post-meta .post-date {
   color: #303030;
-  font-family: Roboto Slab;
+  font-family: ridi;
   font-size: 10px;
   font-weight: 700;
   margin-bottom: 0;
@@ -2074,7 +2077,7 @@ a.nrb_btn:hover:after {
 
 .home_blog_area .readmore {
   color: #303030;
-  font-family: Roboto Slab;
+  font-family: ridi;
   font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
@@ -2178,7 +2181,7 @@ a.nrb_btn:hover:after {
 
 .tasti_area .author .at {
   color: #fff;
-  font-family: Roboto Slab;
+  font-family: ridi;
   font-weight: 700;
 }
 
@@ -2189,7 +2192,7 @@ a.nrb_btn:hover:after {
 
 .tasti_area .author .title {
   color: #dedede;
-  font-family: droidserifregular;
+  font-family: ridi;
   font-size: 14px;
   margin: 0;
 }
@@ -2309,7 +2312,7 @@ a.nrb_btn:hover:after {
 
 .footer-nav ul li a {
   color: #303030;
-  font-family: Roboto Slab;
+  font-family: ridi;
   font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
@@ -2411,7 +2414,7 @@ footer .footer-social li a i {
   color: #303030;
   cursor: pointer;
   display: inline-block;
-  font-family: roboto slab;
+  font-family: ridi;
   font-size: 14px;
   font-weight: 700;
   height: 50px;
@@ -2456,7 +2459,7 @@ footer .footer-social li a i {
   border-radius: 50px;
   color: #ffffff;
   display: inline-block;
-  font-family: roboto slab;
+  font-family: ridi;
   font-size: 14px;
   font-weight: 400;
   letter-spacing: 1px;
@@ -2541,7 +2544,7 @@ option {
 .banner_h2_Right_text a.nrb_btn {
   color: #303030;
   display: inline-block;
-  font-family: roboto slab;
+  font-family: ridi;
   font-size: 14px;
   font-style: normal;
   margin-top: 84px;
@@ -2577,7 +2580,7 @@ option {
 .banner__h2_area .wpb_wrapper > ul li {
   color: #444;
   display: block;
-  font-family: droidserifregular;
+  font-family: ridi;
   font-size: 14px;
   
   list-style-type: none;
@@ -2633,7 +2636,7 @@ option {
 
 .footer-style-2 .footer-newsletter form button::before {
   content: "";
-  font-family: Material-Design-Iconic-Font;
+  font-family: ridi;
   font-size: 16px;
   color: #fff;
 }
@@ -2652,7 +2655,7 @@ option {
 }
 
 .footer-style-2 .footer-newsletter input[type="email"] {
-  font-family: droidserifregular;
+  font-family: ridi;
   font-size: 13px;
 }
 
@@ -2751,7 +2754,7 @@ option {
 }
 
 .fas.fa-bars.icon_menu>span {
-  font-family: roboto slab;
+  font-family: ridi;
   font-size: 13px;
   margin-left: 7px;
   position: relative;
@@ -2846,7 +2849,7 @@ option {
 .intro__text_area.banner_h2_Right_text a {
   color: #303030;
   display: inline-block;
-  font-family: Roboto Slab;
+  font-family: ridi;
   font-size: 14px;
   font-style: normal;
   font-weight: 700;
@@ -2982,7 +2985,7 @@ footer.style__3 .footer-nav ul a:hover {
 .home_blog_area.hm_5_blog .post-date.large {
   color: #303030;
   display: block;
-  font-family: Roboto Slab;
+  font-family: ridi;
   font-size: 10px;
   left: 0;
   line-height: 1;
@@ -3063,7 +3066,7 @@ footer.style__3 .footer-nav ul a:hover {
 
 .welcome__info > p {
   color: #303030;
-  font-family: droidserifregular;
+  font-family: ridi;
   font-size: 14px;
   margin-bottom: 44px;
   margin-top: 42px;
@@ -3199,7 +3202,7 @@ footer .fotter_style_hm_6 *::-moz-placeholder {
 .title-breadcrumbs .breadcrumbs {
  color: #303030;
  display: block;
- font-family: roboto slab;
+ font-family: ridi;
  font-size: 12px;
  margin: 0;
  padding: 0;
@@ -3219,7 +3222,7 @@ footer .fotter_style_hm_6 *::-moz-placeholder {
 .title-breadcrumbs .woocommerce-breadcrumb span,
 .title-breadcrumbs .breadcrumbs a,
 .title-breadcrumbs .breadcrumbs span {
-  font-family: droidserifregular;
+  font-family: ridi;
   margin-right: 8px;
 }
 
@@ -3278,7 +3281,7 @@ footer .fotter_style_hm_6 *::-moz-placeholder {
 .product_left_sidbar .product-categories li a, .product_left_sidbar .product-categories li .count, .product_left_sidbar .product-categories li a, .product_left_sidbar .product-categories li .count {
   color: #303030;
   display: block;
-  font-family: droidserifregular;
+  font-family: ridi;
   font-size: 14px;
   
 }
@@ -3394,7 +3397,7 @@ footer .fotter_style_hm_6 *::-moz-placeholder {
   color: #555;
   display: block;
   float: left;
-  font-family: droidserifregular;
+  font-family: ridi;
   font-size: 14px;
   line-height: 23px;
   margin-right: 6px;
@@ -3406,7 +3409,7 @@ footer .fotter_style_hm_6 *::-moz-placeholder {
   color: #303030;
   display: block;
   float: left;
-  font-family: droidserifregular;
+  font-family: ridi;
   font-size: 15px;
   font-weight: bold;
   height: 23px;
@@ -3442,7 +3445,7 @@ footer .fotter_style_hm_6 *::-moz-placeholder {
   border: medium none;
   border-radius: 4px;
   color: #fff;
-  font-family: droidserifregular;
+  font-family: ridi;
   font-size: 13px;
   font-weight: normal;
   height: 35px;
@@ -3515,7 +3518,7 @@ footer .fotter_style_hm_6 *::-moz-placeholder {
 .product_list_widget .product-info .woocommerce-Price-amount {
   color: #303030;
   display: block;
-  font-family: roboto slab;
+  font-family: ridi;
   font-size: 14px;
   font-weight: bold;
   margin-top: 6px;
@@ -3523,7 +3526,7 @@ footer .fotter_style_hm_6 *::-moz-placeholder {
 }
 
 .product-info span.product-title {
-  font-family: droidserifregular;
+  font-family: ridi;
   font-size: 14px;
 }
 
@@ -3607,7 +3610,7 @@ footer .fotter_style_hm_6 *::-moz-placeholder {
 .toolbar .woocommerce-ordering .orderby-wrapper label {
   color: #303030;
   float: left;
-  font-family: droidserifregular;
+  font-family: ridi;
   font-size: 14px;
   
   font-weight: normal;
@@ -3653,7 +3656,7 @@ footer .fotter_style_hm_6 *::-moz-placeholder {
 
 .toolbar .woocommerce-ordering .orderby-wrapper .chosen-container .chosen-single div b:before {
   content: "";
-  font-family: "Ionicons";
+  font-family: ridi;
   font-size: 12px;
 }
 
@@ -3685,7 +3688,7 @@ footer .fotter_style_hm_6 *::-moz-placeholder {
   cursor: pointer;
   display: inline-block;
   float: right;
-  font-family: droidserifregular;
+  font-family: ridi;
   font-size: 14px;
   
   font-weight: normal;
@@ -3754,7 +3757,7 @@ footer .fotter_style_hm_6 *::-moz-placeholder {
   border-radius: 100%;
   color: #777;
   display: inline-block;
-  font-family: roboto slab;
+  font-family: ridi;
   font-size: 12px;
   font-weight: 700;
   height: 37px;
@@ -3871,7 +3874,7 @@ footer .fotter_style_hm_6 *::-moz-placeholder {
 
 #product-list .product-action-2 a.action-plus-2.list_bg_add {
   border-radius: 50px;
-  font-family: roboto slab;
+  font-family: ridi;
   font-size: 12px;
   font-weight: bold;
   line-height: 46px;
@@ -3929,7 +3932,7 @@ footer .fotter_style_hm_6 *::-moz-placeholder {
 }
 
 .about__us_page_area .wpb_wrapper > h3 {
-  font-family: roboto slab;
+  font-family: ridi;
   font-size: 31px;
   font-weight: bolder;
   margin-bottom: 30px;
@@ -3951,7 +3954,7 @@ footer .fotter_style_hm_6 *::-moz-placeholder {
   border: 1px solid #303030;
   color: #303030;
   display: inline-block;
-  font-family: roboto slab;
+  font-family: ridi;
   font-size: 18px;
   font-weight: 600;
   height: 40px;
@@ -4012,7 +4015,7 @@ footer .fotter_style_hm_6 *::-moz-placeholder {
 
 .funfact h1 {
   color: #303030;
-  font-family: droidserifregular;
+  font-family: ridi;
   font-size: 30px;
   font-weight: 700;
   letter-spacing: 0;
@@ -4021,7 +4024,7 @@ footer .fotter_style_hm_6 *::-moz-placeholder {
 
 .funfact h5 {
   color: #303030;
-  font-family: droidserifregular;
+  font-family: ridi;
   font-size: 12px;
   font-weight: 600 !important;
   letter-spacing: 1px;
@@ -4117,7 +4120,7 @@ footer .fotter_style_hm_6 *::-moz-placeholder {
   border: 3px solid #a0a0a0;
   border-radius: 50%;
   color: #fff;
-  font-family: droidserifregular;
+  font-family: ridi;
   font-size: 11px;
   font-weight: 700;
   height: 40px;
@@ -4221,21 +4224,21 @@ article.blog_single .post-category {
 
 h1.entry-title>a {
   color: #303030;
-  font-family: roboto slab;
+  font-family: ridi;
   font-size: 41px;
   font-weight: bold;
 }
 
 .post-author {
   color: #303030;
-  font-family: roboto slab;
+  font-family: ridi;
   font-size: 13px;
   margin-right: 13px;
 }
 
 .post-date {
   color: #555;
-  font-family: roboto slab;
+  font-family: ridi;
   font-size: 13px;
   margin-left: 13px;
 }
@@ -4313,7 +4316,7 @@ h1.entry-title>a:hover {
   background: #303030 none repeat scroll 0 0;
   border-color: #303030;
   color: #fff;
-  font-family: roboto slab;
+  font-family: ridi;
   font-size: 14px;
   text-transform: capitalize;
 }
@@ -4329,9 +4332,9 @@ h1.entry-title>a:hover {
 }
 
 .search__sidbar input.input_text[type="text"] {
-  background: #e1e1e1  none repeat scroll 0 0;
+  background: #FFFFFF  none repeat scroll 0 0;
   color: #000000;
-  font-family: droidserifregular;
+  font-family: ridi;
   font-size: 14px;
   padding: 0 40px 0 15px;
   border: 2px solid #eceff8;
@@ -4360,7 +4363,7 @@ h1.entry-title>a:hover {
 
 .blog_Archives__sidbar li {
   color: #303030;
-  font-family: droidserifregular;
+  font-family: ridi;
   font-size: 14px;
   list-style: outside none disc;
   margin-bottom: 5px;
@@ -4539,7 +4542,7 @@ h1.entry-title>a:hover {
 .product-categories li a,
 .product-details-tags li a {
   color: #303030;
-  font-family: droidserifregular;
+  font-family: ridi;
   text-transform: capitalize;
 }
 
@@ -4558,14 +4561,14 @@ h1.entry-title>a:hover {
 
 .product-details-content .product-rating > span {
   color: #555;
-  font-family: droidserifregular;
+  font-family: ridi;
   
 }
 
 .product-details-content .product-price>span {
   color: #303030;
   display: inline-block;
-  font-family: droidserifregular;
+  font-family: ridi;
   font-size: 25px;
   font-weight: 700;
   margin: 0 2px;
@@ -4582,11 +4585,11 @@ h1.entry-title>a:hover {
 }
 
 .product-details-content .btn-style {
-  background-color: #303030;
+  background-color: #084B84;
   border-radius: 50px;
   color: #ffffff;
   display: inline-block;
-  font-family: roboto slab;
+  font-family: ridi;
   font-size: 14px;
   font-weight: 400;
   letter-spacing: 1px;
@@ -4614,7 +4617,7 @@ h1.entry-title>a:hover {
 }
 
 input.cart-plus-minus-box {
-  font-family: roboto slab;
+  font-family: ridi;
 }
 
 .product-details .easyzoom>a img {
@@ -4690,7 +4693,7 @@ input.cart-plus-minus-box {
 .bundle-price ul li:before {
   color: #727272;
   content: "";
-  font-family: "Ionicons";
+  font-family: ridi;
   font-size: 14px;
   left: 0;
   position: absolute;
@@ -4779,7 +4782,7 @@ input.cart-plus-minus-box {
 .dec-and-review-menu>li>a {
   color: #555;
   display: block;
-  font-family: roboto slab;
+  font-family: ridi;
   font-size: 15px;
   font-weight: 700;
   line-height: 25px;
@@ -4838,7 +4841,7 @@ input.cart-plus-minus-box {
 }
 .comment-reply-title {
   display: block;
-  font-family: "Roboto Slab",serif;
+  font-family: ridi;
   font-size: 16px;
   font-weight: 700;
   margin-bottom: 10px;
@@ -4861,7 +4864,7 @@ input.cart-plus-minus-box {
 
 .product-review-tab .meta>strong {
   color: #555;
-  font-family: droidserifregular;
+  font-family: ridi;
   font-size: 12px;
   line-height: 31px;
   text-transform: uppercase;
@@ -5015,7 +5018,7 @@ input.cart-plus-minus-box {
 .table-content table th {
   border-top: medium none;
   color: #303030;
-  font-family: roboto slab;
+  font-family: ridi;
   font-size: 15px;
   font-weight: 700;
   padding: 20px 10px;
@@ -5037,7 +5040,7 @@ input.cart-plus-minus-box {
 }
 
 .table-content table td.anadi-product-name {
-  font-family: droidserifregular;
+  font-family: ridi;
   font-size: 14px;
   font-weight: 500;
   text-transform: capitalize;
@@ -5051,7 +5054,7 @@ input.cart-plus-minus-box {
 .table-content table td.anadi-product-stock-status span.in-stock,
 .table-content table td.anadi-product-stock-status span.out-stock {
   color: #30b878;
-  font-family: droidserifregular;
+  font-family: ridi;
   font-size: 12px;
   text-transform: capitalize;
 }
@@ -5064,7 +5067,7 @@ input.cart-plus-minus-box {
   background: #303030 none repeat scroll 0 0;
   color: #fff;
   display: inline-block;
-  font-family: roboto slab;
+  font-family: ridi;
   font-size: 13px;
   font-weight: 700;
   padding: 10px 20px;
@@ -5087,7 +5090,7 @@ input.cart-plus-minus-box {
 
 .table-content table td.product-subtotal {
   color: #414141;
-  font-family: "Montserrat", sans-serif;
+  font-family: ridi;
   font-size: 16px;
   font-weight: 700;
 }
@@ -5155,7 +5158,7 @@ input.cart-plus-minus-box {
   border: 2px solid #e1e1e1;
   color: #303030;
   cursor: pointer;
-  font-family: roboto slab;
+  font-family: ridi;
   font-weight: 600;
   height: 50px;
   text-transform: capitalize;
@@ -5179,7 +5182,7 @@ input.cart-plus-minus-box {
   cursor: pointer;
   display: block;
   float: inherit;
-  font-family: droidserifregular;
+  font-family: ridi;
   font-size: 14px;
   font-weight: normal;
   height: 42px;
@@ -5240,7 +5243,7 @@ input.cart-plus-minus-box {
   color: #fff;
   cursor: pointer;
   display: inline-block;
-  font-family: roboto slab;
+  font-family: ridi;
   font-size: 13px;
   font-weight: 400;
   line-height: 45px;
@@ -5317,7 +5320,7 @@ input.cart-plus-minus-box {
 .portfolio___single div.title {
   bottom: 16px;
   color: #fff;
-  font-family: roboto slab;
+  font-family: ridi;
   font-size: 19px;
   left: -85px;
   opacity: 0;
@@ -5381,7 +5384,7 @@ input.cart-plus-minus-box {
 
 .service-title>h4 {
   color: #444;
-  font-family: roboto slab;
+  font-family: ridi;
   font-size: 14px;
   font-weight: 700;
   line-height: 18px;
@@ -5427,7 +5430,7 @@ input.cart-plus-minus-box {
 
 .service-info > h3 {
   color: #fff;
-  font-family: roboto slab;
+  font-family: ridi;
   font-size: 14px;
   font-style: normal;
   font-weight: 700;
@@ -5476,7 +5479,7 @@ a.ideas-btn {
   border: 2px solid #2a2a2a;
   color: #2a2a2a;
   display: inline-block;
-  font-family: roboto slab;
+  font-family: ridi;
   font-weight: 400;
   padding: 10px 23px 10px 19px;
   position: relative;
@@ -5580,7 +5583,7 @@ a.ideas-btn:hover {
   box-shadow: none;
   color: #303030;
   display: inline-block;
-  font-family: Roboto Slab;
+  font-family: ridi;
   font-size: 14px;
   font-weight: 600;
   height: 55px;
@@ -5753,7 +5756,7 @@ a.ideas-btn:hover {
 
 .table-content table td.product-subtotal {
   color: #414141;
-  font-family: roboto slab;
+  font-family: ridi;
   font-size: 16px;
   font-weight: 700;
 }
@@ -5776,7 +5779,7 @@ a.ideas-btn:hover {
   border: 1px solid #ddd;
   border-radius: 0;
   color: #333;
-  font-family: roboto slab;
+  font-family: ridi;
   font-size: 14px;
   height: 54px;
   width: 120px;
@@ -5790,7 +5793,7 @@ a.ideas-btn:hover {
   color: #303030;
   cursor: pointer;
   display: inline-block;
-  font-family: roboto slab;
+  font-family: ridi;
   font-size: 14px;
   font-weight: 600;
   height: 55px;
@@ -5836,7 +5839,7 @@ a.ideas-btn:hover {
   padding: 10px 30px;
   border-bottom: 1px solid #ebebeb;
   font-weight: 700;
-  font-family: 'Montserrat', sans-serif;
+  font-family: ridi;
 }
 
 .cart-page-total ul>li>span {
@@ -5931,7 +5934,7 @@ a.ideas-btn:hover {
   cursor: pointer;
   display: inline-block;
   float: left;
-  font-family: roboto slab;
+  font-family: ridi;
   font-size: 14px;
   height: 40px;
   line-height: 40px;
@@ -6024,7 +6027,7 @@ p.checkout-coupon input[type="submit"]:hover {
 .checkout-form-list label {
   color: #333;
   display: block;
-  font-family: roboto slab;
+  font-family: ridi;
   font-size: 14px;
   margin: 0 0 5px;
 }
@@ -6133,7 +6136,7 @@ thead {
   border-bottom: 1px solid #d8d8d8;
   border-right: medium none;
   font-size: 14px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: ridi;
   padding: 15px 0;
   text-align: center;
 }
@@ -6208,7 +6211,7 @@ thead {
   border: 2px solid #e1e1e1;
   color: #303030;
   cursor: pointer;
-  font-family: roboto slab;
+  font-family: ridi;
   font-size: 17px;
   font-weight: 600;
   height: 50px;
@@ -6262,7 +6265,7 @@ thead {
 .form-fild>p span.required,
 .lost-password>a {
   color: #a43d21;
-  font-family: roboto slab;
+  font-family: ridi;
 }
 
 .form-fild>p span.required,
@@ -6325,7 +6328,7 @@ input.checkbox {
 
 .dashboard-upper-info a {
   color: #222;
-  font-family: roboto slab;
+  font-family: ridi;
   font-size: 14px;
 }
 
@@ -6350,7 +6353,7 @@ input.checkbox {
   border-bottom: 1px solid #ebebeb;
   color: #303030;
   display: block;
-  font-family: roboto slab;
+  font-family: ridi;
   font-size: 14px;
   font-weight: bold;
   padding: 12px 0;
@@ -6359,55 +6362,55 @@ input.checkbox {
 
 .dashboard-content .table-responsive .table>tbody>tr>td {
   color: #555;
-  font-family: droidserifregular;
+  font-family: ridi;
   font-size: 14px;
 }
 
 .login-form-container label {
   color: #626262;
-  font-family: droidserifregular;
+  font-family: ridi;
   font-size: 15px;
   font-weight: 400;
 }
 
 .login-form-container label {
   color: #626262;
-  font-family: droidserifregular;
+  font-family: ridi;
   font-size: 15px;
   font-weight: 400;
 }
 
 .login-form-container label {
   color: #626262;
-  font-family: droidserifregular;
+  font-family: ridi;
   font-size: 15px;
   font-weight: 400;
 }
 
 .login-form-container label {
   color: #626262;
-  font-family: droidserifregular;
+  font-family: ridi;
   font-size: 15px;
   font-weight: 400;
 }
 
 .login-form-container label {
   color: #626262;
-  font-family: droidserifregular;
+  font-family: ridi;
   font-size: 15px;
   font-weight: 400;
 }
 
 .login-form-container label {
   color: #626262;
-  font-family: droidserifregular;
+  font-family: ridi;
   font-size: 15px;
   font-weight: 400;
 }
 
 .login-form-container label {
   color: #626262;
-  font-family: droidserifregular;
+  font-family: ridi;
   font-size: 15px;
   font-weight: 400;
 }
@@ -6502,7 +6505,7 @@ input.checkbox {
 }
 
 .default-btn {
-  font-family: roboto slab;
+  font-family: ridi;
 }
 
 .account-login-form input {
@@ -6559,7 +6562,7 @@ input.checkbox {
 }
 
 .anadi-product-price span.amount {
-  font-family: roboto slab;
+  font-family: ridi;
   color: #303030;
 }
 
@@ -6579,7 +6582,7 @@ input.checkbox {
 
 .contact-address-area h2, .contact-form-inner h2 {
   color: #303030;
-  font-family: roboto slab;
+  font-family: ridi;
   font-size: 26px;
   font-weight: 900;
   letter-spacing: 0;
@@ -6607,7 +6610,7 @@ input.checkbox {
 .contact-address-area ul li {
   border-top: 1px solid #e4e4e4;
   color: #303030;
-  font-family: droidserifregular;
+  font-family: ridi;
   list-style: outside none none;
   padding: 10px 0;
 }
@@ -6621,7 +6624,7 @@ input.checkbox {
 
 .contact-address-area h3 {
   color: #303030 !important;
-  font-family: roboto slab;
+  font-family: ridi;
   font-weight: 700;
   letter-spacing: 0;
   line-height: 1.35;
@@ -6632,7 +6635,7 @@ input.checkbox {
   background: #f2f2f2 none repeat scroll 0 0;
   border: medium none;
   border-radius: 0;
-  font-family: droidserifregular;
+  font-family: ridi;
   font-size: 14px;
   height: 46px;
   margin-bottom: 20px;
@@ -6652,7 +6655,7 @@ input.checkbox {
   background: #f2f2f2 none repeat scroll 0 0;
   border: medium none;
   border-radius: 0;
-  font-family: droidserifregular;
+  font-family: ridi;
   font-size: 14px;
   height: 135px;
   padding-left: 15px;
@@ -6674,7 +6677,7 @@ input.checkbox {
   box-shadow: none;
   color: #303030;
   display: inline-block;
-  font-family: roboto slab;
+  font-family: ridi;
   font-size: 16px;
   font-weight: 700;
   height: 48px;
@@ -6716,7 +6719,7 @@ input.checkbox {
 .contact-form-style>input {
   background: #e7e7e7 none repeat scroll 0 0;
   border: medium none;
-  font-family: droidserifregular;
+  font-family: ridi;
   height: 46px;
   padding: 0 15px;
   width: 100%;
@@ -6726,7 +6729,7 @@ input.checkbox {
   background: #e7e7e7 none repeat scroll 0 0;
   border: medium none;
   border-radius: 0;
-  font-family: droidserifregular;
+  font-family: ridi;
   height: 135px;
   margin-bottom: 20px;
   padding: 15px;
@@ -6869,7 +6872,7 @@ input.checkbox {
   color: #303030;
   cursor: pointer;
   display: inline-block;
-  font-family: Roboto Slab;
+  font-family: ridi;
   font-size: 16px;
   font-weight: 600;
   height: 48px;
@@ -6993,7 +6996,7 @@ input.checkbox {
 
 .contact-address-area .contact-address-area h3 {
   color: #303030 !important;
-  font-family: roboto slab;
+  font-family: ridi;
   font-size: 30px;
   font-weight: 900;
   letter-spacing: 0;
@@ -7015,7 +7018,7 @@ input.checkbox {
 }
 
 .faq-desc p {
-  font-family: droidserifregular;
+  font-family: ridi;
   font-size: 14px;
   margin: 0;
 }
@@ -7025,7 +7028,7 @@ input.checkbox {
 }
 
 .card-body {
-  font-family: droidserifregular;
+  font-family: ridi;
   font-size: 14px;
 }
 
@@ -7043,7 +7046,7 @@ input.checkbox {
 .faq-accordion .card-header a.collapsed:before,
 .faq-accordion .card-header a:after {
   content: "\f278";
-  font-family: material-design-iconic-font;
+  font-family: ridi;
   position: absolute;
   right: 15px;
   top: 15px;
@@ -7051,7 +7054,7 @@ input.checkbox {
 
 .faq-accordion .card-header a:after {
   content: "\f273";
-  font-family: material-design-iconic-font;
+  font-family: ridi;
 }
 .faq-accordion > div h5 {
   font-size: 16px;
@@ -7108,7 +7111,7 @@ input.checkbox {
 
 .single-post-tag {
   color: #555;
-  font-family: droidserifregular;
+  font-family: ridi;
   font-size: 14px;
   font-weight: 700;
   text-transform: uppercase;
@@ -7120,7 +7123,7 @@ input.checkbox {
 
 .single-post-tag a {
   color: #555;
-  font-family: roboto slab;
+  font-family: ridi;
   font-size: 13px;
   font-weight: normal;
   margin-left: 5px;
@@ -7202,7 +7205,7 @@ input.checkbox {
   box-shadow: none;
   color: #303030;
   display: inline-block;
-  font-family: roboto slab;
+  font-family: ridi;
   font-size: 0.8em;
   font-weight: bold;
   height: 28px;
@@ -7224,7 +7227,7 @@ input.checkbox {
 .comments-area .commentlist .comment-info a {
   color: #303030;
   display: block;
-  font-family: roboto slab;
+  font-family: ridi;
   font-size: 15px;
   font-weight: 700;
   margin-bottom: 5px;
@@ -7236,7 +7239,7 @@ input.checkbox {
 
 .comments-area .commentlist .comment-info span.date {
   display: block;
-  font-family: droidserifregular;
+  font-family: ridi;
   font-size: 12px;
   
   margin-bottom: 15px;
@@ -7256,7 +7259,7 @@ input.checkbox {
 .comment-respond .text-filds label {
   color: #555;
   display: block;
-  font-family: droidserifregular;
+  font-family: ridi;
   margin: 0 0 5px;
 }
 
@@ -7289,7 +7292,7 @@ input.checkbox {
 .comment-respond .comment-input label {
   color: #555;
   display: block;
-  font-family: droidserifregular;
+  font-family: ridi;
   margin: 0 0 5px;
 }
 
@@ -7312,7 +7315,7 @@ input.checkbox {
   box-shadow: none;
   color: #fff;
   display: inline-block;
-  font-family: Open Sans, Arial, Helvetica, sans-serif;
+  font-family: Open Sans, ridi, ridi, ridi;
   font-size: 0.714em;
   font-weight: normal;
   height: 45px;
@@ -7342,7 +7345,7 @@ input.checkbox {
 .single-blog .post-category,
 .single-blog .post-category>a {
   color: #92b558;
-  font-family: droidserifregular;
+  font-family: ridi;
   font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
@@ -7351,7 +7354,7 @@ input.checkbox {
 .blog-entry-header h1 a {
   color: #303030;
   display: block;
-  font-family: roboto slab;
+  font-family: ridi;
   font-weight: 700;
   margin-bottom: 15px;
 }
@@ -7388,7 +7391,7 @@ input.checkbox {
 
 .comment-respond small {
   color: #555;
-  font-family: droidserifregular;
+  font-family: ridi;
   font-size: 12px;
   
 }
@@ -7398,7 +7401,7 @@ input.checkbox {
   border: 2px solid #e1e1e1;
   color: #303030;
   cursor: pointer;
-  font-family: roboto slab;
+  font-family: ridi;
   font-size: 15px;
   font-weight: 600;
   height: 50px;
@@ -7441,7 +7444,7 @@ input:focus {
   box-shadow: none;
   color: #fff;
   display: inline-block;
-  font-family: roboto slab;
+  font-family: ridi;
   font-size: 12px;
   font-weight: bold;
   height: 40px;
@@ -7468,7 +7471,7 @@ input:focus {
   background: transparent none repeat scroll 0 0;
   border: 1px solid #dedede;
   color: #303030;
-  font-family: droidserifregular;
+  font-family: ridi;
   font-size: 14px;
   height: 50px;
   padding: 0 40px 0 15px;
@@ -7497,7 +7500,7 @@ input:focus {
 
 .single-blog h1.entry-title {
   color: #303030;
-  font-family: roboto slab;
+  font-family: ridi;
   font-size: 41px;
   font-weight: bold;
   margin-top: 5px;
@@ -7519,7 +7522,7 @@ ul#main-custom span,
   cursor: pointer;
   display: block;
   float: right;
-  font-family: Arial,Helvetica,sans-serif;
+  font-family: ridi;
   font-size: 1px;
   font-weight: 700;
   height: 22px;
@@ -7537,7 +7540,7 @@ ul#main-custom span,
 .mean-container .mean-bar::after {
   color: #fff;
   content: "MENU";
-  font-family: roboto slab;
+  font-family: ridi;
   font-size: 17px;
   font-weight: 500;
   left: 10px;
@@ -7545,7 +7548,7 @@ ul#main-custom span,
 }
 .mean-container .mean-nav ul li a {
   font-weight: 500;
-  font-family: roboto slab;
+  font-family: ridi;
 }
 .mean-container .mean-nav ul li a:hover {
   background: #f8f8f8 none repeat scroll 0 0;
