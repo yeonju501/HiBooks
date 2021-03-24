@@ -9,6 +9,7 @@ import bit.hibooks.domain.book.Book;
 import bit.hibooks.domain.book.BookListResult;
 import bit.hibooks.domain.book.BookReview;
 import bit.hibooks.domain.book.BookVo;
+import bit.hibooks.domain.book.ContentVo;
 import bit.hibooks.domain.purchase.WishVo;
 import bit.hibooks.domain.review.ReviewResult;
 import bit.hibooks.domain.review.ReviewVo;
@@ -92,5 +93,25 @@ public class BookServiceImpl implements BookService {
 		if(cnt == 0) {
 			return "unselected";
 		}else return "selected";
+	}
+	
+	@Override
+	public List<Book> getRecommendedBook(String itemId) {
+		Book book = mapper.getBook(itemId);
+		int b_cate = book.getB_cate();
+		String keyword = book.getB_keyword();
+		String key[] = keyword.split(",");
+		ContentVo contentVo = new ContentVo(itemId, b_cate, key[5],key[6],key[7],key[8],key[9], 8, null);
+		return mapper.selectRecommendList(contentVo);
+	}
+	
+	@Override
+	public List<Book> getWriterBook(String itemId){
+		Book book = mapper.getBook(itemId);
+		String b_writer = book.getB_writer();
+		ContentVo contentVo = new ContentVo();
+		contentVo.setB_writer(b_writer);
+		contentVo.setB_itemId(itemId);
+		return mapper.selectWriterList(contentVo);
 	}
 }

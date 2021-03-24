@@ -101,15 +101,16 @@
                                                         </li>
                                                         <li class="switcher-menu-item">
                                                             <a href="wishList/moveWishPage.do">위시리스트</a>
-                                                        </li>  
-                                                        <li class="switcher-menu-item">
-                                                            <a href="admin/recommend.do">관리자페이지</a>
                                                         </li>
+                                                        <sec:authorize access="isAuthenticated()">
+	                                                        <sec:authorize access="hasRole([ROLE_ADMIN])"> 
+		                                                        <li class="switcher-menu-item">
+		                                                            <a href="admin/recommend.do">관리자페이지</a>
+		                                                        </li>
+		                                                    </sec:authorize>
+		                                                </sec:authorize>    	
                                                         <li class="switcher-menu-item">
                                                             <a href="purchase/orderComplete.do">결제내역</a>
-                                                        </li>
-                                                        <li class="switcher-menu-item">
-                                                            <a href="">...</a>
                                                         </li>
                                                     </ul>
                                                 </li>
@@ -155,7 +156,7 @@
                                 <div class="main-menu">
 									<nav>
                                             <ul id="main-custom">
-                                                <li class="active"><a href="book/shop.do">책</a>
+                                                <li class="active"><a href="book/shop.do?cate=1000">책</a>
                                                     <ul>
                                                         <li><a href="book/shop.do?cate=100">소설</a></li>
                                                         <li><a href="book/shop.do?cate=200">경영/경제</a></li>

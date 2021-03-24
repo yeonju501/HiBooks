@@ -30,6 +30,7 @@
 //		}
 //	});
 //}
+
 $(document).on("click","#in-wish-list",function(){
 	let loginUser = $("#login-user-for-js").val();
 	let b_itemId = $("#itemId").val();

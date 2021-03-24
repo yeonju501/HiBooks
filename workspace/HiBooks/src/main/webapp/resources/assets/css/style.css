@@ -3870,6 +3870,8 @@ footer .fotter_style_hm_6 *::-moz-placeholder {
 }
 
 #product-list .product-action-2 a.action-plus-2.list_bg_add {
+  background-color: #084B84;
+  color: white;
   border-radius: 50px;
   font-family: roboto slab;
   font-size: 12px;
@@ -4582,7 +4584,7 @@ h1.entry-title>a:hover {
 }
 
 .product-details-content .btn-style {
-  background-color: #303030;
+  background-color: #084B84;
   border-radius: 50px;
   color: #ffffff;
   display: inline-block;
