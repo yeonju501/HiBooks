@@ -35,11 +35,12 @@
     <link rel="stylesheet" href="assets/css/service-index.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <link rel="stylesheet" href="assets/css/header.css">
+    
     <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
     <script src="assets/js/vendor/jquery-1.12.0.min.js"></script>
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script>
     <script src="assets/js/service-search-index.js"></script>
-    
 </head>
 <body>
     <div class="wrapper">
@@ -227,7 +228,10 @@
             </div>
         </header>
         <!-- header end -->
-       <div>               
+        <div>
+        <div>
+        <div>
+       <%-- <div>               
                       <!-- may also like product start -->
         <div class="product-area pb-65   product-padding" style="padding-bottom: 0px;">
             <div class="container">
@@ -305,25 +309,25 @@
             </div>
         </div>  
      </div>               
-       <div>               
-                      <!-- may also like product start -->
+       <div>                --%>
+                    <!-- may also like product start -->
         <div class="product-area pb-65   product-padding" style="padding-bottom: 0px;">
             <div class="container">
                 <div class="section-title-2 text-center mb-25">
                 <br/>
-                    <h2 class="m-0">${indexLR.titleSec2}</h2>
+                    <h3 class="ui header">${indexLR.titleSec2}</h3>
                   <!--   <p></p> -->
                 </div>
 
                 <div class="row">
-                    <div class="product-slider-active owl-carousel">
+                    <div class="product-slider-active owl-carousel" >
                     <c:forEach items="${indexLR.sec2}" var="book">
-                        <div class="col-lg-4 col-md-6 col-12" style="max-width:80%;">
+                        <div class="col-lg-4 col-md-6 col-12" style="max-width:70%;">
                             <div class="product-wrapper mb-35">
                                 <div class="product-img">
                                     <a href="product-details.html">
                                         <span class="onsale">Sale!</span>
-                                        <img alt="" src="${book.b_img}" style="height:300px;" >
+                                        <img alt="" src="${book.b_img}" style="height:200px;" >
                                     </a>
                                     <div class="product-action-2">
                                         <a href="#" title="Add to Compare" class="action-plus-2 tooltip">
@@ -381,7 +385,311 @@
                 </div>
             </div>
         </div> 
-      </div>            
+      </div>     
+      
+      <div> 
+      
+      		<!--Pricing Table Area Start-->
+		<div class="pricing-table-area pt-50 pb-50">
+			<div class="container">
+				<div class="row">
+					<!--Single Pricing Table Start-->
+					<div class="col-md-6 col-lg-3">
+						<div class="single-pricing mb-35">
+							<div class="pricing-body">
+								<img alt="" src="assets/img/ridibooks-banner5.jpg" style="width:270px;height:220px;">
+							</div>
+							<div class="pricing-head">
+							<h4>Standard</h4>
+							</div>
+						</div>
+					</div>
+					<!--Single Pricing Table End-->
+					<!--Single Pricing Table Start-->
+					<div class="col-md-6 col-lg-3">
+						<div class="single-pricing active-table mb-35">
+							<div class="pricing-body">
+								<img alt="" src="assets/img/ridibooks-banner3.jpg" style="width:270px;height:220px;">
+							</div>
+							<div class="pricing-head">
+								<h4>business</h4>
+							</div>
+						</div>
+					</div>
+					<!--Single Pricing Table End-->
+					<!--Single Pricing Table Start-->
+					<div class="col-md-6 col-lg-3">
+						<div class="single-pricing active-table mb-35">
+							<div class="pricing-body">
+								<img alt="" src="assets/img/ridibooks-banner4.jpg" style="width:270px;height:220px;">
+							</div>
+							<div class="pricing-head">
+								<h4>business</h4>
+							</div>
+						</div>
+					</div>
+					<!--Single Pricing Table End-->
+					<!--Single Pricing Table Start-->
+					<div class="col-md-6 col-lg-3">
+						<div class="single-pricing active-table mb-35">
+							<div class="pricing-body">
+								<img alt="" src="assets/img/ridibooks-banner6.jpg" style="width:270px;height:220px;">
+							</div>
+							<div class="pricing-head">
+								<h4>business</h4>
+							</div>
+						</div>
+					</div>
+					<!--Single Pricing Table End-->
+				</div>
+			</div>
+		</div>
+		<!--Pricing Table Area End-->
+      
+       <!-- Brand area start -->
+                    <div class="container">
+                     <div class="section-title-2 text-center mb-25">
+		                <br/>
+		                    <h3 class="ui header">${indexLR.titleSec2}</h3>
+		                  <!--   <p></p> -->
+		                </div>
+                        <div class="row">
+                        <div class="col-lg-12 col-md-12 col-12" style="max-width:100%;">
+                            <div class="brand__image_area">
+                                <div class="group_sliderh2_active owl-carousel">
+                                    <div class="group">
+                                       <div>
+                                            <a title="" href="#">
+                                                <img alt="" src="https://img.ridicdn.net/cover/1195000218/xxlarge" style="width:140px;height:210px;">
+                                            </a>
+                                            <div class="product-content text-center">
+                                            <h5 style="font-size:14px;">
+                                           	그 때 내 딸이 사라졌다
+                                            </h5>
+                                            <span>
+                                            <span class="Price-currencySymbol"></span>
+                                            10000원
+                                            </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="group">
+                                       <div>
+                                            <a title="" href="#">
+                                                <img alt="" src="https://img.ridicdn.net/cover/1195000218/xxlarge" style="width:140px;height:210px;">
+                                            </a>
+                                            <div class="product-content text-center">
+                                            <h5 style="font-size:14px;">
+                                           	그 때 내 딸이 사라졌다
+                                            </h5>
+                                            <span>
+                                            <span class="Price-currencySymbol"></span>
+                                            10000원
+                                            </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="group">
+                                       <div>
+                                            <a title="" href="#">
+                                                <img alt="" src="https://img.ridicdn.net/cover/1195000218/xxlarge" style="width:140px;height:210px;">
+                                            </a>
+                                            <div class="product-content text-center">
+                                            <h5 style="font-size:14px;">
+                                           	그 때 내 딸이 사라졌다
+                                            </h5>
+                                            <span>
+                                            <span class="Price-currencySymbol"></span>
+                                            10000원
+                                            </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="group">
+                                       <div>
+                                            <a title="" href="#">
+                                                <img alt="" src="https://img.ridicdn.net/cover/1195000218/xxlarge" style="width:140px;height:210px;">
+                                            </a>
+                                            <div class="product-content text-center">
+                                            <h5 style="font-size:14px;">
+                                           	그 때 내 딸이 사라졌다
+                                            </h5>
+                                            <span>
+                                            <span class="Price-currencySymbol"></span>
+                                            10000원
+                                            </span>
+                                            </div>
+                                        </div> 
+                                        </div>                           
+                                    <div class="group">
+                                       <div>
+                                            <a title="" href="#">
+                                                <img alt="" src="https://img.ridicdn.net/cover/1195000218/xxlarge" style="width:140px;height:210px;">
+                                            </a>
+                                            <div class="product-content text-center">
+                                            <h5 style="font-size:14px;">
+                                           	그 때 내 딸이 사라졌다
+                                            </h5>
+                                            <span>
+                                            <span class="Price-currencySymbol"></span>
+                                            10000원
+                                            </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="group">
+                                        <div>
+                                            <a title="" href="#">
+                                                <img alt="" src="https://img.ridicdn.net/cover/1195000218/xxlarge" style="width:140px;height:210px;">
+                                            </a>
+                                            <div class="product-content text-center">
+                                            <h5 style="font-size:14px;">
+                                           	그 때 내 딸이 사라졌다
+                                            </h5>
+                                            <span>
+                                            <span class="Price-currencySymbol"></span>
+                                            10000원
+                                            </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+     		 </div>
+     	
+     		 <!-- 그리드 -->
+     		 <div>
+     		 <!--Our Service Area Start-->
+		<div class="our-service-area pt-50 pb-40" style="padding-left:50px;">
+			<div class="container">
+			<h3 class="ui header">베스트 셀러</h3>
+				<div class="row">
+					<!--Single Service Start-->
+					<div class="col-xl-3 col-lg-3 col-md-12 col-12">
+						<div class="single-service single-service-2 mb-25">
+							<div class="service-icon">
+								<img alt="" src="https://img.ridicdn.net/cover/1195000218/xxlarge" style="width:80px;height:114px;">
+							</div>
+							<div class="service-info" style="padding-top:30px;">
+								<h3>그 때 내 딸이 사라졌다</h3>
+								<p>10000원</p>
+							</div>
+						</div>
+					</div>
+				
+					<!--Single Service End-->
+					<!--Single Service Start-->
+					<div class="col-xl-3 col-lg-3 col-md-12 col-12">
+						<div class="single-service single-service-2 mb-25">
+							<div class="service-icon">
+								<img alt="" src="https://img.ridicdn.net/cover/1195000218/xxlarge" style="width:80px;height:114px;">
+							</div>
+							<div class="service-info" style="padding-top:30px;">
+								<h3>그 때 내 딸이 사라졌다</h3>
+								<p>10000원</p>
+							</div>
+						</div>
+					</div>
+				
+					<!--Single Service End-->
+					<!--Single Service Start-->
+					<div class="col-xl-3 col-lg-3 col-md-12 col-12">
+						<div class="single-service single-service-2 mb-25">
+							<div class="service-icon">
+								<img alt="" src="https://img.ridicdn.net/cover/1195000218/xxlarge" style="width:80px;height:114px;">
+							</div>
+							<div class="service-info" style="padding-top:30px;">
+								<h3>그 때 내 딸이 사라졌다</h3>
+								<p>10000원</p>
+							</div>
+						</div>
+					</div>
+					
+					<!--Single Service End-->
+					<!--Single Service Start-->
+					<div class="col-xl-3 col-lg-3 col-md-12 col-12">
+						<div class="single-service single-service-2 mb-25">
+							<div class="service-icon">
+								<img alt="" src="https://img.ridicdn.net/cover/1195000218/xxlarge" style="width:80px;height:114px;">
+							</div>
+							<div class="service-info" style="padding-top:30px;">
+								<h3>그 때 내 딸이 사라졌다</h3>
+								<p>10000원</p>
+							</div>
+						</div>
+					</div>
+					
+					<!--Single Service End-->
+					<!--Single Service Start-->
+					<div class="col-xl-3 col-lg-3 col-md-12 col-12">
+						<div class="single-service single-service-2 mb-25">
+							<div class="service-icon">
+								<img alt="" src="https://img.ridicdn.net/cover/1195000218/xxlarge" style="width:80px;height:114px;">
+							</div>
+							<div class="service-info" style="padding-top:30px;">
+								<h3>그 때 내 딸이 사라졌다</h3>
+								<p>10000원</p>
+							</div>
+						</div>
+					</div>
+				
+					<!--Single Service End-->
+					<!--Single Service Start-->
+					<div class="col-xl-3 col-lg-3 col-md-12 col-12">
+						<div class="single-service single-service-2 mb-25">
+							<div class="service-icon">
+								<img alt="" src="https://img.ridicdn.net/cover/1195000218/xxlarge" style="width:80px;height:114px;">
+							</div>
+							<div class="service-info" style="padding-top:30px;">
+								<h3>그 때 내 딸이 사라졌다</h3>
+								<p>10000원</p>
+							</div>
+						</div>
+					</div>
+				
+					<!--Single Service End-->
+					<!--Single Service Start-->
+					<div class="col-xl-3 col-lg-3 col-md-12 col-12">
+						<div class="single-service single-service-2 mb-25">
+							<div class="service-icon">
+								<img alt="" src="https://img.ridicdn.net/cover/1195000218/xxlarge" style="width:80px;height:114px;">
+							</div>
+							<div class="service-info" style="padding-top:30px;">
+								<h3>그 때 내 딸이 사라졌다</h3>
+								<p>10000원</p>
+							</div>
+						</div>
+					</div>
+				
+					<!--Single Service End-->
+					<!--Single Service Start-->
+					<div class="col-xl-3 col-lg-3 col-md-12 col-12">
+						<div class="single-service single-service-2 mb-25">
+							<div class="service-icon">
+								<img alt="" src="https://img.ridicdn.net/cover/1195000218/xxlarge" style="width:80px;height:114px;">
+							</div>
+							<div class="service-info" style="padding-top:30px;">
+								<h3>그 때 내 딸이 사라졌다</h3>
+								<p>10000원</p>
+							</div>
+						</div>
+					</div>
+					
+					<!--Single Service End-->
+				</div>
+			</div>
+		</div>
+		<!--Our Service Area End-->
+     		 </div>
+      
+      
+                </div>
+            </div>
+        </div>
+        <!--Service Item Area End-->     
         
         <footer class="footer-color">
             <div class="footer-container">
@@ -491,6 +799,7 @@
     <script src="assets/js/owl.carousel.min.js"></script>
     <script src="assets/js/plugins.js"></script>
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/package.js"></script>
 	
 
 </body>

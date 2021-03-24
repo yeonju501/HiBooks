@@ -35,6 +35,7 @@
     <link rel="stylesheet" href="../assets/css/service-index.css">
    	<link rel="stylesheet" href="../assets/css/service-admin.css">
     <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="../assets/css/dropdown.css">
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />  
     <link rel="stylesheet" href="../assets/summernote/summernote-lite.css">
     <link rel="stylesheet" href="../assets/summernote/summernote-lite.min.css"> 
@@ -105,6 +106,8 @@
 	$(document).ready(function(){
 		ajaxData();
 	});
+	
+	$('#bcate').dropdown();
 	
 	</script>
 </head>
@@ -529,14 +532,18 @@
 								  <div class="row">
 								    <div class="col-xs-12">
 								    <h3 style="width:700px;">이 달의 신간</h3>
-								    <select id="bcate">
-								    	<option value="none">선택</option>
-								    	<option value="100">소설</option>
-								    	<option value="200">경영/경제</option>
-								    	<option value="300">인문/사회/역사</option>
-								    	<option value="400">자기계발</option>
-								    	<option value="500">에세이/시</option>
-								    </select>
+								    <div class="ui selection dropdown" id="bcate">
+								    <input type="hidden" name="bcate">
+								    <i class="dropdown icon"></i>
+								    <div class="default text">카테고리</div>
+								    	<div class="menu">
+								    	<div class="item" data-value="100">소설</div>
+								    	<div class="item" data-value="200">경영/경제</div>
+								    	<div class="item" data-value="300">인문/사회/역사</div>
+								    	<div class="item" data-value="400">자기 계발</div>
+								    	<div class="item" data-value="500">에세이/시</div>
+								    	</div>
+								    </div>
 								    <br/><br/><br/>
 								      <table class="table table-bordered table-hover dt-responsive" style="max-width:75%;">
 								        <thead>
@@ -767,6 +774,8 @@
     <script src="../assets/js/owl.carousel.min.js"></script>
     <script src="../assets/js/plugins.js"></script>
     <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/dropdown.js"></script>
+    
 	<script src="../assets/summernote/summernote-lite.js"></script>
     <script src="../assets/summernote/lang/summernote-ko-KR.js"></script>
 	
