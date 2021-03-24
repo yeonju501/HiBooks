@@ -20,27 +20,27 @@
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
 	
     <!-- all css here -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/animate.css">
-    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="assets/css/chosen.min.css">
-    <link rel="stylesheet" href="assets/css/themify-icons.css">
-    <link rel="stylesheet" href="assets/css/fontawesome-all.css">
-    <link rel="stylesheet" href="assets/css/ionicons.min.css">
-    <link rel="stylesheet" href="assets/css/material-design-iconic-font.css">
-    <link rel="stylesheet" href="assets/css/meanmenu.min.css">
-    <link rel="stylesheet" href="assets/css/tippy.css">
-    <link rel="stylesheet" href="assets/css/bundle.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/service-index.css">
-    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/animate.css">
+    <link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../assets/css/chosen.min.css">
+    <link rel="stylesheet" href="../assets/css/themify-icons.css">
+    <link rel="stylesheet" href="../assets/css/fontawesome-all.css">
+    <link rel="stylesheet" href="../assets/css/ionicons.min.css">
+    <link rel="stylesheet" href="../assets/css/material-design-iconic-font.css">
+    <link rel="stylesheet" href="../assets/css/meanmenu.min.css">
+    <link rel="stylesheet" href="../assets/css/tippy.css">
+    <link rel="stylesheet" href="../assets/css/bundle.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/service-index.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-    <link rel="stylesheet" href="assets/css/header.css">
+    <link rel="stylesheet" href="../assets/css/header.css">
     
-    <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
-    <script src="assets/js/vendor/jquery-1.12.0.min.js"></script>
+    <script src="../assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="../assets/js/vendor/jquery-1.12.0.min.js"></script>
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script>
-    <script src="assets/js/service-search-index.js"></script>
+    <script src="../assets/js/service-search-index.js"></script>
 </head>
 <body>
     <div class="wrapper">
@@ -102,17 +102,14 @@
                                                         </li>
                                                         <li class="switcher-menu-item">
                                                             <a href="wishList/moveWishPage.do">위시리스트</a>
+                                                        </li>  
+                                                        <li class="switcher-menu-item">
+                                                            <a href="admin/recommend.do">관리자페이지</a>
                                                         </li>
-                                                        <sec:authorize access="isAuthenticated()">
-	                                                        <sec:authorize access="hasRole([ROLE_ADMIN])"> 
-		                                                        <li class="switcher-menu-item">
-		                                                            <a href="admin/recommend.do">관리자페이지</a>
-		                                                        </li>
-		                                                    </sec:authorize>
-		                                                </sec:authorize>    	
                                                         <li class="switcher-menu-item">
                                                             <a href="purchase/orderComplete.do">결제내역</a>
                                                         </li>
+                                                        
                                                     </ul>
                                                 </li>
                                             </ul>
@@ -157,7 +154,7 @@
                                 <div class="main-menu">
 									<nav>
                                             <ul id="main-custom">
-                                                <li class="active"><a href="book/shop.do?cate=1000">책</a>
+                                                <li class="active"><a href="book/shop.do">책</a>
                                                     <ul>
                                                         <li><a href="book/shop.do?cate=100">소설</a></li>
                                                         <li><a href="book/shop.do?cate=200">경영/경제</a></li>
@@ -395,7 +392,7 @@
 					<div class="col-md-6 col-lg-3">
 						<div class="single-pricing mb-35">
 							<div class="pricing-body">
-								<img alt="" src="assets/img/ridibooks-banner5.jpg" style="width:270px;height:220px;">
+								<img alt="" src="../assets/img/ridibooks-banner5.jpg" style="width:270px;height:220px;">
 							</div>
 							<div class="pricing-head">
 							<h4>Standard</h4>
@@ -407,7 +404,7 @@
 					<div class="col-md-6 col-lg-3">
 						<div class="single-pricing active-table mb-35">
 							<div class="pricing-body">
-								<img alt="" src="assets/img/ridibooks-banner3.jpg" style="width:270px;height:220px;">
+								<img alt="" src="../assets/img/ridibooks-banner3.jpg" style="width:270px;height:220px;">
 							</div>
 							<div class="pricing-head">
 								<h4>business</h4>
@@ -419,7 +416,7 @@
 					<div class="col-md-6 col-lg-3">
 						<div class="single-pricing active-table mb-35">
 							<div class="pricing-body">
-								<img alt="" src="assets/img/ridibooks-banner4.jpg" style="width:270px;height:220px;">
+								<img alt="" src="../assets/img/ridibooks-banner4.jpg" style="width:270px;height:220px;">
 							</div>
 							<div class="pricing-head">
 								<h4>business</h4>
@@ -431,7 +428,7 @@
 					<div class="col-md-6 col-lg-3">
 						<div class="single-pricing active-table mb-35">
 							<div class="pricing-body">
-								<img alt="" src="assets/img/ridibooks-banner6.jpg" style="width:270px;height:220px;">
+								<img alt="" src="../assets/img/ridibooks-banner6.jpg" style="width:270px;height:220px;">
 							</div>
 							<div class="pricing-head">
 								<h4>business</h4>
@@ -784,20 +781,20 @@
     </div>
 
     <!-- all js here -->
-    <script src="assets/js/vendor/jquery-1.12.0.min.js"></script>
+    <script src="../assets/js/vendor/jquery-1.12.0.min.js"></script>
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script>
-    <script src="assets/js/popper.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/isotope.pkgd.min.js"></script>
-    <script src="assets/js/imagesloaded.pkgd.min.js"></script>
-    <script src="assets/js/jquery.counterup.min.js"></script>
-    <script src="assets/js/waypoints.min.js"></script>
-    <script src="assets/js/tippy.min.js"></script>
-    <script src="assets/js/ajax-mail.js"></script>
-    <script src="assets/js/owl.carousel.min.js"></script>
-    <script src="assets/js/plugins.js"></script>
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/package.js"></script>
+    <script src="../assets/js/popper.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/isotope.pkgd.min.js"></script>
+    <script src="../assets/js/imagesloaded.pkgd.min.js"></script>
+    <script src="../assets/js/jquery.counterup.min.js"></script>
+    <script src="../assets/js/waypoints.min.js"></script>
+    <script src="../assets/js/tippy.min.js"></script>
+    <script src="../assets/js/ajax-mail.js"></script>
+    <script src="../assets/js/owl.carousel.min.js"></script>
+    <script src="../assets/js/plugins.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/package.js"></script>
 	
 
 </body>

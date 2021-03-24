@@ -31,8 +31,13 @@
     General
 *************************/
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700');
+@font-face{
+	src:url("../fonts/RIDIBatang.otf");
+	font-family: "ridi"
+	
+} 
 body {
-    font-family: Droid Serif;
+    font-family: ridi;
     font-weight: 400;
     font-style: normal;
     font-size: 14px;
@@ -87,7 +92,7 @@ h4,
 h5,
 h6 {
     color: #303030;
-    font-family: 'Roboto Slab', serif;
+    font-family: ridi;
     font-weight: 700;
     letter-spacing: 0;
     line-height: 1.35;
@@ -131,7 +136,7 @@ li { list-style: none }
 
 p {
   color: #303030;
-  font-family: droidserifregular;
+  font-family: ridi;
   font-size: 14px;
   font-weight: normal;
   line-height: 26px;
