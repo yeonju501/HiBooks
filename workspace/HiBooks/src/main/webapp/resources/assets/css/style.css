@@ -3873,6 +3873,8 @@ footer .fotter_style_hm_6 *::-moz-placeholder {
 }
 
 #product-list .product-action-2 a.action-plus-2.list_bg_add {
+  background-color: #084B84;
+  color: white;
   border-radius: 50px;
   font-family: ridi;
   font-size: 12px;

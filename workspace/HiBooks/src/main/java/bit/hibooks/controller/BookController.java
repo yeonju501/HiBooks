@@ -1,9 +1,7 @@
 package bit.hibooks.controller;
 
-import java.security.Principal;
 import java.util.List;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.security.core.Authentication;
@@ -51,12 +49,36 @@ public class BookController {
 		
 		int ps = 20;
 		session.setAttribute("ps", ps);
-		
 		bookVo.setPs(ps);
-		//log.info(bookVo);
-		BookListResult bookLR = service.getList(bookVo);
 		
-		return new ModelAndView("book/shop", "bookLR", bookLR);
+		int currentCate = 0;
+		if(( currentCate = bookVo.getCate() )!= 0) {
+			if(currentCate == 1000) {
+				session.setAttribute("cata", currentCate);
+				currentCate = 0;
+			}
+			session.setAttribute("cate", currentCate);
+		}else {
+			currentCate = (Integer)session.getAttribute("cate");
+		}
+		bookVo.setCate(currentCate);
+		
+		String sort = null;
+		if((sort = bookVo.getSort()) != null) {
+			session.setAttribute("sort", sort);
+		}else {
+			if(session.getAttribute("sort")!= null) {
+				sort = (String)session.getAttribute("sort");
+			}else {
+				sort = "b_rate desc";
+			}
+		}
+		bookVo.setSort(sort);
+		
+		BookListResult bookLR = service.getList(bookVo);
+		ModelAndView mv = new ModelAndView("book/shop", "bookLR", bookLR);
+		mv.addObject("bookVo", bookVo);
+		return mv;
 	}
 	
 	@GetMapping("content.do")
@@ -71,10 +93,15 @@ public class BookController {
 			selectWish = "unselected";
 		}
 		Book book = service.getBook(reviewVo.getItemId());
+		List<Book> recommandedList= service.getRecommendedBook(reviewVo.getItemId());
+		List<Book> writerBookList = service.getWriterBook(reviewVo.getItemId());
+		log.info(writerBookList);
 		ReviewResult reviewResult = service.getReviewList(reviewVo);
 		
 		ModelAndView mv = new ModelAndView("book/content");
 		mv.addObject("book", book);
+		mv.addObject("recommandedList", recommandedList);
+		mv.addObject("writerBookList", writerBookList);
 		mv.addObject("reviewResult", reviewResult);
 		mv.addObject("selectWish",selectWish);
 		return mv;

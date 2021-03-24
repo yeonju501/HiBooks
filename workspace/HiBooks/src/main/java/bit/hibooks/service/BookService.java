@@ -28,4 +28,8 @@ public interface BookService {
 	
 	// 사용자별 위시리스트 품목 확인, 상세페이지에서
 	String isBookInWish(WishVo wishVo);
+	
+	// 상세페이지에 추천항목 8개 가져오기, 작가의 책 가져오기
+	List<Book> getRecommendedBook(String itemId);
+	List<Book> getWriterBook(String itemId);
 }

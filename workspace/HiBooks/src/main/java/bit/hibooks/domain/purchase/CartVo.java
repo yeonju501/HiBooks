@@ -11,6 +11,6 @@ import lombok.NoArgsConstructor;
 public class CartVo {
 	private String itemId;
 	private Book book;
-	private int vol;
+	private int vol = 1;
 	private long total;
 }
