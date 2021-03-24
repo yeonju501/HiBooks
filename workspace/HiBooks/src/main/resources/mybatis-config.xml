@@ -8,6 +8,7 @@
    	   <typeAlias alias="Member" type="bit.hibooks.domain.Member"/>
    	   <typeAlias alias="Book" type="bit.hibooks.domain.book.Book"/>
    	   <typeAlias alias="BookVo" type="bit.hibooks.domain.book.BookVo"/>
+   	   <typeAlias alias="ContentVo" type="bit.hibooks.domain.book.ContentVo"/>
    	   <typeAlias alias="BookReview" type="bit.hibooks.domain.book.BookReview"/>  
    	   <typeAlias alias="ReviewVo" type="bit.hibooks.domain.review.ReviewVo"/> 
    	   <typeAlias alias="SearchVo" type="bit.hibooks.domain.search.SearchVo"/>

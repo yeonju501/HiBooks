@@ -1,5 +1,7 @@
 package bit.hibooks.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.security.core.Authentication;
@@ -91,10 +93,15 @@ public class BookController {
 			selectWish = "unselected";
 		}
 		Book book = service.getBook(reviewVo.getItemId());
+		List<Book> recommandedList= service.getRecommendedBook(reviewVo.getItemId());
+		List<Book> writerBookList = service.getWriterBook(reviewVo.getItemId());
+		log.info(writerBookList);
 		ReviewResult reviewResult = service.getReviewList(reviewVo);
 		
 		ModelAndView mv = new ModelAndView("book/content");
 		mv.addObject("book", book);
+		mv.addObject("recommandedList", recommandedList);
+		mv.addObject("writerBookList", writerBookList);
 		mv.addObject("reviewResult", reviewResult);
 		mv.addObject("selectWish",selectWish);
 		return mv;

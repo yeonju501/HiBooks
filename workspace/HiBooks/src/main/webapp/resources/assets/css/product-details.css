@@ -98,3 +98,7 @@
 #input-cart-form{
 	display : -webkit-inline-box;
 }
+.product-button{
+	position: absolute;
+    bottom: 0;
+}

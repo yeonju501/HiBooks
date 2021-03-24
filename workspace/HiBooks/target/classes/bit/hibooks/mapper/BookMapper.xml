@@ -54,7 +54,21 @@
       			where rnum>#{initRow} and rnum<=#{endRow}
       		]]> 
 		</select>
-		
+		<select id="selectRecommendList" parameterType="ContentVo" resultType="Book">
+			select ROWNUM, b.* from (select * from book where B_CATE= #{b_cate} and not B_ITEMID = #{b_itemId} and
+			    (B_KEYWORD like '%'||#{keyword1}||'%' or
+			    B_KEYWORD like '%'||#{keyword2}||'%' or
+			    B_KEYWORD like '%'||#{keyword3}||'%' and
+			    B_KEYWORD like '%'||#{keyword4}||'%' and
+			    B_KEYWORD like '%'||#{keyword5}||'%')
+			    order by b_seq) b
+			    where ROWNUM &lt;= #{number}
+		</select>
+		<select id="selectWriterList" parameterType="ContentVo" resultType="Book">
+			select ROWNUM, b.* from (select * from book where B_WRITER= #{b_writer} and not B_ITEMID = #{b_itemId}
+				order by b_seq) b
+				where ROWNUM &lt;= #{number}
+		</select>
 		<!-- 댓글 -->
 		<select id="getReviewCnt" resultType="long" parameterType="ReviewVo">
 			select count(ROWNUM) from BREVIEW where B_ITEMID = #{itemId}

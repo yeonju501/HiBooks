@@ -433,15 +433,9 @@
 	                                                        </div>
 	                                                        <div class="product-action-2">
 	                                                            <a href="#" title="Add To Cart"  class="action-plus-2 list_bg_add tooltip">
-	                                                                <i class="zmdi zmdi-shopping-cart-plus"></i> Add to cart
+	                                                                <i class="zmdi zmdi-shopping-cart-plus"></i> 장바구니 담기
 	                                                            </a>
-	                                                            
-	                                                            <a id="in-wish-list" href="javascript:void()" title="Add to Wishlist" class="action-plus-2 tooltip">
-	                                                                <i class="zmdi zmdi-favorite-outline"></i>
-	                                                            </a>
-	                                                            
-	
-	                                                        </div>
+	                                                         </div>
 	                                                    </div>
 	
 	                                                </div>
