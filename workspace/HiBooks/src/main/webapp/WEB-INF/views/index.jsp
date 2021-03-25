@@ -65,8 +65,15 @@
                             <div class="header-top-right">
                                 <ul>
                                     <li>
+                                    	<div class="switcher">
+                                    	<sec:authorize access="hasRole('ROLE_USER')">
+	                                    	<sec:authentication property="principal.member" var="loginUser"/>
+                                    		<span>${loginUser.m_name} 님, 환영합니다</span>
+                                    	</sec:authorize>
+                                    	</div>
+                                    </li>
+                                    <li>
                                         <div class="switcher">
-                                  
                                         	<sec:authorize access="isAnonymous()">
                                         		<a href="member/login.do"><span>로그인</span></a>
                                         	</sec:authorize> 
@@ -104,12 +111,12 @@
                                                             <a href="wishList/moveWishPage.do">위시리스트</a>
                                                         </li>
                                                         <sec:authorize access="isAuthenticated()">
-	                                                        <sec:authorize access="hasRole([ROLE_ADMIN])"> 
+	                                                        <sec:authorize access="hasRole('ROLE_ADMIN')"> 
 		                                                        <li class="switcher-menu-item">
 		                                                            <a href="admin/recommend.do">관리자페이지</a>
 		                                                        </li>
 		                                                    </sec:authorize>
-		                                                </sec:authorize>    	
+		                                                </sec:authorize>
                                                         <li class="switcher-menu-item">
                                                             <a href="purchase/orderComplete.do">결제내역</a>
                                                         </li>
@@ -309,69 +316,191 @@
      </div>               
        <div>                --%>
                     <!-- may also like product start -->
+        <c:set value="${updateLR.listNovel}" scope="page" var="novel"></c:set>
+        <c:set value="${updateLR.listEconomy}" scope="page" var="economy"></c:set>
+        <c:set value="${updateLR.listSociety}"  scope="page" var="society"></c:set>
+        <c:set value="${updateLR.listSelf}" scope="page" var="self"></c:set>
+        <c:set value="${updateLR.listEssay}" scope="page" var="essay"></c:set>
         <div class="product-area pb-0   product-padding">
             <div class="container">
                 <div class="section-title-2 text-center mb-25">
                 <br/>
-                    <h3 class="ui header">${indexLR.titleSec2}</h3>
+                    <h3 class="ui header">집 앞 서점에, 이번 주 나온 신간</h3>
                   <!--   <p></p> -->
                 </div>
 
                 <div class="row">
                     <div class="product-slider-active owl-carousel" >
-                    <c:forEach items="${indexLR.sec2}" var="book">
+                    <c:forEach begin="1" end="2" var="i">
                         <div class="col-lg-4 col-md-6 col-12" style="margin-left:50px;max-width:70%;">
                             <div class="product-wrapper mb-35">
                                 <div class="product-img">
-                                    <a href="product-details.html">
-                                        <span class="onsale">Sale!</span>
-                                        <img alt="" src="${book.b_img}" style="height:250px;" >
+                                    <a href="book/content.do?itemId=${novel[i].b_itemId}">
+                                        <img alt="" src="${novel[i].b_img}" style="height:250px;" >
                                     </a>
                                     <div class="product-action-2">
-                                        <a href="#" title="Add to Compare" class="action-plus-2 tooltip">
-                                            <i class="zmdi zmdi-refresh"></i>
-                                        </a>
-                                        <a href="#" title="Add to Wishlist" class="action-plus-2 tooltip">
-                                            <i class="zmdi zmdi-favorite-outline"></i>
-                                        </a>
-                                        <a href="#" title="Quick View" data-target="#exampleModal" data-toggle="modal" class="action-plus-2 tooltip">
-                                            <i class="zmdi zmdi-search"></i>
-                                        </a>
-                                        <a href="#" title="Add To Cart"  class="action-plus-2 tooltip">
+                                        <a href="purchase/add.do?itemId=${novel[i].b_itemId}" title="Add To Cart"  class="action-plus-2 tooltip">
                                             <i class="zmdi zmdi-shopping-cart-plus"></i>
                                         </a>
                                     </div>
                                     <div class="rating-box">
-                                        <a href="#" title="1 star">
-                                            <i class="far fa-star"></i>
-                                        </a>
-                                        <a href="#" title="2 star">
-                                            <i class="far fa-star"></i>
-                                        </a>
-                                        <a href="#" title="3 star">
-                                            <i class="far fa-star"></i>
-                                        </a>
-                                        <a href="#" title="4 star">
-                                            <i class="far fa-star"></i>
-                                        </a>
-                                        <a href="#" title="5 star">
-                                            <i class="far fa-star"></i>
-                                        </a>
+                                        <c:forEach begin="1" end="${novel[i].b_rate-(novel[i].b_rate%1)}">
+                                            <i class="fa fa-star" style="color: red;"> </i>
+                                        </c:forEach>
+                                        <c:forEach begin="${novel[i].b_rate-(novel[i].b_rate%1)+1}" end="5">
+                                            <i class="far fa-star"> </i>
+                                        </c:forEach>
                                     </div>
                                 </div>
                                 <div class="product-content text-center">
                                     <h4>
-                                        <a href="product-details.html">${book.b_title}</a>
+                                        <a href="book/content.do?itemId=${novel[i].b_itemId}">${novel[i].b_title}</a>
                                     </h4>
                                     <div class="product-price-2">
                                         <div class="price-box">
-                                            <del>
-                                                <span class="amount">
-                                                    <span class="Price-currencySymbol"></span>${book.b_price}</span>
-                                            </del>
                                             <ins>
                                                 <span class="amount">
-                                                    <span class="Price-currencySymbol"></span>${book.b_price}</span>
+                                                    ${novel[i].b_price}<span class="Price-currencySymbol">원</span></span>
+                                            </ins>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                         </div>
+                         <div class="col-lg-4 col-md-6 col-12" style="margin-left:50px;max-width:70%;">
+                            <div class="product-wrapper mb-35">
+                                <div class="product-img">
+                                    <a href="book/content.do?itemId=${economy[i].b_itemId}">
+                                        <img alt="" src="${economy[i].b_img}" style="height:250px;" >
+                                    </a>
+                                    <div class="product-action-2">
+                                        <a href="purchase/add.do?itemId=${economy[i].b_itemId}" title="Add To Cart"  class="action-plus-2 tooltip">
+                                            <i class="zmdi zmdi-shopping-cart-plus"></i>
+                                        </a>
+                                    </div>
+                                    <div class="rating-box">
+                                        <c:forEach begin="1" end="${economy[i].b_rate-(economy[i].b_rate%1)}">
+                                            <i class="fa fa-star" style="color: red;"> </i>
+                                        </c:forEach>
+                                        <c:forEach begin="${economy[i].b_rate-(economy[i].b_rate%1)+1}" end="5">
+                                            <i class="far fa-star"> </i>
+                                        </c:forEach>
+                                    </div>
+                                </div>
+                                <div class="product-content text-center">
+                                    <h4>
+                                        <a href="book/content.do?itemId=${economy[i].b_itemId}">${economy[i].b_title}</a>
+                                    </h4>
+                                    <div class="product-price-2">
+                                        <div class="price-box">
+                                            <ins>
+                                                <span class="amount">
+                                                    ${economy[i].b_price}<span class="Price-currencySymbol">원</span></span>
+                                            </ins>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                         </div>
+                         <div class="col-lg-4 col-md-6 col-12" style="margin-left:50px;max-width:70%;">
+                            <div class="product-wrapper mb-35">
+                                <div class="product-img">
+                                    <a href="book/content.do?itemId=${society[i].b_itemId}">
+                                        <img alt="" src="${society[i].b_img}" style="height:250px;" >
+                                    </a>
+                                    <div class="product-action-2">
+                                        <a href="purchase/add.do?itemId=${society[i].b_itemId}" title="Add To Cart"  class="action-plus-2 tooltip">
+                                            <i class="zmdi zmdi-shopping-cart-plus"></i>
+                                        </a>
+                                    </div>
+                                    <div class="rating-box">
+                                        <c:forEach begin="1" end="${society[i].b_rate-(society[i].b_rate%1)}">
+                                            <i class="fa fa-star" style="color: red;"> </i>
+                                        </c:forEach>
+                                        <c:forEach begin="${society[i].b_rate-(society[i].b_rate%1)+1}" end="5">
+                                            <i class="far fa-star"> </i>
+                                        </c:forEach>
+                                    </div>
+                                </div>
+                                <div class="product-content text-center">
+                                    <h4>
+                                        <a href="book/content.do?itemId=${society[i].b_itemId}">${society[i].b_title}</a>
+                                    </h4>
+                                    <div class="product-price-2">
+                                        <div class="price-box">
+                                            <ins>
+                                                <span class="amount">
+                                                    ${society[i].b_price}<span class="Price-currencySymbol">원</span></span>
+                                            </ins>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                         </div>
+                         <div class="col-lg-4 col-md-6 col-12" style="margin-left:50px;max-width:70%;">
+                            <div class="product-wrapper mb-35">
+                                <div class="product-img">
+                                    <a href="book/content.do?itemId=${self[i].b_itemId}">
+                                        <img alt="" src="${self[i].b_img}" style="height:250px;" >
+                                    </a>
+                                    <div class="product-action-2">
+                                        <a href="purchase/add.do?itemId=${self[i].b_itemId}" title="Add To Cart"  class="action-plus-2 tooltip">
+                                            <i class="zmdi zmdi-shopping-cart-plus"></i>
+                                        </a>
+                                    </div>
+                                    <div class="rating-box">
+                                        <c:forEach begin="1" end="${self[i].b_rate-(self[i].b_rate%1)}">
+                                            <i class="fa fa-star" style="color: red;"> </i>
+                                        </c:forEach>
+                                        <c:forEach begin="${self[i].b_rate-(self[i].b_rate%1)+1}" end="5">
+                                            <i class="far fa-star"> </i>
+                                        </c:forEach>
+                                    </div>
+                                </div>
+                                <div class="product-content text-center">
+                                    <h4>
+                                        <a href="book/content.do?itemId=${self[i].b_itemId}">${self[i].b_title}</a>
+                                    </h4>
+                                    <div class="product-price-2">
+                                        <div class="price-box">
+                                            <ins>
+                                                <span class="amount">
+                                                    ${self[i].b_price}<span class="Price-currencySymbol">원</span></span>
+                                            </ins>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                         </div>
+                         <div class="col-lg-4 col-md-6 col-12" style="margin-left:50px;max-width:70%;">
+                            <div class="product-wrapper mb-35">
+                                <div class="product-img">
+                                    <a href="book/content.do?itemId=${essay[i].b_itemId}">
+                                        <img alt="" src="${essay[i].b_img}" style="height:250px;" >
+                                    </a>
+                                    <div class="product-action-2">
+                                        <a href="purchase/add.do?itemId=${essay[i].b_itemId}" title="Add To Cart"  class="action-plus-2 tooltip">
+                                            <i class="zmdi zmdi-shopping-cart-plus"></i>
+                                        </a>
+                                    </div>
+                                    <div class="rating-box">
+                                        <c:forEach begin="1" end="${essay[i].b_rate-(essay[i].b_rate%1)}">
+                                            <i class="fa fa-star" style="color: red;"> </i>
+                                        </c:forEach>
+                                        <c:forEach begin="${essay[i].b_rate-(essay[i].b_rate%1)+1}" end="5">
+                                            <i class="far fa-star"> </i>
+                                        </c:forEach>
+                                    </div>
+                                </div>
+                                <div class="product-content text-center">
+                                    <h4>
+                                        <a href="book/content.do?itemId=${essay[i].b_itemId}">${self[i].b_title}</a>
+                                    </h4>
+                                    <div class="product-price-2">
+                                        <div class="price-box">
+                                            <ins>
+                                                <span class="amount">
+                                                    ${essay[i].b_price}<span class="Price-currencySymbol">원</span></span>
                                             </ins>
                                         </div>
                                     </div>
@@ -391,292 +520,60 @@
 		<div class="pricing-table-area pt-50 pb-50">
 			<div class="container">
 				<div class="row">
+					<c:forEach items="${NoticeList}" var="notice">
 					<!--Single Pricing Table Start-->
 					<div class="col-md-6 col-lg-3">
 						<div class="single-pricing mb-35">
 							<div class="pricing-body">
-								<img alt="" src="assets/img/ridibooks-banner5.jpg" style="width:270px;height:220px;">
+								<a href="boardNotice/content.do?bn_seq=${notice.bn_seq }">
+									<img alt="" src="board-notice-img/file-added/${notice.nf_fname }" style="width:270px;height:220px;">
+								</a>
 							</div>
 							<div class="pricing-head">
-							<h4>Standard</h4>
+							<h4>${notice.bn_topic}</h4>
 							</div>
 						</div>
 					</div>
 					<!--Single Pricing Table End-->
-					<!--Single Pricing Table Start-->
-					<div class="col-md-6 col-lg-3">
-						<div class="single-pricing active-table mb-35">
-							<div class="pricing-body">
-								<img alt="" src="assets/img/ridibooks-banner3.jpg" style="width:270px;height:220px;">
-							</div>
-							<div class="pricing-head">
-								<h4>business</h4>
-							</div>
-						</div>
-					</div>
-					<!--Single Pricing Table End-->
-					<!--Single Pricing Table Start-->
-					<div class="col-md-6 col-lg-3">
-						<div class="single-pricing active-table mb-35">
-							<div class="pricing-body">
-								<img alt="" src="assets/img/ridibooks-banner4.jpg" style="width:270px;height:220px;">
-							</div>
-							<div class="pricing-head">
-								<h4>business</h4>
-							</div>
-						</div>
-					</div>
-					<!--Single Pricing Table End-->
-					<!--Single Pricing Table Start-->
-					<div class="col-md-6 col-lg-3">
-						<div class="single-pricing active-table mb-35">
-							<div class="pricing-body">
-								<img alt="" src="assets/img/ridibooks-banner6.jpg" style="width:270px;height:220px;">
-							</div>
-							<div class="pricing-head">
-								<h4>business</h4>
-							</div>
-						</div>
-					</div>
-					<!--Single Pricing Table End-->
+					</c:forEach>
 				</div>
 			</div>
 		</div>
 		<!--Pricing Table Area End-->
       
        <!-- Brand area start -->
-                    <div class="container">
-                     <div class="section-title-2 text-center mb-25">
-		                <br/>
-		                    <h3 class="ui header">${indexLR.titleSec2}</h3>
-		                  <!--   <p></p> -->
-		                </div>
-                        <div class="row">
-                        <div class="col-lg-12 col-md-12 col-12" style="max-width:100%;">
-                            <div class="brand__image_area">
-                                <div class="group_sliderh2_active owl-carousel">
-                                    <div class="group">
-                                       <div>
-                                            <a title="" href="#">
-                                                <img alt="" src="https://img.ridicdn.net/cover/1195000218/xxlarge" style="width:140px;height:210px;">
-                                            </a>
-                                            <div class="product-content text-center">
-                                            <h5 style="font-size:14px;">
-                                           	그 때 내 딸이 사라졌다
-                                            </h5>
-                                            <span>
-                                            <span class="Price-currencySymbol"></span>
-                                            10000원
-                                            </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="group">
-                                       <div>
-                                            <a title="" href="#">
-                                                <img alt="" src="https://img.ridicdn.net/cover/1195000218/xxlarge" style="width:140px;height:210px;">
-                                            </a>
-                                            <div class="product-content text-center">
-                                            <h5 style="font-size:14px;">
-                                           	그 때 내 딸이 사라졌다
-                                            </h5>
-                                            <span>
-                                            <span class="Price-currencySymbol"></span>
-                                            10000원
-                                            </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="group">
-                                       <div>
-                                            <a title="" href="#">
-                                                <img alt="" src="https://img.ridicdn.net/cover/1195000218/xxlarge" style="width:140px;height:210px;">
-                                            </a>
-                                            <div class="product-content text-center">
-                                            <h5 style="font-size:14px;">
-                                           	그 때 내 딸이 사라졌다
-                                            </h5>
-                                            <span>
-                                            <span class="Price-currencySymbol"></span>
-                                            10000원
-                                            </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="group">
-                                       <div>
-                                            <a title="" href="#">
-                                                <img alt="" src="https://img.ridicdn.net/cover/1195000218/xxlarge" style="width:140px;height:210px;">
-                                            </a>
-                                            <div class="product-content text-center">
-                                            <h5 style="font-size:14px;">
-                                           	그 때 내 딸이 사라졌다
-                                            </h5>
-                                            <span>
-                                            <span class="Price-currencySymbol"></span>
-                                            10000원
-                                            </span>
-                                            </div>
-                                        </div> 
-                                        </div>                           
-                                    <div class="group">
-                                       <div>
-                                            <a title="" href="#">
-                                                <img alt="" src="https://img.ridicdn.net/cover/1195000218/xxlarge" style="width:140px;height:210px;">
-                                            </a>
-                                            <div class="product-content text-center">
-                                            <h5 style="font-size:14px;">
-                                           	그 때 내 딸이 사라졌다
-                                            </h5>
-                                            <span>
-                                            <span class="Price-currencySymbol"></span>
-                                            10000원
-                                            </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="group">
-                                        <div>
-                                            <a title="" href="#">
-                                                <img alt="" src="https://img.ridicdn.net/cover/1195000218/xxlarge" style="width:140px;height:210px;">
-                                            </a>
-                                            <div class="product-content text-center">
-                                            <h5 style="font-size:14px;">
-                                           	그 때 내 딸이 사라졌다
-                                            </h5>
-                                            <span>
-                                            <span class="Price-currencySymbol"></span>
-                                            10000원
-                                            </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                  </div>
-     		 </div>
+                    
+    </div>
      	
      		 <!-- 그리드 -->
-     		 <div>
+    <div>
      		 <!--Our Service Area Start-->
 		<div class="our-service-area pt-50 pb-40" style="padding-left:50px;">
 			<div class="container">
 			<h3 class="ui header">베스트 셀러</h3>
 				<div class="row">
+					<c:forEach items="${BestBookList }" var="BestBook">
 					<!--Single Service Start-->
 					<div class="col-xl-3 col-lg-3 col-md-12 col-12">
 						<div class="single-service single-service-2 mb-25">
 							<div class="service-icon">
-								<img alt="" src="https://img.ridicdn.net/cover/1195000218/xxlarge" style="width:80px;height:114px;">
+								<img alt="" src="${BestBook.b_img }" style="width:80px;height:114px;">
 							</div>
 							<div class="service-info" style="padding-top:30px;">
-								<h3>그 때 내 딸이 사라졌다</h3>
-								<p>10000원</p>
+								<h3><a href="book/content.do?itemId=${BestBook.b_itemId}">${BestBook.b_title }</a></h3>
+								<p>${BestBook.b_price}원</p>
+								<c:forEach begin="1" end="${BestBook.b_rate-(BestBook.b_rate%1)}">
+                                     <i class="fa fa-star" style="color: red;"> </i>
+                                </c:forEach>
+                                <c:forEach begin="${BestBook.b_rate-(BestBook.b_rate%1)+1}" end="5">
+                                     <i class="far fa-star"> </i>
+                                </c:forEach>
 							</div>
 						</div>
 					</div>
 				
 					<!--Single Service End-->
-					<!--Single Service Start-->
-					<div class="col-xl-3 col-lg-3 col-md-12 col-12">
-						<div class="single-service single-service-2 mb-25">
-							<div class="service-icon">
-								<img alt="" src="https://img.ridicdn.net/cover/1195000218/xxlarge" style="width:80px;height:114px;">
-							</div>
-							<div class="service-info" style="padding-top:30px;">
-								<h3>그 때 내 딸이 사라졌다</h3>
-								<p>10000원</p>
-							</div>
-						</div>
-					</div>
-				
-					<!--Single Service End-->
-					<!--Single Service Start-->
-					<div class="col-xl-3 col-lg-3 col-md-12 col-12">
-						<div class="single-service single-service-2 mb-25">
-							<div class="service-icon">
-								<img alt="" src="https://img.ridicdn.net/cover/1195000218/xxlarge" style="width:80px;height:114px;">
-							</div>
-							<div class="service-info" style="padding-top:30px;">
-								<h3>그 때 내 딸이 사라졌다</h3>
-								<p>10000원</p>
-							</div>
-						</div>
-					</div>
-					
-					<!--Single Service End-->
-					<!--Single Service Start-->
-					<div class="col-xl-3 col-lg-3 col-md-12 col-12">
-						<div class="single-service single-service-2 mb-25">
-							<div class="service-icon">
-								<img alt="" src="https://img.ridicdn.net/cover/1195000218/xxlarge" style="width:80px;height:114px;">
-							</div>
-							<div class="service-info" style="padding-top:30px;">
-								<h3>그 때 내 딸이 사라졌다</h3>
-								<p>10000원</p>
-							</div>
-						</div>
-					</div>
-					
-					<!--Single Service End-->
-					<!--Single Service Start-->
-					<div class="col-xl-3 col-lg-3 col-md-12 col-12">
-						<div class="single-service single-service-2 mb-25">
-							<div class="service-icon">
-								<img alt="" src="https://img.ridicdn.net/cover/1195000218/xxlarge" style="width:80px;height:114px;">
-							</div>
-							<div class="service-info" style="padding-top:30px;">
-								<h3>그 때 내 딸이 사라졌다</h3>
-								<p>10000원</p>
-							</div>
-						</div>
-					</div>
-				
-					<!--Single Service End-->
-					<!--Single Service Start-->
-					<div class="col-xl-3 col-lg-3 col-md-12 col-12">
-						<div class="single-service single-service-2 mb-25">
-							<div class="service-icon">
-								<img alt="" src="https://img.ridicdn.net/cover/1195000218/xxlarge" style="width:80px;height:114px;">
-							</div>
-							<div class="service-info" style="padding-top:30px;">
-								<h3>그 때 내 딸이 사라졌다</h3>
-								<p>10000원</p>
-							</div>
-						</div>
-					</div>
-				
-					<!--Single Service End-->
-					<!--Single Service Start-->
-					<div class="col-xl-3 col-lg-3 col-md-12 col-12">
-						<div class="single-service single-service-2 mb-25">
-							<div class="service-icon">
-								<img alt="" src="https://img.ridicdn.net/cover/1195000218/xxlarge" style="width:80px;height:114px;">
-							</div>
-							<div class="service-info" style="padding-top:30px;">
-								<h3>그 때 내 딸이 사라졌다</h3>
-								<p>10000원</p>
-							</div>
-						</div>
-					</div>
-				
-					<!--Single Service End-->
-					<!--Single Service Start-->
-					<div class="col-xl-3 col-lg-3 col-md-12 col-12">
-						<div class="single-service single-service-2 mb-25">
-							<div class="service-icon">
-								<img alt="" src="https://img.ridicdn.net/cover/1195000218/xxlarge" style="width:80px;height:114px;">
-							</div>
-							<div class="service-info" style="padding-top:30px;">
-								<h3>그 때 내 딸이 사라졌다</h3>
-								<p>10000원</p>
-							</div>
-						</div>
-					</div>
-					
-					<!--Single Service End-->
+					</c:forEach>
 				</div>
 			</div>
 		</div>

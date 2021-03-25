@@ -18,6 +18,4 @@ public class UpdateListResult {
 	private List<Book> listSelf;
 	private List<Book> listEssay;
 	
-	
-
 }

@@ -49,7 +49,8 @@ public class AdminController {
 	@RequestMapping ("recomsearch.do")
 	public ModelAndView search(RecommendVo recommendVo) {
 		List<Book> list=service.getBookList(recommendVo);
-		ModelAndView mv= new ModelAndView("admin/admin","list",list);
+		
+		ModelAndView mv= new ModelAndView("admin/admin","recomList",list);
 		
 		return mv;
 	}
