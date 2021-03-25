@@ -224,11 +224,11 @@
 			<sec:authentication property="principal.username" var="loginUser"/>
 		</sec:authorize>
         <div class="Shopping-cart-area ptb-100">
-            <div class="container">
+            <div class="container" style="max-width:1000px;">
                 <div class="row">
                     <div class="col-12">
                         <div class="pg___title">
-                            <h2>WishList</h2>
+                            <h3>위시리스트</h3>
                         </div>
                        	    <div class="table-content table-responsive">
                                 <table class="table">

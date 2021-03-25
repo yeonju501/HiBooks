@@ -146,7 +146,6 @@
                         </div>
                         <div class="signup-image">
                             <figure><img src="../assets/img/signup-image.jpg" alt="sing up image"></figure>
-                            <a href="login.do" class="signup-image-link">이미 회원이예요.</a>
                         </div>
                     </div>
                 </div>

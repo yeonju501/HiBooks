@@ -36,6 +36,7 @@
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/product-details.css">
     <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="../assets/css/header.css">
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
     <script src="../assets/js/vendor/modernizr-2.8.3.min.js"></script>
     
@@ -247,22 +248,41 @@
         <!-- breadcrumbs area start -->
         <!-- breadcrumbs area End -->
         <!-- product details area start -->
-        <div class="product-details-area hm-3-padding ptb-100">
+        <div class="product-details-area hm-3-padding pt-50 pb-50">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="product-details-img-content">
                             <div class="product-details-tab">
-                                <div class="product-details-large tab-content">
-                                    <div class="tab-pane active" id="pro-details1">
-                                    	<img src="${book.b_img}" alt="">
+                                <div class="product-details-large tab-content" style="width:200px;height:300px;">
+                                    <div class="tab-pane active" id="pro-details1" style="width:200px;height:300px;">
+                                    	<img src="${book.b_img}" alt="" style="width:270px;height:400px;margin-left:200px;">
                                     </div>
                                 </div>
                            	</div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-6" style="height:400px;">
                         <div class="product-details-content">
+                     <h5>
+                      <c:choose>
+				         <c:when test = "${book.b_cate == 100}">
+				            	소설
+				         </c:when>
+				         <c:when test = "${book.b_cate == 200}">
+				            	경영/경제
+				         </c:when>
+				         <c:when test = "${book.b_cate == 300}">
+				            	인문/사회/역사
+				         </c:when>
+				         <c:when test = "${book.b_cate == 400}">
+				            	자기계발
+				         </c:when>
+				         <c:when test = "${book.b_cate == 500}">
+				            	에세이/시
+				         </c:when>
+				         </c:choose>
+				         > ${book.b_cate2}</h5>
                             <h2>${book.b_title}</h2>
                             <div class="product-overview">
                                 <h5 class="pd-sub-title">
@@ -283,7 +303,7 @@
 	                            <div class="product-price">
 	                                <span>${book.b_price}원</span>
 	                            </div>
-	                            
+	                            <br/><br/><br/>
 	                            <div class="quickview-plus-minus">
 	                            	<form id="input-cart-form" method="post" action="../purchase/add.do?itemId=${book.b_itemId}">	
 		                                <div class="cart-plus-minus">
@@ -294,7 +314,8 @@
 		                                    <input type="submit" class="btn-style cr-btn" value="장바구니 담기">
 		                                </div>
 	                                </form>
-	                                
+	                             
+	                              <br/><br/><br/>   
 	                            </div>
 	                            <div class="quickview-plus-minus">
 	                                <div class="quickview-btn-wishlist">
@@ -319,108 +340,10 @@
             </div>
         </div>
         <!-- product details area End -->
-         <!-- may also like product start -->
-        <div class="product-area pb-0 product-padding">
-            <div class="container">
-                <div class="section-title-2 text-center mb-25">
-                    <h2 class="m-0">이 책과 유사한 책</h2>
-                   
-                </div>
-				<c:choose>
-				<c:when test="${fn:length(recommandedList) <=3 }">
-					
-					<div class="product-wrapper mb-35">
-					<div class="row">
-					<c:forEach items="${recommandedList}" var="recomBook">
-                        	 <div class="col-3">
-                                <div class="product-img">
-                                    <a href="content.do?itemId=${recomBook.b_itemId}">
-                                        <img alt="" src="${recomBook.b_img}">
-                                    </a>
-                                    <div class="product-action-2">
-                                        <a href="../purchase/add.do?itemId=${recomBook.b_itemId }" title="Add To Cart"  class="action-plus-2 tooltip">
-                                            <i class="zmdi zmdi-shopping-cart-plus"></i>
-                                        </a>
-                                    </div>
-                                    <div class="rating-box">
-                                        <c:forEach begin="1" end="${recomBook.b_rate-(recomBook.b_rate%1)}">
-                                            <i class="fa fa-star" style="color: red;"> </i>
-                                        </c:forEach>
-                                        <c:forEach begin="${recomBook.b_rate-(recomBook.b_rate%1)+1}" end="5">
-                                            <i class="far fa-star"> </i>
-                                        </c:forEach>
-                                    </div>
-                                </div>
-                                <div class="product-content text-center">
-                                    <h4>
-                                        <a href="content.do?itemId=${recomBook.b_itemId}">${recomBook.b_title}</a>
-                                    </h4>
-                                    <div class="product-price-2">
-                                        <div class="price-box">
-                                            <ins>
-                                                <span class="amount">
-                                                    ${recomBook.b_price}<span class="Price-currencySymbol">원</span></span>
-                                            </ins>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        
-                   </c:forEach>
-                   </div>
-                   </div>
-                   
-				</c:when>
-                <c:otherwise>
-                <div class="row">
-                    <div class="product-slider-active owl-carousel" >
-                        <c:forEach items="${recommandedList}" var="recomBook">
-                        <div class="col-lg-4 col-md-6 col-12" style="max-width:70%;margin:50px;">
-                            <div class="product-wrapper mb-35">
-                                <div class="product-img">
-                                    <a href="content.do?itemId=${recomBook.b_itemId}">
-                                        <img alt="" src="${recomBook.b_img}" style="height:250px;">
-                                    </a>
-                                    <div class="product-action-2">
-                                        <a href="../purchase/add.do?itemId=${recomBook.b_itemId }" title="Add To Cart"  class="action-plus-2 tooltip">
-                                            <i class="zmdi zmdi-shopping-cart-plus"></i>
-                                        </a>
-                                    </div>
-                                    <div class="rating-box">
-                                        <c:forEach begin="1" end="${recomBook.b_rate-(recomBook.b_rate%1)}">
-                                            <i class="fa fa-star" style="color: red;"> </i>
-                                        </c:forEach>
-                                        <c:forEach begin="${recomBook.b_rate-(recomBook.b_rate%1)+1}" end="5">
-                                            <i class="far fa-star"> </i>
-                                        </c:forEach>
-                                    </div>
-                                </div>
-                                <div class="product-content text-center">
-                                    <h4>
-                                        <a href="content.do?itemId=${recomBook.b_itemId}">${recomBook.b_title}</a>
-                                    </h4>
-                                    <div class="product-price-2">
-                                        <div class="price-box">
-                                            <ins>
-                                                <span class="amount">
-                                                    ${recomBook.b_price}<span class="Price-currencySymbol">원</span></span>
-                                            </ins>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        </c:forEach>
-                    </div>
-                </div>
-                </c:otherwise>
-                </c:choose>
-            </div>
-        </div>
         
         <!--Product Description Review Area Start-->
-        <div class="product-description-review-area pb-55">
-            <div class="container">
+        <div class="product-description-review-area pb-20">
+            <div class="container" style="max-width:1000px;">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="product-review-tab">
@@ -607,11 +530,108 @@
         </div>
         <!--Product Description Review Area Start-->
         
-       
+        <!-- may also like product start -->
+        <div class="product-area pb-30 product-padding">
+            <div class="container" style="max-width:1000px;">
+                <div class="section-title-2 text-center mb-25">
+                    <h3 class="ui header">이 책과 유사한 책</h3>
+                   
+                </div>
+				<c:choose>
+				<c:when test="${fn:length(recommandedList) <=3 }">
+					
+					<div class="product-wrapper mb-35">
+					<div class="row">
+					<c:forEach items="${recommandedList}" var="recomBook">
+                        	 <div class="col-3">
+                                <div class="product-img">
+                                    <a href="content.do?itemId=${recomBook.b_itemId}">
+                                        <img alt="" src="${recomBook.b_img}">
+                                    </a>
+                                    <div class="product-action-2">
+                                        <a href="../purchase/add.do?itemId=${recomBook.b_itemId }" title="Add To Cart"  class="action-plus-2 tooltip">
+                                            <i class="zmdi zmdi-shopping-cart-plus"></i>
+                                        </a>
+                                    </div>
+                                    <div class="rating-box">
+                                        <c:forEach begin="1" end="${recomBook.b_rate-(recomBook.b_rate%1)}">
+                                            <i class="fa fa-star" style="color: red;"> </i>
+                                        </c:forEach>
+                                        <c:forEach begin="${recomBook.b_rate-(recomBook.b_rate%1)+1}" end="5">
+                                            <i class="far fa-star"> </i>
+                                        </c:forEach>
+                                    </div>
+                                </div>
+                                <div class="product-content text-center">
+                                    <h4>
+                                        <a href="content.do?itemId=${recomBook.b_itemId}">${recomBook.b_title}</a>
+                                    </h4>
+                                    <div class="product-price-2">
+                                        <div class="price-box">
+                                            <ins>
+                                                <span class="amount">
+                                                    ${recomBook.b_price}<span class="Price-currencySymbol">원</span></span>
+                                            </ins>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                   </c:forEach>
+                   </div>
+                   </div>
+                   
+				</c:when>
+                <c:otherwise>
+                <div class="row">
+                    <div class="product-slider-active owl-carousel" >
+                        <c:forEach items="${recommandedList}" var="recomBook">
+                        <div class="col-lg-4 col-md-6 col-12" style="max-width:70%;margin:50px;">
+                            <div class="product-wrapper mb-35">
+                                <div class="product-img">
+                                    <a href="content.do?itemId=${recomBook.b_itemId}">
+                                        <img alt="" src="${recomBook.b_img}" style="height:200px;">
+                                    </a>
+                                    <div class="product-action-2">
+                                        <a href="../purchase/add.do?itemId=${recomBook.b_itemId }" title="Add To Cart"  class="action-plus-2 tooltip">
+                                            <i class="zmdi zmdi-shopping-cart-plus"></i>
+                                        </a>
+                                    </div>
+                                    <div class="rating-box">
+                                        <c:forEach begin="1" end="${recomBook.b_rate-(recomBook.b_rate%1)}">
+                                            <i class="fa fa-star" style="color: red;"> </i>
+                                        </c:forEach>
+                                        <c:forEach begin="${recomBook.b_rate-(recomBook.b_rate%1)+1}" end="5">
+                                            <i class="far fa-star"> </i>
+                                        </c:forEach>
+                                    </div>
+                                </div>
+                                <div class="product-content text-center">
+                                    <h4>
+                                        <a href="content.do?itemId=${recomBook.b_itemId}">${recomBook.b_title}</a>
+                                    </h4>
+                                    <div class="product-price-2">
+                                        <div class="price-box">
+                                            <ins>
+                                                <span class="amount">
+                                                    ${recomBook.b_price}<span class="Price-currencySymbol">원</span></span>
+                                            </ins>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </c:forEach>
+                    </div>
+                </div>
+                </c:otherwise>
+                </c:choose>
+            </div>
+        </div>
         
         <!--Our Service Area Start-->
-      	<div class="our-service-area pt-50 pb-40" style="padding-left:50px;">
-         <div class="container">
+      	<div class="our-service-area pt-0 pb-40" style="padding-left:50px;">
+         <div class="container" style="max-width:1000px;">
          <h3 class="ui header">작가의 저서</h3>
             <div class="row">
                
@@ -740,6 +760,7 @@
     <script src="../assets/js/plugins.js"></script>
     <script src="../assets/js/main.js"></script>
     <script src="../assets/js/service-book-content.js"></script>
+    <script src="../assets/js/package.js"></script>
     
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script>
     <script src="../assets/js/service-search.js"></script>

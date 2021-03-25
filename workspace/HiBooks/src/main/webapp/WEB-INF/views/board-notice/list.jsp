@@ -227,13 +227,14 @@
             </div>
         </header>
         <!-- header end -->
-        <div class="Shopping-cart-area ptb-100">
-            <div class="container">
+        <div class="Shopping-cart-area ptb-50">
+            <div class="container" style="max-width:1000px;">
                 <div class="row">
                     <div class="col-12">
                         <div class="pg___title">
-                            <h2>공지게시판</h2>
+                            <h3>공지게시판</h3>
                         </div>
+                        <br/>
                         <div class="table-content table-responsive">
                             <table class="table">
                                 <thead>

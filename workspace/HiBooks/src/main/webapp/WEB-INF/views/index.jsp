@@ -103,13 +103,13 @@
                                                         <li class="switcher-menu-item">
                                                             <a href="wishList/moveWishPage.do">위시리스트</a>
                                                         </li>
-                                                        <sec:authorize access="isAuthenticated()">
-	                                                        <sec:authorize access="hasRole([ROLE_ADMIN])"> 
+                                                       <%--  <sec:authorize access="isAuthenticated()">
+	                                                        <sec:authorize access="hasRole([ROLE_ADMIN])">  --%>
 		                                                        <li class="switcher-menu-item">
 		                                                            <a href="admin/recommend.do">관리자페이지</a>
 		                                                        </li>
-		                                                    </sec:authorize>
-		                                                </sec:authorize>    	
+		                                                   <%--  </sec:authorize>
+		                                                </sec:authorize>     --%>	
                                                         <li class="switcher-menu-item">
                                                             <a href="purchase/orderComplete.do">결제내역</a>
                                                         </li>
@@ -313,7 +313,7 @@
             <div class="container">
                 <div class="section-title-2 text-center mb-25">
                 <br/>
-                    <h3 class="ui header">${indexLR.titleSec2}</h3>
+                    <h3 class="ui header" style="text-align:left;">&emsp;&emsp;&nbsp;${indexLR.titleSec2}</h3>
                   <!--   <p></p> -->
                 </div>
 
@@ -448,7 +448,7 @@
                     <div class="container">
                      <div class="section-title-2 text-center mb-25">
 		                <br/>
-		                    <h3 class="ui header">${indexLR.titleSec2}</h3>
+		                    <h3 class="ui header" style="text-align:left;">&emsp;&emsp;&nbsp;${indexLR.titleSec2}</h3>
 		                  <!--   <p></p> -->
 		                </div>
                         <div class="row">

@@ -113,7 +113,7 @@
                     <div class="signin-content">
                         <div class="signin-image">
                             <figure><img src="../assets/img/signin-image.jpg" alt="sing up image"></figure>
-                            <a href="join.do" class="signup-image-link">계정을 만들거에요.</a>
+                            <a href="join.do" class="signup-image-link">아직 회원이 아니십니까?</a>
                         </div>
                         <div class="signin-form">
                             <h2 class="form-title">로그인</h2>
@@ -127,7 +127,7 @@
                                     <input type="password" name="m_pwd" id="pass" placeholder="비밀번호">
                                 </div>
                                 <div class="form-group">
-                                    <label for="remember-me" class="label-agree-term">Remember me</label>
+                                    <label for="remember-me" class="label-agree-term">자동로그인</label>
                                     <input type="checkbox" name="remember-me" id="remember-me" class="agree-term">
                                 </div>
                                 <div class="form-group form-button">

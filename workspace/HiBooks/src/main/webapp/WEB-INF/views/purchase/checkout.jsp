@@ -254,16 +254,17 @@
 </script>
 
  <!--Checkout Area Start-->
-        <div class="checkout-area pt-100 pb-70">
-            <div class="container">
+        <div class="checkout-area pt-50 pb-50">
+            <div class="container" style="max-width:1000px;">
                 <div class="row">
                     <div class="col-12">
                         <div class="pg___title">
-                            <h2>Checkout</h2>
+                          <!--   <h3>주문목록</h3> -->
                         </div>
+                        <br/>
                         <div class="coupon-accordion">
                             <!--Accordion Start-->
-                                <h3><i class="fas fa-calendar"></i> 주문정보
+                                <h3><i class="fas fa-calendar" style="color:#084B84"></i> 주문정보
                             </h3>
                             <div id="checkout-login" class="coupon-content" style="display:block;">
                                 <div class="coupon-info">
@@ -302,9 +303,9 @@
                             <!--Accordion End-->
 
                             <!--Accordion Start-->
-                            <h3> <i class="fas fa-calendar"></i> 추가정보  
+                            <h3> <i class="fas fa-calendar" style="color:#084B84"></i> 추가정보  
                             </h3>
-                            <div id="checkout_coupon" class="coupon-checkout-content" style="display:block;">
+                            <!-- <div id="checkout_coupon" class="coupon-checkout-content" style="display:block;">
                                 <div class="coupon-info">
                                     <form action="#">
                                         <p class="checkout-coupon">
@@ -314,7 +315,7 @@
                                     </form>
                                 </div>
                             </div>
-                            <!--Accordion End-->
+ -->                            <!--Accordion End-->
                         </div>
                     </div>
                 </div>
@@ -342,10 +343,10 @@
                                         <div class="checkout-form-list">
                                             <label>주소 
                                                 <span class="required">*</span>
-                                                 <input type="button"  onClick="goPopup();" value="주소 찾기" style="padding-left:3px;height:30px;font-size:10px;width:10%">
+                                                 <input type="button"  onClick="goPopup();" value="우편번호" style="padding-left:3px;height:30px;font-size:10px;width:10%">
                                             </label>
-		                                     <input placeholder="우편번호" value="" type="text"  id="s_zipNo"  name="s_zipNo" style="width:100px;">
-		                                     <br/> 
+		                                     <input placeholder="우편번호" value="" type="text"  id="s_zipNo"  name="s_zipNo" style="width:100px;margin-bottom:10px;">
+		                                     <br/>
 		                                     <input placeholder="기본주소" value="" type="text" name="s_addr"  id="roadFullAddr"> 
                                         </div>
                                         
@@ -362,8 +363,8 @@
                                      
                             		<div class="order-notes">
                                         <div class="checkout-form-list">
-                                            <label>Order Notes</label>
-                                            <textarea id="s_msg" name="s_msg"cols="30" rows="10" placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
+                                            <label>배송메세지</label>
+                                            <textarea id="s_msg" name="s_msg"cols="30" rows="10"></textarea>
                                         </div>
                                     </div>
                             </div>
@@ -371,21 +372,22 @@
                     </div>
                     <div class="col-lg-6 col-12">
                         <div class="your-order">
-                            <h3>Your order</h3>
+                            <h3>주문 목록</h3>
                             <div class="your-order-table table-responsive">
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th class="cart-product-name">Product</th>
-                                            <th class="cart-product-total">Total</th>
+                                            <th class="cart-product-name">상품</th>
+                                            <th class="cart-product-volume">수량</th>
+                                            <th class="cart-product-total">합계</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                     <c:set var = "sum" value = "0" />
                                     <c:forEach items="${list}" var="cartVo">
                                         <tr class="cart_item">
-                                            <td class="cart-product-name"> ${cartVo.book.b_title}
-                                                <strong class="product-quantity"> ${cartVo.vol}</strong>
+                                            <td class="cart-product-name"> ${cartVo.book.b_title}</td>
+                                                <td><strong class="product-quantity"> ${cartVo.vol}</strong>
                                             </td>
                                             <td class="cart-product-total">
                                                 <span class="amount">${cartVo.total}</span>
@@ -396,13 +398,15 @@
                                     </tbody>
                                     <tfoot>
                                         <tr class="cart-subtotal">
-                                            <th>Cart Subtotal</th>
+                                            <th>총 주문 금액</th>
+                                            <td></td>
                                             <td>
                                                 <span class="amount"><c:out value="${sum}"/> </span>
                                             </td>
                                         </tr>
                                         <tr class="order-total">
-                                            <th>Order Total</th>
+                                            <th>결제 금액</th>
+                                             <td></td>
                                             <td>
                                                 <strong>
                                                     <span id="amount" class="amount"><c:out value="${sum}"/> </span>
@@ -414,7 +418,7 @@
                             </div>
                             <div class="payment-method">
                                 <div class="payment-accordion">
-                                    <div id="accordion">
+                                  <!--   <div id="accordion">
                                         <div class="card">
                                             <div class="card-header" id="#payment-1">
                                                 <h5 class="panel-title">
@@ -463,9 +467,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="order-button-payment">
-                                        <button id="place-order" type="button">주문하기</button>
+                                        <input id="place-order" type="button" value="주문하기">
                                     </div>
                                 </div>
                             </div>

@@ -234,7 +234,7 @@
         <!-- header end -->
         <!-- breadcrumbs area start -->
         <!-- breadcrumbs area End -->
-        <div class="shop-wrapper pt-100 pb-60">
+        <div class="shop-wrapper pt-30 pb-60">
             <div class="container">
 
                 <div class="grid-list-product-wrapper">
@@ -244,7 +244,7 @@
                             <!-- 카테고리 -->
                             <div class="col-xl-3 col-lg-3 col-md-12 col-12">
                                 <div class="row_products_side">
-                                    <div class="product_left_sidbar">
+                                    <div class="product_left_sidbar" style="width:200px;">
 
                                         <div class="product-filter  mb-30">
                                             <h5> 카테고리 </h5>
@@ -286,11 +286,11 @@
                             </div>
                             
                             <!-- 상품리스트 -->
-                            <div class=" col-xl-9 col-lg-9 col-md-12 col-12">
+                            <div class=" col-xl-9 col-lg-9 col-md-12 col-12" style="padding-left:0px;">
                                 
                                 <!-- 탭, 소트, 상품개수 -->
                                 <div class="row">
-                                    <div class="col-lg-12 col-md-12 col-12 ">
+                                    <div class="col-lg-12 col-md-12 col-12" >
                                         <div class="tolbar__area">
                                             <div class="toolbar clearfix">
                                                 <div class="toolbar-inner">
