@@ -68,10 +68,10 @@
                                         <div class="switcher">
                                   
                                         	<sec:authorize access="isAnonymous()">
-                                        		<a href="member/login.do"><span>로그인</span></a>
+                                        		<a href="../member/login.do"><span>로그인</span></a>
                                         	</sec:authorize> 
                 							<sec:authorize access="isAuthenticated()">
-                								<form id="log-out" action = "member/logout.do" method = 'post'>
+                								<form id="log-out" action = "../member/logout.do" method = 'post'>
                 									<a onclick="logoutSubmit()" style="cursor: pointer"><span>로그아웃</span></a>
                 									<input type = "hidden" name = "${_csrf.parameterName }" value = "${_csrf.token }"/>
                 								</form>
@@ -81,14 +81,14 @@
                                     <li>
                                         <div class="switcher">
                                         	<sec:authorize access="isAnonymous()">
-                                        		<a href="member/join.do"><span> 회원가입</span></a>
+                                        		<a href="../member/join.do"><span> 회원가입</span></a>
                                         	</sec:authorize> 
                 							
                                         </div>
                                     </li>
                                     <li>
                                         <div class="switcher">
-                                            <a href="purchase/cart.do"><span> 장바구니</span></a>
+                                            <a href="../purchase/cart.do"><span> 장바구니</span></a>
                                         </div>
                                     </li>
                                     <li>
@@ -98,18 +98,21 @@
                                                     <a >마이페이지</a>
                                                     <ul class="switcher__menus">
                                                         <li class="switcher-menu-item">
-                                                            <a href="member/moveMyInfo.do">내 정보</a>
+                                                            <a href="../member/moveMyInfo.do">내 정보</a>
                                                         </li>
                                                         <li class="switcher-menu-item">
-                                                            <a href="wishList/moveWishPage.do">위시리스트</a>
+                                                            <a href="../wishList/moveWishPage.do">위시리스트</a>
                                                         </li>  
+                                                        <sec:authorize access="isAuthenticated()">
+	                                                        <sec:authorize access="hasRole('ROLE_ADMIN')">
+	                                                        <li class="switcher-menu-item">
+	                                                            <a href="../admin/recommend.do">관리자페이지</a>
+	                                                        </li>
+	                                                        </sec:authorize>
+                                                        </sec:authorize>
                                                         <li class="switcher-menu-item">
-                                                            <a href="admin/recommend.do">관리자페이지</a>
+                                                            <a href="../purchase/orderComplete.do">결제내역</a>
                                                         </li>
-                                                        <li class="switcher-menu-item">
-                                                            <a href="purchase/orderComplete.do">결제내역</a>
-                                                        </li>
-                                                        
                                                     </ul>
                                                 </li>
                                             </ul>

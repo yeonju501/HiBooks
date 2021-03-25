@@ -1,5 +1,6 @@
 package bit.hibooks.mapper;
 
+import java.util.Collection;
 import java.util.List;
 
 import bit.hibooks.domain.admin.RecomListResult;
@@ -15,6 +16,7 @@ public interface AdminMapper {
 	RecomListResult getSec(int re_loc);
 	long getCount(int b_cate);
 	List<Book> getNewBook (int b_cate);
+	Collection<? extends Book> getBestBook(int b_cate);
 
 	
 }

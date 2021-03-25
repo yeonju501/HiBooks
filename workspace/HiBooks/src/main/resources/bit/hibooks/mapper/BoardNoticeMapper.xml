@@ -30,7 +30,7 @@
 		</insert>
 	
 		<select id="selectNotice" resultType="BoardN">
-			select * from BOARDN
+			select * from BOARDN order by BN_SEQ desc
 		</select>
 		<select id="selectNoticeContent" parameterType="long" resultType="BoardN">
 			select * from BOARDN where BN_SEQ = #{bn_seq}
@@ -56,4 +56,13 @@
 		<delete id="deleteFileInfo" parameterType="long">
 			delete from BNFILE where BN_SEQ = #{bn_seq}
 		</delete>
+		
+		<select id="getMainNotice" resultType="NoticeMainResult">
+			select aa.bn_seq, aa.bn_topic, f.nf_fname 
+				from 
+					((select ROWNUM, n.bn_seq, n.bn_topic, n.bn_rdate  from (select * from BoardN order by BN_RDATE desc) n where ROWNUM &lt;=4) aa 
+    				join BNFILE f on  f.bn_seq= aa.bn_seq)
+				where ROWNUM &lt;= 4
+				order by bn_rdate desc
+		</select>
 	</mapper>

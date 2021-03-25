@@ -10,8 +10,12 @@ import bit.hibooks.domain.admin.Chart;
 import bit.hibooks.domain.admin.RecomListResult;
 import bit.hibooks.domain.admin.RecommendVo;
 import bit.hibooks.domain.admin.UpdateListResult;
+import bit.hibooks.domain.boardn.BoardN;
+import bit.hibooks.domain.boardn.NoticeContentResult;
+import bit.hibooks.domain.boardn.NoticeMainResult;
 import bit.hibooks.domain.book.Book;
 import bit.hibooks.mapper.AdminMapper;
+import bit.hibooks.mapper.BoardNoticeMapper;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
@@ -20,14 +24,12 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class RecommendServiceImpl implements RecommendService {
 	private AdminMapper mapper;
+	private BoardNoticeMapper mapperBN;
 	
 	@Override
 	public List<Book> getBookList(RecommendVo recommendVo) {
-		
 		List<Book> list=mapper.getBookList(recommendVo);
 		return list;
-		
-		
 	}
 	
 	@Override
@@ -47,7 +49,7 @@ public class RecommendServiceImpl implements RecommendService {
 	public IndexListResult getSec() {
 		try {
 			RecomListResult recomLRSec1 = mapper.getSec(1);
-			log.info(recomLRSec1.getRe_seq1());
+			//log.info(recomLRSec1.getRe_seq1());
 			List<Book> list1 = new ArrayList <Book>();
 			list1.add(mapper.getBook(recomLRSec1.getRe_seq1()));
 			list1.add(mapper.getBook(recomLRSec1.getRe_seq2()));
@@ -68,7 +70,29 @@ public class RecommendServiceImpl implements RecommendService {
 			list2.add(mapper.getBook(recomLRSec2.getRe_seq6()));
 			list2.add(mapper.getBook(recomLRSec2.getRe_seq7()));
 			list2.add(mapper.getBook(recomLRSec2.getRe_seq8()));
-			return new IndexListResult(recomLRSec1.getRe_title(),list1,recomLRSec2.getRe_title(),list2);
+			
+			RecomListResult recomLRSec3 = mapper.getSec(3);
+			ArrayList<Book> list3 = new ArrayList <Book>();
+			list2.add(mapper.getBook(recomLRSec3.getRe_seq1()));
+			list2.add(mapper.getBook(recomLRSec3.getRe_seq2()));
+			list2.add(mapper.getBook(recomLRSec3.getRe_seq3()));
+			list2.add(mapper.getBook(recomLRSec3.getRe_seq4()));
+			list2.add(mapper.getBook(recomLRSec3.getRe_seq5()));
+			list2.add(mapper.getBook(recomLRSec3.getRe_seq6()));
+			list2.add(mapper.getBook(recomLRSec3.getRe_seq7()));
+			list2.add(mapper.getBook(recomLRSec3.getRe_seq8()));
+			
+			RecomListResult recomLRSec4 = mapper.getSec(4);
+			ArrayList<Book> list4 = new ArrayList <Book>();
+			list2.add(mapper.getBook(recomLRSec4.getRe_seq1()));
+			list2.add(mapper.getBook(recomLRSec4.getRe_seq2()));
+			list2.add(mapper.getBook(recomLRSec4.getRe_seq3()));
+			list2.add(mapper.getBook(recomLRSec4.getRe_seq4()));
+			list2.add(mapper.getBook(recomLRSec4.getRe_seq5()));
+			list2.add(mapper.getBook(recomLRSec4.getRe_seq6()));
+			list2.add(mapper.getBook(recomLRSec4.getRe_seq7()));
+			list2.add(mapper.getBook(recomLRSec4.getRe_seq8()));
+			return new IndexListResult(recomLRSec1.getRe_title(),list1,recomLRSec2.getRe_title(),list2,recomLRSec3.getRe_title(),list3,recomLRSec4.getRe_title(),list4);
 		}catch(NullPointerException npe) {
 			return null;
 		}
@@ -97,5 +121,16 @@ public class RecommendServiceImpl implements RecommendService {
 		
 	}
 	
-
+	@Override
+	public List<Book> getBestBook(){
+		ArrayList<Book> BestBookList = new ArrayList<Book>();
+		for(int i=1;i<6;i++) {
+			BestBookList.addAll(mapper.getBestBook(100*i));
+		}
+		return BestBookList;
+	}
+	@Override
+	public List<NoticeMainResult> getNoticeMain(){
+		return mapperBN.getMainNotice();
+	}
 }
