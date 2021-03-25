@@ -230,24 +230,25 @@
         <!-- breadcrumbs area End -->
          <!--Shopping Cart Area Start-->
  
-        <div class="Shopping-cart-area ptb-100">
-            <div class="container">
+        <div class="Shopping-cart-area ptb-50">
+            <div class="container" style="width:1000px;">
                 <div class="row">
                     <div class="col-12">
                         <div class="pg___title">
-                            <h2>Shopping Cart</h2>
+                            <h3>카트</h3>
                         </div>
+                        <br/>
                         <form action="#">
                             <div class="table-content table-responsive">
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th class="anadi-product-remove">remove</th>
-                                            <th class="anadi-product-thumbnail">images</th>
-                                            <th class="cart-product-name">Product</th>
-                                            <th class="anadi-product-price">Unit Price</th>
-                                            <th class="anadi-product-quantity">Quantity</th>
-                                            <th class="anadi-product-subtotal">Total</th>
+                                            <th class="anadi-product-remove">삭제</th>
+                                            <th class="anadi-product-thumbnail">이미지</th>
+                                            <th class="cart-product-name">상품</th>
+                                            <th class="anadi-product-price">가격</th>
+                                            <th class="anadi-product-quantity">수량</th>
+                                            <th class="anadi-product-subtotal">총액</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -283,28 +284,28 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="row">
+                            <!-- <div class="row">
                                 <div class="col-12">
                                     <div class="coupon-all">
                                         <div class="coupon">
                                             <input id="coupon_code" class="input-text" name="coupon_code" value="" placeholder="Coupon code" type="text">
                                             <input class="button" name="apply_coupon" value="Apply coupon" type="submit">
                                         </div>
-                                       <!--  <div class="coupon2">
+                                        <div class="coupon2">
                                             <input class="button" name="update_cart" value="Update cart" type="submit">
-                                        </div> -->
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="row">
                                 <div class="col-md-5 ml-auto">
                                     <div class="cart-page-total">
-                                        <h2>Cart totals</h2>
+                                        <h2>총 상품금액</h2>
                                         <ul>
-                                            <li>Subtotal
+                                            <li>총액
                                                 <span><c:out value="${sum}"/> </span>
                                             </li>
-                                            <li>Total
+                                            <li>합계
                                                 <span><c:out value="${sum}"/> </span>
                                             </li>
                                         </ul>

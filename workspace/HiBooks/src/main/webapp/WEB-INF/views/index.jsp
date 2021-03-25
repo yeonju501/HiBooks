@@ -110,6 +110,7 @@
                                                         <li class="switcher-menu-item">
                                                             <a href="wishList/moveWishPage.do">위시리스트</a>
                                                         </li>
+
                                                         <sec:authorize access="isAuthenticated()">
 	                                                        <sec:authorize access="hasRole('ROLE_ADMIN')"> 
 		                                                        <li class="switcher-menu-item">
@@ -117,6 +118,7 @@
 		                                                        </li>
 		                                                    </sec:authorize>
 		                                                </sec:authorize>
+
                                                         <li class="switcher-menu-item">
                                                             <a href="purchase/orderComplete.do">결제내역</a>
                                                         </li>
@@ -325,7 +327,9 @@
             <div class="container">
                 <div class="section-title-2 text-center mb-25">
                 <br/>
-                    <h3 class="ui header">집 앞 서점에, 이번 주 나온 신간</h3>
+
+                    <h3 class="ui header"style="text-align:left;">&emsp;&emsp;&nbsp;집 앞 서점에, 방금 나온 신간</h3>
+
                   <!--   <p></p> -->
                 </div>
 
@@ -542,8 +546,10 @@
 		<!--Pricing Table Area End-->
       
        <!-- Brand area start -->
+
                     
     </div>
+
      	
      		 <!-- 그리드 -->
     <div>

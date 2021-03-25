@@ -2635,7 +2635,7 @@ option {
 }
 
 .footer-style-2 .footer-newsletter form button::before {
-  content: "";
+  content: "�넄";
   font-family: ridi;
   font-size: 16px;
   color: #fff;
@@ -3655,7 +3655,7 @@ footer .fotter_style_hm_6 *::-moz-placeholder {
 }
 
 .toolbar .woocommerce-ordering .orderby-wrapper .chosen-container .chosen-single div b:before {
-  content: "";
+  content: "�꽔";
   font-family: ridi;
   font-size: 12px;
 }
@@ -3742,7 +3742,7 @@ footer .fotter_style_hm_6 *::-moz-placeholder {
 .tolbar__area {
   border-bottom: 1px solid #e1e1e1;
   border-top: 1px solid #e1e1e1;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
   padding: 10px 0 9px;
 }
 
@@ -3789,7 +3789,7 @@ footer .fotter_style_hm_6 *::-moz-placeholder {
 }
 
 .pagination-style li a.active {
-  background: #303030 none repeat scroll 0 0;
+  background: #084B84 none repeat scroll 0 0;
   color: #fff;
 }
 
@@ -4437,8 +4437,6 @@ h1.entry-title>a:hover {
   color: #333;
   display: block;
   font-size: 16px;
-  margin-bottom: 15px;
-  padding-bottom: 10px;
   position: relative;
 }
 
@@ -4457,7 +4455,7 @@ h1.entry-title>a:hover {
 }
 
 .product-overview {
-  margin: 30px 0;
+  margin: 0px 0;
 }
 
 .product-size ul li,
@@ -4571,7 +4569,7 @@ h1.entry-title>a:hover {
   color: #303030;
   display: inline-block;
   font-family: ridi;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 700;
   margin: 0 2px;
 }
@@ -4583,7 +4581,7 @@ h1.entry-title>a:hover {
 }
 
 .product-details-content .quickview-plus-minus {
-  padding-top: 35px;
+  padding-top: 10px;
 }
 
 .product-details-content .btn-style {
@@ -4694,7 +4692,7 @@ input.cart-plus-minus-box {
 
 .bundle-price ul li:before {
   color: #727272;
-  content: "";
+  content: "�뜶";
   font-family: ridi;
   font-size: 14px;
   left: 0;
@@ -5038,7 +5036,7 @@ input.cart-plus-minus-box {
 }
 
 .table-content table td.anadi-product-remove {
-  font-size: 20px;
+  font-size: 13px;
 }
 
 .table-content table td.anadi-product-name {
@@ -5049,15 +5047,15 @@ input.cart-plus-minus-box {
 }
 
 .table-content table td.anadi-product-price {
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 13px;
+  font-weight: 500;
 }
 
 .table-content table td.anadi-product-stock-status span.in-stock,
 .table-content table td.anadi-product-stock-status span.out-stock {
   color: #30b878;
   font-family: ridi;
-  font-size: 12px;
+  font-size: 13px;
   text-transform: capitalize;
 }
 
@@ -5093,8 +5091,8 @@ input.cart-plus-minus-box {
 .table-content table td.product-subtotal {
   color: #414141;
   font-family: ridi;
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 13px;
+  font-weight: 500;
 }
 
 .table-content table td .cart-plus-minus {
@@ -5759,8 +5757,8 @@ a.ideas-btn:hover {
 .table-content table td.product-subtotal {
   color: #414141;
   font-family: ridi;
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 13px;
+  font-weight: 500;
 }
 
 .table-content table td .cart-plus-minus {
@@ -5810,8 +5808,8 @@ a.ideas-btn:hover {
 
 .coupon-all input.button:hover,
 .cart-page-total>a:hover {
-  background: #303030 none repeat scroll 0 0;
-  border-color: #303030;
+  background: #084B84 none repeat scroll 0 0;
+  border-color: #084B84;
   color: #fff;
 }
 
@@ -5861,7 +5859,7 @@ a.ideas-btn:hover {
 
 .coupon-accordion h3 {
   background-color: #f7f6f7;
-  border-top: 3px solid #92b558;
+  border-top: 3px solid #084B84;
   color: #515151;
   font-size: 14px;
   font-weight: 400;
@@ -6100,7 +6098,7 @@ p.checkout-coupon input[type="submit"]:hover {
 }
 
 .your-order {
-  background: #f2f2f2 none repeat scroll 0 0;
+  background: #FFFFFF none repeat scroll 0 0;
   padding: 30px 40px 45px;
 }
 
@@ -6120,7 +6118,7 @@ p.checkout-coupon input[type="submit"]:hover {
 }
 
 thead {
-  background-color: #f6f6f6;
+  background-color: #FFFFFF;
 }
 
 .your-order-table table th {
@@ -7588,7 +7586,7 @@ ul#main-custom span,
 /*--------- 15. Scrollup ---------*/
 
 #scrollUp {
-  background: #303030 none repeat scroll 0 0;
+  background: #084B84 none repeat scroll 0 0;
   border: 2px solid #ddd;
   border-radius: 50%;
   bottom: 85px;
