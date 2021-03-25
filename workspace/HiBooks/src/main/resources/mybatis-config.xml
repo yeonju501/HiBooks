@@ -33,6 +33,7 @@
    	   
    	   <typeAlias alias="BoardN" type="bit.hibooks.domain.boardn.BoardN"/>
    	   <typeAlias alias="BNFile" type="bit.hibooks.domain.boardn.BNFile"/>
+   	   <typeAlias alias="NoticeMainResult" type="bit.hibooks.domain.boardn.NoticeMainResult"/>
    </typeAliases>
    <mappers>
    	   <mapper resource="bit/hibooks/mapper/MemberMapper.xml"/>

@@ -15,5 +15,8 @@ public class IndexListResult {
 	private List<Book> sec1;
 	private String titleSec2;
 	private List<Book> sec2;
-
+	private String titleSec3;
+	private List<Book> sec3;
+	private String titleSec4;
+	private List<Book> sec4;
 }

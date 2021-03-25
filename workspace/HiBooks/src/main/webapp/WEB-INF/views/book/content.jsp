@@ -120,7 +120,7 @@
                                                             <a href="../wishList/moveWishPage.do">위시리스트</a>
                                                         </li>  
                                                         <sec:authorize access="isAuthenticated()">
-	                                                        <sec:authorize access="hasRole([ROLE_ADMIN])">
+	                                                        <sec:authorize access="hasRole('ROLE_ADMIN')">
 	                                                        <li class="switcher-menu-item">
 	                                                            <a href="../admin/recommend.do">관리자페이지</a>
 	                                                        </li>
@@ -640,10 +640,14 @@
                <div class="col-xl-3 col-lg-3 col-md-12 col-12">
                   <div class="single-service single-service-2 mb-25">
                      <div class="service-icon">
-                        <img alt="" src="${writerBook.b_img}" style="width:80px;height:114px;">
+                        <a href="content.do?itemId=${writerBook.b_itemId }">
+                        	<img alt="" src="${writerBook.b_img}" style="width:80px;height:114px;">
+                        </a>
                      </div>
                      <div class="service-info" style="padding-top:30px;">
-                        <h3>${writerBook.b_title}</h3>
+                        
+                        	<h3><a href="content.do?itemId=${writerBook.b_itemId }">${writerBook.b_title}</a></h3>
+                        
                         <p>${writerBook.b_price}</p>
                      </div>
                   </div>

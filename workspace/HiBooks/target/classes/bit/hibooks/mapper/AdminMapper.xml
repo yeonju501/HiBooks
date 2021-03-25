@@ -47,4 +47,11 @@
 	]]>
 	</select>
 	
+	<select id="getBestBook" resultType="Book" parameterType="int">
+		select ROWNUM, n.* 
+			from 
+			(select * from BOOK where b_cate = #{b_cate} order by b_seq) n 
+				where ROWNUM &lt;= 2
+	</select>
+	
 	</mapper>

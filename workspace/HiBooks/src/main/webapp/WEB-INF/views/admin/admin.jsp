@@ -412,7 +412,7 @@
                                             </div>
                                         </div>
                                     </form>
-                                    ${fn:length(list)} 건의 책
+                                    ${fn:length(recomList)} 건의 책
                                     <div class="table-responsive" style="height:800px;">
                                         
                                         <!-- 리스팅 -->
@@ -426,7 +426,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                             <c:forEach items="${list}" var="book" varStatus="status">
+                                             <c:forEach items="${recomList}" var="book" varStatus="status">
  												<tr>
                                                     <td><img style="display:block;width:100%;" src="${book.b_img}"></td>
                                                     <td> (${status.count})&nbsp;${book.b_title}</td>
@@ -537,10 +537,12 @@
 								  <div class="row">
 								    <div class="col-xs-12">
 								    <h3 style="width:700px;">이 달의 신간</h3>
-								   <select name="gender" class="ui dropdown" id="select">
-									  <option value="">Gender</option>
-									  <option value="male">Male</option>
-									  <option value="female">Female</option>
+								   <select name="gender" >
+									  <option value="novel">소설</option>
+									  <option value="economy">경제</option>
+									  <option value="society">사회</option>
+									  <option value="self">자기계발</option>
+									  <option value="essay">시/에세이</option>
 									</select>
 								    <br/><br/><br/>
 								      <table class="table table-bordered table-hover dt-responsive" style="max-width:75%;">
@@ -641,8 +643,8 @@
 		                                &nbsp;<h3>공지사항 작성</h3>
 		                                <select name="bn_topic" >
 										    <option value="">말머리</option>
-										    <option value="1">이벤트</option>
-										    <option value="2">2</option>
+										    <option value="이벤트">이벤트</option>
+										    <option value="하이셀렉트">하이셀렉트</option>
 										    <option value="3">3</option>
 										    <option value="4">4</option>
 										    <option value="5">5</option>
@@ -841,6 +843,12 @@
 				return (number/1048576).toFixed(1) + 'MB';
 			}
 		}
+		
+		$(document).on("click",".option", function(){
+			let selectedCate = $(this).attr("data-value");
+			$("tbody>tr").css('display','none');
+			$("tr#"+selectedCate).css('display','table-row');
+		});
 	</script>
 </body>
 

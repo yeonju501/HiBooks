@@ -95,16 +95,20 @@
                                                     <a >마이페이지</a>
                                                     <ul class="switcher__menus">
                                                         <li class="switcher-menu-item">
-                                                            <a href="">내 정보</a>
+                                                            <a href="../member/moveMyInfo.do">내 정보</a>
                                                         </li>
                                                         <li class="switcher-menu-item">
-                                                            <a href="">위시리스트</a>
-                                                        </li>
+                                                            <a href="../wishList/moveWishPage.do">위시리스트</a>
+                                                        </li>  
+                                                        <sec:authorize access="isAuthenticated()">
+	                                                        <sec:authorize access="hasRole('ROLE_ADMIN')">
+	                                                        <li class="switcher-menu-item">
+	                                                            <a href="../admin/recommend.do">관리자페이지</a>
+	                                                        </li>
+	                                                        </sec:authorize>
+                                                        </sec:authorize>
                                                         <li class="switcher-menu-item">
-                                                            <a href="">커뮤니티</a>
-                                                        </li>
-                                                        <li class="switcher-menu-item">
-                                                            <a href="">...</a>
+                                                            <a href="../purchase/orderComplete.do">결제내역</a>
                                                         </li>
                                                     </ul>
                                                 </li>
