@@ -3,8 +3,6 @@ package bit.hibooks.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,14 +11,15 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
+
 
 import bit.hibooks.domain.book.Book;
 import bit.hibooks.domain.purchase.CartVo;
 import bit.hibooks.service.CartService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
+
+import static bit.hibooks.setting.ErrorMsgSet.*;
 
 @Log4j
 @Controller
@@ -58,20 +57,40 @@ public class CartController {
 		response.setContentType("text/html; charset=euc-kr");
         response.setCharacterEncoding("euc-kr");
 		PrintWriter out = response.getWriter();
+		out.println(HEADSETTING);
+		out.println("<body>");
+		out.println(BODYSETTING);
+		out.println(DESIGN);
 		out.println("<script>");
-		out.println("if(confirm(\"카트페이지로 이동하시겠습니까?\")==true){");
+		out.println("swalWithBootstrapButtons.fire({");
+		out.println("showCancelButton : true,");
+		out.println("text : '장바구니로 이동하시겠습니까?',");
+		out.println("icon : 'question',");
+		out.println("confirmButtonText : '네',");
+		out.println("cancelButtonText : '아니오'");
+		out.println("}).then((result) => {");
+		out.println("if(result.isConfirmed){");
 		out.println("location.href = \"../purchase/cart.do\";");
-		out.println("}else{");	
-		out.println("location.href ='"+ referer +"' ");
-		out.println("}</script>");
+		out.println("}else{");
+		out.println("location.href ='"+ referer + "';");
+		out.println("}})</script>");
+		out.println("</body>");	
 		out.flush();
 		
-		//CartListResult cartLR = new CartListResult(book,cartVo);
-		//session.setAttribute("cartLR",cartLR);
-		
-		//return listCart(session);
-//		String referer = request.getHeader("Referer");
-//		log.info(referer);
+		/*swalWithBootstrapButtons.fire({
+			showCancelButton : true,
+			text : '위시리스트로 이동하시겠습니까?',
+			icon : 'question',
+			focusConfirm: false,
+			confirmButtonText : '네',
+			cancelButtonText : '아니오'
+		}).then((result) => {
+			if(result.isConfirmed){
+				location.href = "../wishList/moveWishPage.do";
+			}else{
+				return false;
+			}
+		})*/
 		
 	}
 	@RequestMapping("purchase.do")

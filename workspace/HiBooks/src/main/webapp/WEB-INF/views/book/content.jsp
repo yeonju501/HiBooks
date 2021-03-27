@@ -118,14 +118,7 @@
                                                         </li>
                                                         <li class="switcher-menu-item">
                                                             <a href="../wishList/moveWishPage.do">위시리스트</a>
-                                                        </li>  
-                                                        <sec:authorize access="isAuthenticated()">
-	                                                        <sec:authorize access="hasRole('ROLE_ADMIN')">
-	                                                        <li class="switcher-menu-item">
-	                                                            <a href="../admin/recommend.do">관리자페이지</a>
-	                                                        </li>
-	                                                        </sec:authorize>
-                                                        </sec:authorize>
+                                                        </li>
                                                         <li class="switcher-menu-item">
                                                             <a href="../purchase/orderComplete.do">결제내역</a>
                                                         </li>
@@ -143,7 +136,6 @@
             <div class="header-topbar header-topbar-style-1">
                 <div class="container-fluid">
                     <div class="row">
-                        
                         <div class="col-md-3"></div>
                         <div class="col-md-6">
                             <div class="search__sidbar">
@@ -183,13 +175,8 @@
                                                         
                                                     </ul>
                                                 </li>
-												
-                                                <li><a id="in" href="">베스트</a></li>
-												
-                                                <li><a id="in" href="">추천</a></li>
-												
+                                                <li><a id="in" href="../recommend/list.do">추천</a></li>
                                                 <li><a id="in" href="">커뮤니티</a></li>
-
                                                 <li class="active"><a href="">공지/문의</a>
                                                     <ul>
                                                         <li><a href="../boardNotice/list.do">공지</a></li>
@@ -219,13 +206,8 @@
 													
 												</ul>
 											</li>
-											
-											<li><a href="">베스트 </a></li>
-											
-											<li><a href="">추천</a></li>
-											
+											<li><a href="../recommend/list.do">추천</a></li>
 											<li><a href="">커뮤니티</a></li>
-											
 											<li><a href="">공지/문의 <i class="ion-ios-arrow-down"></i></a>
 												<ul>
 													<li><a href="../boardNotice/list.do"> 공지</a></li>
@@ -327,8 +309,8 @@
 	                                        </span>
 	                                    </a>
 	                                </div>
-	                                <div class="quickview-btn-cart">
-	                                    <a class="btn-style cr-btn" href="../purchase/purchase.do?itemId=${book.b_itemId}">
+	                                <div class="quickview-btn-cart" style="margin-left: 53px;">
+	                                    <a class="btn-style cr-btn" id="purchase-rightnow" href="../purchase/purchase.do?itemId=${book.b_itemId}">
 	                                        <span>바로 구매하기</span>
 	                                    </a>
 	                                </div>
@@ -763,12 +745,24 @@
     <script src="../assets/js/owl.carousel.min.js"></script>
     <script src="../assets/js/plugins.js"></script>
     <script src="../assets/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script src="../assets/js/service-book-content.js"></script>
     <script src="../assets/js/package.js"></script>
     
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script>
     <script src="../assets/js/service-search.js"></script>
+    <script>
     
+    	var rightNow = $("#purchase-rightnow").attr("href");
+    
+	    $(".qtybutton").on("click", function() {
+	    	var $button = $(this); 
+	    	var vol = $button.parent().find("input").val();
+	    	//alert(rightNow +"&vol="+vol);
+	    	$("#purchase-rightnow").attr("href",rightNow +"&vol="+vol);
+	    });
+    
+    </script>
     
 </body>
 

@@ -645,9 +645,9 @@
 										    <option value="">말머리</option>
 										    <option value="이벤트">이벤트</option>
 										    <option value="하이셀렉트">하이셀렉트</option>
-										    <option value="3">3</option>
-										    <option value="4">4</option>
-										    <option value="5">5</option>
+										    <option value="인터뷰">인터뷰</option>
+										    <option value="뉴스">뉴스</option>
+										    
 									    </select>
 									    <br/><br/><br/>
 									    &nbsp;<label>제목</label>
@@ -658,7 +658,7 @@
 										 <textarea id="summernote" class="note-editable" contenteditable="true" role="textbox" 
 										 aria-multiline="true" spellcheck="true" name="bn_content"></textarea>
 										   <br/>
-										 <input id="fs" type ="file" name="fs" multiple>
+										 <input id="fs" type ="file" name="fs" value="" multiple>
 										 <div class="preview">
 										 <p></p>
 										</div>		                                

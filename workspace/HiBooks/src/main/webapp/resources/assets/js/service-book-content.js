@@ -31,43 +31,76 @@
 //	});
 //}
 
+const swalWithBootstrapButtons = Swal.mixin({
+  customClass: {
+    confirmButton: 'btn btn-primary',
+    cancelButton: 'btn btn-default',
+  },
+  buttonsStyling: false
+})
 $(document).on("click","#in-wish-list",function(){
 	let loginUser = $("#login-user-for-js").val();
 	let b_itemId = $("#itemId").val();
 	if(loginUser == undefined){
-		alert("로그인이 필요한 서비스입니다.");
+		swalWithBootstrapButtons.fire({
+			
+			text : '로그인이 필요한 서비스입니다.',
+			icon : 'error',
+			focusConfirm: false,
+			confirmButtonText : '네'
+		}).then((result) => {
+			if(result.isConfirmed){
+				location.href = "../member/login.do";
+			}
+		});
+		/*alert("로그인이 필요한 서비스입니다.");
 		location.href = "../member/login.do";
-		return false;
-	}
-	$.ajax({
-		url : "../wishList/addItem.do",
-		type : "Get",
-		data : {b_itemId : b_itemId, m_email : loginUser},
-		dataType : "text",
-		success : function(selectWish){
-			//alert(selectWish);
-			let html = '';
-			html += '<span>';
-			if(selectWish == "selected"){
-				html += '<i class="ion-ios-heart" style="color:red"></i>';
-			}else{
-				html += '<i class="ion-ios-heart-outline"></i>';
-			}
-			html += '</span>';
-			$("#in-wish-list").html(html);
-			if(selectWish == "selected" ){
-				if(confirm("위시리스트 페이지로 이동하시겠습니까?")==true){
-					location.href = "../wishList/moveWishPage.do";
+		return false;*/
+	}else{
+		$.ajax({
+			url : "../wishList/addItem.do",
+			type : "Get",
+			data : {b_itemId : b_itemId, m_email : loginUser},
+			dataType : "text",
+			success : function(selectWish){
+				//alert(selectWish);
+				let html = '';
+				html += '<span>';
+				if(selectWish == "selected"){
+					html += '<i class="ion-ios-heart" style="color:red"></i>';
 				}else{
-					return false;
+					html += '<i class="ion-ios-heart-outline"></i>';
 				}
+				html += '</span>';
+				$("#in-wish-list").html(html);
+				if(selectWish == "selected" ){
+					swalWithBootstrapButtons.fire({
+						showCancelButton : true,
+						text : '위시리스트로 이동하시겠습니까?',
+						icon : 'question',
+						focusConfirm: false,
+						confirmButtonText : '네',
+						cancelButtonText : '아니오'
+					}).then((result) => {
+						if(result.isConfirmed){
+							location.href = "../wishList/moveWishPage.do";
+						}else{
+							return false;
+						}
+					});
+					/*if(confirm("위시리스트 페이지로 이동하시겠습니까?")==true){
+						location.href = "../wishList/moveWishPage.do";
+					}else{
+						return false;
+					}*/
+				}
+			},
+			error : function(a,b,c){
+				alert("실패 :" + a.responseText);
+				alert("실패 :" + c);
 			}
-		},
-		error : function(a,b,c){
-			alert("실패 :" + a.responseText);
-			alert("실패 :" + c);
-		}
-	});
+		});
+	}
 });
 //대댓글 입력 폼 보이게 하기(대댓글 일단 보류)
 $(document).on("click",".re-reply[seq]",function(){
@@ -81,22 +114,45 @@ $(document).on("click","#re-like-it",function(){
 	let review_Writer = $("#whose-review[seq="+seq+"]").val();
 	let loginUser = $("#login-user-for-js").val();
 	if(loginUser == review_Writer){
-		alert("자기 리뷰에 좋아요 금지");
-		return false;
+		swalWithBootstrapButtons.fire({
+			
+			text : '자신의 리뷰에 추천을 할 수 없습니다.',
+			icon : 'error',
+			focusConfirm: false,
+			confirmButtonText : 'Bad'
+		}).then((result) => {
+			if(result.isConfirmed){
+				return false;
+			}
+		});
+        /*alert("자기 리뷰에 좋아요 금지");
+		return false;*/	
+	}else{
+		let b_itemId = $("#itemId").val();
+		$.ajax({
+			url : "re-like.do",
+			type : "Get",
+			data : {br_seq: seq, m_email: loginUser, itemId: b_itemId},
+			dataType : "json",
+			success : function(result){
+				setReviewListHtml(result);
+			},
+			error : function(a,b,c){
+				swalWithBootstrapButtons.fire({
+					
+					text : '같은 리뷰에 중복 추천을 할 수 없습니다.',
+					icon : 'error',
+					focusConfirm: false,
+					confirmButtonText : 'Bad'
+				}).then((result) => {
+					if(result.isConfirmed){
+						return false;
+					}
+				});
+				/*alert("같은 댓글에 좋아요는 한번만!");*/
+			} 
+		});
 	}
-	let b_itemId = $("#itemId").val();
-	$.ajax({
-		url : "re-like.do",
-		type : "Get",
-		data : {br_seq: seq, m_email: loginUser, itemId: b_itemId},
-		dataType : "json",
-		success : function(result){
-			setReviewListHtml(result);
-		},
-		error : function(a,b,c){
-			alert("같은 댓글에 좋아요는 한번만!");
-		} 
-	});
 });
 
 //댓글 수정 버튼 수정 폼 보이기
@@ -108,43 +164,65 @@ $(document).on("click", "#review-update-form",function(){
 //댓글 수정
 $(document).on("click","#review-update-submit",function(){
 	if($("#your-rate").val().length == 0){
-		alert("별점을 입력해주세요");
-		return false;
-	}
-	if($("#your-comment").val().trim().length == 0){
-		alert("내용을 입력해주세요");
-		$("#your-comment").val("");
-		return false;
-	}
-	let token = $("meta[name='_csrf']").attr("content");
-	let header = $("meta[name='_csrf_header']").attr("content");
-	let loginUser = $("#login-user-for-js").val();
-	let formData = $("#review").serialize();
-	$.ajax({
-		url : "re-update.do",
-		type : "Post",
-		data : formData,
-		dataType : "json",
-//		beforeSend :function(xhr) {
-//        	xhr.setRequestHeader(header,token);
-//        },
-		success : function(result){
-			for(var review in result.reviewList){
-				if(review.m_email == loginUser){
-					document.getElementById("your-rate").value = review.br_rate;
-					document.getElementById("your-comment").value = review.br_comment;
-				}
+		swalWithBootstrapButtons.fire({
+			
+			text : '별점을 입력해주세요',
+			icon : 'error',
+			focusConfirm: false,
+			confirmButtonText : 'OK'
+		}).then((result) => {
+			if(result.isConfirmed){
+				return false;
 			}
-			$("#review-delete").attr("type","button");
-			$("#review-update-form").attr("type","button");
-			$("#review-update-submit").attr("type","hidden");
-			$("#your-comment").attr("readonly","true");
-			setReviewListHtml(result);
-		},
-		error : function(a,b,c){
-			alert("실패 :" + a.responseText);
-		}
-	});
+		});
+		/*alert("");
+		return false;*/
+	}else if($("#your-comment").val().trim().length == 0){
+		swalWithBootstrapButtons.fire({
+			
+			text : '내용을 입력해주세요',
+			icon : 'error',
+			focusConfirm: false,
+			confirmButtonText : 'OK'
+		}).then((result) => {
+			if(result.isConfirmed){
+				$("#your-comment").val("");
+				return false;
+			}
+		});
+		/*alert("내용을 입력해주세요");
+		return false;*/
+	}else{
+		let token = $("meta[name='_csrf']").attr("content");
+		let header = $("meta[name='_csrf_header']").attr("content");
+		let loginUser = $("#login-user-for-js").val();
+		let formData = $("#review").serialize();
+		$.ajax({
+			url : "re-update.do",
+			type : "Post",
+			data : formData,
+			dataType : "json",
+	//		beforeSend :function(xhr) {
+	//        	xhr.setRequestHeader(header,token);
+	//        },
+			success : function(result){
+				for(var review in result.reviewList){
+					if(review.m_email == loginUser){
+						document.getElementById("your-rate").value = review.br_rate;
+						document.getElementById("your-comment").value = review.br_comment;
+					}
+				}
+				$("#review-delete").attr("type","button");
+				$("#review-update-form").attr("type","button");
+				$("#review-update-submit").attr("type","hidden");
+				$("#your-comment").attr("readonly","true");
+				setReviewListHtml(result);
+			},
+			error : function(a,b,c){
+				alert("실패 :" + a.responseText);
+			}
+		});
+	}
 });
 //댓글 삭제
 $(document).on("click","#review-delete",function(){
@@ -200,7 +278,24 @@ $(document).on("click","button.more_review_button",function(){
 //댓글 작성
 $(document).on("click","#review-write",function(e){
 	if($("#login-check").val().length == 0){
-		let goLogin = confirm("로그인이 필요한 서비스 입니다");
+		swalWithBootstrapButtons.fire({
+			showCancelButton : true,
+			text : '로그인이 필요한 서비스 입니다. 로그인 하시겠습니까?',
+			icon : 'question',
+			focusConfirm: false,
+			confirmButtonText : '네',
+			cancelButtonText : '아니오'
+		}).then((result) => {
+			if(result.isConfirmed){
+				location.href = "../member/login.do";
+			}else{
+				$("#your-rate").val("");
+				$("#your-comment").text("");
+				return false;
+			}
+		});
+			
+		/*confirm("로그인이 필요한 서비스 입니다");
 		if(goLogin){
 			location.href="../member/login.do";
 			return false;
@@ -208,41 +303,62 @@ $(document).on("click","#review-write",function(e){
 			$("#your-rate").val("");
 			$("#your-comment").text("");
 			return false;
-		}
+		}*/
+	}else if($("#your-rate").val().length == 0){
+		swalWithBootstrapButtons.fire({
+			
+			text : '별점을 입력해주세요',
+			icon : 'error',
+			focusConfirm: false,
+			confirmButtonText : 'OK'
+		}).then((result) => {
+			if(result.isConfirmed){
+				return false;
+			}
+		});
+		/*alert("별점을 입력해주세요");
+		return false;*/
+	}else if($("#your-comment").val().trim().length == 0){
+		swalWithBootstrapButtons.fire({
+			
+			text : '내용을 입력해주세요',
+			icon : 'error',
+			focusConfirm: true,
+			confirmButtonText : 'OK'
+		}).then((result) => {
+			if(result.isConfirmed){
+				$("#your-comment").val("");
+				return false;
+			}
+		});
+		/*alert("내용을 입력해주세요");
+		return false;*/
+	}else{
+		let token = $("meta[name='_csrf']").attr("content");
+		let header = $("meta[name='_csrf_header']").attr("content");
+		let loginUserRate = $("#your-rate").val();
+		let formData = $("#review").serialize();
+		
+		$.ajax({
+			url:"review.do",
+			type:"Post",
+			data: formData,
+			dataType:"json",
+			success: function(result){
+				//alert("success: "+ result);
+				setReviewListHtml(result);
+				$("#your-rate").val(loginUserRate);
+				$("#review-write").attr("type","hidden");
+				$("#review-delete").attr("type","button");
+				$("#review-update-form").attr("type","button");
+				$("#your-comment").attr("readonly","true");
+			},
+			error: function(a,b,c){
+				alert("XMLHttpRequest: "+ a.responseText);
+				alert("예외 원인: "+ c);
+			}
+		});
 	}
-	if($("#your-rate").val().length == 0){
-		alert("별점을 입력해주세요");
-		return false;
-	}
-	if($("#your-comment").val().trim().length == 0){
-		alert("내용을 입력해주세요");
-		$("#your-comment").val("");
-		return false;
-	}
-	let token = $("meta[name='_csrf']").attr("content");
-	let header = $("meta[name='_csrf_header']").attr("content");
-	let loginUserRate = $("#your-rate").val();
-	let formData = $("#review").serialize();
-	
-	$.ajax({
-		url:"review.do",
-		type:"Post",
-		data: formData,
-		dataType:"json",
-		success: function(result){
-			//alert("success: "+ result);
-			setReviewListHtml(result);
-			$("#your-rate").val(loginUserRate);
-			$("#review-write").attr("type","hidden");
-			$("#review-delete").attr("type","button");
-			$("#review-update-form").attr("type","button");
-			$("#your-comment").attr("readonly","true");
-		},
-		error: function(a,b,c){
-			alert("XMLHttpRequest: "+ a.responseText);
-			alert("예외 원인: "+ c);
-		}
-	});
 });
 
 

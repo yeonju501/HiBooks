@@ -52,7 +52,6 @@ public class PurchaseController {
 	@ResponseBody
 	@GetMapping("placeorder.do")
 	public String placeOrder(PurchaseVo purchaseVo, HttpSession session) {
-		
 		//log.info(purchaseVo);
 		List<CartVo> list = null;
 		Object listObj=session.getAttribute("list");
@@ -69,8 +68,11 @@ public class PurchaseController {
 	
 	@GetMapping("orderComplete.do")
 	public ModelAndView orderComplete(Authentication auth) {
-		log.info("결제확인 페이지로 이동합니다.");
-		MemberDetails memberDetails = (MemberDetails) auth.getPrincipal();
+		//log.info("결제확인 페이지로 이동합니다.");
+		MemberDetails memberDetails = null;
+		if(auth.isAuthenticated()) {
+			memberDetails = (MemberDetails) auth.getPrincipal();
+		}
 		List<PurchaseResult> shipIngList = service.getShipIng(memberDetails.getUsername());
 		List<PurchaseResult> shipCompleteList = service.getShipComplete(memberDetails.getUsername());
 		ModelAndView mv = new ModelAndView("purchase/check-order");

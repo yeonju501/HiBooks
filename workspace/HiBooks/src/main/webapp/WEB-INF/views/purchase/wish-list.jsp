@@ -92,16 +92,13 @@
                                                     <a >마이페이지</a>
                                                     <ul class="switcher__menus">
                                                         <li class="switcher-menu-item">
-                                                            <a href="">내 정보</a>
+                                                            <a href="../member/moveMyInfo.do">내 정보</a>
                                                         </li>
                                                         <li class="switcher-menu-item">
-                                                            <a href="">위시리스트</a>
+                                                            <a href="../wishList/moveWishPage.do">위시리스트</a>
                                                         </li>
                                                         <li class="switcher-menu-item">
-                                                            <a href="">커뮤니티</a>
-                                                        </li>
-                                                        <li class="switcher-menu-item">
-                                                            <a href="">...</a>
+                                                            <a href="../purchase/orderComplete.do">결제내역</a>
                                                         </li>
                                                     </ul>
                                                 </li>
@@ -124,7 +121,7 @@
                                 <div class="input_form">
                                     <form name="searchinput" method="post" action="../product/search.do">
 	                                    <input type = "hidden" name = "${_csrf.parameterName }" value = "${_csrf.token }"/>
-	                                    <input type="text" class="input_text" name="keyword" placeholder="제목, 저자, 출판사 검색">
+	                                    <input type="text" class="input_text" id="keyword" name="keyword" placeholder="제목, 저자, 출판사 검색">
 	                                    <button id="searchinput" type="button" class="button">
 	                                        <i class="fa fa-search fa-lg"></i>
 	                                    </button>
@@ -158,15 +155,13 @@
                                                     </ul>
                                                 </li>
 												
-                                                <li><a id="in" href="">베스트</a></li>
-												
-                                                <li><a id="in" href="">추천</a></li>
+                                                <li><a id="in" href="../recommend/list.do">추천</a></li>
 												
                                                 <li><a id="in" href="">커뮤니티</a></li>
 
                                                 <li class="active"><a href="">공지/문의</a>
                                                     <ul>
-                                                        <li><a href="">공지</a></li>
+                                                        <li><a href="../boardNotice/list.do">공지</a></li>
                                                         <li><a href="../boardq/list.do">문의</a></li>
                                                     </ul>
                                                 </li>
@@ -194,18 +189,15 @@
 												</ul>
 											</li>
 											
-											<li><a href="">베스트 </a></li>
-											
-											<li><a href="">추천</a></li>
+											<li><a href="../recommend/list.do">추천</a></li>
 											
 											<li><a href="">커뮤니티</a></li>
 											
 											<li><a href="">공지/문의 <i class="ion-ios-arrow-down"></i></a>
 												<ul>
-													<li><a href=""> 공지</a></li>
+													<li><a href="../boardNotice/list.do"> 공지</a></li>
 													<li><a href="../boardq/list.do"> 문의</a></li>
-                                                    <li><a href=""> ....</a></li>
-												</ul>
+                                                </ul>
 											</li>
 											
 											

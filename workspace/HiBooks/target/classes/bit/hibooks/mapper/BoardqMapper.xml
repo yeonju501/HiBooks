@@ -25,7 +25,7 @@
 	    insert into QNA values(#{qb_seq},#{m_email},#{qb_subject},#{qb_content},SYSDATE,#{qb_count},#{qb_ref},#{qb_lev},#{qb_sun},#{qb_cat})
 	</insert>
 	<update id="update" parameterType="Boardq">
-	    update QNA set QB_SUBJECT=#{qb_subject}, QB_CONTENT=#{content} where QB_SEQ=#{qb_seq}
+	    update QNA set QB_SUBJECT=#{qb_subject}, QB_CONTENT=#{qb_content}, QB_CAT=#{qb_cat} where QB_SEQ=#{qb_seq}
 	</update>
 	 <delete id="delete" parameterType="long">
 		delete from QNA where QB_SEQ=#{qb_seq}

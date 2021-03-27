@@ -18,7 +18,10 @@
 			<security:intercept-url pattern="/" access="permitAll"/>
 			<security:intercept-url pattern="/member/moveMyInfo.do" access="hasRole('ROLE_USER')"/>
 			<security:intercept-url pattern="/wishList/*" access="hasRole('ROLE_USER')"/>
+			<security:intercept-url pattern="/purchase/checkout.do" access="hasRole('ROLE_USER')"/>
+			<security:intercept-url pattern="/purchase/placeorder.do" access="hasRole('ROLE_USER')"/>
 			<security:intercept-url pattern="/purchase/orderComplete.do" access="hasRole('ROLE_USER')"/>
+			<security:intercept-url pattern="/boardq/write.do" access="hasRole('ROLE_USER')"/>
 			<security:form-login login-page="/member/login.do"
 									username-parameter="m_email"
 									password-parameter="m_pwd"

@@ -106,13 +106,6 @@
                                                         <li class="switcher-menu-item">
                                                             <a href="../wishList/moveWishPage.do">위시리스트</a>
                                                         </li>  
-                                                        <sec:authorize access="isAuthenticated()">
-	                                                        <sec:authorize access="hasRole('ROLE_ADMIN')">
-	                                                        <li class="switcher-menu-item">
-	                                                            <a href="../admin/recommend.do">관리자페이지</a>
-	                                                        </li>
-	                                                        </sec:authorize>
-                                                        </sec:authorize>
                                                         <li class="switcher-menu-item">
                                                             <a href="../purchase/orderComplete.do">결제내역</a>
                                                         </li>
@@ -130,14 +123,13 @@
             <div class="header-topbar header-topbar-style-1">
                 <div class="container-fluid">
                     <div class="row">
-                        
                         <div class="col-md-3"></div>
                         <div class="col-md-6">
                             <div class="search__sidbar">
                                 <div class="input_form">
                                     <form name="searchinput" method="post" action="../product/search.do">
 	                                    <input type="text" class="input_text" name="keyword" placeholder="제목, 저자, 출판사 검색">
-	                                    <input type = "hidden" name = "${_csrf.parameterName }" value = "${_csrf.token }"/>
+	                                    <input type="hidden" name = "${_csrf.parameterName }" value = "${_csrf.token }"/>
 	                                    <button id="searchinput" type="button" class="button">
 	                                        <i class="fa fa-search fa-lg"></i>
 	                                    </button>
@@ -145,16 +137,13 @@
                                 </div>
                             </div>
                         </div>
-                        
                         <div class="col-md-3"></div>
-                        
                     </div>
                 </div>
             </div>
             <div class="header_area hdr_1">
                 <div class="container-fluid">
                     <div class="row">
-                        
                         <div class="col-md-8 col-xs-12">
                             <div class="main_menu_area">
                                 <div class="main-menu">
@@ -162,21 +151,16 @@
                                             <ul id="main-custom">
                                                 <li class="active"><a href="shop.do">책</a>
                                                     <ul>
-                                                        <li><a href="shop.do?cate=100">소설</a></li>
-                                                        <li><a href="shop.do?cate=200">경영/경제</a></li>
-                                                        <li><a href="shop.do?cate=300">인문/사회/역사</a></li>
-                                                        <li><a href="shop.do?cate=400">자기계발</a></li>
-                                                        <li><a href="shop.do?cate=500">에세이/시</a></li>
+                                                        <li><a href="../shop.do?cate=100">소설</a></li>
+                                                        <li><a href="../shop.do?cate=200">경영/경제</a></li>
+                                                        <li><a href="../shop.do?cate=300">인문/사회/역사</a></li>
+                                                        <li><a href="../shop.do?cate=400">자기계발</a></li>
+                                                        <li><a href="../shop.do?cate=500">에세이/시</a></li>
                                                         
                                                     </ul>
                                                 </li>
-												
-                                                <li><a id="in" href="">베스트</a></li>
-												
-                                                <li><a id="in" href="">추천</a></li>
-												
+                                                <li><a id="in" href="../recommend/list.do">추천</a></li>
                                                 <li><a id="in" href="">커뮤니티</a></li>
-
                                                 <li class="active"><a href="">공지/문의</a>
                                                     <ul>
                                                         <li><a href="../boardNotice/list.do">공지</a></li>
@@ -198,21 +182,16 @@
                                         <ul class="menu-overflow">
 											<li class="active"><a href="shop.do">책 <i class="ion-ios-arrow-down"></i></a>
 												<ul>
-													<li><a href="shop.do?cate=100">소설</a></li>
-													<li><a href="shop.do?cate=200">경영/경제</a></li>
-													<li><a href="shop.do?cate=300">인문/사회/역사</a></li>
-													<li><a href="shop.do?cate=400">자기계발</a></li>
-													<li><a href="shop.do?cate=500">에세이/시</a></li>
+													<li><a href="../shop.do?cate=100">소설</a></li>
+													<li><a href="../shop.do?cate=200">경영/경제</a></li>
+													<li><a href="../shop.do?cate=300">인문/사회/역사</a></li>
+													<li><a href="../shop.do?cate=400">자기계발</a></li>
+													<li><a href="../shop.do?cate=500">에세이/시</a></li>
 													
 												</ul>
 											</li>
-											
-											<li><a href="">베스트 </a></li>
-											
-											<li><a href="">추천</a></li>
-											
+											<li><a href="../recommend/list.do">추천</a></li>
 											<li><a href="">커뮤니티</a></li>
-											
 											<li><a href="">공지/문의 <i class="ion-ios-arrow-down"></i></a>
 												<ul>
 													<li><a href="../boardNotice/list.do"> 공지</a></li>
@@ -599,7 +578,7 @@
     <script src="../assets/js/owl.carousel.min.js"></script>
     <script src="../assets/js/plugins.js"></script>
     <script src="../assets/js/main.js"></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     
         
 </body>
