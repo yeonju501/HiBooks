@@ -4,6 +4,7 @@ import java.util.List;
 
 import bit.hibooks.domain.IndexListResult;
 import bit.hibooks.domain.admin.Chart;
+import bit.hibooks.domain.admin.ChartCate2;
 import bit.hibooks.domain.admin.RecomListResult;
 import bit.hibooks.domain.admin.RecommendVo;
 import bit.hibooks.domain.admin.UpdateListResult;
@@ -21,4 +22,5 @@ public interface RecommendService {
 	UpdateListResult getNewBook();
 	List<Book> getBestBook();
 	List<NoticeMainResult> getNoticeMain();
+	List<List<ChartCate2>> getChartCate2();
 }

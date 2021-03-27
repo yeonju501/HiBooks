@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import bit.hibooks.domain.IndexListResult;
 import bit.hibooks.domain.admin.Chart;
+import bit.hibooks.domain.admin.ChartCate2;
 import bit.hibooks.domain.admin.RecomListResult;
 import bit.hibooks.domain.admin.RecommendVo;
 import bit.hibooks.domain.admin.UpdateListResult;
@@ -109,7 +110,14 @@ public class RecommendServiceImpl implements RecommendService {
 		return list;
 		
 	}
-	
+	@Override
+	public List<List<ChartCate2>> getChartCate2(){
+		ArrayList<List<ChartCate2>> list = new ArrayList<List<ChartCate2>>();
+		for(int i=1; i<6; i++) {
+			list.add(mapper.getCate2Cnt(i*100));
+		}
+		return list;
+	}
 	@Override
 	public UpdateListResult getNewBook() {
 		List<Book> listNovel = mapper.getNewBook(100);

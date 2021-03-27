@@ -25,6 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.google.gson.JsonObject;
 
 import bit.hibooks.domain.admin.Chart;
+import bit.hibooks.domain.admin.ChartCate2;
 import bit.hibooks.domain.admin.RecomListResult;
 import bit.hibooks.domain.admin.RecommendVo;
 import bit.hibooks.domain.admin.UpdateListResult;
@@ -128,8 +129,9 @@ public class AdminController {
 	}
 	@ResponseBody
 	@PostMapping("cate2Chart.do")
-	public void getChart2Date() {
-		
+	public List<List<ChartCate2>> getChart2Cate() {
+		log.info(service.getChartCate2());
+		return service.getChartCate2();
 	}
 	
 	@RequestMapping(value="upload.do", produces = "application/json; charset=utf8")

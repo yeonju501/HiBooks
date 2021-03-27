@@ -34,6 +34,15 @@
 	select count(b_seq) from book where b_cate = #{b_cate}
 	</select>
 	
+	<select id="getCate2Cnt" resultType="ChartCate2" parameterType="int">
+		select RowNum, aa.b_cate2, aa.cnt 
+			from (select b_cate2, count(b_cate2) cnt 
+					from book where b_cate= #{b_cate}
+					group by b_cate2
+					order by count(b_cate2) desc) aa 
+			where RowNum &lt;=6
+	</select>
+	
 	<select id="getNewBook" resultType="Book" parameterType="int">
 	<![CDATA[ 
 	select * from (select * from book where b_cate= #{b_cate} order by b_seq desc) where ROWNUM <= 20

@@ -35,6 +35,7 @@
    	   <typeAlias alias="RecommendVo" type="bit.hibooks.domain.admin.RecommendVo"/>
    	   <typeAlias alias="RecomListResult" type="bit.hibooks.domain.admin.RecomListResult"/>
 	   <typeAlias alias="Chart" type="bit.hibooks.domain.admin.Chart"/>
+	   <typeAlias alias="ChartCate2" type="bit.hibooks.domain.admin.ChartCate2"/>
    	   
    	   <typeAlias alias="BoardN" type="bit.hibooks.domain.boardn.BoardN"/>
    	   <typeAlias alias="BNFile" type="bit.hibooks.domain.boardn.BNFile"/>

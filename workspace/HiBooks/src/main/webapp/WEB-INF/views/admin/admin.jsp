@@ -46,122 +46,11 @@
     <script src="../assets/js/vendor/jquery-1.12.0.min.js"></script>
     <script type="text/javascript" language="javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 	<script src="../assets/js/semantic.js"></script> 
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	 <script src="../assets/js/service-admin.js"></script> 
 	  <script src="../assets/js/dropdown.js"></script>
-	 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	 
 	<script>
-	function ajaxData() {
-		$.ajax({
-			url: 'chart.do',
-			dataType: "json",
-			type: 'post',
-			success: function(list) {
-				google.charts.load('current', {'packages':['corechart']});
-				google.charts.setOnLoadCallback(drawChart);
-				function drawChart() {
-					var dataChart = [
-						 ['카테고리', '권 수', { role: 'style' }],
-			                ['소설', list[0].b_count,'Red'],
-			                ['경영/경제', list[1].b_count,'Orange'],
-			                ['자기계발', list[2].b_count,'Yellow'],
-			                ['인문/사회/역사', list[3].b_count,'Green'],
-			                ['에세이/시', list[4].b_count,'Blue']
-			             
-					];
-					var data = google.visualization.arrayToDataTable(dataChart);
-					var view = new google.visualization.DataView(data);
-					 var options = {
-							   title : '카테고리 별 도서 현황',
-				               height :260,
-				               width :700,
-				               legend: { position: "top" },
-				               isStacked: false,
-				               tooltip:{textStyle : {fontSize:12}, showColorCode : true},
-				               animation: { //차트가 뿌려질때 실행될 애니메이션 효과
-				                 startup: true,
-				                 duration: 1000,
-				                 easing: 'linear' },
-				                 vAxis: {
-				                     viewWindow: {
-				                         max: 2500,
-				                         min: 1000
-				                     }
-				                 },
-				               annotations: {
-				                   textStyle: {
-				                     fontSize: 15,
-				                     bold: true,
-				                     italic: true,
-				                     color: '#871b47',
-				                     auraColor: '#d799ae',
-				                     opacity: 0.8
-				                   }
-				              }
-				        };
-
-					var chart4 = new google.visualization.PieChart(
-							document.getElementById('columnchart'));
-					chart4.draw(view, options);
-				}
-			}
-		});
-	}
-	function ajaxDataCate2() {
-		$.ajax({
-			url: 'chart.do',
-			dataType: "json",
-			type: 'post',
-			success: function(list) {
-				google.charts.load('current', {'packages':['corechart']});
-				google.charts.setOnLoadCallback(drawChart);
-				function drawChart() {
-					var dataChart = [
-						 ['카테고리', '권 수', { role: 'style' }],
-			                ['소설', list[0].b_count,'Red'],
-			                ['경영/경제', list[1].b_count,'Orange'],
-			                ['자기계발', list[2].b_count,'Yellow'],
-			                ['인문/사회/역사', list[3].b_count,'Green'],
-			                ['에세이/시', list[4].b_count,'Blue']
-			             
-					];
-					var data = google.visualization.arrayToDataTable(dataChart);
-					var view = new google.visualization.DataView(data);
-					var options = {
-							   title : '카테고리 별 도서 현황',
-				               height :500,
-				               width :700,
-				               legend: { position: "top" },
-				               isStacked: false,
-				               tooltip:{textStyle : {fontSize:12}, showColorCode : true},
-				               animation: { //차트가 뿌려질때 실행될 애니메이션 효과
-				                 startup: true,
-				                 duration: 1000,
-				                 easing: 'linear' },
-				                 vAxis: {
-				                     viewWindow: {
-				                         max: 2500,
-				                         min: 1000
-				                     }
-				                 },
-				               annotations: {
-				                   textStyle: {
-				                     fontSize: 15,
-				                     bold: true,
-				                     italic: true,
-				                     color: '#871b47',
-				                     auraColor: '#d799ae',
-				                     opacity: 0.8
-				                   }
-				              }
-				        };
-
-					var chart4 = new google.visualization.PieChart(
-							document.getElementById('cate2-chart'));
-					chart4.draw(view, options);
-				}
-			}
-		});
-	}
 	$(document).ready(function(){
 		ajaxData();
 		ajaxDataCate2();
@@ -301,8 +190,12 @@
 							
 								    <br/><br/>
 									<div class="row">
-									<div id="columnchart" class="col-12"></div>
-									<div id="cate2-chart" class="col-12"></div>
+										<div id="columnchart" class="col-12"></div>
+										<div id="cate2-0" class="col-6"></div>
+										<div id="cate2-1" class="col-6"></div>
+										<div id="cate2-2" class="col-6"></div>
+										<div id="cate2-3" class="col-6"></div>
+										<div id="cate2-4" class="col-6"></div>
 									</div>
 								
                                 </div>
