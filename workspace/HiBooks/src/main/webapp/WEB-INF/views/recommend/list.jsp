@@ -778,7 +778,6 @@
                 <!--Footer Bottom Area End-->
             </div>
         </footer>
-        <!-- modal -->
         
         </div>
     </div>
