@@ -78,7 +78,11 @@ public class AdminController {
 		list = service.getChart();
 		return list;
 	}
-	
+	@ResponseBody
+	@PostMapping("cate2Chart.do")
+	public void getChart2Date() {
+		
+	}
 	
 	@RequestMapping(value="upload.do", produces = "application/json; charset=utf8")
 	@ResponseBody
