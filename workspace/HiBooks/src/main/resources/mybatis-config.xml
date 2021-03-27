@@ -17,6 +17,11 @@
    	   <typeAlias alias="Boardq" type="bit.hibooks.domain.qboard.Boardq"/>
    	   <typeAlias alias="Qfile" type="bit.hibooks.domain.qboard.Qfile"/>
    	   
+   	   <typeAlias alias="BoardcVo" type="bit.hibooks.domain.cboard.BoardcVo"/>
+   	   <typeAlias alias="BoardcListResult" type="bit.hibooks.domain.cboard.BoardcListResult"/>
+   	   <typeAlias alias="Boardc" type="bit.hibooks.domain.cboard.Boardc"/>
+   	   <typeAlias alias="BoardcFile" type="bit.hibooks.domain.file.BoardcFile"/>
+   	   
    	   <typeAlias alias="Order" type="bit.hibooks.domain.purchase.Order"/>
    	   <typeAlias alias="Orderdetail" type="bit.hibooks.domain.purchase.Orderdetail"/>
    	   <typeAlias alias="ShipInfo" type="bit.hibooks.domain.purchase.ShipInfo"/>
@@ -42,6 +47,8 @@
    	   <mapper resource="bit/hibooks/mapper/CheckoutMapper.xml"/>
    	   <mapper resource="bit/hibooks/mapper/SearchMapper.xml"/>
    	   <mapper resource="bit/hibooks/mapper/BoardqMapper.xml"/>
+   	   <mapper resource="bit/hibooks/mapper/BoardcMapper.xml"/>
+   	   <mapper resource="bit/hibooks/mapper/BoardcFileMapper.xml"/>
    	   <mapper resource="bit/hibooks/mapper/QfileMapper.xml"/>
    	   <mapper resource="bit/hibooks/mapper/WishListMapper.xml"/>
 	   <mapper resource="bit/hibooks/mapper/AdminMapper.xml"/>

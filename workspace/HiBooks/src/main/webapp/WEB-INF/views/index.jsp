@@ -180,7 +180,7 @@
 												
                                                 <li><a id="in" href="recommend/list.do">추천</a></li>
 												
-                                                <li><a id="in" href="">커뮤니티</a></li>
+                                                <li><a id="in" href="boardc/list.do">커뮤니티</a></li>
 
                                                 <li class="active"><a href="">공지/문의</a>
                                                     <ul>

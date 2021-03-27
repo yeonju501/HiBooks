@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<mapper namespace="bit.hibooks.mapper.BoardcMapper">
+	<select id="selectPerPage" resultType="Boardc" parameterType="BoardcVo" >
+	<![CDATA[ 
+	select * from (select ROWNUM rnum, aa.* from (select * from BOARDC order by cb_seq desc) aa) 
+	  where rnum>#{startRow} and rnum<=#{endRow}
+	]]>
+	</select>
+	<select id="selectByCatgo" resultType="Boardc" parameterType="BoardcVo" >
+	<![CDATA[ 
+	select * from (select ROWNUM rnum, aa.* 
+	from (select * from BOARDC where ${catgo} like '%'||#{keyword}||'%' order by ${catgo}) aa) 
+	  where rnum>#{startRow} and rnum<=#{endRow}
+	]]>
+	</select>
+	<select id="selectBySeq" parameterType="long" resultType="Boardc">
+	    select * from BOARDC where cb_seq = #{cb_seq}
+	</select>
+	<select id="selectCount" resultType="long">
+		select count(cb_seq) from BOARDC
+	</select>
+	<select id="selectCountByCatgo" resultType="long" parameterType="BoardcVo">
+		select count(cb_seq) from BOARDC where ${catgo} like '%'||#{keyword}||'%'
+	</select>
+	
+	<insert id="insert" parameterType="Boardc">
+	    <selectKey keyProperty="cb_seq" order="BEFORE" resultType="long">
+	    	select cb_seq.nextval from dual
+	    </selectKey>
+	    insert into BOARDC values(#{cb_seq}, #{m_email}, #{cb_subject}, #{cb_content}, SYSDATE, 0)
+	</insert>
+
+	<update id="update" parameterType="Boardc">
+	    update BOARDC set m_email=#{m_email}, cb_subject=#{cb_subject}, cb_content=#{cb_content} where cb_seq = #{cb_seq}
+	</update>
+	<delete id="delete" parameterType="long">
+		delete from BOARDC where cb_seq = #{cb_seq}
+	</delete>
+	
+	
+
+</mapper>

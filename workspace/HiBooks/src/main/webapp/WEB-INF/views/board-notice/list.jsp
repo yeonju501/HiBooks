@@ -41,6 +41,7 @@
     <script src="../assets/js/service-search.js"></script>
     
 </head>
+
 <body>
     <div class="wrapper">
         <!-- header start -->
@@ -167,9 +168,7 @@
                                                     </ul>
                                                 </li>
 												
-                                                <li><a id="in" href="">베스트</a></li>
-												
-                                                <li><a id="in" href="">추천</a></li>
+                                                <li><a id="in" href="recommend/list.do"">추천</a></li>
 												
                                                 <li><a id="in" href="">커뮤니티</a></li>
 
@@ -202,8 +201,6 @@
 													
 												</ul>
 											</li>
-											
-											<li><a href="">베스트 </a></li>
 											
 											<li><a href="">추천</a></li>
 											
