@@ -223,7 +223,7 @@
         <sec:authorize access="isAuthenticated()">
 			<sec:authentication property="principal.username" var="loginUser"/>
 		</sec:authorize>
-        <div class="Shopping-cart-area ptb-100">
+        <div class="Shopping-cart-area ptb-30">
             <div class="container" style="max-width:1000px;">
                 <div class="row">
                     <div class="col-12">
@@ -234,15 +234,20 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th class="anadi-product-remove">remove</th>
-                                            <th class="anadi-product-thumbnail">images</th>
-                                            <th class="cart-product-name">Product</th>
-                                            <th class="anadi-product-price">Unit Price</th>
-                                            <th class="anadi-product-quantity">Quantity</th>
-                                            <th class="anadi-product-quantity">add to cart</th>
+                                            <th class="anadi-product-remove">삭제</th>
+                                            <th class="anadi-product-thumbnail">이미지</th>
+                                            <th class="cart-product-name">상품</th>
+                                            <th class="anadi-product-price">가격</th>
+                                            <th class="anadi-product-quantity">수량</th>
+                                            <th class="anadi-product-quantity">장바구니 추가</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <c:choose>
+                                    <c:when test="${empty bookListInWish}">
+                                    <tr><td colspan="6"> 위시리스트에 도서가 없습니다 </td></tr>
+                                    </c:when>
+                                    <c:when test="${!empty bookListInWish}">
                                     <c:forEach items="${bookListInWish}" var="book" varStatus="i">
                                          
                                          <tr>
@@ -260,7 +265,7 @@
                                                 <a href="../book/content.do?itemId=${book.b_itemId}">${book.b_title}</a>
                                             </td>
                                             <td class="anadi-product-price">
-                                                <span class="amount">${book.b_price}</span>
+                                                <span class="amount">${book.b_price}원</span>
                                             </td>
                                             
 	                                            <td class="anadi-product-quantity">
@@ -272,13 +277,15 @@
 	                                            <td class="product-subtotal">
 	                                                <div class="quickview-btn-cart">
 	                                                	<input id="itemId${i.index}" type="hidden" value="${book.b_itemId}">
-	                                                	<button id="cart-plus${i.index}" onclick="javascript:addToCart(${i.index})" type="button"><i class="zmdi zmdi-shopping-cart-plus"></i></button>
+	                                                	<unput type="button" id="cart-plus${i.index}" onclick="javascript:addToCart(${i.index})" type="button"><i class="zmdi zmdi-shopping-cart-plus"></i></button>
 					                                </div>
 	                                            </td>
 									                                   
                                         	</tr>
                                         	 
                                     </c:forEach>
+                                    </c:when>
+                                    </c:choose>
                                     </tbody>
                                 </table>
                             </div>

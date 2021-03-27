@@ -135,14 +135,13 @@
                                     <input type="submit" name="signin" id="signin" class="form-submit" value="로그인">
                                 </div>
                             </form>
-                            <div class="social-login">
-                                <span class="social-label">Or login with </span>
+                            <!-- <div class="social-login">
                                 <ul class="socials">
                                     <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
                                     <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
                                     <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
                                 </ul>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>

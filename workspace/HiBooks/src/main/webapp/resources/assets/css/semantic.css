@@ -25,6 +25,11 @@
 
 /* Border-Box */
 
+@font-face{
+	src:url("../fonts/RIDIBatang.otf");
+	font-family: "ridi"
+	
+} 
 *,
 *:before,
 *:after {
@@ -146,7 +151,7 @@ hr {
  */
 
 pre {
-  font-family: monospace, monospace;
+  font-family: ridi;
   /* 1 */
   font-size: 1em;
   /* 2 */
@@ -208,7 +213,7 @@ strong {
 code,
 kbd,
 samp {
-  font-family: monospace, monospace;
+  font-family: ridi;
   /* 1 */
   font-size: 1em;
   /* 2 */
@@ -310,7 +315,7 @@ input,
 optgroup,
 select,
 textarea {
-  font-family: sans-serif;
+  font-family: ridi;
   /* 1 */
   font-size: 100%;
   /* 1 */
@@ -569,7 +574,7 @@ body {
   overflow-x: hidden;
   min-width: 320px;
   background: #FFFFFF;
-  font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-family: ridi;
   font-size: 14px;
   line-height: 1.4285em;
   color: rgba(0, 0, 0, 0.87);
@@ -585,7 +590,7 @@ h2,
 h3,
 h4,
 h5 {
-  font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-family: ridi;
   line-height: 1.28571429em;
   margin: calc(2rem -  0.14285714em ) 0em 1rem;
   font-weight: bold;
@@ -782,7 +787,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
   vertical-align: baseline;
   background: #E0E1E2 none;
   color: rgba(0, 0, 0, 0.6);
-  font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-family: ridi;
   margin: 0em 0.25em 0em 0em;
   padding: 0.78571429em 1.5em 0.78571429em;
   text-transform: none;
@@ -5236,7 +5241,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /* Text Container */
 
 .ui.text.container {
-  font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-family: ridi;
   max-width: 700px !important;
   line-height: 1.5;
 }
@@ -6845,7 +6850,7 @@ i.flag.zimbabwe:before {
   border: none;
   margin: calc(2rem -  0.14285714em ) 0em 1rem;
   padding: 0em 0em;
-  font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-family: ridi;
   font-weight: bold;
   line-height: 1.28571429em;
   text-transform: none;
@@ -16750,7 +16755,7 @@ ul.ui.list li:before,
   left: auto;
   font-weight: normal;
   margin-left: -1.25rem;
-  content: '•';
+  content: '��';
   opacity: 1;
   color: inherit;
   vertical-align: top;
@@ -19994,7 +19999,7 @@ ol.ui.horizontal.list li:before,
 .ui.ordered.steps .step.completed:before {
   font-family: 'Step';
   content: '\e800';
-  /* '' */
+  /* '��' */
 }
 
 /*******************************
@@ -26018,7 +26023,7 @@ Floated Menu / Item
 
 .ui.message .list:not(.ui) li:before {
   position: absolute;
-  content: '•';
+  content: '��';
   left: -1em;
   height: 100%;
   vertical-align: baseline;

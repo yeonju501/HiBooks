@@ -498,7 +498,7 @@
                                 </div>
                                 <div class="product-content text-center">
                                     <h4>
-                                        <a href="book/content.do?itemId=${essay[i].b_itemId}">${self[i].b_title}</a>
+                                        <a href="book/content.do?itemId=${essay[i].b_itemId}">${essay[i].b_title}</a>
                                     </h4>
                                     <div class="product-price-2">
                                         <div class="price-box">

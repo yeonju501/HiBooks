@@ -133,7 +133,7 @@
                         <div class="col-md-6">
                             <div class="search__sidbar">
                                 <div class="input_form">
-                                    <form name="searchinput" method="post" action="product/search.do">
+                                    <form name="searchinput" method="post" action="../product/search.do">
 	                                    <input type="text" id="keyword" class="input_text" name="keyword" placeholder="제목, 저자, 출판사 검색">
 	                                    <input type = "hidden" name = "${_csrf.parameterName }" value = "${_csrf.token }"/>
 	                                    <button id="searchinput" type="button" class="button">
@@ -233,15 +233,15 @@
        <!-- contents -->
     <div class="contents" id="content">
         <!-- sub -->
-        <section class="sub sub--notice">
+        <section class="sub sub--notice" style="padding-top:0px;">
             <!-- section__03 -->
             <div class="section section__03">
                 <div class="title__wrap">
-                    <h2 class="title title--h2" data-title="공지사항"><span>공지사항</span></h2>
+                    <h3 data-title="공지사항" style="padding-top:20px;padding-bottom:20px;"><span>공지사항</span></h3>
                 </div>
                 <div class="board">
                     <div class="board__head">
-                        <h3 class="title title--h3">[${ncr.boardN.bn_topic}]<wbr>${ncr.boardN.bn_subject} </h3>
+                        <h3 class="ui header">[${ncr.boardN.bn_topic}]<wbr>${ncr.boardN.bn_subject} </h3>
                         <div class="info">
                             <h4>
                             <span class="info__item info__item--date">${ncr.boardN.bn_rdate}</span>&nbsp;&nbsp;

@@ -249,7 +249,7 @@
 	function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,detBdNmList,bdNm,bdKdcd,siNm,sggNm,emdNm,liNm,rn,udrtYn,buldMnnm,buldSlno,mtYn,lnbrMnnm,lnbrSlno,emdNo){
 		// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
 		document.purchaseinput.roadFullAddr.value = roadFullAddr;
-		document.purchaseinput.zipNo.value = zipNo;
+		document.purchaseinput.s_zipNo.value = zipNo;
 	}
 </script>
 
@@ -390,7 +390,7 @@
                                                 <td><strong class="product-quantity"> ${cartVo.vol}</strong>
                                             </td>
                                             <td class="cart-product-total">
-                                                <span class="amount">${cartVo.total}</span>
+                                                <span class="amount">${cartVo.total}원</span>
                                             </td>
                                         </tr>
                                         <c:set var= "sum" value="${sum + cartVo.total}"/>
@@ -401,7 +401,7 @@
                                             <th>총 주문 금액</th>
                                             <td></td>
                                             <td>
-                                                <span class="amount"><c:out value="${sum}"/> </span>
+                                                <span class="amount"><c:out value="${sum}원"/> </span>
                                             </td>
                                         </tr>
                                         <tr class="order-total">
@@ -409,7 +409,7 @@
                                              <td></td>
                                             <td>
                                                 <strong>
-                                                    <span id="amount" class="amount"><c:out value="${sum}"/> </span>
+                                                    <span id="amount" class="amount"><c:out value="${sum}원"/> </span>
                                                 </strong>
                                             </td>
                                         </tr>

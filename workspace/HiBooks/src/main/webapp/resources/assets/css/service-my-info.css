@@ -1,3 +1,8 @@
+@font-face{
+	src:url("../fonts/RIDIBatang.otf");
+	font-family: "ridi"
+	
+}
 .main {
     background: #084b84;
     padding: 150px 0 200px;
@@ -5,14 +10,14 @@
     line-height: 1.8;
     color: #222;
     font-weight: 400;
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: ridi;
     margin: 0;
     padding: 0;
     box-sizing: unset !important; 
 }
 .sign-in, .sign-up{
     display: block;
-    padding: 100px 0 100px 0;
+    padding: 100px 0 200px 0;
 }
 @media screen and (min-width: 1024px){
     .main .container {
@@ -88,7 +93,7 @@ figure >img {
     padding: 0;
     font-weight: bold;
     color: #222;
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: ridi;
     font-size: 36px;
 }
 .register-form {
@@ -120,7 +125,7 @@ input {
     border: none;
     border-bottom: 1px solid #999;
     padding: 6px 30px;
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: ridi;
     box-sizing: border-box;
     outline: none;
     appearance: unset !important;

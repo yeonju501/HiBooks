@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class RecommendVo {
 	
-	private List<String> keyword;
+	private String keyword;
 	private List<String> cat;
 
 }
