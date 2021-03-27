@@ -253,6 +253,11 @@
                                     </thead>
                                     <tbody>
                                     <c:set var = "sum" value = "0" />
+                                   <c:choose>
+                                   <c:when test="${empty list}">
+                                   <tr><td colspan="6">카트에 도서가 없습니다</td></tr>
+                                   </c:when>
+                                   <c:when test="${!empty list}">
                                     <c:forEach items="${list}" var="cartVo" varStatus="status">
                                         <tr>
                                             <td class="anadi-product-remove">
@@ -269,18 +274,20 @@
                                                 <a href="#">${cartVo.book.b_title}</a>
                                             </td>
                                             <td class="anadi-product-price">
-                                                <span class="amount">${cartVo.book.b_price}</span>
+                                                <span class="amount">${cartVo.book.b_price}원</span>
                                             </td>
                                             <td class="anadi-product-quantity">
                                                 <input id="vol<c:out value="${status.index}"/>" value="${cartVo.vol}" type="number" name="vol" min="1" max="100">
                                                 <br/><a class="button" onclick="a(<c:out value="${status.index}"/>);" style="padding:5px;margin-top:20px;">변경</a>
                                             </td>
                                             <td class="product-subtotal">
-                                                <span class="amount">${cartVo.total}</span>
+                                                <span class="amount">${cartVo.total}원</span>
                                             </td>
                                         </tr>
                                         <c:set var= "sum" value="${sum + cartVo.total}"/>
                                         </c:forEach>
+                                        </c:when>
+                                        </c:choose>
                                     </tbody>
                                 </table>
                             </div>
@@ -303,10 +310,10 @@
                                         <h2>총 상품금액</h2>
                                         <ul>
                                             <li>총액
-                                                <span><c:out value="${sum}"/> </span>
+                                                <span><c:out value="${sum}원"/> </span>
                                             </li>
                                             <li>합계
-                                                <span><c:out value="${sum}"/> </span>
+                                                <span><c:out value="${sum}원"/> </span>
                                             </li>
                                         </ul>
                                         <a href="checkout.do">주문하기</a>

@@ -230,11 +230,11 @@
         <!-- header end -->
         
         <div class="row">
-            <div class="col-md-12 col-lg-1"></div>
+            <div class="col-md-12 col-lg-2"></div>
             <div class="col-md-12 col-lg-10">
                 <!-- Tab panes -->
-                <div class="tab-content dashboard-content">
-                    <div id="orders" class="tab-pane fade active show">
+                <div class="tab-content dashboard-content" style="max-width:1000px;">
+                    <div id="orders" class="tab-pane fade active show" style="margin-top:30px;">
                         <h3>주문 내역</h3>
                         <div class="table-responsive">
                             <table class="table">
@@ -263,7 +263,6 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-12 col-lg-1"></div>
         </div>
         
         

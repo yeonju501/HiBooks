@@ -229,7 +229,7 @@
         <!-- header end -->
         
         <div class="row">
-            <div class="col-md-12 col-lg-1"></div>
+            <div class="col-md-12 col-lg-2"></div>
             <div class="col-md-12 col-lg-10">
                 <!-- Tab panes -->
                 <div class="tab-content dashboard-content">
@@ -262,10 +262,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-12 col-lg-1"></div>
         </div>
         <div class="row">
-            <div class="col-md-12 col-lg-1"></div>
+            <div class="col-md-12 col-lg-2"></div>
             <div class="col-md-12 col-lg-10">
                 <!-- Tab panes -->
                 <div class="tab-content dashboard-content">
@@ -296,10 +295,8 @@
                             </table>
                         </div>
                     </div>
-                    
                 </div>
             </div>
-            <div class="col-md-12 col-lg-1"></div>
         </div>
         
         <footer class="footer-color">
