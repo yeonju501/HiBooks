@@ -79,8 +79,11 @@ public class MemberController {
 	@PostMapping("updateMemberInfo.do")
 	public ModelAndView updateMemberInfo(Member member, Authentication auth) {
 		service.updateMemberInfo(member);
-		MemberDetails md = (MemberDetails) auth.getPrincipal();
-		md.setMember(member);
+		MemberDetails memberDetails = null;
+		if(auth.isAuthenticated()) {
+			memberDetails = (MemberDetails) auth.getPrincipal();
+		}
+		memberDetails.setMember(member);
 		
 		int checkPwdCode = UPDATE_INFO_SUC;
 		return new ModelAndView("member/my-info","checkPwdCode", checkPwdCode);

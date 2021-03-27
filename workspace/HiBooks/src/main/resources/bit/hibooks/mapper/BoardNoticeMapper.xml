@@ -53,6 +53,9 @@
 				BN_UDATE = SYSDATE
 				where BN_SEQ = #{bn_seq}
 		</update>
+		<delete id="deleteNotice" parameterType="long">
+			delete from BOARDN where BN_SEQ = #{bn_seq}
+		</delete>
 		<delete id="deleteFileInfo" parameterType="long">
 			delete from BNFILE where BN_SEQ = #{bn_seq}
 		</delete>
@@ -65,4 +68,5 @@
 				where ROWNUM &lt;= 4
 				order by bn_rdate desc
 		</select>
+		
 	</mapper>

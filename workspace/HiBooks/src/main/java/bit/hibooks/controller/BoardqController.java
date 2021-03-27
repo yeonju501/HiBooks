@@ -19,7 +19,9 @@ import bit.hibooks.domain.qboard.BoardqContentResult;
 import bit.hibooks.domain.qboard.BoardqListResult;
 import bit.hibooks.service.BoardqService;
 import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
 
+@Log4j
 @Controller
 @RequestMapping("/boardq/*")
 @AllArgsConstructor
@@ -85,6 +87,7 @@ public class BoardqController {
 	@GetMapping("content.do")
 	public ModelAndView content(long qb_seq) {
 		BoardqContentResult contentResult=service.getBoardq(qb_seq);
+		log.info(contentResult);
 		ModelAndView mv = new ModelAndView("boardq/content", "contentResult", contentResult);
 		return mv;
 	}
@@ -104,6 +107,7 @@ public class BoardqController {
 	
 	@PostMapping("update.do")
 	public String update(Boardq boardq) {
+		log.info(boardq);
 		service.edit(boardq);
 		return "redirect:list.do";
 	}

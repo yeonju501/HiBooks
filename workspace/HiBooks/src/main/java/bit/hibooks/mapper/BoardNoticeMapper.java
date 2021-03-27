@@ -18,4 +18,5 @@ public interface BoardNoticeMapper {
 	void updateNotice(BoardN boardN);
 	void deleteFileInfo(long bn_seq);
 	List<NoticeMainResult> getMainNotice();
+	void deleteNotice(long bn_seq);
 }

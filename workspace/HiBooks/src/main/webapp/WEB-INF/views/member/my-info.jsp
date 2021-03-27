@@ -151,7 +151,7 @@
 		                                <div class="form-group">
 		                                    <div class="form-group form-two-input">
 		                                        <label for="zipNo"><i class="zmdi zmdi-navigation"></i></label>
-		                                        <input value="${loginUserInfo.m_zipNum}" placeholder="우편번호" type="text"  id="zipNo"  name="m_zipNum" style="width:200px;" readonly>
+		                                        <input value="${loginUserInfo.m_zipNum}" placeholder="우편번호" type="text"  id="zipNo"  name="m_zipNum" style="width:200px;" >
 		                                        <input type="button" id="addr" onClick="goPopup();" value="주소 찾기" class="form-submit">
 		                                    </div>
 		                                    <br/>
@@ -327,16 +327,41 @@
     <script src="../assets/js/plugins.js"></script>
     <script src="../assets/js/main.js"></script>
 	<script src="../assets/js/service-my-info.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 	<input type="hidden" id="checkPwdCode" value="${checkPwdCode}">
+	
 	<script type="text/javascript">
+		const swalWithBootstrapButtons = Swal.mixin({
+	  	  customClass: {
+	  	    confirmButton: 'btn btn-primary',
+	  	    cancelButton: 'btn btn-default',
+	  	  },
+	  	  buttonsStyling: false
+	 	});
+	
 		let checkPwdCode = $("#checkPwdCode").val();
 		if(checkPwdCode == <%=MemberModeSet.UPDATE_PWD_SUC %>){
-			alert("비밀번호가 변경되었습니다, 다시 로그인 해주세요");
-			location.href = "logout.do";
+			swalWithBootstrapButtons.fire({
+				text : '비밀번호가 변경되었습니다, 다시 로그인 해주세요',
+				icon : 'success',
+				confirmButtonText : 'OK'
+			}).then((result) => {
+				if(result.isConfirmed){
+					location.href = "logout.do";
+				}
+			});
+			/* alert("비밀번호가 변경되었습니다, 다시 로그인 해주세요");
+			location.href = "logout.do"; */
 		}else if(checkPwdCode == <%=MemberModeSet.UPDATE_ACCESS_FAIL %>){
-			alert("비밀번호가 틀렸습니다, 다시 시도해주세요");
+			swalWithBootstrapButtons.fire({
+				text : '비밀번호가 틀렸습니다, 다시 시도해주세요',
+				icon : 'error'
+			});
 		}else if(checkPwdCode == <%=MemberModeSet.UPDATE_INFO_SUC%>){
-			alert("회원정보가 수정되었습니다");
+			swalWithBootstrapButtons.fire({
+				text : '회원정보가 수정되었습니다',
+				icon : 'success'
+			});
 		}
 	</script>
 		

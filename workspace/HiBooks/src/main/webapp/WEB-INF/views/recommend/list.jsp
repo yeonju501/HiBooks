@@ -103,13 +103,6 @@
                                                         <li class="switcher-menu-item">
                                                             <a href="../wishList/moveWishPage.do">위시리스트</a>
                                                         </li>  
-                                                        <sec:authorize access="isAuthenticated()">
-	                                                        <sec:authorize access="hasRole('ROLE_ADMIN')">
-	                                                        <li class="switcher-menu-item">
-	                                                            <a href="../admin/recommend.do">관리자페이지</a>
-	                                                        </li>
-	                                                        </sec:authorize>
-                                                        </sec:authorize>
                                                         <li class="switcher-menu-item">
                                                             <a href="../purchase/orderComplete.do">결제내역</a>
                                                         </li>
@@ -132,7 +125,7 @@
                         <div class="col-md-6">
                             <div class="search__sidbar">
                                 <div class="input_form">
-                                    <form name="searchinput" method="post" action="product/search.do">
+                                    <form name="searchinput" method="post" action="../product/search.do">
 	                                    <input type="text" id="keyword" class="input_text" name="keyword" placeholder="제목, 저자, 출판사 검색">
 	                                    <input type = "hidden" name = "${_csrf.parameterName }" value = "${_csrf.token }"/>
 	                                    <button id="searchinput" type="button" class="button">
@@ -157,26 +150,26 @@
                                 <div class="main-menu">
 									<nav>
                                             <ul id="main-custom">
-                                                <li class="active"><a href="book/shop.do">책</a>
+                                                <li class="active"><a href="../book/shop.do">책</a>
                                                     <ul>
-                                                        <li><a href="book/shop.do?cate=100">소설</a></li>
-                                                        <li><a href="book/shop.do?cate=200">경영/경제</a></li>
-                                                        <li><a href="book/shop.do?cate=300">인문/사회/역사</a></li>
-                                                        <li><a href="book/shop.do?cate=400">자기계발</a></li>
-                                                        <li><a href="book/shop.do?cate=500">에세이/시</a></li>
+                                                        <li><a href="../book/shop.do?cate=100">소설</a></li>
+                                                        <li><a href="../book/shop.do?cate=200">경영/경제</a></li>
+                                                        <li><a href="../book/shop.do?cate=300">인문/사회/역사</a></li>
+                                                        <li><a href="../book/shop.do?cate=400">자기계발</a></li>
+                                                        <li><a href="../book/shop.do?cate=500">에세이/시</a></li>
                                                         
                                                     </ul>
                                                 </li>
 												
 												
-                                                <li><a id="in" href="recommend/list.do">추천</a></li>
+                                                <li><a id="in" href="../recommend/list.do">추천</a></li>
 												
                                                 <li><a id="in" href="">커뮤니티</a></li>
 
                                                 <li class="active"><a href="">공지/문의</a>
                                                     <ul>
-                                                        <li><a href="boardNotice/list.do">공지</a></li>
-                                                        <li><a href="boardq/list.do">문의</a></li>
+                                                        <li><a href="../boardNotice/list.do">공지</a></li>
+                                                        <li><a href="../boardq/list.do">문의</a></li>
                                                     </ul>
                                                 </li>
                                             </ul>
@@ -192,30 +185,27 @@
                             <div class="mobile-menu">
                                     <nav id="mobile-menu-active">
                                         <ul class="menu-overflow">
-											<li class="active"><a href="book/shop.do">책 <i class="ion-ios-arrow-down"></i></a>
+											<li class="active"><a href="../book/shop.do">책 <i class="ion-ios-arrow-down"></i></a>
 												<ul>
-													<li><a href="book/shop.do?cate=100">소설</a></li>
-													<li><a href="book/shop.do?cate=200">경영/경제</a></li>
-													<li><a href="book/shop.do?cate=300">인문/사회/역사</a></li>
-													<li><a href="book/shop.do?cate=400">자기계발</a></li>
-													<li><a href="book/shop.do?cate=500">에세이/시</a></li>
+													<li><a href="../book/shop.do?cate=100">소설</a></li>
+													<li><a href="../book/shop.do?cate=200">경영/경제</a></li>
+													<li><a href="../book/shop.do?cate=300">인문/사회/역사</a></li>
+													<li><a href="../book/shop.do?cate=400">자기계발</a></li>
+													<li><a href="../book/shop.do?cate=500">에세이/시</a></li>
 													
 												</ul>
 											</li>
 											
-											<li><a href="recommend/list.do">추천</a></li>
+											<li><a href="../recommend/list.do">추천</a></li>
 											
 											<li><a href="">커뮤니티</a></li>
 											
 											<li><a href="">공지/문의 <i class="ion-ios-arrow-down"></i></a>
 												<ul>
-													<li><a href="boardNotice/list.do"> 공지</a></li>
-													<li><a href="boardq/list.do"> 문의</a></li>
-                                  
+													<li><a href="../boardNotice/list.do"> 공지</a></li>
+													<li><a href="../boardq/list.do"> 문의</a></li>
 												</ul>
 											</li>
-											
-											
                                         </ul>
                                     </nav>  
                             </div>
@@ -227,466 +217,132 @@
         </header>
         <!-- header end -->
         <div>
-        <div>
-        <div>
-       <%-- <div>               
-                      <!-- may also like product start -->
-        <div class="product-area pb-65   product-padding" style="padding-bottom: 0px;">
-            <div class="container">
-                <div class="section-title-2 text-center mb-25">
-                    <br/>
-                    <h2 class="m-0">${indexLR.titleSec1}</h2>
-                  <!--   <p></p> -->
-                </div>
-                <div class="row">
-                    <div class="product-slider-active owl-carousel">
-                    <c:forEach items="${indexLR.sec1}" var="book">
-                        <div class="col-lg-4 col-md-6 col-12" style="max-width:80%;">
-                            <div class="product-wrapper mb-35">
-                                <div class="product-img">
-                                    <a href="product-details.html">
-                                     <!--    <span class="onsale"></span> -->
-                                        <img alt="" src="${book.b_img}" style="height:300px;" >
-                                    </a>
-                                    <div class="product-action-2">
-                                        <a href="#" title="Add to Compare" class="action-plus-2 tooltip">
-                                            <i class="zmdi zmdi-refresh"></i>
-                                        </a>
-                                        <a href="#" title="Add to Wishlist" class="action-plus-2 tooltip">
-                                            <i class="zmdi zmdi-favorite-outline"></i>
-                                        </a>
-                                        <a href="#" title="Quick View" data-target="#exampleModal" data-toggle="modal" class="action-plus-2 tooltip">
-                                            <i class="zmdi zmdi-search"></i>
-                                        </a>
-                                        <a href="#" title="Add To Cart"  class="action-plus-2 tooltip">
-                                            <i class="zmdi zmdi-shopping-cart-plus"></i>
-                                        </a>
-                                    </div>
-                                    <div class="rating-box">
-                                        <a href="#" title="1 star">
-                                            <i class="far fa-star"></i>
-                                        </a>
-                                        <a href="#" title="2 star">
-                                            <i class="far fa-star"></i>
-                                        </a>
-                                        <a href="#" title="3 star">
-                                            <i class="far fa-star"></i>
-                                        </a>
-                                        <a href="#" title="4 star">
-                                            <i class="far fa-star"></i>
-                                        </a>
-                                        <a href="#" title="5 star">
-                                            <i class="far fa-star"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="product-content text-center">
-                                    <h4>
-                                        <a href="product-details.html">${book.b_title}</a>
-                                    </h4>
-                                    <div class="product-price-2">
-                                        <div class="price-box">
-                                            <del>
-                                                <span class="amount">
-                                                    <span class="Price-currencySymbol"></span>${book.b_price}</span>
-                                            </del>
-                                            <ins>
-                                                <span class="amount">
-                                                    <span class="Price-currencySymbol"></span>${book.b_price}</span>
-                                            </ins>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                         </c:forEach>
-
-                        
-                    </div>
-                </div>
-            </div>
-        </div>  
-     </div>               
-       <div>                --%>
-                    <!-- may also like product start -->
-        <div class="product-area pb-0   product-padding">
-            <div class="container">
-                <div class="section-title-2 text-center mb-25">
-                <br/>
-                    <h3 class="ui header">${indexLR.titleSec2}</h3>
-                  <!--   <p></p> -->
-                </div>
-
-                <div class="row">
-                    <div class="product-slider-active owl-carousel" >
-                    <c:forEach items="${indexLR.sec2}" var="book">
-                        <div class="col-lg-4 col-md-6 col-12" style="margin-left:50px;max-width:70%;">
-                            <div class="product-wrapper mb-35">
-                                <div class="product-img">
-                                    <a href="product-details.html">
-                                        <span class="onsale">Sale!</span>
-                                        <img alt="" src="${book.b_img}" style="height:250px;" >
-                                    </a>
-                                    <div class="product-action-2">
-                                        <a href="#" title="Add to Compare" class="action-plus-2 tooltip">
-                                            <i class="zmdi zmdi-refresh"></i>
-                                        </a>
-                                        <a href="#" title="Add to Wishlist" class="action-plus-2 tooltip">
-                                            <i class="zmdi zmdi-favorite-outline"></i>
-                                        </a>
-                                        <a href="#" title="Quick View" data-target="#exampleModal" data-toggle="modal" class="action-plus-2 tooltip">
-                                            <i class="zmdi zmdi-search"></i>
-                                        </a>
-                                        <a href="#" title="Add To Cart"  class="action-plus-2 tooltip">
-                                            <i class="zmdi zmdi-shopping-cart-plus"></i>
-                                        </a>
-                                    </div>
-                                    <div class="rating-box">
-                                        <a href="#" title="1 star">
-                                            <i class="far fa-star"></i>
-                                        </a>
-                                        <a href="#" title="2 star">
-                                            <i class="far fa-star"></i>
-                                        </a>
-                                        <a href="#" title="3 star">
-                                            <i class="far fa-star"></i>
-                                        </a>
-                                        <a href="#" title="4 star">
-                                            <i class="far fa-star"></i>
-                                        </a>
-                                        <a href="#" title="5 star">
-                                            <i class="far fa-star"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="product-content text-center">
-                                    <h4>
-                                        <a href="product-details.html">${book.b_title}</a>
-                                    </h4>
-                                    <div class="product-price-2">
-                                        <div class="price-box">
-                                            <del>
-                                                <span class="amount">
-                                                    <span class="Price-currencySymbol"></span>${book.b_price}</span>
-                                            </del>
-                                            <ins>
-                                                <span class="amount">
-                                                    <span class="Price-currencySymbol"></span>${book.b_price}</span>
-                                            </ins>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                         </div>
-                        </c:forEach>
-                    </div>
-                </div>
-            </div>
-        </div> 
-      </div>     
-      
-      <div> 
-      
-      		<!--Pricing Table Area Start-->
-		<div class="pricing-table-area pt-50 pb-50">
+        <div>      
+		<div> 
 			<div class="container">
-				<div class="row">
-					<!--Single Pricing Table Start-->
-					<div class="col-md-6 col-lg-3">
-						<div class="single-pricing mb-35">
-							<div class="pricing-body">
-								<img alt="" src="../assets/img/ridibooks-banner5.jpg" style="width:270px;height:220px;">
-							</div>
-							<div class="pricing-head">
-							<h4>Standard</h4>
-							</div>
-						</div>
-					</div>
-					<!--Single Pricing Table End-->
-					<!--Single Pricing Table Start-->
-					<div class="col-md-6 col-lg-3">
-						<div class="single-pricing active-table mb-35">
-							<div class="pricing-body">
-								<img alt="" src="../assets/img/ridibooks-banner3.jpg" style="width:270px;height:220px;">
-							</div>
-							<div class="pricing-head">
-								<h4>business</h4>
-							</div>
-						</div>
-					</div>
-					<!--Single Pricing Table End-->
-					<!--Single Pricing Table Start-->
-					<div class="col-md-6 col-lg-3">
-						<div class="single-pricing active-table mb-35">
-							<div class="pricing-body">
-								<img alt="" src="../assets/img/ridibooks-banner4.jpg" style="width:270px;height:220px;">
-							</div>
-							<div class="pricing-head">
-								<h4>business</h4>
-							</div>
-						</div>
-					</div>
-					<!--Single Pricing Table End-->
-					<!--Single Pricing Table Start-->
-					<div class="col-md-6 col-lg-3">
-						<div class="single-pricing active-table mb-35">
-							<div class="pricing-body">
-								<img alt="" src="../assets/img/ridibooks-banner6.jpg" style="width:270px;height:220px;">
-							</div>
-							<div class="pricing-head">
-								<h4>business</h4>
-							</div>
-						</div>
-					</div>
-					<!--Single Pricing Table End-->
+			   	<div class="section-title-2 text-center mb-25">
+					<br/>
+				    <h3 class="ui header">${indexLR.titleSec1}</h3>
 				</div>
+			    <div class="row">
+			      	<div class="col-lg-12 col-md-12 col-12" style="max-width:100%;">
+			    		<div class="brand__image_area">
+			        		<div class="group_sliderh2_active owl-carousel">
+			            		<c:forEach items="${indexLR.sec1}" var="firstSecBook">
+			            		<div class="group">
+			               			<div>
+			                    		<a href="../book/content.do?itemId=${firstSecBook.b_itemId}">
+			                        	<img alt="" src="${firstSecBook.b_img}" style="width:140px;height:210px;">
+			                    		</a>
+			                    		<div class="product-content text-center">
+			                    			<h5 style="font-size:14px;">
+			                         		${firstSecBook.b_title}
+			                          		</h5>
+			                          		<span><span class="Price-currencySymbol"></span>${firstSecBook.b_price}원</span>
+			                          	</div>
+			                      	</div>
+			                  	</div>
+			                  	</c:forEach>
+			              	</div>
+			          	</div>
+			      	</div>
+			  	</div>
 			</div>
 		</div>
-		<!--Pricing Table Area End-->
-      
-       <!-- Brand area start -->
-                    <div class="container">
-                     <div class="section-title-2 text-center mb-25">
-		                <br/>
-		                    <h3 class="ui header">${indexLR.titleSec2}</h3>
-		                  <!--   <p></p> -->
-		                </div>
-                        <div class="row">
-                        <div class="col-lg-12 col-md-12 col-12" style="max-width:100%;">
-                            <div class="brand__image_area">
-                                <div class="group_sliderh2_active owl-carousel">
-                                    <div class="group">
-                                       <div>
-                                            <a title="" href="#">
-                                                <img alt="" src="https://img.ridicdn.net/cover/1195000218/xxlarge" style="width:140px;height:210px;">
-                                            </a>
-                                            <div class="product-content text-center">
-                                            <h5 style="font-size:14px;">
-                                           	그 때 내 딸이 사라졌다
-                                            </h5>
-                                            <span>
-                                            <span class="Price-currencySymbol"></span>
-                                            10000원
-                                            </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="group">
-                                       <div>
-                                            <a title="" href="#">
-                                                <img alt="" src="https://img.ridicdn.net/cover/1195000218/xxlarge" style="width:140px;height:210px;">
-                                            </a>
-                                            <div class="product-content text-center">
-                                            <h5 style="font-size:14px;">
-                                           	그 때 내 딸이 사라졌다
-                                            </h5>
-                                            <span>
-                                            <span class="Price-currencySymbol"></span>
-                                            10000원
-                                            </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="group">
-                                       <div>
-                                            <a title="" href="#">
-                                                <img alt="" src="https://img.ridicdn.net/cover/1195000218/xxlarge" style="width:140px;height:210px;">
-                                            </a>
-                                            <div class="product-content text-center">
-                                            <h5 style="font-size:14px;">
-                                           	그 때 내 딸이 사라졌다
-                                            </h5>
-                                            <span>
-                                            <span class="Price-currencySymbol"></span>
-                                            10000원
-                                            </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="group">
-                                       <div>
-                                            <a title="" href="#">
-                                                <img alt="" src="https://img.ridicdn.net/cover/1195000218/xxlarge" style="width:140px;height:210px;">
-                                            </a>
-                                            <div class="product-content text-center">
-                                            <h5 style="font-size:14px;">
-                                           	그 때 내 딸이 사라졌다
-                                            </h5>
-                                            <span>
-                                            <span class="Price-currencySymbol"></span>
-                                            10000원
-                                            </span>
-                                            </div>
-                                        </div> 
-                                        </div>                           
-                                    <div class="group">
-                                       <div>
-                                            <a title="" href="#">
-                                                <img alt="" src="https://img.ridicdn.net/cover/1195000218/xxlarge" style="width:140px;height:210px;">
-                                            </a>
-                                            <div class="product-content text-center">
-                                            <h5 style="font-size:14px;">
-                                           	그 때 내 딸이 사라졌다
-                                            </h5>
-                                            <span>
-                                            <span class="Price-currencySymbol"></span>
-                                            10000원
-                                            </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="group">
-                                        <div>
-                                            <a title="" href="#">
-                                                <img alt="" src="https://img.ridicdn.net/cover/1195000218/xxlarge" style="width:140px;height:210px;">
-                                            </a>
-                                            <div class="product-content text-center">
-                                            <h5 style="font-size:14px;">
-                                           	그 때 내 딸이 사라졌다
-                                            </h5>
-                                            <span>
-                                            <span class="Price-currencySymbol"></span>
-                                            10000원
-                                            </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                  </div>
-     		 </div>
      	
      		 <!-- 그리드 -->
-     		 <div>
+     	<div>
      		 <!--Our Service Area Start-->
 		<div class="our-service-area pt-50 pb-40" style="padding-left:50px;">
 			<div class="container">
-			<h3 class="ui header">베스트 셀러</h3>
+			<h3 class="ui header">${indexLR.titleSec2}</h3>
 				<div class="row">
+					<c:forEach items="${indexLR.sec2 }" var="secondSecBook">
 					<!--Single Service Start-->
 					<div class="col-xl-3 col-lg-3 col-md-12 col-12">
 						<div class="single-service single-service-2 mb-25">
 							<div class="service-icon">
-								<img alt="" src="https://img.ridicdn.net/cover/1195000218/xxlarge" style="width:80px;height:114px;">
+								<img alt="" src="${secondSecBook.b_img }" style="width:80px;height:114px;">
 							</div>
 							<div class="service-info" style="padding-top:30px;">
-								<h3>그 때 내 딸이 사라졌다</h3>
-								<p>10000원</p>
+								<h3><a href="../book/content.do?itemId=${secondSecBook.b_itemId}">${secondSecBook.b_title }</a></h3>
+								<p>${secondSecBook.b_price }원</p>
 							</div>
 						</div>
 					</div>
 				
 					<!--Single Service End-->
-					<!--Single Service Start-->
-					<div class="col-xl-3 col-lg-3 col-md-12 col-12">
-						<div class="single-service single-service-2 mb-25">
-							<div class="service-icon">
-								<img alt="" src="https://img.ridicdn.net/cover/1195000218/xxlarge" style="width:80px;height:114px;">
-							</div>
-							<div class="service-info" style="padding-top:30px;">
-								<h3>그 때 내 딸이 사라졌다</h3>
-								<p>10000원</p>
-							</div>
-						</div>
-					</div>
-				
-					<!--Single Service End-->
-					<!--Single Service Start-->
-					<div class="col-xl-3 col-lg-3 col-md-12 col-12">
-						<div class="single-service single-service-2 mb-25">
-							<div class="service-icon">
-								<img alt="" src="https://img.ridicdn.net/cover/1195000218/xxlarge" style="width:80px;height:114px;">
-							</div>
-							<div class="service-info" style="padding-top:30px;">
-								<h3>그 때 내 딸이 사라졌다</h3>
-								<p>10000원</p>
-							</div>
-						</div>
-					</div>
-					
-					<!--Single Service End-->
-					<!--Single Service Start-->
-					<div class="col-xl-3 col-lg-3 col-md-12 col-12">
-						<div class="single-service single-service-2 mb-25">
-							<div class="service-icon">
-								<img alt="" src="https://img.ridicdn.net/cover/1195000218/xxlarge" style="width:80px;height:114px;">
-							</div>
-							<div class="service-info" style="padding-top:30px;">
-								<h3>그 때 내 딸이 사라졌다</h3>
-								<p>10000원</p>
-							</div>
-						</div>
-					</div>
-					
-					<!--Single Service End-->
-					<!--Single Service Start-->
-					<div class="col-xl-3 col-lg-3 col-md-12 col-12">
-						<div class="single-service single-service-2 mb-25">
-							<div class="service-icon">
-								<img alt="" src="https://img.ridicdn.net/cover/1195000218/xxlarge" style="width:80px;height:114px;">
-							</div>
-							<div class="service-info" style="padding-top:30px;">
-								<h3>그 때 내 딸이 사라졌다</h3>
-								<p>10000원</p>
-							</div>
-						</div>
-					</div>
-				
-					<!--Single Service End-->
-					<!--Single Service Start-->
-					<div class="col-xl-3 col-lg-3 col-md-12 col-12">
-						<div class="single-service single-service-2 mb-25">
-							<div class="service-icon">
-								<img alt="" src="https://img.ridicdn.net/cover/1195000218/xxlarge" style="width:80px;height:114px;">
-							</div>
-							<div class="service-info" style="padding-top:30px;">
-								<h3>그 때 내 딸이 사라졌다</h3>
-								<p>10000원</p>
-							</div>
-						</div>
-					</div>
-				
-					<!--Single Service End-->
-					<!--Single Service Start-->
-					<div class="col-xl-3 col-lg-3 col-md-12 col-12">
-						<div class="single-service single-service-2 mb-25">
-							<div class="service-icon">
-								<img alt="" src="https://img.ridicdn.net/cover/1195000218/xxlarge" style="width:80px;height:114px;">
-							</div>
-							<div class="service-info" style="padding-top:30px;">
-								<h3>그 때 내 딸이 사라졌다</h3>
-								<p>10000원</p>
-							</div>
-						</div>
-					</div>
-				
-					<!--Single Service End-->
-					<!--Single Service Start-->
-					<div class="col-xl-3 col-lg-3 col-md-12 col-12">
-						<div class="single-service single-service-2 mb-25">
-							<div class="service-icon">
-								<img alt="" src="https://img.ridicdn.net/cover/1195000218/xxlarge" style="width:80px;height:114px;">
-							</div>
-							<div class="service-info" style="padding-top:30px;">
-								<h3>그 때 내 딸이 사라졌다</h3>
-								<p>10000원</p>
-							</div>
-						</div>
-					</div>
-					
-					<!--Single Service End-->
+					</c:forEach>
 				</div>
 			</div>
 		</div>
 		<!--Our Service Area End-->
-     		 </div>
-      
-      
-                </div>
-            </div>
-        </div>
+	 	</div>
+		<div> 
+			<div class="container">
+			   	<div class="section-title-2 text-center mb-25">
+					<br/>
+				    <h3 class="ui header">${indexLR.titleSec3}</h3>
+				</div>
+			    <div class="row">
+			      	<div class="col-lg-12 col-md-12 col-12" style="max-width:100%;">
+			    		<div class="brand__image_area">
+			        		<div class="group_sliderh2_active owl-carousel">
+			            		<c:forEach items="${indexLR.sec3}" var="thirdSecBook">
+			            		<div class="group">
+			               			<div>
+			                    		<a href="../book/content.do?itemId=${thirdSecBook.b_itemId}">
+			                        	<img alt="" src="${thirdSecBook.b_img}" style="width:140px;height:210px;">
+			                    		</a>
+			                    		<div class="product-content text-center">
+			                    			<h5 style="font-size:14px;">
+			                         		${thirdSecBook.b_title}
+			                          		</h5>
+			                          		<span><span class="Price-currencySymbol"></span>${thirdSecBook.b_price}원</span>
+			                          	</div>
+			                      	</div>
+			                  	</div>
+			                  	</c:forEach>
+			              	</div>
+			          	</div>
+			      	</div>
+			  	</div>
+			</div>
+		</div>
+		<div> 
+			<div class="container">
+			   	<div class="section-title-2 text-center mb-25">
+					<br/>
+				    <h3 class="ui header">${indexLR.titleSec4}</h3>
+				</div>
+			    <div class="row">
+			      	<div class="col-lg-12 col-md-12 col-12" style="max-width:100%;">
+			    		<div class="brand__image_area">
+			        		<div class="group_sliderh2_active owl-carousel">
+			            		<c:forEach items="${indexLR.sec4}" var="forthSecBook">
+			            		<div class="group">
+			               			<div>
+			                    		<a href="../book/content.do?itemId=${forthSecBook.b_itemId}">
+			                        	<img alt="" src="${forthSecBook.b_img}" style="width:140px;height:210px;">
+			                    		</a>
+			                    		<div class="product-content text-center">
+			                    			<h5 style="font-size:14px;">
+			                         		${forthSecBook.b_title}
+			                          		</h5>
+			                          		<span><span class="Price-currencySymbol"></span>${forthSecBook.b_price}원</span>
+			                          	</div>
+			                      	</div>
+			                  	</div>
+			                  	</c:forEach>
+			              	</div>
+			          	</div>
+			      	</div>
+			  	</div>
+			</div>
+		</div>
+          </div>
+      </div>
+  </div>
         <!--Service Item Area End-->     
         
         <footer class="footer-color">

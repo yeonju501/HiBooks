@@ -73,25 +73,25 @@ public class RecommendServiceImpl implements RecommendService {
 			
 			RecomListResult recomLRSec3 = mapper.getSec(3);
 			ArrayList<Book> list3 = new ArrayList <Book>();
-			list2.add(mapper.getBook(recomLRSec3.getRe_seq1()));
-			list2.add(mapper.getBook(recomLRSec3.getRe_seq2()));
-			list2.add(mapper.getBook(recomLRSec3.getRe_seq3()));
-			list2.add(mapper.getBook(recomLRSec3.getRe_seq4()));
-			list2.add(mapper.getBook(recomLRSec3.getRe_seq5()));
-			list2.add(mapper.getBook(recomLRSec3.getRe_seq6()));
-			list2.add(mapper.getBook(recomLRSec3.getRe_seq7()));
-			list2.add(mapper.getBook(recomLRSec3.getRe_seq8()));
+			list3.add(mapper.getBook(recomLRSec3.getRe_seq1()));
+			list3.add(mapper.getBook(recomLRSec3.getRe_seq2()));
+			list3.add(mapper.getBook(recomLRSec3.getRe_seq3()));
+			list3.add(mapper.getBook(recomLRSec3.getRe_seq4()));
+			list3.add(mapper.getBook(recomLRSec3.getRe_seq5()));
+			list3.add(mapper.getBook(recomLRSec3.getRe_seq6()));
+			list3.add(mapper.getBook(recomLRSec3.getRe_seq7()));
+			list3.add(mapper.getBook(recomLRSec3.getRe_seq8()));
 			
 			RecomListResult recomLRSec4 = mapper.getSec(4);
 			ArrayList<Book> list4 = new ArrayList <Book>();
-			list2.add(mapper.getBook(recomLRSec4.getRe_seq1()));
-			list2.add(mapper.getBook(recomLRSec4.getRe_seq2()));
-			list2.add(mapper.getBook(recomLRSec4.getRe_seq3()));
-			list2.add(mapper.getBook(recomLRSec4.getRe_seq4()));
-			list2.add(mapper.getBook(recomLRSec4.getRe_seq5()));
-			list2.add(mapper.getBook(recomLRSec4.getRe_seq6()));
-			list2.add(mapper.getBook(recomLRSec4.getRe_seq7()));
-			list2.add(mapper.getBook(recomLRSec4.getRe_seq8()));
+			list4.add(mapper.getBook(recomLRSec4.getRe_seq1()));
+			list4.add(mapper.getBook(recomLRSec4.getRe_seq2()));
+			list4.add(mapper.getBook(recomLRSec4.getRe_seq3()));
+			list4.add(mapper.getBook(recomLRSec4.getRe_seq4()));
+			list4.add(mapper.getBook(recomLRSec4.getRe_seq5()));
+			list4.add(mapper.getBook(recomLRSec4.getRe_seq6()));
+			list4.add(mapper.getBook(recomLRSec4.getRe_seq7()));
+			list4.add(mapper.getBook(recomLRSec4.getRe_seq8()));
 			return new IndexListResult(recomLRSec1.getRe_title(),list1,recomLRSec2.getRe_title(),list2,recomLRSec3.getRe_title(),list3,recomLRSec4.getRe_title(),list4);
 		}catch(NullPointerException npe) {
 			return null;

@@ -110,7 +110,6 @@
                                                         <li class="switcher-menu-item">
                                                             <a href="wishList/moveWishPage.do">위시리스트</a>
                                                         </li>
-
                                                         <sec:authorize access="isAuthenticated()">
 	                                                        <sec:authorize access="hasRole('ROLE_ADMIN')"> 
 		                                                        <li class="switcher-menu-item">
@@ -701,7 +700,7 @@
     <script src="assets/js/plugins.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/package.js"></script>
-	
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
 </body>
 
