@@ -17,7 +17,7 @@ public class SearchServiceImpl implements SearchService {
 	
 	@Override
 	public SearchListResult getSearchListResult(String keyword, int cp, int ps) {
-		long totalCount = Mapper.selectCount(keyword);
+		int totalCount = Mapper.selectCount(keyword);
 		SearchVo searchVo = new SearchVo(keyword,cp,ps);
 		List<Book> list = Mapper.selectByKey(searchVo);
 		return new SearchListResult(cp,totalCount,ps,list);

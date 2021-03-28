@@ -31,7 +31,7 @@ public class CartController {
 	@RequestMapping("add.do")
 	public void addtoCart(CartVo cartVo, HttpSession session, HttpServletRequest request,
 			HttpServletResponse response) throws IOException{
-		log.info(cartVo);
+		//log.info(cartVo);
 		List<CartVo> list = null;
 		Object listObj=session.getAttribute("list");
 		if(listObj==null) {
@@ -41,7 +41,7 @@ public class CartController {
 		}
 		String itemId= cartVo.getItemId();
 		Book book= service.getBook(itemId);
-		log.info(book);
+		//log.info(book);
 		cartVo.setBook(book);
 		int vol=cartVo.getVol();
 		long price= book.getB_price();
@@ -51,9 +51,9 @@ public class CartController {
 		list.add(cartVo);
 		session.setAttribute("list",list);
 		
-		
+		//스윗얼럿
 		String referer = request.getHeader("Referer");
-		log.info(referer);
+		//log.info(referer);
 		response.setContentType("text/html; charset=euc-kr");
         response.setCharacterEncoding("euc-kr");
 		PrintWriter out = response.getWriter();

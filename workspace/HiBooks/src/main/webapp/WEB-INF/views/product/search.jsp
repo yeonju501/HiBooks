@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!doctype html>
 <html class="no-js" lang="zxx">
 
@@ -26,10 +27,14 @@
     <link rel="stylesheet" href="../assets/css/tippy.css">
     <link rel="stylesheet" href="../assets/css/bundle.css">
     <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/service-search.css">
+    <!-- <link rel="stylesheet" href="../assets/css/service-search.css"> -->
     <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
     <!-- search page css-->
-        <script src="../assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="../assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="../assets/js/vendor/jquery-1.12.0.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script>
+    <script src="../assets/js/service-search.js"></script>
 </head>
 
 <body>
@@ -87,16 +92,13 @@
                                                     <a >마이페이지</a>
                                                     <ul class="switcher__menus">
                                                         <li class="switcher-menu-item">
-                                                            <a href="">내 정보</a>
+                                                            <a href="../member/moveMyInfo.do">내 정보</a>
                                                         </li>
                                                         <li class="switcher-menu-item">
-                                                            <a href="">위시리스트</a>
-                                                        </li>
+                                                            <a href="../wishList/moveWishPage.do">위시리스트</a>
+                                                        </li>  
                                                         <li class="switcher-menu-item">
-                                                            <a href="">커뮤니티</a>
-                                                        </li>
-                                                        <li class="switcher-menu-item">
-                                                            <a href="">...</a>
+                                                            <a href="../purchase/orderComplete.do">결제내역</a>
                                                         </li>
                                                     </ul>
                                                 </li>
@@ -117,7 +119,7 @@
                         <div class="col-md-6">
                             <div class="search__sidbar">
                                 <div class="input_form">
-                                    <form name="searchinput" method="post" action="search.do">
+                                    <form name="searchinput" method="post" action="../product/search.do">
 	                                    <input type="text" class="input_text" id="keyword" name="keyword" placeholder="제목, 저자, 출판사 검색">
 	                                    <input type = "hidden" name = "${_csrf.parameterName }" value = "${_csrf.token }"/>
 	                                    <button id="searchinput" type="button" class="button">
@@ -153,18 +155,15 @@
                                                     </ul>
                                                 </li>
 												
-                                                <li><a id="in" href="">베스트</a></li>
-												
-                                                <li><a id="in" href="">추천</a></li>
-												
-                                                <li><a id="in" href="">커뮤니티</a></li>
-
-                                                <li class="active"><a href="">공지/문의</a>
-                                                    <ul>
-                                                        <li><a href="">공지</a></li>
-                                                        <li><a href="../boardq/list.do">문의</a></li>
-                                                    </ul>
-                                                </li>
+                                                <li><a id="in" href="../recommend/list.do">추천</a></li>
+												<li><a id="in" href="">커뮤니티</a></li>
+												<li  class="active"><a href="">공지/문의 <i class="ion-ios-arrow-down"></i></a>
+												<ul>
+													<li><a href="../boardNotice/list.do"> 공지</a></li>
+													<li><a href="../boardq/list.do"> 문의</a></li>
+                                                    	
+												</ul>
+											</li>
                                             </ul>
                                         </nav>
                                 </div>
@@ -188,22 +187,15 @@
 													
 												</ul>
 											</li>
-											
-											<li><a href="">베스트 </a></li>
-											
-											<li><a href="">추천</a></li>
-											
+											<li><a href="../recommend/list.do">추천</a></li>
 											<li><a href="">커뮤니티</a></li>
-											
 											<li><a href="">공지/문의 <i class="ion-ios-arrow-down"></i></a>
 												<ul>
-													<li><a href=""> 공지</a></li>
+													<li><a href="../boardNotice/list.do"> 공지</a></li>
 													<li><a href="../boardq/list.do"> 문의</a></li>
-                                                    <li><a href=""> ....</a></li>
+                                                    
 												</ul>
 											</li>
-											
-											
                                         </ul>
                                     </nav>  
                             </div>
@@ -213,222 +205,15 @@
                 </div>
             </div>
         </header>
-        <!-- header end -->
-        <!-- breadcrumbs area start -->
-        <!-- <div class="title-breadcrumbs">
-            <div class="title-breadcrumbs-inner">
-                <div class="container">
-                    <nav class="woocommerce-breadcrumb">
-                        <a href="#">Home</a>
-                        <span class="separator">/</span> Shop
-                    </nav>
-                </div>
-            </div>
-        </div> -->
-        <!-- breadcrumbs area End -->
-        <div class="shop-wrapper pt-100 pb-60">
+        
+        <div class="shop-wrapper pt-30 pb-60">
             <div class="container">
-
                 <div class="grid-list-product-wrapper">
                     <div class="product-grid product-view">
                         <div class="row">
-                            <!-- <div class="col-xl-3 col-lg-3 col-md-12 col-12">
-                                <div class="row_products_side">
-                                    <div class="product_left_sidbar">
-
-                                        <div class="product-filter  mb-30">
-                                            <h5> Product Categories </h5>
-                                            <ul class="product-categories">
-                                                <li class="cat-item">
-                                                    <a href="#">Accessories</a>
-                                                    <span class="count">(5)</span>
-                                                </li>
-                                                <li class="cat-item">
-                                                    <a href="#">Bedroom</a>
-                                                    <span class="count">(4)</span>
-                                                </li>
-                                                <li class="cat-item">
-                                                    <a href="#">Decor &amp; Furniture</a>
-                                                    <span class="count">(12)</span>
-                                                </li>
-                                                <li class="cat-item">
-                                                    <a href="#">Electronics &amp; Computer</a>
-                                                    <span class="count">(13)</span>
-                                                </li>
-                                                <li class="cat-item">
-                                                    <a href="#">Fashion &amp; clothings</a>
-                                                    <span class="count">(13)</span>
-                                                </li>
-                                                <li class="cat-item">
-                                                    <a href="#">Furniture</a>
-                                                    <span class="count">(4)</span>
-                                                </li>
-                                                <li class="cat-item">
-                                                    <a href="#">Home, Garden &amp; Tools</a>
-                                                    <span class="count">(14)</span>
-                                                </li>
-                                                <li class="cat-item">
-                                                    <a href="#">Laptops &amp; Desktops</a>
-                                                    <span class="count">(7)</span>
-                                                </li>
-                                                <li class="cat-item">
-                                                    <a href="#">Livingroom</a>
-                                                    <span class="count">(4)</span>
-                                                </li>
-                                                <li class="cat-item">
-                                                    <a href="#">Men</a>
-                                                    <span class="count">(4)</span>
-                                                </li>
-                                                <li class="cat-item">
-                                                    <a href="#">Mobiles &amp; Tablets</a>
-                                                    <span class="count">(6)</span>
-                                                </li>
-                                                <li class="cat-item">
-                                                    <a href="#">Sport &amp; Outdoors</a>
-                                                    <span class="count">(7)</span>
-                                                </li>
-                                                <li class="cat-item">
-                                                    <a href="#">Toy, Kids &amp; Baby</a>
-                                                    <span class="count">(7)</span>
-                                                </li>
-                                                <li class="cat-item">
-                                                    <a href="#">Uncategorized</a>
-                                                    <span class="count">(0)</span>
-                                                </li>
-                                                <li class="cat-item">
-                                                    <a href="#">Women</a>
-                                                    <span class="count">(4)</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="product-filter  mb-30">
-                                            <h5>Color</h5>
-                                            <ul class="product-categories">
-                                                <li class="cat-item">
-                                                    <a href="#">Black</a>
-                                                    <span class="count">(5)</span>
-                                                </li>
-                                                <li class="cat-item">
-                                                    <a href="#">Blue</a>
-                                                    <span class="count">(4)</span>
-                                                </li>
-                                                <li class="cat-item">
-                                                    <a href="#">Gold</a>
-                                                    <span class="count">(12)</span>
-                                                </li>
-                                                <li class="cat-item">
-                                                    <a href="#">Red</a>
-                                                    <span class="count">(13)</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="product-filter mb-30">
-                                            <h5>Filter by price</h5>
-                                            <div id="price-range"></div>
-                                            <div class="price-values">
-                                                <div class="price_text_btn">
-                                                    <span>Price:</span>
-                                                    <input type="text" class="price-amount">
-                                                </div>
-                                                <button class="button" type="submit">Filter</button>
-                                            </div>
-                                        </div>
-                                        <div class="product-filter mb-30">
-                                            <h5>Top Rated Products</h5>
-                                            <ul class="product_list_widget">
-                                                <li>
-                                                    <div class="product-image">
-                                                        <a title="Phasellus vel hendrerit" href="#">
-                                                            <img alt="" src="assets/img/products/side_p_1.jpg">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <a title="Phasellus vel hendrerit" href="#">
-                                                            <span class="product-title">Phasellus vel hendrerit</span>
-                                                        </a>
-                                                        <div class="star-rating">
-                                                            <div class="rating-box">
-                                                                <a href="#">
-                                                                    <i class="far fa-star"> </i>
-                                                                </a>
-                                                                <a href="#">
-                                                                    <i class="far fa-star"> </i>
-                                                                </a>
-                                                                <a href="#" title="3 star">
-                                                                    <i class="far fa-star"> </i>
-                                                                </a>
-                                                                <a href="#" title="4 star">
-                                                                    <i class="far fa-star"> </i>
-                                                                </a>
-                                                                <a href="#" title="5 star">
-                                                                    <i class="far fa-star"> </i>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                        <span class="woocommerce-Price-amount amount">
-                                                            <span class="woocommerce-Price-currencySymbol">$</span>55.00</span>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="product-image">
-                                                        <a title="Phasellus vel hendrerit" href="#">
-                                                            <img alt="" src="assets/img/products/side_p_2.jpg">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <a title="Phasellus vel hendrerit" href="#">
-                                                            <span class="product-title">Phasellus vel hendrerit</span>
-                                                        </a>
-                                                        <div class="star-rating">
-                                                            <div class="rating-box">
-                                                                <a href="#">
-                                                                    <i class="far fa-star"> </i>
-                                                                </a>
-                                                                <a href="#">
-                                                                    <i class="far fa-star"> </i>
-                                                                </a>
-                                                                <a href="#" title="3 star">
-                                                                    <i class="far fa-star"> </i>
-                                                                </a>
-                                                                <a href="#" title="4 star">
-                                                                    <i class="far fa-star"> </i>
-                                                                </a>
-                                                                <a href="#" title="5 star">
-                                                                    <i class="far fa-star"> </i>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                        <span class="woocommerce-Price-amount amount">
-                                                            <span class="woocommerce-Price-currencySymbol">$</span>55.00</span>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="product-filter mb-30">
-                                            <h5>product tags</h5>
-                                            <div class="product-tags">
-                                                <a href="#">New </a>
-                                                <a href="#">brand</a>
-                                                <a href="#">black</a>
-                                                <a href="#">white</a>
-                                                <a href="#">chire</a>
-                                                <a href="#">table</a>
-                                                <a href="#">Lorem</a>
-                                                <a href="#">ipsum</a>
-                                                <a href="#">dolor</a>
-                                                <a href="#">sit</a>
-                                                <a href="#">amet</a>
-                                            </div>
-                                        </div>
-
-
-                                    </div>
-                                </div>
-                            </div> -->
-
-                            <div class=" col-xl-9 col-lg-9 col-md-12 col-12">
-
-                                <div class="row">
+                        	<div class="col-1"></div>
+                        	<div class="col-10">
+								<div class="row">
                                     <div class="col-lg-12 col-md-12 col-12 ">
                                         <!-- <div class="shop_top_banner">
                                             <img src="assets/img/banner/shop-banner.jpg" alt="">
@@ -446,9 +231,9 @@
                                                         </a>
                                                     </div>
                                                     <p class="woocommerce-result-count">
-                                                        Showing ${listResult.ps} of ${listResult.totalCount} results
+                                                       	 키워드  "${sessionScope.keyword}"의 검색 결과, Showing ${listResult.cp} Page, Total Book: ${listResult.totalCount} results
                                                     </p>
-                                                    <form method="get" class="woocommerce-ordering hidden-xs">
+                                                    <!-- <form method="get" class="woocommerce-ordering hidden-xs">
                                                         <div class="orderby-wrapper">
                                                             <label>Sort By :</label>
                                                             <select class="orderby">
@@ -460,7 +245,7 @@
                                                                 <option value="price-desc">Sort by price: high to low</option>
                                                             </select>
                                                         </div>
-                                                    </form>
+                                                    </form> -->
                                                 </div>
                                             </div>
                                         </div>
@@ -471,56 +256,44 @@
                                     <div id="product-grid" class="tab-pane fade active show">
                                         <div class="row">
                                         <c:if test="${empty listResult}">
-                                          	데이터가 하나도 없음
+                                          	<div class="col-lg-3 col-md-6 col-12">
+                                                <div class="product-wrapper mb-60">
+                                          		검색결과가 없습니다.
+                                          		</div>
+                                          	</div>
                                         </c:if>
                                         <c:forEach items="${listResult.list}" var="book">
                                             <div class="col-lg-3 col-md-6 col-12">
                                                 <div class="product-wrapper mb-60">
-                                                    <div class="product-img">
-                                                        <a href="product-details.html">
+                                                <div class="product-img">
+                                                        <a href="content.do?itemId=${book.b_itemId }">
                                                             <img alt="" src="${book.b_img}">
                                                         </a>
                                                         <div class="product-action-2">
-                                                            <a href="#" title="Add to Compare" class="action-plus-2 tooltip">
-                                                                <i class="zmdi zmdi-refresh"></i>
-                                                            </a>
-                                                            <a href="#" title="Add to Wishlist" class="action-plus-2 tooltip">
-                                                                <i class="zmdi zmdi-favorite-outline"></i>
-                                                            </a>
-                                                            <a href="#" title="Quick View" data-target="#exampleModal" data-toggle="modal" class="action-plus-2 tooltip">
-                                                                <i class="zmdi zmdi-search"></i>
-                                                            </a>
-                                                            <a href="#" title="Add To Cart"  class="action-plus-2 tooltip">
+                                                        	<input type="hidden" id="itemId" value="${book.b_itemId }"/>
+                                                            <a href="../purchase/add.do?itemId=${book.b_itemId}" title="Add To Cart"  class="action-plus-2 tooltip">
                                                                 <i class="zmdi zmdi-shopping-cart-plus"></i>
                                                             </a>
                                                         </div>
                                                         <div class="rating-box">
-                                                            <a href="#" class="rated" title="1 star">
-                                                                <i class="far fa-star"> </i>
-                                                            </a>
-                                                            <a href="#" class="rated" title="2 star">
-                                                                <i class="far fa-star"> </i>
-                                                            </a>
-                                                            <a href="#" title="3 star">
-                                                                <i class="far fa-star"> </i>
-                                                            </a>
-                                                            <a href="#" title="4 star">
-                                                                <i class="far fa-star"> </i>
-                                                            </a>
-                                                            <a href="#" title="5 star">
-                                                                <i class="far fa-star"> </i>
-                                                            </a>
+                                                             <c:forEach begin="1" end="${book.b_rate-(book.b_rate%1)}">
+                                                                 <i class="fa fa-star" style="color: red;"> </i>
+                                                             </c:forEach>
+                                                             <c:forEach begin="${book.b_rate-(book.b_rate%1)+1}" end="5">
+                                                                 <i class="far fa-star"> </i>
+                                                             </c:forEach>
                                                         </div>
                                                     </div>
                                                     <div class="product-content text-center">
                                                         <h4>
-                                                            <a href="product-details.html">${book.b_title}</a>
+                                                            <a href="content.do?itemId=${book.b_itemId }">${book.b_title}</a>
                                                         </h4>
                                                         <div class="product-price-2">
                                                             <div class="price-box">
                                                                 <ins>
                                                                     <span class="amount">
-                                                                        <span class="Price-currencySymbol">￦</span>${book.b_price}</span>
+                                                                        ${book.b_price}<span class="Price-currencySymbol">원</span>
+                                                                    </span>
                                                                 </ins>
                                                             </div>
                                                         </div>
@@ -543,96 +316,113 @@
                                         <div class="row">
                                             <div class="col-lg-12 col-md-12 col-12">
 	                                            <c:if test="${empty listResult}">
-	                                          	데이터가 하나도 없음
+	                                          		<div class="col-lg-3 col-md-6 col-12">
+		                                                <div class="product-wrapper mb-60">
+		                                          		검색결과가 없습니다.
+		                                          		</div>
+		                                          	</div>
 	                                        	</c:if>
                                                 <c:forEach items="${listResult.list}" var="book">
-                                                <div class="product-wrapper mb-60">
-                                                    <div class="product-img">
-                                                        <a href="product-details.html">
-                                                            <img alt="" src="${book.b_img}">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product-content">
-                                                        <h4>
-                                                            <a href="product-details.html">${book.b_title}</a>
-                                                        </h4>
-                                                        <div class="product-price-2">
-                                                            <div class="price-box">
-                                                                <ins>
-                                                                    <span class="amount">
-                                                                        <span class="Price-currencySymbol">￦</span>${book.b_price}</span>
-                                                                </ins>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="rating-box">
-                                                            <a href="#" class="rated" title="1 star">
-                                                                <i class="far fa-star"> </i>
-                                                            </a>
-                                                            <a href="#" class="rated" title="2 star">
-                                                                <i class="far fa-star"> </i>
-                                                            </a>
-                                                            <a href="#" title="3 star">
-                                                                <i class="far fa-star"> </i>
-                                                            </a>
-                                                            <a href="#" title="4 star">
-                                                                <i class="far fa-star"> </i>
-                                                            </a>
-                                                            <a href="#" title="5 star">
-                                                                <i class="far fa-star"> </i>
-                                                            </a>
-                                                        </div>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce posuere
-                                                            metus vitae arcu imperdiet, id aliquet ante scelerisque. Sed
-                                                            sit amet sem vitae urna fringilla tempus.</p>
-                                                        <div class="product-action-2">
-                                                            <a href="#" title="Add To Cart"  class="action-plus-2 list_bg_add tooltip">
-                                                                <i class="zmdi zmdi-shopping-cart-plus"></i> Add to cart
-                                                            </a>
-                                                            <a href="#" title="Add to Compare" class="action-plus-2 tooltip">
-                                                                <i class="zmdi zmdi-refresh"></i>
-                                                            </a>
-                                                            <a href="#" title="Add to Wishlist" class="action-plus-2 tooltip">
-                                                                <i class="zmdi zmdi-favorite-outline"></i>
-                                                            </a>
-                                                            <a href="#" title="Quick View" data-target="#exampleModal" data-toggle="modal" class="action-plus-2 tooltip">
-                                                                <i class="zmdi zmdi-search"></i>
-                                                            </a>
-
-                                                        </div>
-                                                    </div>
-
-                                                </div>
+                                               <div class="product-wrapper mb-60">
+	                                                    <div class="product-img">
+	                                                        <a href="content.do?itemId=${book.b_itemId }">
+	                                                            <img alt="" src="${book.b_img}">
+	                                                        </a>
+	                                                    </div>
+	                                                    <div class="product-content">
+	                                                        <h4>
+	                                                            <a href="content.do?itemId=${book.b_itemId }">${book.b_title }</a>
+	                                                        </h4>
+	                                                        <div class="row" id="row-product-info">
+	                                                            <div class="col-md-12" id="col-product-info">
+	                                                                <div class="rating-box">
+	                                                                    <br>                                                                        
+	                                                                    <c:forEach begin="1" end="${book.b_rate-(book.b_rate%1)}">
+		                                                                    <i class="fa fa-star" style="color: red;"> </i>
+		                                                                </c:forEach>
+		                                                                <c:forEach begin="${book.b_rate-(book.b_rate%1)+1}" end="5">
+		                                                                    <i class="far fa-star"> </i>
+		                                                                </c:forEach>
+	                                                                    <span>&nbsp;${book.b_rate }</span>
+	                                                                    &nbsp;|&nbsp;
+	                                                                    <span>${book.b_writer}</span>&nbsp;|&nbsp;
+	                                                                    <span>${book.b_publisher}</span>&nbsp;|&nbsp;
+	                                                                    <span>${book.b_cate}</span>&nbsp;|&nbsp;
+	                                                                </div>
+	                                                            </div>
+	                                                            
+	
+	                                                        </div>
+	                                                        
+	                                                        <p>
+	                                                        <c:choose>
+		                                                        <c:when test="${fn:length(book.b_desc) gt 451}">
+		                                                           	${fn:substring(book.b_desc, 0, 451)}...
+		                                                        </c:when>
+		                                                        <c:otherwise>
+		                                                        	${book.b_desc}
+		                                                        	<c:forEach begin="0" end="${(451- fn:length(book.b_desc)) / 52 + 1}"><br></c:forEach>
+		                                                        </c:otherwise>
+	                                                        </c:choose>
+	                                                        </p>
+	                                                        
+	                                                        <div class="product-price-2">
+	                                                            <div class="price-box">
+	                                                                <ins>
+	                                                                    <span class="amount">
+	                                                                        ${book.b_price}<span class="Price-currencySymbol">원</span>
+	                                                                    </span>
+	                                                                </ins>
+	                                                            </div>
+	                                                        </div>
+	                                                        <div class="product-action-2">
+	                                                            <a href="#" title="Add To Cart"  class="action-plus-2 list_bg_add tooltip">
+	                                                                <i class="zmdi zmdi-shopping-cart-plus"></i> 장바구니 담기
+	                                                            </a>
+	                                                         </div>
+	                                                    </div>
+	
+	                                                </div>
                                                 </c:forEach>
                                                 </div>
                                                 </div>
                                                 </div>
-                                                </div>
-                                                </div>
-                                                </div>
+                                    </div>
+                              </div>
+                         	<div class="col-1"></div>
+                          </div>
                        
 
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-12">
                                         <div class="pagination-style text-center">
                                             <ul>
-                                             <c:forEach begin="1" end="${listResult.totalPageCount}" var="i">
-                                                    <a href="search.do?cp=${i}">
-                                                    <c:choose>
-                                                    <c:when test="${i==listResult.cp}">
-                                                      <li><strong>${i}</strong></li>
-                                                     </c:when>
-                                                     <c:otherwise>
-                                                     <li>${i}</li>
-											        </c:otherwise>
-											        </c:choose>
-											        </a>
-											        </c:forEach>
-                                                <li>
-                                                    <a href="#">
-                                                        <i class="ion-chevron-right"></i>
-                                                    </a>
-                                                </li>
+                                            	<c:if test="${listResult.prev}">
+	                                                <li>
+	                                                    <a href="search.do?cp=${listResult.cp - 1}">
+	                                                        <i class="ion-chevron-left"></i>
+	                                                    </a>
+	                                                </li>
+	                                            </c:if>
+                                                <c:forEach begin="${listResult.startPage }" end="${listResult.endPage }" var="i"> 
+	                                                <c:if test="${i == listResult.cp }">
+		                                                <li>
+		                                                    <a class="active" href="search.do?cp=${i}">${i}</a>
+		                                                </li>
+	                                                </c:if>
+	                                                <c:if test="${i != listResult.cp }">
+		                                                <li>
+		                                                    <a href="search.do?cp=${i}">${i}</a>
+		                                                </li>
+	                                                </c:if>                            
+                                                </c:forEach>
+                                                <c:if test="${listResult.next }">
+	                                                <li>
+	                                                    <a href="search.do?cp=${listResult.cp + 1}">
+	                                                        <i class="ion-chevron-right"></i>
+	                                                    </a>
+	                                                </li>
+	                                            </c:if>
                                             </ul>
                                         </div>
                                     </div>
@@ -642,9 +432,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <footer>
+            
+        
+        
         <!-- Slider Start -->
        
         <!-- Slider End -->
@@ -751,104 +541,12 @@
             </div>
         </footer>
         <!-- modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span class="ion-android-close" aria-hidden="true"></span>
-                        </button>
-                        <div class="qwick-view-left">
-                            <div class="quick-view-learg-img">
-                                <div class="quick-view-tab-content tab-content">
-                                    <div class="tab-pane active show fade" id="modal1" role="tabpanel">
-                                        <img src="../assets/img/quick-view/l1.jpg" alt="">
-                                    </div>
-                                    <div class="tab-pane fade" id="modal2" role="tabpanel">
-                                        <img src="../assets/img/quick-view/l2.jpg" alt="">
-                                    </div>
-                                    <div class="tab-pane fade" id="modal3" role="tabpanel">
-                                        <img src="../assets/img/quick-view/l3.jpg" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="quick-view-list nav" role="tablist">
-                                <a class="active" href="#modal1" data-toggle="tab" role="tab" aria-selected="true">
-                                    <img src="../assets/img/quick-view/s1.jpg" alt="">
-                                </a>
-                                <a href="#modal2" data-toggle="tab" role="tab" aria-selected="false">
-                                    <img src="../assets/img/quick-view/s2.jpg" alt="">
-                                </a>
-                                <a href="#modal3" data-toggle="tab" role="tab" aria-selected="false">
-                                    <img src="../assets/img/quick-view/s3.jpg" alt="">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="qwick-view-right">
-                            <div class="qwick-view-content">
-                                <h3>Handcrafted Supper Mug</h3>
-                                <div class="price">
-                                    <span class="new">$90.00</span>
-                                    <span class="old">$120.00 </span>
-                                </div>
-                                <div class="rating-number">
-                                    <div class="quick-view-rating">
-                                        <i class="ion-ios-star red-star"></i>
-                                        <i class="ion-ios-star red-star"></i>
-                                        <i class="ion-ios-star red-star"></i>
-                                        <i class="ion-ios-star red-star"></i>
-                                        <i class="ion-ios-star red-star"></i>
-                                    </div>
-                                </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adip elit, sed do tempor incididun ut labore et dolore
-                                    magna aliqua. Ut enim ad mi , quis nostrud veniam exercitation .</p>
-                                <div class="quick-view-select">
-                                    <div class="select-option-part">
-                                        <label>Size*</label>
-                                        <select class="select">
-                                            <option value="">- Please Select -</option>
-                                            <option value="">900</option>
-                                            <option value="">700</option>
-                                        </select>
-                                    </div>
-                                    <div class="select-option-part">
-                                        <label>Color*</label>
-                                        <select class="select">
-                                            <option value="">- Please Select -</option>
-                                            <option value="">orange</option>
-                                            <option value="">pink</option>
-                                            <option value="">yellow</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="quickview-plus-minus">
-                                    <div class="cart-plus-minus">
-                                        <input type="text" value="02" name="qtybutton" class="cart-plus-minus-box">
-                                    </div>
-                                    <div class="quickview-btn-cart">
-                                        <a class="btn-style cr-btn" href="#">
-                                            <span>add to cart</span>
-                                        </a>
-                                    </div>
-                                    <div class="quickview-btn-wishlist">
-                                        <a class="btn-hover cr-btn" href="#">
-                                            <span>
-                                                <i class="ion-ios-heart-outline"></i>
-                                            </span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
     </div>
 
     <!-- all js here -->
     <script src="../assets/js/vendor/jquery-1.12.0.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script>
     <script src="../assets/js/popper.js"></script>
     <script src="../assets/js/bootstrap.min.js"></script>
     <script src="../assets/js/isotope.pkgd.min.js"></script>
@@ -860,7 +558,8 @@
     <script src="../assets/js/owl.carousel.min.js"></script>
     <script src="../assets/js/plugins.js"></script>
     <script src="../assets/js/main.js"></script>
-    <script src="../assets/js/service-search.js"></script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    
+    </body>
 
 </html>

@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="bit.hibooks.setting.MemberModeSet"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
@@ -40,7 +40,7 @@
     <script src="../assets/js/vendor/modernizr-2.8.3.min.js"></script>
     <script src="../assets/js/vendor/jquery-1.12.0.min.js"></script>
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script>
-    <script src="../assets/js/service-search-index.js"></script>
+    <script src="../assets/js/service-search.js"></script>
 </head>
 <body>
     <div class="wrapper">

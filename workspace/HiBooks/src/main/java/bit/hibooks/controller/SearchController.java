@@ -53,8 +53,14 @@ public class SearchController {
 		int ps = 20;
 		session.setAttribute("ps", ps);
 		keyword= (String) session.getAttribute("keyword");
+		
+		log.info(cp +" "+ ps);
 		SearchListResult listResult = service.getSearchListResult(keyword, cp, ps);
 		ModelAndView mv = new ModelAndView("product/search", "listResult", listResult);
+		log.info("startPage: "+listResult.getStartPage());
+		log.info("startPage: "+listResult.getStartPage());
+		log.info("totalCount: "+listResult.getTotalCount());
+		log.info("totalPage: "+listResult.getTotalPageCount());
 		if (listResult.getList().size() == 0) {
 			if (cp > 1)
 				return new ModelAndView("redirect:search.do?cp=" + (cp - 1));
@@ -70,7 +76,7 @@ public class SearchController {
 	public List<Book> getAuto(String keyword){
 		log.info("##### 자동완성");
 		List<Book> list = service.getAuto(keyword);
-		System.out.println(list);
+		//System.out.println(list);
 		return list;
 		
 	}

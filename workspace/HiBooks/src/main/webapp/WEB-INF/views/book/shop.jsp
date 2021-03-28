@@ -128,7 +128,7 @@
                             <div class="search__sidbar">
                                 <div class="input_form">
                                     <form name="searchinput" method="post" action="../product/search.do">
-	                                    <input type="text" class="input_text" name="keyword" placeholder="제목, 저자, 출판사 검색">
+	                                    <input type="text" class="input_text" id="keyword" name="keyword" placeholder="제목, 저자, 출판사 검색">
 	                                    <input type="hidden" name = "${_csrf.parameterName }" value = "${_csrf.token }"/>
 	                                    <button id="searchinput" type="button" class="button">
 	                                        <i class="fa fa-search fa-lg"></i>
@@ -151,11 +151,11 @@
                                             <ul id="main-custom">
                                                 <li class="active"><a href="shop.do">책</a>
                                                     <ul>
-                                                        <li><a href="../shop.do?cate=100">소설</a></li>
-                                                        <li><a href="../shop.do?cate=200">경영/경제</a></li>
-                                                        <li><a href="../shop.do?cate=300">인문/사회/역사</a></li>
-                                                        <li><a href="../shop.do?cate=400">자기계발</a></li>
-                                                        <li><a href="../shop.do?cate=500">에세이/시</a></li>
+                                                        <li><a href="shop.do?cate=100">소설</a></li>
+                                                        <li><a href="shop.do?cate=200">경영/경제</a></li>
+                                                        <li><a href="shop.do?cate=300">인문/사회/역사</a></li>
+                                                        <li><a href="shop.do?cate=400">자기계발</a></li>
+                                                        <li><a href="shop.do?cate=500">에세이/시</a></li>
                                                         
                                                     </ul>
                                                 </li>
@@ -180,13 +180,13 @@
                             <div class="mobile-menu">
                                     <nav id="mobile-menu-active">
                                         <ul class="menu-overflow">
-											<li class="active"><a href="shop.do">책 <i class="ion-ios-arrow-down"></i></a>
+											<li class="active"><a href="../book/shop.do">책 <i class="ion-ios-arrow-down"></i></a>
 												<ul>
-													<li><a href="../shop.do?cate=100">소설</a></li>
-													<li><a href="../shop.do?cate=200">경영/경제</a></li>
-													<li><a href="../shop.do?cate=300">인문/사회/역사</a></li>
-													<li><a href="../shop.do?cate=400">자기계발</a></li>
-													<li><a href="../shop.do?cate=500">에세이/시</a></li>
+													<li><a href="../book/shop.do?cate=100">소설</a></li>
+													<li><a href="../book/shop.do?cate=200">경영/경제</a></li>
+													<li><a href="../book/shop.do?cate=300">인문/사회/역사</a></li>
+													<li><a href="../book/shop.do?cate=400">자기계발</a></li>
+													<li><a href="../book/shop.do?cate=500">에세이/시</a></li>
 													
 												</ul>
 											</li>
