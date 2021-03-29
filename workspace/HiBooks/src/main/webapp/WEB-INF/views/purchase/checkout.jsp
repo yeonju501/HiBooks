@@ -607,7 +607,7 @@
 		IMP.request_pay({
 			//pg: 'inicis', // version 1.1.0부터 지원.
 			pay_method: 'card',
-			merchant_uid: 'merchant_' + new Date().getTime(),
+			merchant_uid: new Date().getTime(),
 			name: '주문명 : 하이북스 테스트',
 			amount: 100,	//테스트 완료 후 가격정보 넣기
 			buyer_email: m_email,

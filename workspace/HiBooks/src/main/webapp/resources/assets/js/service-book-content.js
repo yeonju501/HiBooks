@@ -433,7 +433,7 @@ var setReviewListHtml = function(result){
 			}			
 			html += '</div>';
 			html += '<strong>'+list[i].m_email+'</strong>';//
-			html += '<p class="meta"><span>'+list[i].br_rDate+'</span></p>';//
+			//html += '<p class="meta"><span>'+list[i].br_rDate+'</span></p>';//
 			html += '</div>';
 			html += '<div class="col-lg-10">';
 			html += '<div class="product-comment-content">';

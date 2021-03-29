@@ -127,7 +127,7 @@ public class BookDataManagerSec implements BookDataManager {
 			 String keywords = meta.attr("content");
 			 String [] keyarray = keywords.split(",");
 			 String b_cate2=keyarray[3];
-			 book.setB_cate2(b_cate2);
+			 book.setB_cate2(b_cate2); // 세부 카테고리
 			 
 			}
 		}
@@ -136,10 +136,10 @@ public class BookDataManagerSec implements BookDataManager {
 		Elements metaName = doc.select("meta[name]");
 		for (Element meta: metaName) {
 			if(meta.attr("name").equals("keywords")) {
-				 keywords = meta.attr("content");
-				 String [] keyarray = keywords.split(",");
-				 String b_cate2=keyarray[3];
-				 book.setB_cate2(b_cate2); //카테고리2
+				 keywords = meta.attr("content"); //세부 카테고리를 담음
+				 //String [] keyarray = keywords.split(",");
+				// String b_cate2=keyarray[3];
+				// book.setB_cate2(b_cate2); //카테고리2 (왜 두번 입력?)
 				}
 		}
 		
@@ -148,10 +148,11 @@ public class BookDataManagerSec implements BookDataManager {
 		KomoranResult analyzeResultList= komoran.analyze(b_desc);
 		ArrayList<String> list=(ArrayList<String>)analyzeResultList.getNouns();
 		ArrayList<String> nouns = new ArrayList<String>();
+		//리스트에 있는 명사 중복 제거
 		for (String noun:list) {
 			if(!nouns.contains(noun))
 				nouns.add(noun);
-		}
+		} 
 		StringBuilder sb= new StringBuilder();
 		sb.append(keywords);
 		sb.append(",");

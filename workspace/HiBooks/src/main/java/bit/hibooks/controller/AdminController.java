@@ -128,7 +128,6 @@ public class AdminController {
 		session.removeAttribute("recomSession");
 		
 		return "redirect:recommend.do";
-		
 	}
 	
 	@PostMapping(value= "chart.do", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE, MediaType.APPLICATION_XML_VALUE})
@@ -137,6 +136,7 @@ public class AdminController {
 		list = service.getChart();
 		return list;
 	}
+	
 	@ResponseBody
 	@PostMapping("cate2Chart.do")
 	public List<List<ChartCate2>> getChart2Cate() {
@@ -144,31 +144,30 @@ public class AdminController {
 		return service.getChartCate2();
 	}
 	
-	@RequestMapping(value="upload.do", produces = "application/json; charset=utf8")
-	@ResponseBody
-	public String uploadSummernoteImageFile(@RequestParam("file") MultipartFile multipartFile, HttpServletRequest request )  {
-		JsonObject jsonObject = new JsonObject();
-		
-        
-		String fileRoot = "C:\\summernote_image\\"; // 외부경로로 저장을 희망할때.
-		String originalFileName = multipartFile.getOriginalFilename();	//오리지날 파일명
-		String extension = originalFileName.substring(originalFileName.lastIndexOf("."));	//파일 확장자
-		String savedFileName = UUID.randomUUID() + extension;	//저장될 파일 명
-		
-		File targetFile = new File(fileRoot + savedFileName);	
-		try {
-			InputStream fileStream = multipartFile.getInputStream();
-			FileUtils.copyInputStreamToFile(fileStream, targetFile);	//파일 저장
-			jsonObject.addProperty("url", "/summernote_image/"+savedFileName); // contextroot + resources + 저장할 내부 폴더명
-			jsonObject.addProperty("responseCode", "success");
-				
-		} catch (IOException e) {
-			FileUtils.deleteQuietly(targetFile);	//저장된 파일 삭제
-			jsonObject.addProperty("responseCode", "error");
-			e.printStackTrace();
-		}
-		String a = jsonObject.toString();
-		return a;
-	}
+	/*
+	 * @RequestMapping(value="upload.do", produces =
+	 * "application/json; charset=utf8")
+	 * 
+	 * @ResponseBody public String uploadSummernoteImageFile(@RequestParam("file")
+	 * MultipartFile multipartFile, HttpServletRequest request ) { JsonObject
+	 * jsonObject = new JsonObject();
+	 * 
+	 * 
+	 * String fileRoot = "C:\\summernote_image\\"; // 외부경로로 저장을 희망할때. String
+	 * originalFileName = multipartFile.getOriginalFilename(); //오리지날 파일명 String
+	 * extension = originalFileName.substring(originalFileName.lastIndexOf("."));
+	 * //파일 확장자 String savedFileName = UUID.randomUUID() + extension; //저장될 파일 명
+	 * 
+	 * File targetFile = new File(fileRoot + savedFileName); try { InputStream
+	 * fileStream = multipartFile.getInputStream();
+	 * FileUtils.copyInputStreamToFile(fileStream, targetFile); //파일 저장
+	 * jsonObject.addProperty("url", "/summernote_image/"+savedFileName); //
+	 * contextroot + resources + 저장할 내부 폴더명 jsonObject.addProperty("responseCode",
+	 * "success");
+	 * 
+	 * } catch (IOException e) { FileUtils.deleteQuietly(targetFile); //저장된 파일 삭제
+	 * jsonObject.addProperty("responseCode", "error"); e.printStackTrace(); }
+	 * String a = jsonObject.toString(); return a; }
+	 */
 
 }

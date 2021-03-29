@@ -46,7 +46,7 @@ public class CartController {
 		int vol=cartVo.getVol();
 		long price= book.getB_price();
 		long total= vol*price;
-		cartVo.setBook(book);
+		//cartVo.setBook(book);
 		cartVo.setTotal(total);
 		list.add(cartVo);
 		session.setAttribute("list",list);
@@ -109,7 +109,7 @@ public class CartController {
 		int vol=cartVo.getVol();
 		long price= book.getB_price();
 		long total= vol*price;
-		cartVo.setBook(book);
+		//cartVo.setBook(book);
 		cartVo.setTotal(total);
 		list.add(cartVo);
 		session.setAttribute("list",list);

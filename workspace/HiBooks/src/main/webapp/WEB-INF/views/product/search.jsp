@@ -266,7 +266,7 @@
                                             <div class="col-lg-3 col-md-6 col-12">
                                                 <div class="product-wrapper mb-60">
                                                 <div class="product-img">
-                                                        <a href="content.do?itemId=${book.b_itemId }">
+                                                        <a href="../book/content.do?itemId=${book.b_itemId }">
                                                             <img alt="" src="${book.b_img}">
                                                         </a>
                                                         <div class="product-action-2">
