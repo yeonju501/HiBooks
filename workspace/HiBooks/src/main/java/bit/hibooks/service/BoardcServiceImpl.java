@@ -48,8 +48,9 @@ public class BoardcServiceImpl implements BoardcService {
 		return new BoardcListResult(cp, totalCount, ps, list);
 	}
 	@Override
-	public Boardc getBoard(long seq) {
-		return boardcMapper.selectBySeq(seq);
+	public Boardc getBoard(long cb_seq) {
+		boardcMapper.updateCcnt(cb_seq);
+		return boardcMapper.selectBySeq(cb_seq);
 	}
 
 	@Override

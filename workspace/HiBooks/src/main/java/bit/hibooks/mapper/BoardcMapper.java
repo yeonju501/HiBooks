@@ -12,8 +12,10 @@ public interface BoardcMapper {
 	Boardc selectBySeq(long cb_seq);
 	long selectCount();
 	long selectCountByCatgo(BoardcVo boardVo);
+	void updateCcnt(long cb_seq);
 	
 	void insert(Boardc board);
 	void update(Boardc board);
 	void delete(long cb_seq);
+	
 }
