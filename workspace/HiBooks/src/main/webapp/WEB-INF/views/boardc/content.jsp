@@ -29,6 +29,13 @@
         <link rel="stylesheet" href="../assets/css/responsive.css">
         <link rel="stylesheet" href="../assets/css/communitycontentstyle.css">
         <script src="../assets/js/vendor/modernizr-2.8.3.min.js"></script>
+        <style>
+        .title-breadcrumbs-inner {
+		    background: #f1f1f1 none repeat scroll 0 0;
+		    border-bottom: 1px solid #ebebeb;
+		    padding: 25px 0 20px;
+		}
+        </style>
     </head>
 
 <body>
@@ -196,18 +203,6 @@
             </div>
         </header>
         <!-- header end -->
-        <!-- breadcrumbs area start -->
-        <div class="title-breadcrumbs">
-            <div class="title-breadcrumbs-inner">
-                <div class="container">
-                    <nav class="woocommerce-breadcrumb">
-                        <a href="index.html">Home</a>
-                        <span class="separator">/</span> Community - Update
-                        </nav>
-                </div>
-            </div>
-        </div>
-        <!-- breadcrumbs area End -->
         <!--My Account Area Strat-->
         <div class="my-account white-bg ptb-100">
             <div class="container">

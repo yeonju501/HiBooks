@@ -220,7 +220,7 @@
        <!-- contents -->
     	<article>
     	<div class="container" role="main">
-			<h2>문의사항 수정</h2>
+			<h2 style="padding-top:30px;">문의사항 수정</h2>
 			<form name="input" method="post" action="update.do" enctype="multipart/form-data">
 				<div class="mb-3">
 					<select name="qb_cat">
@@ -233,7 +233,7 @@
 				</div>
 				<input type="hidden" name="qb_seq" value="${contentResult.boardq.qb_seq }">
 				<div class="mb-3">
-					<br><br><label for="title">제목</label>
+					<br/><br/><br/><label for="title">제목</label>
 					<input type="text" class="form-control" name="qb_subject" value="${contentResult.boardq.qb_subject}">
 				</div>
 				<div class="mb-3">

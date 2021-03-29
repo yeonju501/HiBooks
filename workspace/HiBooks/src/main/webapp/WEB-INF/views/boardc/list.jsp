@@ -41,10 +41,16 @@
     <script src="../assets/js/vendor/jquery-1.12.0.min.js"></script>
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script>
     <script src="../assets/js/service-search-index.js"></script>
+    
+    <style>
+    .pagination-style {
+    border-top: 0px solid #e1e1e1;
+	}
+    
+    </style>
 </head>
 
 <body>
-<center>
 <div class="wrapper">
     <!-- header start -->
     <header id="header_background">
@@ -211,27 +217,14 @@
         </div>
     </header>
     <!-- header end -->
-    <!-- breadcrumbs area start -->
-    <div class="title-breadcrumbs">
-        <div class="title-breadcrumbs-inner">
-            <div class="container">
-                <nav class="woocommerce-breadcrumb">
-                    <a href="index.html">Home</a>
-                    <span class="separator">/</span> Community
-                </nav>
-            </div>
-        </div>
-    </div>
-    <!-- breadcrumbs area End -->
     <!--Wishlist Area Strat-->
     <div class="wishlist-area ptb-50">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="pg___title">
-                        <h2>COMMUNITY</h2>
+                        <h2>커뮤니티</h2>
                     </div>
-                    <form action="#">
                         <div class="grid-list-product-wrapper">
                             <div class="product-grid product-view">
                                 <div class="row">
@@ -240,15 +233,14 @@
                                             <div class="product_left_sidbar">
         
                                                 <div class="product-filter  mb-30">
-                                                    <h5> * Notice </h5>
-                                                    <table class="table table-hober">
+                                                    <table class="table table-hover">
                                                         <thead>
                                                             <tr>
-                                                                <th>글번호</th>                                                    
-                                                                <th>작성자</th>
-                                                                <th>제목</th>
-                                                                <th>작성일</th>
-                                                                <th>조회수</th>
+                                                                <th style="width:10%">글번호</th>                                                    
+                                                                <th style="width:20%">작성자</th>
+                                                                <th style="width:50%">제목</th>
+                                                                <th style="width:10%">작성일</th>
+                                                                <th style="width:10%">조회수</th>
                                                             </tr>
                                                         </thead>
                                                     <tbody>
@@ -271,7 +263,7 @@
                                                     </table>
                                                 </div>
                                            </div>        
-                                           <a href='write.do'>글쓰기</a><br/>
+                                           <a href='write.do'><button type="button" class="button button--list">글쓰기</button></a><br/>
                                         <div class="row">
                                             <div class="col-lg-10 col-md-10 col-10">                                            
                                                 <div class="pagination-style text-center">
@@ -312,23 +304,6 @@
 	                                        	</div>
 	                                        </div>
 	                                  </div>        
-													<form action="">																											
-														<div class ="row">
-															<div class = "col-lg-3 col-md-3 col-3">
-																<select name="catgo">
-																	<option value="subject">제목</option>
-																	<option value="writer">글쓴이</option>
-																	<option value="content">내용</option>
-																</select>
-															</div>
-																<div class="col-lg-7 col-md-7 col-7"> 
-																	<input type="text" name="keyword" size="40" required="required" /> 
-																</div>	
-																	<div class = "col-lg-2 col-md-2 col-2">
-																		<button>검색</button>
-																	</div>
-														</div>
-													</form>  
                                                 </div>
                                             
                                         </div>
@@ -337,7 +312,6 @@
                                 </div>
                             </div>
                         </div>
-                    </form>
                 </div>
             </div>
         </div>
@@ -457,7 +431,6 @@
            location.href="list.do?ps="+ps;
        }
     </script>    
-    </center>
 </body>
 
 </html>
