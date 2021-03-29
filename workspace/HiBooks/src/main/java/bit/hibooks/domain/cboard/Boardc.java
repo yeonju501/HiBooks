@@ -14,8 +14,8 @@ public class Boardc {
 	private String m_email;
 	private String cb_subject;
 	private String cb_content;
-	private Date rdate;
-	private long cb_count;
+	private Date cb_rdate;
+	private long cb_count = 0;
 	
 	 /* private String f_ofname;
 	 */

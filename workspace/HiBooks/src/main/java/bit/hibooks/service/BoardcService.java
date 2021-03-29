@@ -15,10 +15,10 @@ import bit.hibooks.domain.file.BoardcFile;
 public interface BoardcService {
 	BoardcListResult getBoardListResult(int cp, int ps);
 	BoardcListResult getBoardListResult(String catgo, String keyword, int cp, int ps);
-	Boardc getBoard(long seq);
+	Boardc getBoard(long cb_seq);
 	
 	void write(Boardc board, ArrayList<MultipartFile> files);
 	void edit(Boardc board);
-	void remove(long seq);
+	void remove(long cb_seq);
 	
 }

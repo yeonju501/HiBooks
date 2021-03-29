@@ -263,7 +263,7 @@
                                                             <td> ${board.cb_seq} </td>
                                                             <td> ${board.m_email} </td>
                                                             <td> <a href ="content.do?seq=${board.cb_seq}"> ${board.cb_subject}</a> </td>
-                                                            <td> ${board.rdate} </td>
+                                                            <td> ${board.cb_rdate} </td>
                                                             <td> ${board.cb_count} </td>
                                                         </tr>
                                                         </c:forEach>                                                       

@@ -30,11 +30,14 @@
 	    <selectKey keyProperty="cb_seq" order="BEFORE" resultType="long">
 	    	select cb_seq.nextval from dual
 	    </selectKey>
-	    insert into BOARDC values(#{cb_seq}, #{m_email}, #{cb_subject}, #{cb_content}, SYSDATE, 0)
+	    insert into BOARDC values(#{cb_seq}, #{m_email}, #{cb_subject}, #{cb_content}, SYSDATE, #{cb_count, jdbcType = INTEGER})
 	</insert>
 
 	<update id="update" parameterType="Boardc">
-	    update BOARDC set m_email=#{m_email}, cb_subject=#{cb_subject}, cb_content=#{cb_content} where cb_seq = #{cb_seq}
+	    update BOARDC set m_email=#{m_email}, cb_subject=#{cb_subject}, cb_rdate=SYSDATE, cb_content=#{cb_content} where cb_seq = #{cb_seq}
+	</update>
+	<update id="updateCcnt" parameterType="long">
+			update BOARDC set cb_count = cb_count + 1 where cb_seq = #{cb_seq}
 	</update>
 	<delete id="delete" parameterType="long">
 		delete from BOARDC where cb_seq = #{cb_seq}
