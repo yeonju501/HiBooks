@@ -360,8 +360,9 @@
                                             </div>
                                         </div>
                                     </form>
-                                    ${fn:length(recomList)} 건의 책
-                                    <div class="table-responsive" style="height:800px;">
+                                    <p style=""><c:forEach items="${sessionScope.recommendVo.cat}" var="cat">'${cat}'&nbsp;</c:forEach>
+                                   카테고리의 '${sessionScope.recommendVo.keyword}' 키워드를 검색한 결과입니다 : ${fn:length(recomList)} 건의 책</p>                                    
+                                   <div class="table-responsive" style="height:800px;">
                                         
                                         <!-- 리스팅 -->
                                         <table class="table">

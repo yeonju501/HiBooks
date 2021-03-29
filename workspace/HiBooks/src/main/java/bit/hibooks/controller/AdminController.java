@@ -58,6 +58,7 @@ public class AdminController {
 			String alertText= "키워드를 입력해 주세요";
 			AlertController.alertAndBackPage(response, alertText);
 		}else if(recommendVo.getCat() != null && !recommendVo.getKeyword().equals("")) {
+			session.setAttribute("recommendVo", recommendVo);
 			list=service.getBookList(recommendVo);
 		}
 		ModelAndView mv= new ModelAndView("admin/admin","recomList",list);

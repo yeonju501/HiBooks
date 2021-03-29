@@ -51,7 +51,6 @@ public class BoardNoticeServiceImpl implements BoardNoticeService {
 		
 		if(files.size() != 0) {
 			for(MultipartFile file : files) {
-				if(!file.getName().equals("fs"))	
 					saveStore(file, bn_seq);
 			}
 		}
