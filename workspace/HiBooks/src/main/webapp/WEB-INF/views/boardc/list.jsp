@@ -40,11 +40,11 @@
     <script src="../assets/js/vendor/modernizr-2.8.3.min.js"></script>
     <script src="../assets/js/vendor/jquery-1.12.0.min.js"></script>
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script>
-    <script src="../assets/js/service-search-index.js"></script>
+    <script src="../assets/js/service-search.js"></script>
 </head>
 
 <body>
-<center>
+
 <div class="wrapper">
     <!-- header start -->
     <header id="header_background">
@@ -54,13 +54,13 @@
                     <div class="col-md-6 col-xs-12">
                         <div class="header-top-left">
                             <ul>
-                                <li>
-                                    <h3 id="logo">H!Books</h3>
-                                </li>
-                                <li>
-                                    
-                                </li>
-                            </ul>
+                                 <li>
+                                     <h3 id="logo"><a href="/">H!Books</a></h3>
+                                 </li>
+                                 <li>
+                                     
+                                 </li>
+                             </ul>
                         </div>
                     </div>
                     <div class="col-md-6  col-xs-12 ">
@@ -68,20 +68,27 @@
                             <ul>
                                 <li>
                                     <div class="switcher">
-                                        <span>로그인</span>
-            
+                                        <sec:authorize access="isAnonymous()">
+                                       		<a href="../member/login.do"><span>로그인</span></a>
+                                       	</sec:authorize> 
+               							<sec:authorize access="isAuthenticated()">
+               								<form id="log-out" action = "../member/logout.do" method = 'post'>
+               									<a onclick="logoutSubmit()" style="cursor: pointer"><span>로그아웃</span></a>
+               									<input type = "hidden" name = "${_csrf.parameterName }" value = "${_csrf.token }"/>
+               								</form>
+               							</sec:authorize> 
                                     </div>
                                 </li>
                                 <li>
                                     <div class="switcher">
-                                        <span>회원가입</span>
-                                        
+                                        <sec:authorize access="isAnonymous()">
+                                       		<a href="../member/join.do"><span> 회원가입</span></a>
+                                       	</sec:authorize> 
                                     </div>
                                 </li>
                                 <li>
                                     <div class="switcher">
-                                        <span>장바구니</span>
-                                        
+                                        <a href="../purchase/cart.do"><span> 장바구니</span></a>
                                     </div>
                                 </li>
                                 <li>
@@ -91,16 +98,13 @@
                                                 <a >마이페이지</a>
                                                 <ul class="switcher__menus">
                                                     <li class="switcher-menu-item">
-                                                        <a >내 정보</a>
+                                                        <a href="../member/moveMyInfo.do">내 정보</a>
                                                     </li>
                                                     <li class="switcher-menu-item">
-                                                        <a >위시리스트</a>
+                                                        <a href="../wishList/moveWishPage.do">위시리스트</a>
                                                     </li>
                                                     <li class="switcher-menu-item">
-                                                        <a >커뮤니티</a>
-                                                    </li>
-                                                    <li class="switcher-menu-item">
-                                                        <a >...</a>
+                                                        <a href="../purchase/orderComplete.do">결제내역</a>
                                                     </li>
                                                 </ul>
                                             </li>
@@ -116,21 +120,21 @@
         <div class="header-topbar header-topbar-style-1">
             <div class="container-fluid">
                 <div class="row">
-                    
                     <div class="col-md-3"></div>
                     <div class="col-md-6">
                         <div class="search__sidbar">
                             <div class="input_form">
-                                <input type="text" id="search_input" name="s" placeholder="제목, 저자, 출판사 검색" class="input_text">
-                                <button id="blogsearchsubmit" type="submit" class="button">
-                                    <i class="fa fa-search fa-lg"></i>
-                                </button>
+                                <form name="searchinput" method="post" action="../product/search.do">
+	                                <input type="text" id="keyword" class="input_text" name="keyword" placeholder="제목, 저자, 출판사 검색">
+	                                <input type = "hidden" name = "${_csrf.parameterName }" value = "${_csrf.token }"/>
+	                                <button id="searchinput" type="button" class="button">
+	                                    <i class="fa fa-search fa-lg"></i>
+	                                </button>
+                                </form>
                             </div>
                         </div>
                     </div>
-                    
                     <div class="col-md-3"></div>
-                    
                 </div>
             </div>
         </div>
@@ -143,25 +147,22 @@
                             <div class="main-menu">
                                 <nav>
                                         <ul id="main-custom">
-                                            <li class="active"><a href="#"> <i class="zmdi zmdi-view-column zmdi-hc-lg"></i></a>
+                                            <li class="active"><a href="../book/shop.do">책</a>
                                                 <ul>
-                                                    <li><a href="index.html">소설</a></li>
-                                                    <li><a href="index-2.html">경영/경제</a></li>
-                                                    <li><a href="index-3.html">인문/사회/역사</a></li>
-                                                    <li><a href="index-4.html">자기계발</a></li>
-                                                    <li><a href="index-5.html">에세이/시</a></li>
-                                                    
+                                                    <li><a href="../book/shop.do?cate=100">소설</a></li>
+                                                    <li><a href="../book/shop.do?cate=200">경영/경제</a></li>
+                                                    <li><a href="../book/shop.do?cate=300">인문/사회/역사</a></li>
+                                                    <li><a href="../book/shop.do?cate=400">자기계발</a></li>
+                                                    <li><a href="../book/shop.do?cate=500">에세이/시</a></li>
                                                 </ul>
                                             </li>
                                             
-                                            <li><a id="in" href="shop.html">추천</a></li>
-                                            
-                                            <li><a id="in" href="blog.html">커뮤니티</a></li>
-
-                                            <li class="active"><a href="contact.html">공지/문의</a>
+                                            <li><a id="in" href="../recommend/list.do">추천</a></li>
+                                            <li><a id="in" href="../boardc/list.do">커뮤니티</a></li>
+                                            <li class="active"><a href="">공지/문의</a>
                                                 <ul>
-                                                    <li><a href="index.html">공지</a></li>
-                                                    <li><a href="index-2.html">문의</a></li>
+                                                    <li><a href="../boardNotice/list.do">공지</a></li>
+                                                    <li><a href="../boardq/list.do">문의</a></li>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -177,30 +178,23 @@
                         <div class="mobile-menu">
                                 <nav id="mobile-menu-active">
                                     <ul class="menu-overflow">
-                                        <li class="active"><a href="#">카테고리 <i class="ion-ios-arrow-down"></i></a>
-                                            <ul>
-                                                <li><a href="index.html">소설</a></li>
-                                                <li><a href="index-2.html">경영/경제</a></li>
-                                                <li><a href="index-3.html">인문/사회/역사</a></li>
-                                                <li><a href="index-4.html">자기계발</a></li>
-                                                <li><a href="index-5.html">에세이/시</a></li>
-                                                
-                                            </ul>
-                                        </li>
-                                                                                
-                                        <li><a href="shop.html">추천</a></li>
-                                        
-                                        <li><a href="blog.html">커뮤니티</a></li>
-                                        
-                                        <li><a href="#">공지/문의 <i class="ion-ios-arrow-down"></i></a>
-                                            <ul>
-                                                <li><a href="portfolio.html"> 공지</a></li>
-                                                <li><a href="service.html"> 문의</a></li>
-                                                <li><a href="service.html"> ....</a></li>
-                                            </ul>
-                                        </li>
-                                        
-                                        
+                                        <li class="active"><a href="../book/shop.do">책 <i class="ion-ios-arrow-down"></i></a>
+												<ul>
+													<li><a href="../book/shop.do?cate=100">소설</a></li>
+													<li><a href="../book/shop.do?cate=200">경영/경제</a></li>
+													<li><a href="../book/shop.do?cate=300">인문/사회/역사</a></li>
+													<li><a href="../book/shop.do?cate=400">자기계발</a></li>
+													<li><a href="../book/shop.do?cate=500">에세이/시</a></li>
+												</ul>
+											</li>                                                                                
+                                        <li><a href="../recommend/list.do">추천</a></li>
+										<li><a href="">커뮤니티</a></li>
+										<li><a href="">공지/문의 <i class="ion-ios-arrow-down"></i></a>
+											<ul>
+												<li><a href="../boardNotice/list.do"> 공지</a></li>
+												<li><a href="../boardq/list.do"> 문의</a></li>
+											</ul>
+										</li>
                                     </ul>
                                 </nav>  
                         </div>
@@ -211,18 +205,6 @@
         </div>
     </header>
     <!-- header end -->
-    <!-- breadcrumbs area start -->
-    <div class="title-breadcrumbs">
-        <div class="title-breadcrumbs-inner">
-            <div class="container">
-                <nav class="woocommerce-breadcrumb">
-                    <a href="index.html">Home</a>
-                    <span class="separator">/</span> Community
-                </nav>
-            </div>
-        </div>
-    </div>
-    <!-- breadcrumbs area End -->
     <!--Wishlist Area Strat-->
     <div class="wishlist-area ptb-50">
         <div class="container">
@@ -231,14 +213,12 @@
                     <div class="pg___title">
                         <h2>COMMUNITY</h2>
                     </div>
-                    <form action="#">
                         <div class="grid-list-product-wrapper">
                             <div class="product-grid product-view">
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="row_products_side">
                                             <div class="product_left_sidbar">
-        
                                                 <div class="product-filter  mb-30">
                                                     <h5> * Notice </h5>
                                                     <table class="table table-hober">
@@ -289,7 +269,7 @@
                                                    </a>
                                                    </c:forEach>
                                                    <div class="col-lg-2 col-md-2 col-2">      
-                                                   	<select id="psId" name ="ps" onchange"f(this)">
+                                                   	<select id="psId" name ="ps" onchange="f(this)">
                                                    	<c:choose>
                                                    	<c:when test="${listResult.ps == 3}">
                                                    		<option value = "3" selected>3</option>
@@ -312,23 +292,23 @@
 	                                        	</div>
 	                                        </div>
 	                                  </div>        
-													<form action="">																											
-														<div class ="row">
-															<div class = "col-lg-3 col-md-3 col-3">
-																<select name="catgo">
-																	<option value="subject">제목</option>
-																	<option value="writer">글쓴이</option>
-																	<option value="content">내용</option>
-																</select>
+											<form action="">																											
+												<div class ="row">
+													<div class = "col-lg-3 col-md-3 col-3">
+														<select name="catgo">
+															<option value="subject">제목</option>
+															<option value="writer">글쓴이</option>
+															<option value="content">내용</option>
+														</select>
+													</div>
+														<div class="col-lg-7 col-md-7 col-7"> 
+															<input type="text" name="keyword" size="40" required="required" /> 
+														</div>	
+															<div class = "col-lg-2 col-md-2 col-2">
+																<button>검색</button>
 															</div>
-																<div class="col-lg-7 col-md-7 col-7"> 
-																	<input type="text" name="keyword" size="40" required="required" /> 
-																</div>	
-																	<div class = "col-lg-2 col-md-2 col-2">
-																		<button>검색</button>
-																	</div>
-														</div>
-													</form>  
+												</div>
+											</form>  
                                                 </div>
                                             
                                         </div>
@@ -337,7 +317,7 @@
                                 </div>
                             </div>
                         </div>
-                    </form>
+                    
                 </div>
             </div>
         </div>
@@ -449,7 +429,7 @@
     <script src="../assets/js/plugins.js"></script>
     <script src="../assets/js/main.js"></script>
     <script src="../assets/js/package.js"></script>
-    <script language="javascript">
+    <script type="text/javascript">
        function f(select){
            //var el = document.getElementById("psId");
            var ps = select.value;
@@ -457,7 +437,7 @@
            location.href="list.do?ps="+ps;
        }
     </script>    
-    </center>
+
 </body>
 
 </html>

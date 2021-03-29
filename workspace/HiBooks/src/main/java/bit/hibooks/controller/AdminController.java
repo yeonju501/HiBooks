@@ -130,7 +130,7 @@ public class AdminController {
 	@ResponseBody
 	@PostMapping("cate2Chart.do")
 	public List<List<ChartCate2>> getChart2Cate() {
-		log.info(service.getChartCate2());
+		//log.info(service.getChartCate2());
 		return service.getChartCate2();
 	}
 	

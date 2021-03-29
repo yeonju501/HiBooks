@@ -770,7 +770,9 @@
 				type: "GET",
 				data: {re_seq: $(this).attr("id")},
 				success: function(responseData){}
-			}) 
+			});
+			var a = $(this).parents("#recom").next().find("#recombook");
+			console.log(a);
 			$(this).parents("#recom").remove();
 			var index = sessionStorage.getItem("index");
 		 	 index--;

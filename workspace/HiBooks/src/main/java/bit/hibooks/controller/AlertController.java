@@ -1,5 +1,9 @@
 package bit.hibooks.controller;
 
+import static bit.hibooks.setting.ErrorMsgSet.BODYSETTING;
+import static bit.hibooks.setting.ErrorMsgSet.DESIGN;
+import static bit.hibooks.setting.ErrorMsgSet.HEADSETTING;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -30,7 +34,14 @@ public class AlertController {
 	public static void alertAndBackPage(HttpServletResponse response, String alertText) throws IOException {
     	init(response);
     	PrintWriter out = response.getWriter();
-        out.println("<script>alert('" + alertText + "'); history.go(-1);</script>");
-        out.flush();
+    	out.println("<script>alert('" + alertText + "'); history.go(-1);</script>");
+    	out.flush();
+	}
+	
+	private static void setSweetAlert(PrintWriter out) {
+		out.println(HEADSETTING);
+		out.println("<body>");
+		out.println(BODYSETTING);
+		out.println(DESIGN);
 	}
 }
