@@ -25,7 +25,7 @@
 							html += '<div class="col-lg-3 col-md-6 col-2" id="recom">';
 							html += '<div class="product-wrapper mb-60">';
 							html += '<div class="product-img">';
-							html += '<input type="hidden" id="recombook" name="re_seq'+index+'" value="'+responseData.b_seq+'">';
+							html += '<input type="hidden" class="book" id="recombook" name="re_seq'+index+'" value="'+responseData.b_seq+'">';
 							html += '<img alt="" src="'+responseData.b_img+'">';
 							html += '<div class="product-content text-center">';
 							html += '<h4>';

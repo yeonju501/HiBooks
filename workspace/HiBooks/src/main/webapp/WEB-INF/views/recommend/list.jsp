@@ -257,7 +257,7 @@
 			<div class="container">
 			<h3 class="ui header">${indexLR.titleSec2}</h3>
 				<div class="row">
-					<c:forEach items="${indexLR.sec2 }" var="secondSecBook">
+					<c:forEach items="${indexLR.sec2}" var="secondSecBook">
 					<!--Single Service Start-->
 					<div class="col-xl-3 col-lg-3 col-md-12 col-12">
 						<div class="single-service single-service-2 mb-25">

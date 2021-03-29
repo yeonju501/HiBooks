@@ -220,7 +220,7 @@
        <!-- contents -->
     	<article>
     	<div class="container" role="main">
-			<h2>문의사항 작성</h2>
+			<h2 style="padding-top:30px;">문의사항 작성</h2>
 			<form name="input" method="post" action="write.do" enctype="multipart/form-data">
 				<div class="mb-3">
 					<select name="qb_cat">
@@ -232,7 +232,7 @@
 				  	</select>
 				</div>
 				<div class="mb-3">
-					<br><br><label for="title">제목</label>
+					<br/><br/><br/><label for="title">제목</label>
 					<input type="text" class="form-control" name="qb_subject" placeholder="제목을 입력해 주세요">
 				</div>
 				<div class="mb-3">

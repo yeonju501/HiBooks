@@ -204,13 +204,13 @@
             </div>
             <!-- contact page map -->
             <!-- contact form area -->
-            <div class="contact-form-area pt-100 pb-65">
+            <div class="contact-form-area pt-30 pb-65">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-1"></div>
                         <div class="col-lg-10">
                             <div class="contact-form-inner">
-                                <h2>Write</h2>
+                                <h2>글쓰기</h2>
                                 <form name = "input" method ="post" action ="write.do" enctype = "multipart/form-data">
                                     <!-- <div class="row">
                                         <div class="col">
@@ -218,24 +218,25 @@
                                         </div>
                                     </div> -->
                                     <div class="row">
-                                        <div class="col">
-                                            <input type="text" class="form-control" name = "m_email" placeholder="이메일을 입력해주세요.*">
+                                        <div class="col-6">
+                                            <input type="text" class="form-control" name = "m_email" placeholder="이메일을 입력해주세요.*" style="margin-bottom:10px; margin-left:20px;">
                                         </div>
-                                        <div class="col">
-                                            <input type="text" class="form-control" name = "cb_subject" placeholder="글제목을 입력해주세요*">
+                                       
+                                        <div class="col-11">
+                                            <input type="text" class="form-control" name = "cb_subject" placeholder="글제목을 입력해주세요*" style="margin-bottom:10px; margin-left:20px;">
                                         </div>
                                     </div>
                                     
                                     <div class="row">
                                         <div class="col">
-                                            <div class = "container">
-                                                <textarea class = "summernote" name = "cb_content"></textarea>                                      
+                                            <div class="container" style="margin-bottom:20px;">
+                                                <textarea class="summernote" name = "cb_content"></textarea>                                      
                                             </div>
                                         </div>
                                     </div>
                                                                                                          
                                     <div class = "row">
-                                    	<div class = "col">
+                                    	<div class = "col-11" style="margin-left:20px;">
                                     		<input type ="file" name = "files">
                                     	</div>
                                     </div>
