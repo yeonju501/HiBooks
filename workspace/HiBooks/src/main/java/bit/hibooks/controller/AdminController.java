@@ -112,7 +112,16 @@ public class AdminController {
 	
 	@RequestMapping("sendrecom.do")
 	public String sendRecom(RecomListResult recomListResult, HttpSession session) {
-		log.info(recomListResult);
+		List<Book> list = (List<Book>)session.getAttribute("recomSession");
+		recomListResult.setRe_seq1(list.get(0).getB_seq());
+		recomListResult.setRe_seq2(list.get(1).getB_seq());
+		recomListResult.setRe_seq3(list.get(2).getB_seq());
+		recomListResult.setRe_seq4(list.get(3).getB_seq());
+		recomListResult.setRe_seq5(list.get(4).getB_seq());
+		recomListResult.setRe_seq6(list.get(5).getB_seq());
+		recomListResult.setRe_seq7(list.get(6).getB_seq());
+		recomListResult.setRe_seq8(list.get(7).getB_seq());
+		
 		service.sendRecom(recomListResult);
 		session.removeAttribute("recomSession");
 		

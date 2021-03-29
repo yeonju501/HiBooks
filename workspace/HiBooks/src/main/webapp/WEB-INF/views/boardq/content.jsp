@@ -41,7 +41,20 @@
     <script src="../assets/js/vendor/jquery-1.12.0.min.js"></script>
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script>
     <script src="../assets/js/service-search.js"></script>
-    
+    <style>
+    .sub .section__03 .title__wrap .title {
+    border-bottom: 0px solid #aaa;
+	}
+	.sub .title--h3:before {
+    background-color: #FFFFFF;
+	}
+	.sub .title--h3 {
+    color: #000000;
+	}
+	.sub .section__03 .title__wrap .title:after {
+    border-bottom: 0px solid #0055a2;
+}
+    </style>
 </head>
 <body>
     <div class="wrapper">
@@ -220,11 +233,11 @@
        <!-- contents -->
     <div class="contents" id="content">
         <!-- sub -->
-        <section class="sub sub--notice">
+        <section class="sub sub--notice" style="padding-top:0px;">
             <!-- section__03 -->
             <div class="section section__03">
                 <div class="title__wrap">
-                    <h2 class="title title--h2" data-title="공지사항"><span>문의사항 </span></h2>
+                    <h2 class="title title--h2" data-title="공지사항" style="padding-top:30px;padding-bottom:20px;"><span>문의사항 </span></h2>
                 </div>
                 <div class="board">
                     <div class="board__head">
@@ -248,7 +261,7 @@
                     </div>
                     <div class="board__body">
                     <br>
-                        <p class="board__text">${contentResult.boardq.qb_content}</p>
+                        <p class="board__text" style="margin-left:30px;">${contentResult.boardq.qb_content}</p>
                     </div>
                     <div class="board__footer">
                         <a href="list.do">

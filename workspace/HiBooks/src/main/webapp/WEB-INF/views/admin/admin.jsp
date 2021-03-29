@@ -334,51 +334,51 @@
                                                     <label aria-label="k-novel">영미소설</label><br>
                                                 </div>
                                                 <div class="input-group cate" >
-                                                    <input class="cate-cbox" type="checkbox" aria-label="k-novel" name="cat" value="일본소설">
-                                                    <label aria-label="k-novel">일본소설</label><br>
+                                                    <input class="cate-cbox" type="checkbox" aria-label="k-novel" name="cat" value="일본 소설">
+                                                    <label aria-label="k-novel">일본 소설</label><br>
                                                 </div>
                                                 <div class="input-group cate" >
-                                                    <input class="cate-cbox" type="checkbox" aria-label="k-novel" name="cat" value="중국소설">
-                                                    <label aria-label="k-novel">중국소설</label><br>
+                                                    <input class="cate-cbox" type="checkbox" aria-label="k-novel" name="cat" value="중국 소설">
+                                                    <label aria-label="k-novel">중국 소설</label><br>
                                                 </div>
                                                 <div class="input-group cate" >
-                                                    <input class="cate-cbox" type="checkbox" aria-label="k-novel" name="cat" value="북유럽소설">
-                                                    <label aria-label="k-novel">북유럽소설</label><br>
+                                                    <input class="cate-cbox" type="checkbox" aria-label="k-novel" name="cat" value="북유럽 소설">
+                                                    <label aria-label="k-novel">북유럽 소설</label><br>
                                                 </div>
 												 <div class="input-group cate" >
-                                                    <input class="cate-cbox" type="checkbox" aria-label="k-novel" name="cat" value="독일소설">
-                                                    <label aria-label="k-novel">독일소설</label><br>
+                                                    <input class="cate-cbox" type="checkbox" aria-label="k-novel" name="cat" value="독일소 설">
+                                                    <label aria-label="k-novel">독일 소설</label><br>
                                                 </div>
                                                 <div class="input-group cate" >
-                                                    <input class="cate-cbox" type="checkbox" aria-label="k-novel" name="cat" value="프랑스소설">
-                                                    <label aria-label="k-novel">프랑스소설</label><br>
+                                                    <input class="cate-cbox" type="checkbox" aria-label="k-novel" name="cat" value="프랑스 소설">
+                                                    <label aria-label="k-novel">프랑스 소설</label><br>
                                                 </div>
                                             </div>
                                             <div class="col-md-2">
                                                 <h6>소설</h6>
                                                 <div class="input-group cate" >
-                                                    <input class="cate-cbox" type="checkbox" aria-label="k-novel" name="cat" value="기타 국가소설">
-                                                    <label aria-label="k-novel">기타 국가소설</label><br>
+                                                    <input class="cate-cbox" type="checkbox" aria-label="k-novel" name="cat" value="기타 국가 소설">
+                                                    <label aria-label="k-novel">기타 국가 소설</label><br>
                                                 </div>
                                                 <div class="input-group cate" >
                                                     <input class="cate-cbox" type="checkbox" aria-label="k-novel" name="cat" value="추리/미스터리/스릴러">
                                                     <label aria-label="k-novel">추리/미스터리/스릴러</label><br>
                                                 </div>
                                                 <div class="input-group cate" >
-                                                    <input class="cate-cbox" type="checkbox" aria-label="k-novel" name="cat" value="SF소설">
-                                                    <label aria-label="k-novel">SF소설</label><br>
+                                                    <input class="cate-cbox" type="checkbox" aria-label="k-novel" name="cat" value="SF 소설">
+                                                    <label aria-label="k-novel">SF 소설</label><br>
                                                 </div>
                                                 <div class="input-group cate" >
-                                                    <input class="cate-cbox" type="checkbox" aria-label="k-novel" name="cat" value="국내판타지소설">
-                                                    <label aria-label="k-novel">국내판타지소설</label><br>
+                                                    <input class="cate-cbox" type="checkbox" aria-label="k-novel" name="cat" value="국내 판타지 소설">
+                                                    <label aria-label="k-novel">국내 판타지 소설</label><br>
                                                 </div>
                                                 <div class="input-group cate" >
-                                                    <input class="cate-cbox" type="checkbox" aria-label="k-novel" name="cat" value="해외 역사소설">
-                                                    <label aria-label="k-novel">해외 역사소설</label><br>
+                                                    <input class="cate-cbox" type="checkbox" aria-label="k-novel" name="cat" value="해외 판타지 소설">
+                                                    <label aria-label="k-novel">해외 판타지 소설</label><br>
                                                 </div>
 												<div class="input-group cate" >
-                                                    <input class="cate-cbox" type="checkbox" aria-label="k-novel" name="cat" value="동양 역사소설">
-                                                    <label aria-label="k-novel">동양 역사소설</label><br>
+                                                    <input class="cate-cbox" type="checkbox" aria-label="k-novel" name="cat" value="동양 고전문학">
+                                                    <label aria-label="k-novel">동양 고전문학</label><br>
                                                 </div>
                                                 <div class="input-group cate" >
                                                     <input class="cate-cbox" type="checkbox" aria-label="k-novel" name="cat" value="서양 고전문학">
@@ -457,11 +457,11 @@
                                             <div class="col-md-2">
                                                 <h6>에세이/시</h6>
                                                 <div class="input-group cate" >
-                                                    <input class="cate-cbox" type="checkbox" aria-label="k-novel" name="cat">
+                                                    <input class="cate-cbox" type="checkbox" aria-label="k-novel" name="cat" value="에세이">
                                                     <label aria-label="k-novel">에세이</label><br>
                                                 </div>
                                                 <div class="input-group cate" >
-                                                    <input class="cate-cbox" type="checkbox" aria-label="k-novel" name="cat">
+                                                    <input class="cate-cbox" type="checkbox" aria-label="k-novel" name="cat" value="시">
                                                     <label aria-label="k-novel">시</label><br>
                                                 </div>
                                             </div>
@@ -519,6 +519,7 @@
                                                    </div>
                                                 </div>
                                             </div>
+                                        </form>
                                         <div class="row" style="overflow-y:scroll;max-height:400px;">
                                         <div class="container-fluid" id="Recommend-ajax" style="display:flex;flex-wrap:wrap;">
                                         <c:if test="${!empty recomSession}">
@@ -526,7 +527,7 @@
                                            <div class="col-lg-3 col-md-6 col-3" id="recom">
                                                 <div class="product-wrapper mb-60">
                                                     <div class="product-img">
-                                               			<input type="hidden" name="re_seq${status.count}" value="${book.b_seq}">
+                                               			<input type="hidden"  name="re_seq${status.count}" value="${book.b_seq}">
                                                             <img alt="" src="${book.b_img}">
                                                     <div class="product-content text-center">
                                                         <h4>
@@ -549,7 +550,6 @@
                                         <input type = "hidden" name = "${_csrf.parameterName }" value = "${_csrf.token }"/>
                                             <input type="button" value="등록" style="width:50px;" onclick="recomSubmit()">
                                         </div> 
-                                    </form>
                                 </div>
                                 <div id="address" class="tab-pane">
                                 <div class="container">
@@ -878,6 +878,7 @@
 				data: {re_seq: $(this).attr("id")},
 				success: function(responseData){}
 			}) 
+			
 			$(this).parents("#recom").remove();
 			var index = sessionStorage.getItem("index");
 		 	 index--;

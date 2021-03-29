@@ -10,6 +10,6 @@
 		</select>
 		
 		<insert id="insertFileInfo" parameterType="BoardcFile">
-			insert into FBOARD values(CFILE_CB_seq.nextval, #{F_seq}, #{f_fname}, #{f_ofname}, #{f_size})
+			insert into FBOARD values(CFILE_CB_seq.nextval, #{f_seq}, #{f_fname}, #{f_ofname}, #{f_size})
 		</insert>
 	</mapper>
