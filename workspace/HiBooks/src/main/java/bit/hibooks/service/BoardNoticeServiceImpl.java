@@ -48,9 +48,11 @@ public class BoardNoticeServiceImpl implements BoardNoticeService {
 	public void writeNotice(BoardN boardN, ArrayList<MultipartFile> files) {
 		mapperBN.insert(boardN);
 		long bn_seq = boardN.getBn_seq();
+		
 		if(files.size() != 0) {
 			for(MultipartFile file : files) {
-				saveStore(file, bn_seq);
+				if(!file.getName().equals("fs"))	
+					saveStore(file, bn_seq);
 			}
 		}
 	}
@@ -80,10 +82,15 @@ public class BoardNoticeServiceImpl implements BoardNoticeService {
 			}
 		}
 	}
+	@Override
+	public void deleteNotice(long bn_seq) {
+		mapperBN.deleteNotice(bn_seq);
+		mapperBN.deleteFileInfo(bn_seq);
+	}
 	private void saveStore(MultipartFile file, long bn_seq) {
 		String ofname = file.getOriginalFilename();
 		int idx = ofname.lastIndexOf(".");
-		System.out.println(ofname+ "  " + idx);
+		//System.out.println(ofname+ "  " + idx);
 		String ofheader = ofname.substring(0, idx);
 		String ext = ofname.substring(idx);
 		long ms = System.currentTimeMillis();

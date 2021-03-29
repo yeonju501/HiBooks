@@ -69,10 +69,10 @@
                                         <div class="switcher">
                                   
                                         	<sec:authorize access="isAnonymous()">
-                                        		<a href="member/login.do"><span>로그인</span></a>
+                                        		<a href="../member/login.do"><span>로그인</span></a>
                                         	</sec:authorize> 
                 							<sec:authorize access="isAuthenticated()">
-                								<form id="log-out" action = "member/logout.do" method = 'post'>
+                								<form id="log-out" action = "../member/logout.do" method = 'post'>
                 									<a onclick="logoutSubmit()" style="cursor: pointer"><span>로그아웃</span></a>
                 									<input type = "hidden" name = "${_csrf.parameterName }" value = "${_csrf.token }"/>
                 								</form>
@@ -82,14 +82,14 @@
                                     <li>
                                         <div class="switcher">
                                         	<sec:authorize access="isAnonymous()">
-                                        		<a href="member/join.do"><span> 회원가입</span></a>
+                                        		<a href="../member/join.do"><span> 회원가입</span></a>
                                         	</sec:authorize> 
                 							
                                         </div>
                                     </li>
                                     <li>
                                         <div class="switcher">
-                                            <a href="purchase/cart.do"><span> 장바구니</span></a>
+                                            <a href="../purchase/cart.do"><span> 장바구니</span></a>
                                         </div>
                                     </li>
                                     <li>
@@ -104,13 +104,7 @@
                                                         <li class="switcher-menu-item">
                                                             <a href="../wishList/moveWishPage.do">위시리스트</a>
                                                         </li>  
-                                                        <sec:authorize access="isAuthenticated()">
-	                                                        <sec:authorize access="hasRole('ROLE_ADMIN')">
-	                                                        <li class="switcher-menu-item">
-	                                                            <a href="../admin/recommend.do">관리자페이지</a>
-	                                                        </li>
-	                                                        </sec:authorize>
-                                                        </sec:authorize>
+                                                        
                                                         <li class="switcher-menu-item">
                                                             <a href="../purchase/orderComplete.do">결제내역</a>
                                                         </li>
@@ -133,7 +127,7 @@
                         <div class="col-md-6">
                             <div class="search__sidbar">
                                 <div class="input_form">
-                                    <form name="searchinput" method="post" action="product/search.do">
+                                    <form name="searchinput" method="post" action="../product/search.do">
 	                                    <input type="text" id="keyword" class="input_text" name="keyword" placeholder="제목, 저자, 출판사 검색">
 	                                    <input type = "hidden" name = "${_csrf.parameterName }" value = "${_csrf.token }"/>
 	                                    <button id="searchinput" type="button" class="button">
@@ -158,27 +152,24 @@
                                 <div class="main-menu">
 									<nav>
                                             <ul id="main-custom">
-                                                <li class="active"><a href="book/shop.do">책</a>
+                                                <li class="active"><a href="../book/shop.do">책</a>
                                                     <ul>
-                                                        <li><a href="book/shop.do?cate=100">소설</a></li>
-                                                        <li><a href="book/shop.do?cate=200">경영/경제</a></li>
-                                                        <li><a href="book/shop.do?cate=300">인문/사회/역사</a></li>
-                                                        <li><a href="book/shop.do?cate=400">자기계발</a></li>
-                                                        <li><a href="book/shop.do?cate=500">에세이/시</a></li>
+                                                        <li><a href="../book/shop.do?cate=100">소설</a></li>
+                                                        <li><a href="../book/shop.do?cate=200">경영/경제</a></li>
+                                                        <li><a href="../book/shop.do?cate=300">인문/사회/역사</a></li>
+                                                        <li><a href="../book/shop.do?cate=400">자기계발</a></li>
+                                                        <li><a href="../book/shop.do?cate=500">에세이/시</a></li>
                                                         
                                                     </ul>
                                                 </li>
-												
-                                                <li><a id="in" href="">베스트</a></li>
-												
-                                                <li><a id="in" href="">추천</a></li>
+                                                <li><a id="in" href="../recommend/list.do">추천</a></li>
 												
                                                 <li><a id="in" href="">커뮤니티</a></li>
 
                                                 <li class="active"><a href="">공지/문의</a>
                                                     <ul>
-                                                        <li><a href="boardNotice/list.do">공지</a></li>
-                                                        <li><a href="boardq/list.do">문의</a></li>
+                                                        <li><a href="../boardNotice/list.do">공지</a></li>
+                                                        <li><a href="../boardq/list.do">문의</a></li>
                                                     </ul>
                                                 </li>
                                             </ul>
@@ -194,28 +185,24 @@
                             <div class="mobile-menu">
                                     <nav id="mobile-menu-active">
                                         <ul class="menu-overflow">
-											<li class="active"><a href="book/shop.do">책 <i class="ion-ios-arrow-down"></i></a>
+											<li class="active"><a href="../book/shop.do">책 <i class="ion-ios-arrow-down"></i></a>
 												<ul>
-													<li><a href="book/shop.do?cate=100">소설</a></li>
-													<li><a href="book/shop.do?cate=200">경영/경제</a></li>
-													<li><a href="book/shop.do?cate=300">인문/사회/역사</a></li>
-													<li><a href="book/shop.do?cate=400">자기계발</a></li>
-													<li><a href="book/shop.do?cate=500">에세이/시</a></li>
+													<li><a href="../book/shop.do?cate=100">소설</a></li>
+													<li><a href="../book/shop.do?cate=200">경영/경제</a></li>
+													<li><a href="../book/shop.do?cate=300">인문/사회/역사</a></li>
+													<li><a href="../book/shop.do?cate=400">자기계발</a></li>
+													<li><a href="../book/shop.do?cate=500">에세이/시</a></li>
 													
 												</ul>
 											</li>
-											
-											<li><a href="">베스트 </a></li>
-											
-											<li><a href="">추천</a></li>
+											<li><a href="../recommend/list.do">추천</a></li>
 											
 											<li><a href="">커뮤니티</a></li>
 											
 											<li><a href="">공지/문의 <i class="ion-ios-arrow-down"></i></a>
 												<ul>
-													<li><a href="portfolio.html"> 공지</a></li>
-													<li><a href="boardq/list.do"> 문의</a></li>
-                                                    <li><a href="service.html"> ....</a></li>
+													<li><a href="../boardNotice/list.do"> 공지</a></li>
+													<li><a href="../boardq/list.do"> 문의</a></li>
 												</ul>
 											</li>
 											
@@ -233,15 +220,15 @@
        <!-- contents -->
     <div class="contents" id="content">
         <!-- sub -->
-        <section class="sub sub--notice">
+        <section class="sub sub--notice" style="padding-top:0px;">
             <!-- section__03 -->
             <div class="section section__03">
                 <div class="title__wrap">
-                    <h2 class="title title--h2" data-title="공지사항"><span>공지사항</span></h2>
+                    <h3 data-title="공지사항" style="padding-top:20px;padding-bottom:20px;"><span>공지사항</span></h3>
                 </div>
                 <div class="board">
                     <div class="board__head">
-                        <h3 class="title title--h3">[${ncr.boardN.bn_topic}]<wbr>${ncr.boardN.bn_subject} </h3>
+                        <h3 class="ui header">[${ncr.boardN.bn_topic}]<wbr>${ncr.boardN.bn_subject} </h3>
                         <div class="info">
                             <h4>
                             <span class="info__item info__item--date">${ncr.boardN.bn_rdate}</span>&nbsp;&nbsp;
@@ -263,10 +250,14 @@
                         <a href="list.do">
                         	<button type="button" class="button button--list">목록</button>
                         </a>
-                        <a href="update.do?bn_seq=${ncr.boardN.bn_seq}">
-                        	<button type="button" class="button button--list">수정</button>
-                        </a>
-                       
+                        <sec:authorize access="hasRole('ROLE_ADMIN')">
+	                        <a href="update.do?bn_seq=${ncr.boardN.bn_seq}">
+	                        	<button type="button" class="button button--list">수정</button>
+	                        </a>
+                       		<a href="delete.do?bn_seq=${ncr.boardN.bn_seq}">
+                       			<button type="button" class="button button--list">삭제</button>
+                       		</a>
+                       	</sec:authorize>
                     </div>
                 </div>
             </div>

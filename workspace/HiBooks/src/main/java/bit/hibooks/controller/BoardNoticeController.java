@@ -45,7 +45,9 @@ public class BoardNoticeController {
 		
 	@PostMapping("write.do")
 	public String writeNotice(BoardN boardN, ArrayList<MultipartFile> fs) {
-		log.info(fs);
+		/*
+		 for(MultipartFile file :fs) { log.info(file.getName()); }
+		 */
 		serviceBN.writeNotice(boardN, fs);
 		return "redirect:../boardNotice/list.do";
 	}
@@ -58,7 +60,7 @@ public class BoardNoticeController {
 	public String showContent(long bn_seq, Model model) {
 		
 		model.addAttribute("ncr",serviceBN.getContent(bn_seq));
-		log.info(model);
+		//log.info(model);
 		return "board-notice/content";
 	}
 	@GetMapping("download.do")
@@ -82,5 +84,10 @@ public class BoardNoticeController {
 	public String update(BoardN boardN, ArrayList<MultipartFile> fs) {
 		serviceBN.updateNotice(boardN, fs);
 		return "redirect:content.do?bn_seq="+ boardN.getBn_seq();
+	}
+	@GetMapping("delete.do")
+	public String delete(long bn_seq) {
+		serviceBN.deleteNotice(bn_seq);
+		return "redirect:list.do";
 	}
 }

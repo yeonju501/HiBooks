@@ -241,11 +241,11 @@
                                 &nbsp;<h3>공지 수정</h3>
                                 <select name="bn_topic" >
 								    <option value="">말머리</option>
-								    <option value="1" <c:if test="${ncr.boardN.bn_topic == 1}">selected</c:if>>이벤트</option>
-								    <option value="2" <c:if test="${ncr.boardN.bn_topic == 2}">selected</c:if>>2</option>
-								    <option value="3" <c:if test="${ncr.boardN.bn_topic == 3}">selected</c:if>>3</option>
-								    <option value="4" <c:if test="${ncr.boardN.bn_topic == 4}">selected</c:if>>4</option>
-								    <option value="5" <c:if test="${ncr.boardN.bn_topic == 5}">selected</c:if>>5</option>
+								    <option value="이벤트" <c:if test="${ncr.boardN.bn_topic == '이벤트'}">selected</c:if>>이벤트</option>
+								    <option value="하이셀렉트" <c:if test="${ncr.boardN.bn_topic == '하이셀렉트'}">selected</c:if>>하이셀렉트</option>
+								    <option value="인터뷰" <c:if test="${ncr.boardN.bn_topic == '인터뷰'}">selected</c:if>>인터뷰</option>
+								    <option value="뉴스" <c:if test="${ncr.boardN.bn_topic == '뉴스'}">selected</c:if>>뉴스</option>
+								    
 							    </select>
 							    <br/><br/><br/>
 							    &nbsp;<label>제목</label>

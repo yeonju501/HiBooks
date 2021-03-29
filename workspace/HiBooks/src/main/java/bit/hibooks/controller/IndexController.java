@@ -33,7 +33,7 @@ public class IndexController {
 	@RequestMapping("recommend/list.do") 
 	public ModelAndView recommend() {
 		IndexListResult indexLR = service.getSec();
-		log.info(indexLR);
+		
 		ModelAndView mv = new ModelAndView("recommend/list", "indexLR", indexLR);
 		return mv; 
 	}

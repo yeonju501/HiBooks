@@ -7,7 +7,7 @@ import bit.hibooks.domain.search.SearchVo;
 
 public interface SearchMapper {
 	List<Book> selectByKey(SearchVo searchVo);
-	long selectCount(String keyword);
+	int selectCount(String keyword);
 	Book selectBySeq(long b_seq);
 	List<Book> selectAuto(SearchVo searchVo);
 }

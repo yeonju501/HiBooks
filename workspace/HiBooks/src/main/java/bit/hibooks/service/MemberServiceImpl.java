@@ -92,7 +92,7 @@ public class MemberServiceImpl implements MemberService {
 	public void updatePwd(Member member) {
 		String encodedPwd = bcryptPwdEncoder.encode(member.getM_pwd());
 		member.setM_pwd(encodedPwd);
-		System.out.println(encodedPwd);
+		//System.out.println(encodedPwd);
 		mapperM.updatePwd(member);
 		
 	}

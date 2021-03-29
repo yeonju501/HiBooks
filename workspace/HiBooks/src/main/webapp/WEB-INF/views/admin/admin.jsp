@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="bit.hibooks.setting.MemberModeSet"%>
+<%@ page import="bit.hibooks.controller.AdminController" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
@@ -45,74 +46,15 @@
     <script src="../assets/js/vendor/jquery-1.12.0.min.js"></script>
     <script type="text/javascript" language="javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 	<script src="../assets/js/semantic.js"></script> 
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	 <script src="../assets/js/service-admin.js"></script> 
 	  <script src="../assets/js/dropdown.js"></script>
-	 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	 
 	<script>
-	function ajaxData() {
-		$.ajax({
-			url: 'chart.do',
-			dataType: "json",
-			type: 'post',
-			success: function(list) {
-				google.charts.load('current', {'packages':['corechart']});
-				google.charts.setOnLoadCallback(drawChart);
-				function drawChart() {
-					var dataChart = [
-						 ['카테고리', '권 수', { role: 'style' }],
-			                ['소설', list[0].b_count,'Red'],
-			                ['경영/경제', list[1].b_count,'Orange'],
-			                ['자기계발', list[2].b_count,'Yellow'],
-			                ['인문/사회/역사', list[3].b_count,'Green'],
-			                ['에세이/시', list[4].b_count,'Blue']
-			             
-					];
-					var data = google.visualization.arrayToDataTable(dataChart);
-					var view = new google.visualization.DataView(data);
-					 var options = {
-							   title : '카테고리 별 도서 현황',
-				               height :260,
-				               width :500,
-				               legend: { position: "top" },
-				               isStacked: false,
-				               tooltip:{textStyle : {fontSize:12}, showColorCode : true},
-				               animation: { //차트가 뿌려질때 실행될 애니메이션 효과
-				                 startup: true,
-				                 duration: 1000,
-				                 easing: 'linear' },
-				                 vAxis: {
-				                     viewWindow: {
-				                         max: 2500,
-				                         min: 1000
-				                     }
-				                 },
-				               annotations: {
-				                   textStyle: {
-				                     fontSize: 15,
-				                     bold: true,
-				                     italic: true,
-				                     color: '#871b47',
-				                     auraColor: '#d799ae',
-				                     opacity: 0.8
-				                   }
-				              }
-				        };
-
-					var chart4 = new google.visualization.ColumnChart(
-							document.getElementById('columnchart'));
-					chart4.draw(view, options);
-				}
-			}
-		});
-	}
-	
 	$(document).ready(function(){
 		ajaxData();
+		ajaxDataCate2();
 	});
-	
-	$('#select')
-	  .dropdown()
-	;
 	
 	</script>
 </head>
@@ -247,13 +189,19 @@
 							        &nbsp;&nbsp;
 							
 								    <br/><br/>
-									<div id="columnchart"></div>
-									
-						
+									<div class="row">
+										<div id="columnchart" class="col-12"></div>
+										<div id="cate2-0" class="col-6"></div>
+										<div id="cate2-1" class="col-6"></div>
+										<div id="cate2-2" class="col-6"></div>
+										<div id="cate2-3" class="col-6"></div>
+										<div id="cate2-4" class="col-6"></div>
+									</div>
 								
                                 </div>
+                           
                              
-                                <div id="recommend" class="tab-pane">
+                                <div id="recommend" class="tab-pane fade">
                                     <h4>추천상품선택</h4>
                                     <!-- 분류 -->
                                     <form method="post" action="recomsearch.do#recommend">
@@ -279,51 +227,51 @@
                                                     <label aria-label="k-novel">영미소설</label><br>
                                                 </div>
                                                 <div class="input-group cate" >
-                                                    <input class="cate-cbox" type="checkbox" aria-label="k-novel" name="cat" value="일본소설">
-                                                    <label aria-label="k-novel">일본소설</label><br>
+                                                    <input class="cate-cbox" type="checkbox" aria-label="k-novel" name="cat" value="일본 소설">
+                                                    <label aria-label="k-novel">일본 소설</label><br>
                                                 </div>
                                                 <div class="input-group cate" >
-                                                    <input class="cate-cbox" type="checkbox" aria-label="k-novel" name="cat" value="중국소설">
-                                                    <label aria-label="k-novel">중국소설</label><br>
+                                                    <input class="cate-cbox" type="checkbox" aria-label="k-novel" name="cat" value="중국 소설">
+                                                    <label aria-label="k-novel">중국 소설</label><br>
                                                 </div>
                                                 <div class="input-group cate" >
-                                                    <input class="cate-cbox" type="checkbox" aria-label="k-novel" name="cat" value="북유럽소설">
-                                                    <label aria-label="k-novel">북유럽소설</label><br>
+                                                    <input class="cate-cbox" type="checkbox" aria-label="k-novel" name="cat" value="북유럽 소설">
+                                                    <label aria-label="k-novel">북유럽 소설</label><br>
                                                 </div>
 												 <div class="input-group cate" >
-                                                    <input class="cate-cbox" type="checkbox" aria-label="k-novel" name="cat" value="독일소설">
-                                                    <label aria-label="k-novel">독일소설</label><br>
+                                                    <input class="cate-cbox" type="checkbox" aria-label="k-novel" name="cat" value="독일소 설">
+                                                    <label aria-label="k-novel">독일 소설</label><br>
                                                 </div>
                                                 <div class="input-group cate" >
-                                                    <input class="cate-cbox" type="checkbox" aria-label="k-novel" name="cat" value="프랑스소설">
-                                                    <label aria-label="k-novel">프랑스소설</label><br>
+                                                    <input class="cate-cbox" type="checkbox" aria-label="k-novel" name="cat" value="프랑스 소설">
+                                                    <label aria-label="k-novel">프랑스 소설</label><br>
                                                 </div>
                                             </div>
                                             <div class="col-md-2">
                                                 <h6>소설</h6>
                                                 <div class="input-group cate" >
-                                                    <input class="cate-cbox" type="checkbox" aria-label="k-novel" name="cat" value="기타 국가소설">
-                                                    <label aria-label="k-novel">기타 국가소설</label><br>
+                                                    <input class="cate-cbox" type="checkbox" aria-label="k-novel" name="cat" value="기타 국가 소설">
+                                                    <label aria-label="k-novel">기타 국가 소설</label><br>
                                                 </div>
                                                 <div class="input-group cate" >
                                                     <input class="cate-cbox" type="checkbox" aria-label="k-novel" name="cat" value="추리/미스터리/스릴러">
                                                     <label aria-label="k-novel">추리/미스터리/스릴러</label><br>
                                                 </div>
                                                 <div class="input-group cate" >
-                                                    <input class="cate-cbox" type="checkbox" aria-label="k-novel" name="cat" value="SF소설">
-                                                    <label aria-label="k-novel">SF소설</label><br>
+                                                    <input class="cate-cbox" type="checkbox" aria-label="k-novel" name="cat" value="SF 소설">
+                                                    <label aria-label="k-novel">SF 소설</label><br>
                                                 </div>
                                                 <div class="input-group cate" >
-                                                    <input class="cate-cbox" type="checkbox" aria-label="k-novel" name="cat" value="국내판타지소설">
-                                                    <label aria-label="k-novel">국내판타지소설</label><br>
+                                                    <input class="cate-cbox" type="checkbox" aria-label="k-novel" name="cat" value="국내 판타지 소설">
+                                                    <label aria-label="k-novel">국내 판타지 소설</label><br>
                                                 </div>
                                                 <div class="input-group cate" >
-                                                    <input class="cate-cbox" type="checkbox" aria-label="k-novel" name="cat" value="해외 역사소설">
-                                                    <label aria-label="k-novel">해외 역사소설</label><br>
+                                                    <input class="cate-cbox" type="checkbox" aria-label="k-novel" name="cat" value="해외 판타지 소설">
+                                                    <label aria-label="k-novel">해외 판타지 소설</label><br>
                                                 </div>
 												<div class="input-group cate" >
-                                                    <input class="cate-cbox" type="checkbox" aria-label="k-novel" name="cat" value="동양 역사소설">
-                                                    <label aria-label="k-novel">동양 역사소설</label><br>
+                                                    <input class="cate-cbox" type="checkbox" aria-label="k-novel" name="cat" value="동양 고전문학">
+                                                    <label aria-label="k-novel">동양 고전문학</label><br>
                                                 </div>
                                                 <div class="input-group cate" >
                                                     <input class="cate-cbox" type="checkbox" aria-label="k-novel" name="cat" value="서양 고전문학">
@@ -402,11 +350,11 @@
                                             <div class="col-md-2">
                                                 <h6>에세이/시</h6>
                                                 <div class="input-group cate" >
-                                                    <input class="cate-cbox" type="checkbox" aria-label="k-novel" name="cat">
+                                                    <input class="cate-cbox" type="checkbox" aria-label="k-novel" name="cat" value="에세이">
                                                     <label aria-label="k-novel">에세이</label><br>
                                                 </div>
                                                 <div class="input-group cate" >
-                                                    <input class="cate-cbox" type="checkbox" aria-label="k-novel" name="cat">
+                                                    <input class="cate-cbox" type="checkbox" aria-label="k-novel" name="cat" value="시">
                                                     <label aria-label="k-novel">시</label><br>
                                                 </div>
                                             </div>
@@ -438,7 +386,7 @@
        												</c:otherwise>
 													</c:choose>
                                                     <td>
-                                                        <button class="selectRecom"id="select${status.count}" name="${status.count}" value="${book.b_seq}">선택</button>
+                                                        <input type="button" class="selectRecom"id="select${status.count}" name="${book.b_seq}" value="선택">
                                                     </td>
                                                 </tr>
 												  </c:forEach>
@@ -448,10 +396,8 @@
                                     </div>
                                     <br>
                                     <!-- 선택한 책 -->
-                                    <form method="post" action="sendrecom.do">
-                                
+                                    <form id="formRecom" method="post" action="sendrecom.do" >
                                            <div class="col-lg-12">
-                                     
                                                 <div class="input-group">
                                                   <input type="text" name="re_title" class="form-control" aria-label="...">
                                                   <div class="input-group-btn">
@@ -466,71 +412,37 @@
                                                    </div>
                                                 </div>
                                             </div>
-                                  
-                                        
-                                        <div class="row" style="max-height:400px;overflow-y:scroll;">
-                                        <div id="Recommend-ajax">
-                                    <!--          <div class="col-lg-3 col-md-6 col-12">
+                                        </form>
+                                        <div class="row" style="overflow-y:scroll;max-height:400px;">
+                                        <div class="container-fluid" id="Recommend-ajax" style="display:flex;flex-wrap:wrap;">
+                                        <c:if test="${!empty recomSession}">
+                                        <c:forEach items="${recomSession}" var="book" varStatus="status">
+                                           <div class="col-lg-3 col-md-6 col-3" id="recom">
                                                 <div class="product-wrapper mb-60">
                                                     <div class="product-img">
-                                                        <a href="product-details.html">
-                                                            <img alt="" src="../assets/img/products/11.jpg">
-                                                        </a>
-                                                        <div class="product-action-2">
-                                                            <a href="#" title="Add to Compare" class="action-plus-2 tooltip">
-                                                                <i class="zmdi zmdi-refresh"></i>
-                                                            </a>
-                                                            <a href="#" title="Add to Wishlist" class="action-plus-2 tooltip">
-                                                                <i class="zmdi zmdi-favorite-outline"></i>
-                                                            </a>
-                                                            <a href="#" title="Quick View" data-target="#exampleModal" data-toggle="modal" class="action-plus-2 tooltip">
-                                                                <i class="zmdi zmdi-search"></i>
-                                                            </a>
-                                                            <a href="#" title="Add To Cart" class="action-plus-2 tooltip">
-                                                                <i class="zmdi zmdi-shopping-cart-plus"></i>
-                                                            </a>
-                                                        </div>
-                                                        <div class="rating-box">
-                                                            <a href="#" class="rated" title="1 star">
-                                                                <i class="far fa-star"> </i>
-                                                            </a>
-                                                            <a href="#" class="rated" title="2 star">
-                                                                <i class="far fa-star"> </i>
-                                                            </a>
-                                                            <a href="#" title="3 star">
-                                                                <i class="far fa-star"> </i>
-                                                            </a>
-                                                            <a href="#" title="4 star">
-                                                                <i class="far fa-star"> </i>
-                                                            </a>
-                                                            <a href="#" title="5 star">
-                                                                <i class="far fa-star"> </i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
+                                               			<input type="hidden"  name="re_seq${status.count}" value="${book.b_seq}">
+                                                            <img alt="" src="${book.b_img}">
                                                     <div class="product-content text-center">
                                                         <h4>
-                                                            <a href="product-details.html">Minar acct sem</a>
+                                                            <a href="product-details.html">${book.b_title}</a>
                                                         </h4>
                                                         <div class="product-price-2">
                                                             <div class="price-box">
-                                                                <ins>
-                                                                    <span class="amount">
-                                                                        <span class="Price-currencySymbol">$</span>95.00</span>
-                                                                </ins>
+                                                                &ensp;<input type="button" id="${book.b_seq}" class="delete" value="삭제" style="width: 50px;height: 30px;padding-left: 5px;">
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div> 
-                                        </div> -->
-                                        </div> 
                                         </div>
+                                        </c:forEach>
+                                        </c:if>
+                                        </div> 
+                                        </div> 
                                         <div class="btn-group-lg" role="group" aria-label="...">
                                         <input type = "hidden" name = "${_csrf.parameterName }" value = "${_csrf.token }"/>
-                                            <button type="submit" class="btn btn-default" style="font-size:10px;">입력</button>
+                                            <input type="button" value="등록" style="width:50px;" onclick="recomSubmit()">
                                         </div> 
-                                    </form>
                                 </div>
                                 <div id="address" class="tab-pane">
                                 <div class="container">
@@ -545,7 +457,7 @@
 									  <option value="essay">시/에세이</option>
 									</select>
 								    <br/><br/><br/>
-								      <table class="table table-bordered table-hover dt-responsive" style="max-width:75%;">
+								      <table class="table table-bordered table-hover dt-responsive" style="max-width:100%;">
 								        <thead>
 								          <tr>
 								            <th style="width:20%">책 제목</th>
@@ -645,9 +557,9 @@
 										    <option value="">말머리</option>
 										    <option value="이벤트">이벤트</option>
 										    <option value="하이셀렉트">하이셀렉트</option>
-										    <option value="3">3</option>
-										    <option value="4">4</option>
-										    <option value="5">5</option>
+										    <option value="인터뷰">인터뷰</option>
+										    <option value="뉴스">뉴스</option>
+										    
 									    </select>
 									    <br/><br/><br/>
 									    &nbsp;<label>제목</label>
@@ -658,7 +570,7 @@
 										 <textarea id="summernote" class="note-editable" contenteditable="true" role="textbox" 
 										 aria-multiline="true" spellcheck="true" name="bn_content"></textarea>
 										   <br/>
-										 <input id="fs" type ="file" name="fs" multiple>
+										 <input id="fs" type ="file" name="fs" value="" multiple>
 										 <div class="preview">
 										 <p></p>
 										</div>		                                
@@ -682,9 +594,9 @@
                             <div class="col-lg-10 offset-lg-1 col-12">
                                 <!--Footer Logo Start-->
                                 <div class="footer-logo">
-                                    <a href="/">
+                                   
                                         <h3>H!Books</h3>
-                                    </a>
+                                  
                                 </div>
                                 <!--Footer Logo End-->
                                 <!--Footer Nav Start-->
@@ -762,7 +674,8 @@
                 <!--Footer Bottom Area End-->
             </div>
         </footer>
-	</div>
+        </div>
+        
 	<script src="../assets/js/vendor/jquery-1.12.0.min.js"></script>
     <script src="../assets/js/popper.js"></script>
     <script src="../assets/js/bootstrap.min.js"></script>
@@ -849,6 +762,21 @@
 			$("tbody>tr").css('display','none');
 			$("tr#"+selectedCate).css('display','table-row');
 		});
+		
+
+		$(document).on("click",".delete", function (){
+			$.ajax({
+				url: "../admin/deletebook.do",
+				type: "GET",
+				data: {re_seq: $(this).attr("id")},
+				success: function(responseData){}
+			}) 
+			
+			$(this).parents("#recom").remove();
+			var index = sessionStorage.getItem("index");
+		 	 index--;
+			 sessionStorage.setItem("index", index);
+	   });
 	</script>
 </body>
 

@@ -9,7 +9,7 @@
 	or B_WRITER like '%'||#{keyword}||'%' or B_PUBLISHER like '%'||#{keyword}||'%' order by B_SEQ desc) aa) where rnum>#{startRow} and rnum<=#{endRow}
 	]]>
 	</select>
-	<select id="selectCount" parameterType="String" resultType="long">
+	<select id="selectCount" parameterType="String" resultType="int">
 		<![CDATA[ 
 		select count(B_SEQ) from BOOK where B_TITLE like '%'||#{keyword}||'%' or B_WRITER like '%'||#{keyword}||'%' or B_PUBLISHER like '%'||#{keyword}||'%'
 		]]>

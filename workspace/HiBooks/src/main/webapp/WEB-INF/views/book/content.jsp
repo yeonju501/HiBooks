@@ -39,6 +39,8 @@
     <link rel="stylesheet" href="../assets/css/header.css">
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
     <script src="../assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="../assets/js/vendor/jquery-1.12.0.min.js"></script>
+    <script src="../assets/js/service-search.js"></script>
     
     <script src="https://use.fontawesome.com/5fb42bb368.js"></script>
     
@@ -118,14 +120,7 @@
                                                         </li>
                                                         <li class="switcher-menu-item">
                                                             <a href="../wishList/moveWishPage.do">위시리스트</a>
-                                                        </li>  
-                                                        <sec:authorize access="isAuthenticated()">
-	                                                        <sec:authorize access="hasRole('ROLE_ADMIN')">
-	                                                        <li class="switcher-menu-item">
-	                                                            <a href="../admin/recommend.do">관리자페이지</a>
-	                                                        </li>
-	                                                        </sec:authorize>
-                                                        </sec:authorize>
+                                                        </li>
                                                         <li class="switcher-menu-item">
                                                             <a href="../purchase/orderComplete.do">결제내역</a>
                                                         </li>
@@ -143,13 +138,12 @@
             <div class="header-topbar header-topbar-style-1">
                 <div class="container-fluid">
                     <div class="row">
-                        
                         <div class="col-md-3"></div>
                         <div class="col-md-6">
                             <div class="search__sidbar">
                                 <div class="input_form">
                                    <form name="searchinput" method="post" action="../product/search.do">
-	                                    <input type="text" class="input_text" name="keyword" placeholder="제목, 저자, 출판사 검색">
+	                                    <input type="text" id="keyword" class="input_text" name="keyword" placeholder="제목, 저자, 출판사 검색">
 	                                    <input type = "hidden" name = "${_csrf.parameterName }" value = "${_csrf.token }"/>
 	                                    <button id="searchinput" type="button" class="button">
 	                                        <i class="fa fa-search fa-lg"></i>
@@ -183,13 +177,8 @@
                                                         
                                                     </ul>
                                                 </li>
-												
-                                                <li><a id="in" href="">베스트</a></li>
-												
-                                                <li><a id="in" href="">추천</a></li>
-												
+                                                <li><a id="in" href="../recommend/list.do">추천</a></li>
                                                 <li><a id="in" href="">커뮤니티</a></li>
-
                                                 <li class="active"><a href="">공지/문의</a>
                                                     <ul>
                                                         <li><a href="../boardNotice/list.do">공지</a></li>
@@ -219,13 +208,8 @@
 													
 												</ul>
 											</li>
-											
-											<li><a href="">베스트 </a></li>
-											
-											<li><a href="">추천</a></li>
-											
+											<li><a href="../recommend/list.do">추천</a></li>
 											<li><a href="">커뮤니티</a></li>
-											
 											<li><a href="">공지/문의 <i class="ion-ios-arrow-down"></i></a>
 												<ul>
 													<li><a href="../boardNotice/list.do"> 공지</a></li>
@@ -327,8 +311,8 @@
 	                                        </span>
 	                                    </a>
 	                                </div>
-	                                <div class="quickview-btn-cart">
-	                                    <a class="btn-style cr-btn" href="../purchase/purchase.do?itemId=${book.b_itemId}">
+	                                <div class="quickview-btn-cart" style="margin-left: 53px;">
+	                                    <a class="btn-style cr-btn" id="purchase-rightnow" href="../purchase/purchase.do?itemId=${book.b_itemId}">
 	                                        <span>바로 구매하기</span>
 	                                    </a>
 	                                </div>
@@ -763,12 +747,24 @@
     <script src="../assets/js/owl.carousel.min.js"></script>
     <script src="../assets/js/plugins.js"></script>
     <script src="../assets/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script src="../assets/js/service-book-content.js"></script>
     <script src="../assets/js/package.js"></script>
     
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script>
     <script src="../assets/js/service-search.js"></script>
+    <script>
     
+    	var rightNow = $("#purchase-rightnow").attr("href");
+    
+	    $(".qtybutton").on("click", function() {
+	    	var $button = $(this); 
+	    	var vol = $button.parent().find("input").val();
+	    	//alert(rightNow +"&vol="+vol);
+	    	$("#purchase-rightnow").attr("href",rightNow +"&vol="+vol);
+	    });
+    
+    </script>
     
 </body>
 

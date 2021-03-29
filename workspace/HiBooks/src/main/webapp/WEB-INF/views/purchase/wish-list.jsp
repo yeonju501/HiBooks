@@ -92,16 +92,13 @@
                                                     <a >마이페이지</a>
                                                     <ul class="switcher__menus">
                                                         <li class="switcher-menu-item">
-                                                            <a href="">내 정보</a>
+                                                            <a href="../member/moveMyInfo.do">내 정보</a>
                                                         </li>
                                                         <li class="switcher-menu-item">
-                                                            <a href="">위시리스트</a>
+                                                            <a href="../wishList/moveWishPage.do">위시리스트</a>
                                                         </li>
                                                         <li class="switcher-menu-item">
-                                                            <a href="">커뮤니티</a>
-                                                        </li>
-                                                        <li class="switcher-menu-item">
-                                                            <a href="">...</a>
+                                                            <a href="../purchase/orderComplete.do">결제내역</a>
                                                         </li>
                                                     </ul>
                                                 </li>
@@ -124,7 +121,7 @@
                                 <div class="input_form">
                                     <form name="searchinput" method="post" action="../product/search.do">
 	                                    <input type = "hidden" name = "${_csrf.parameterName }" value = "${_csrf.token }"/>
-	                                    <input type="text" class="input_text" name="keyword" placeholder="제목, 저자, 출판사 검색">
+	                                    <input type="text" class="input_text" id="keyword" name="keyword" placeholder="제목, 저자, 출판사 검색">
 	                                    <button id="searchinput" type="button" class="button">
 	                                        <i class="fa fa-search fa-lg"></i>
 	                                    </button>
@@ -158,15 +155,13 @@
                                                     </ul>
                                                 </li>
 												
-                                                <li><a id="in" href="">베스트</a></li>
-												
-                                                <li><a id="in" href="">추천</a></li>
+                                                <li><a id="in" href="../recommend/list.do">추천</a></li>
 												
                                                 <li><a id="in" href="">커뮤니티</a></li>
 
                                                 <li class="active"><a href="">공지/문의</a>
                                                     <ul>
-                                                        <li><a href="">공지</a></li>
+                                                        <li><a href="../boardNotice/list.do">공지</a></li>
                                                         <li><a href="../boardq/list.do">문의</a></li>
                                                     </ul>
                                                 </li>
@@ -194,18 +189,15 @@
 												</ul>
 											</li>
 											
-											<li><a href="">베스트 </a></li>
-											
-											<li><a href="">추천</a></li>
+											<li><a href="../recommend/list.do">추천</a></li>
 											
 											<li><a href="">커뮤니티</a></li>
 											
 											<li><a href="">공지/문의 <i class="ion-ios-arrow-down"></i></a>
 												<ul>
-													<li><a href=""> 공지</a></li>
+													<li><a href="../boardNotice/list.do"> 공지</a></li>
 													<li><a href="../boardq/list.do"> 문의</a></li>
-                                                    <li><a href=""> ....</a></li>
-												</ul>
+                                                </ul>
 											</li>
 											
 											
@@ -223,7 +215,7 @@
         <sec:authorize access="isAuthenticated()">
 			<sec:authentication property="principal.username" var="loginUser"/>
 		</sec:authorize>
-        <div class="Shopping-cart-area ptb-100">
+        <div class="Shopping-cart-area ptb-30">
             <div class="container" style="max-width:1000px;">
                 <div class="row">
                     <div class="col-12">
@@ -234,15 +226,20 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th class="anadi-product-remove">remove</th>
-                                            <th class="anadi-product-thumbnail">images</th>
-                                            <th class="cart-product-name">Product</th>
-                                            <th class="anadi-product-price">Unit Price</th>
-                                            <th class="anadi-product-quantity">Quantity</th>
-                                            <th class="anadi-product-quantity">add to cart</th>
+                                            <th class="anadi-product-remove">삭제</th>
+                                            <th class="anadi-product-thumbnail">이미지</th>
+                                            <th class="cart-product-name">상품</th>
+                                            <th class="anadi-product-price">가격</th>
+                                            <th class="anadi-product-quantity">수량</th>
+                                            <th class="anadi-product-quantity">장바구니 추가</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <c:choose>
+                                    <c:when test="${empty bookListInWish}">
+                                    <tr><td colspan="6"> 위시리스트에 도서가 없습니다 </td></tr>
+                                    </c:when>
+                                    <c:when test="${!empty bookListInWish}">
                                     <c:forEach items="${bookListInWish}" var="book" varStatus="i">
                                          
                                          <tr>
@@ -260,7 +257,7 @@
                                                 <a href="../book/content.do?itemId=${book.b_itemId}">${book.b_title}</a>
                                             </td>
                                             <td class="anadi-product-price">
-                                                <span class="amount">${book.b_price}</span>
+                                                <span class="amount">${book.b_price}원</span>
                                             </td>
                                             
 	                                            <td class="anadi-product-quantity">
@@ -272,13 +269,15 @@
 	                                            <td class="product-subtotal">
 	                                                <div class="quickview-btn-cart">
 	                                                	<input id="itemId${i.index}" type="hidden" value="${book.b_itemId}">
-	                                                	<button id="cart-plus${i.index}" onclick="javascript:addToCart(${i.index})" type="button"><i class="zmdi zmdi-shopping-cart-plus"></i></button>
+	                                                	<unput type="button" id="cart-plus${i.index}" onclick="javascript:addToCart(${i.index})" type="button"><i class="zmdi zmdi-shopping-cart-plus"></i></button>
 					                                </div>
 	                                            </td>
 									                                   
                                         	</tr>
                                         	 
                                     </c:forEach>
+                                    </c:when>
+                                    </c:choose>
                                     </tbody>
                                 </table>
                             </div>

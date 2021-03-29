@@ -29,8 +29,11 @@
     <link rel="stylesheet" href="../assets/css/bundle.css">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
     <script src="../assets/js/vendor/modernizr-2.8.3.min.js"></script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+    <script src="../assets/js/vendor/jquery-1.12.0.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script>
+    <script src="../assets/js/service-search.js"></script>
     <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
     
 </head>
@@ -82,7 +85,7 @@
                                     </li>
                                     <li>
                                         <div class="switcher">
-                                            <a href="cart.do"><span> 장바구니</span></a>
+                                            <a href="../purchase/cart.do"><span> 장바구니</span></a>
                                             
                                         </div>
                                     </li>
@@ -93,17 +96,15 @@
                                                     <a >마이페이지</a>
                                                     <ul class="switcher__menus">
                                                         <li class="switcher-menu-item">
-                                                            <a href="">내 정보</a>
+                                                            <a href="../member/moveMyInfo.do">내 정보</a>
                                                         </li>
                                                         <li class="switcher-menu-item">
-                                                            <a href="">위시리스트</a>
+                                                            <a href="../wishList/moveWishPage.do">위시리스트</a>
                                                         </li>
                                                         <li class="switcher-menu-item">
-                                                            <a href="">커뮤니티</a>
+                                                            <a href="../purchase/orderComplete.do">결제내역</a>
                                                         </li>
-                                                        <li class="switcher-menu-item">
-                                                            <a href="">...</a>
-                                                        </li>
+                                                        
                                                     </ul>
                                                 </li>
                                             </ul>
@@ -125,7 +126,7 @@
                                 <div class="input_form">
                                     <form name="searchinput" method="post" action="../product/search.do">
 	                                    <input type = "hidden" name = "${_csrf.parameterName }" value = "${_csrf.token }"/>
-	                                    <input type="text" class="input_text" name="keyword" placeholder="제목, 저자, 출판사 검색">
+	                                    <input type="text" class="input_text" id="keyword" name="keyword" placeholder="제목, 저자, 출판사 검색">
 	                                    <button id="searchinput" type="button" class="button">
 	                                        <i class="fa fa-search fa-lg"></i>
 	                                    </button>
@@ -158,16 +159,12 @@
                                                         
                                                     </ul>
                                                 </li>
-												
-                                                <li><a id="in" href="">베스트</a></li>
-												
-                                                <li><a id="in" href="">추천</a></li>
-												
-                                                <li><a id="in" href="">커뮤니티</a></li>
-
+												                                            								
+                                                <li><a id="in" href="../recommend/list.do">추천</a></li>
+												<li><a id="in" href="">커뮤니티</a></li>
                                                 <li class="active"><a href="">공지/문의</a>
                                                     <ul>
-                                                        <li><a href="">공지</a></li>
+                                                        <li><a href="../boardNotice/list.do">공지</a></li>
                                                         <li><a href="../boardq/list.do">문의</a></li>
                                                     </ul>
                                                 </li>
@@ -193,23 +190,15 @@
 													<li><a href="../book/shop.do?cate=500">에세이/시</a></li>
 													
 												</ul>
-											</li>
-											
-											<li><a href="">베스트 </a></li>
-											
-											<li><a href="">추천</a></li>
-											
+											</li>			
+											<li><a href="../recommend/list.do">추천</a></li>
 											<li><a href="">커뮤니티</a></li>
-											
 											<li><a href="">공지/문의 <i class="ion-ios-arrow-down"></i></a>
 												<ul>
-													<li><a href=""> 공지</a></li>
+													<li><a href="../boardNotice/list.do"> 공지</a></li>
 													<li><a href="../boardq/list.do"> 문의</a></li>
-                                                    <li><a href=""> ....</a></li>
 												</ul>
 											</li>
-											
-											
                                         </ul>
                                     </nav>  
                             </div>
@@ -249,7 +238,7 @@
 	function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,detBdNmList,bdNm,bdKdcd,siNm,sggNm,emdNm,liNm,rn,udrtYn,buldMnnm,buldSlno,mtYn,lnbrMnnm,lnbrSlno,emdNo){
 		// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
 		document.purchaseinput.roadFullAddr.value = roadFullAddr;
-		document.purchaseinput.zipNo.value = zipNo;
+		document.purchaseinput.s_zipNo.value = zipNo;
 	}
 </script>
 
@@ -390,7 +379,7 @@
                                                 <td><strong class="product-quantity"> ${cartVo.vol}</strong>
                                             </td>
                                             <td class="cart-product-total">
-                                                <span class="amount">${cartVo.total}</span>
+                                                <span class="amount">${cartVo.total}원</span>
                                             </td>
                                         </tr>
                                         <c:set var= "sum" value="${sum + cartVo.total}"/>
@@ -401,7 +390,7 @@
                                             <th>총 주문 금액</th>
                                             <td></td>
                                             <td>
-                                                <span class="amount"><c:out value="${sum}"/> </span>
+                                                <span class="amount"><c:out value="${sum}원"/> </span>
                                             </td>
                                         </tr>
                                         <tr class="order-total">
@@ -409,7 +398,7 @@
                                              <td></td>
                                             <td>
                                                 <strong>
-                                                    <span id="amount" class="amount"><c:out value="${sum}"/> </span>
+                                                    <span id="amount" class="amount"><c:out value="${sum}원"/> </span>
                                                 </strong>
                                             </td>
                                         </tr>
@@ -584,9 +573,17 @@
     <script src="../assets/js/owl.carousel.min.js"></script>
     <script src="../assets/js/plugins.js"></script>
     <script src="../assets/js/main.js"></script>
-    <!-- <script src="../assets/js/service-search.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    
     <!-- javascript -->
     <script>
+    const swalWithBootstrapButtons = Swal.mixin({
+  	  customClass: {
+  	    confirmButton: 'btn btn-primary',
+  	    cancelButton: 'btn btn-default',
+  	  },
+  	  buttonsStyling: false
+ 	})
     $("#place-order").click(function(){
 		for(var i=0; i<document.purchaseinput.elements.length; i++)
 		{
@@ -619,13 +616,13 @@
 			buyer_addr: s_addr,
 			buyer_postcode: s_zipNo
 			}, function (rsp) {
-				console.log(rsp);
+				
 				if (rsp.success) {
 					var msg = '결제가 완료되었습니다.';
-					msg += '고유ID : ' + rsp.imp_uid;
+					/* msg += '고유ID : ' + rsp.imp_uid;
 					msg += '상점 거래ID : ' + rsp.merchant_uid;
 					msg += '결제 금액 : ' + rsp.paid_amount;
-					msg += '카드 승인번호 : ' + rsp.apply_num;
+					msg += '카드 승인번호 : ' + rsp.apply_num; */
 					let purchaseVo = {
 							m_email: m_email,
 							s_name: s_name,
@@ -645,20 +642,34 @@
 						dataType : "text",
 						success : function(result){
 							if(result == "y") {
-								alert(msg);
-								location.href = "orderComplete.do"; 
+								swalWithBootstrapButtons.fire({
+									text : msg,
+									icon : 'success',
+									confirmButtonText : 'OK'
+								}).then((result) => {
+									if(result.isConfirmed){
+										location.href = "orderComplete.do";
+									}
+								});
 							}else{
-								alert("디비입력실패");
+								swalWithBootstrapButtons.fire({
+									text: "디비입력실패",
+									icon: "error"
+								});
 								return false;
 							}
 						},
 						error : function(a,b,c){}
 					});
 				} else {
-					var msg = '결제에 실패하였습니다.';
-					msg += '에러내용 : ' + rsp.error_msg;
+					var msg = '결제에 실패하였습니다. : ';
+					msg += rsp.error_msg;
 				}
-				alert(msg);
+				swalWithBootstrapButtons.fire({
+					text : msg,
+					icon : 'error'
+				});
+				
 			});
 		});
     </script>

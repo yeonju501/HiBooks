@@ -29,18 +29,13 @@
     <link rel="stylesheet" href="../assets/css/bundle.css">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
     <script src="../assets/js/vendor/modernizr-2.8.3.min.js"></script>
-    <script>
-	function a(x){
-		 var vol=document.getElementById("vol"+x).value;
-		 /* location.href ="change.do?index="+x+"&vol="+vol; */
-		 if(confirm("수량을 변경하시겠습니까?")==true){
-			 location.href ="change.do?index="+x+"&vol="+vol;
-		 }else{
-			 return false;
-		 }
-	}
-</script>
+    <script src="../assets/js/vendor/jquery-1.12.0.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script>
+    <script src="../assets/js/service-search.js"></script>
+    
+    
 </head>
 
 <body>
@@ -89,7 +84,6 @@
                                     <li>
                                         <div class="switcher">
                                             <a href="cart.do"><span> 장바구니</span></a>
-                                            
                                         </div>
                                     </li>
                                     <li>
@@ -99,16 +93,13 @@
                                                     <a >마이페이지</a>
                                                     <ul class="switcher__menus">
                                                         <li class="switcher-menu-item">
-                                                            <a href="">내 정보</a>
+                                                            <a href="../member/moveMyInfo.do">내 정보</a>
                                                         </li>
                                                         <li class="switcher-menu-item">
-                                                            <a href="">위시리스트</a>
+                                                            <a href="../wishList/moveWishPage.do">위시리스트</a>
                                                         </li>
                                                         <li class="switcher-menu-item">
-                                                            <a href="">커뮤니티</a>
-                                                        </li>
-                                                        <li class="switcher-menu-item">
-                                                            <a href="">...</a>
+                                                            <a href="../purchase/orderComplete.do">결제내역</a>
                                                         </li>
                                                     </ul>
                                                 </li>
@@ -131,7 +122,7 @@
                                 <div class="input_form">
                                     <form name="searchinput" method="post" action="../product/search.do">
 	                                    <input type = "hidden" name = "${_csrf.parameterName }" value = "${_csrf.token }"/>
-	                                    <input type="text" class="input_text" name="keyword" placeholder="제목, 저자, 출판사 검색">
+	                                    <input type="text" class="input_text" id="keyword" name="keyword" placeholder="제목, 저자, 출판사 검색">
 	                                    <button id="searchinput" type="button" class="button">
 	                                        <i class="fa fa-search fa-lg"></i>
 	                                    </button>
@@ -164,16 +155,13 @@
                                                         
                                                     </ul>
                                                 </li>
-												
-                                                <li><a id="in" href="">베스트</a></li>
-												
-                                                <li><a id="in" href="">추천</a></li>
+												<li><a id="in" href="../recommend/list.do">추천</a></li>
 												
                                                 <li><a id="in" href="">커뮤니티</a></li>
 
                                                 <li class="active"><a href="">공지/문의</a>
                                                     <ul>
-                                                        <li><a href="">공지</a></li>
+                                                        <li><a href="../boardNotice/list.do">공지</a></li>
                                                         <li><a href="../boardq/list.do">문의</a></li>
                                                     </ul>
                                                 </li>
@@ -200,19 +188,15 @@
 													
 												</ul>
 											</li>
-											
-											<li><a href="">베스트 </a></li>
-											
-											<li><a href="">추천</a></li>
+											<li><a href="../recommend/list.do">추천</a></li>
 											
 											<li><a href="">커뮤니티</a></li>
 											
 											<li><a href="">공지/문의 <i class="ion-ios-arrow-down"></i></a>
 												<ul>
-													<li><a href=""> 공지</a></li>
+													<li><a href="../boardNotice/list.do"> 공지</a></li>
 													<li><a href="../boardq/list.do"> 문의</a></li>
-                                                    <li><a href=""> ....</a></li>
-												</ul>
+                                                </ul>
 											</li>
 											
 											
@@ -253,10 +237,15 @@
                                     </thead>
                                     <tbody>
                                     <c:set var = "sum" value = "0" />
+                                   <c:choose>
+                                   <c:when test="${empty list}">
+                                   <tr><td colspan="6">카트에 도서가 없습니다</td></tr>
+                                   </c:when>
+                                   <c:when test="${!empty list}">
                                     <c:forEach items="${list}" var="cartVo" varStatus="status">
                                         <tr>
                                             <td class="anadi-product-remove">
-                                                <a href="remove.do?index=<c:out value="${status.index}"/>">
+                                                <a href="javascript:removeCart(<c:out value="${status.index}"/>)">
                                                     <i class="fa fa-times"></i>
                                                 </a>
                                             </td>
@@ -269,18 +258,20 @@
                                                 <a href="#">${cartVo.book.b_title}</a>
                                             </td>
                                             <td class="anadi-product-price">
-                                                <span class="amount">${cartVo.book.b_price}</span>
+                                                <span class="amount">${cartVo.book.b_price}원</span>
                                             </td>
                                             <td class="anadi-product-quantity">
                                                 <input id="vol<c:out value="${status.index}"/>" value="${cartVo.vol}" type="number" name="vol" min="1" max="100">
                                                 <br/><a class="button" onclick="a(<c:out value="${status.index}"/>);" style="padding:5px;margin-top:20px;">변경</a>
                                             </td>
                                             <td class="product-subtotal">
-                                                <span class="amount">${cartVo.total}</span>
+                                                <span class="amount">${cartVo.total}원</span>
                                             </td>
-                                        </tr>
-                                        <c:set var= "sum" value="${sum + cartVo.total}"/>
+                		                  </tr>
+            	                         <c:set var= "sum" value="${sum + cartVo.total}"/>
                                         </c:forEach>
+                                        </c:when>
+                                        </c:choose>
                                     </tbody>
                                 </table>
                             </div>
@@ -303,10 +294,10 @@
                                         <h2>총 상품금액</h2>
                                         <ul>
                                             <li>총액
-                                                <span><c:out value="${sum}"/> </span>
+                                                <span><c:out value="${sum}원"/> </span>
                                             </li>
                                             <li>합계
-                                                <span><c:out value="${sum}"/> </span>
+                                                <span><c:out value="${sum}원"/> </span>
                                             </li>
                                         </ul>
                                         <a href="checkout.do">주문하기</a>
@@ -416,7 +407,7 @@
     <!-- all js here -->
     
     <script src="../assets/js/vendor/jquery-1.12.0.min.js"></script>
-    
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script>
     <script src="../assets/js/popper.js"></script>
     <script src="../assets/js/bootstrap.min.js"></script>
     <script src="../assets/js/isotope.pkgd.min.js"></script>
@@ -427,9 +418,56 @@
     <script src="../assets/js/owl.carousel.min.js"></script>
     <script src="../assets/js/plugins.js"></script>
     <script src="../assets/js/main.js"></script>
-    <script src="../assets/js/service-search.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <!-- javascript -->
-    
+    <script>
+    const swalWithBootstrapButtons = Swal.mixin({
+    	  customClass: {
+    	    confirmButton: 'btn btn-primary',
+    	    cancelButton: 'btn btn-default',
+    	  },
+    	  buttonsStyling: false
+   	})
+	function a(x){
+		 var vol=document.getElementById("vol"+x).value;
+		 swalWithBootstrapButtons.fire({
+				showCancelButton : true,
+				text : '수량을 변경하시겠습니까?',
+				icon : 'question',
+				focusConfirm: false,
+				confirmButtonText : '네',
+				cancelButtonText : '아니오'
+			}).then((result) => {
+				if(result.isConfirmed){
+					location.href = "change.do?index="+x+"&vol="+vol;
+				}else{
+					return false;
+			}
+		})
+		/* location.href ="change.do?index="+x+"&vol="+vol; */
+		 /* if(confirm("수량을 변경하시겠습니까?")==true){
+			 location.href ="change.do?index="+x+"&vol="+vol;
+		 }else{
+			 return false;
+		 } */
+	}
+    function removeCart(x){
+    	swalWithBootstrapButtons.fire({
+			showCancelButton : true,
+			text : '상품을 제거하시겠습니까?',
+			icon : 'question',
+			focusConfirm: false,
+			confirmButtonText : '네',
+			cancelButtonText : '아니오'
+		}).then((result) => {
+			if(result.isConfirmed){
+				location.href = "remove.do?index="+x;
+			}else{
+				return false;
+			}
+		});
+    }
+</script>
 </body>
 
 </html>

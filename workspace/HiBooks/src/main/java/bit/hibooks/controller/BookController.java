@@ -59,7 +59,7 @@ public class BookController {
 			}
 			session.setAttribute("cate", currentCate);
 		}else {
-			currentCate = (Integer)session.getAttribute("cate");
+			if(session.getAttribute("cate")!=null) currentCate = (Integer)session.getAttribute("cate");
 		}
 		bookVo.setCate(currentCate);
 		

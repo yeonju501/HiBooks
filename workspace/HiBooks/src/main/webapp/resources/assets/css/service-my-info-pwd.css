@@ -105,8 +105,8 @@ figure >img {
 }
 label {
     position: relative;
-    left: 0;
-    top: 45px;
+    left: 5px;
+    top: 55px;
     transform: translateY(-50%);
     -moz-transform: translateY(-50%);
     -webkit-transform: translateY(-50%);

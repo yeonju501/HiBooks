@@ -1,6 +1,6 @@
 @charset "UTF-8";
 .board__head {
-    padding: 50px 30px;
+    padding: 0px 30px;
     box-sizing: border-box;
     border-bottom: 1px solid #222;
 }

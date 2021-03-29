@@ -38,186 +38,164 @@
     <div class="wrapper">
         <!-- header start -->
         <header id="header_background">
-            <div class="header-topbar header-topbar-style-1">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-6 col-xs-12">
-                            <div class="header-top-left">
-                                <ul>
-                                    <li>
-                                        <h3 id="logo">H!Books</h3>
-                                    </li>
-                                    <li>
-                                        
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-6  col-xs-12 ">
-                            <div class="header-top-right">
-                                <ul>
-                                    <li>
-                                        <div class="switcher">
-                                            <span>로그인</span>
-                
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="switcher">
-                                            <span>회원가입</span>
-                                            
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="switcher">
-                                            <span>장바구니</span>
-                                            
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="switcher menu_page my_acc">
-                                            <ul>
-                                                <li class="switcher-menu-active">
-                                                    <a >마이페이지</a>
-                                                    <ul class="switcher__menus">
-                                                        <li class="switcher-menu-item">
-                                                            <a >내 정보</a>
-                                                        </li>
-                                                        <li class="switcher-menu-item">
-                                                            <a >위시리스트</a>
-                                                        </li>
-                                                        <li class="switcher-menu-item">
-                                                            <a >커뮤니티</a>
-                                                        </li>
-                                                        <li class="switcher-menu-item">
-                                                            <a >...</a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
+        <div class="header-topbar header-topbar-style-1">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6 col-xs-12">
+                        <div class="header-top-left">
+                            <ul>
+                                 <li>
+                                     <h3 id="logo"><a href="/">H!Books</a></h3>
+                                 </li>
+                                 <li>
+                                     
+                                 </li>
+                             </ul>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="header-topbar header-topbar-style-1">
-                <div class="container-fluid">
-                    <div class="row">
-                        
-                        <div class="col-md-3"></div>
-                        <div class="col-md-6">
-                            <div class="search__sidbar">
-                                <div class="input_form">
-                                    <input type="text" id="search_input" name="s" placeholder="제목, 저자, 출판사 검색" class="input_text">
-                                    <button id="blogsearchsubmit" type="submit" class="button">
-                                        <i class="fa fa-search fa-lg"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-3"></div>
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="header_area hdr_1">
-                <div class="container-fluid">
-                    <div class="row">
-                        
-                        <div class="col-md-8 col-xs-12">
-                            <div class="main_menu_area">
-                                <div class="main-menu">
-									<nav>
-                                            <ul id="main-custom">
-                                                <li class="active"><a href="#"> <i class="zmdi zmdi-view-column zmdi-hc-lg"></i></a>
-                                                    <ul>
-                                                        <li><a href="index.html">소설</a></li>
-                                                        <li><a href="index-2.html">경영/경제</a></li>
-                                                        <li><a href="index-3.html">인문/사회/역사</a></li>
-                                                        <li><a href="index-4.html">자기계발</a></li>
-                                                        <li><a href="index-5.html">에세이/시</a></li>
-                                                        
-                                                    </ul>
-                                                </li>
-												
-                                                <li><a id="in" href="about-us.html">베스트</a></li>
-												
-                                                <li><a id="in" href="shop.html">추천</a></li>
-												
-                                                <li><a id="in" href="blog.html">커뮤니티</a></li>
-
-                                                <li class="active"><a href="contact.html">공지/문의</a>
-                                                    <ul>
-                                                        <li><a href="index.html">공지</a></li>
-                                                        <li><a href="index-2.html">문의</a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </nav>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-2 col-xs-12">
-                        </div>
-                        <div class="col-md-2 col-xs-12">
-                        </div>
-                        <div class="mobile-menu-area ">
-                            <div class="mobile-menu">
-                                    <nav id="mobile-menu-active">
-                                        <ul class="menu-overflow">
-											<li class="active"><a href="#">카테고리 <i class="ion-ios-arrow-down"></i></a>
-												<ul>
-													<li><a href="index.html">소설</a></li>
-													<li><a href="index-2.html">경영/경제</a></li>
-													<li><a href="index-3.html">인문/사회/역사</a></li>
-													<li><a href="index-4.html">자기계발</a></li>
-													<li><a href="index-5.html">에세이/시</a></li>
-													
-												</ul>
-											</li>
-											
-											<li><a href="about-us.html">베스트 </a></li>
-											
-											<li><a href="shop.html">추천</a></li>
-											
-											<li><a href="blog.html">커뮤니티</a></li>
-											
-											<li><a href="#">공지/문의 <i class="ion-ios-arrow-down"></i></a>
-												<ul>
-													<li><a href="portfolio.html"> 공지</a></li>
-													<li><a href="service.html"> 문의</a></li>
-                                                    <li><a href="service.html"> ....</a></li>
-												</ul>
-											</li>
-											
-											
+                    <div class="col-md-6  col-xs-12 ">
+                        <div class="header-top-right">
+                            <ul>
+                                <li>
+                                    <div class="switcher">
+                                        <sec:authorize access="isAnonymous()">
+                                       		<a href="../member/login.do"><span>로그인</span></a>
+                                       	</sec:authorize> 
+               							<sec:authorize access="isAuthenticated()">
+               								<form id="log-out" action = "../member/logout.do" method = 'post'>
+               									<a onclick="logoutSubmit()" style="cursor: pointer"><span>로그아웃</span></a>
+               									<input type = "hidden" name = "${_csrf.parameterName }" value = "${_csrf.token }"/>
+               								</form>
+               							</sec:authorize> 
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="switcher">
+                                        <sec:authorize access="isAnonymous()">
+                                       		<a href="../member/join.do"><span> 회원가입</span></a>
+                                       	</sec:authorize> 
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="switcher">
+                                        <a href="../purchase/cart.do"><span> 장바구니</span></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="switcher menu_page my_acc">
+                                        <ul>
+                                            <li class="switcher-menu-active">
+                                                <a >마이페이지</a>
+                                                <ul class="switcher__menus">
+                                                    <li class="switcher-menu-item">
+                                                        <a href="../member/moveMyInfo.do">내 정보</a>
+                                                    </li>
+                                                    <li class="switcher-menu-item">
+                                                        <a href="../wishList/moveWishPage.do">위시리스트</a>
+                                                    </li>
+                                                    <li class="switcher-menu-item">
+                                                        <a href="../purchase/orderComplete.do">결제내역</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
                                         </ul>
-                                    </nav>  
-                            </div>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
-
                     </div>
-                </div>
-            </div>
-        </header>
-        <!-- header end -->
-        <!-- breadcrumbs area start -->
-        <div class="title-breadcrumbs">
-            <div class="title-breadcrumbs-inner">
-                <div class="container">
-                    <nav class="woocommerce-breadcrumb">
-                        <a href="index.html">Home</a>
-                        <span class="separator">/</span><a href="community.html">Community</a>
-                        <span class="separator">/</span> Write
-                    </nav>
                 </div>
             </div>
         </div>
-        <!-- breadcrumbs area End -->
+        <div class="header-topbar header-topbar-style-1">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <div class="search__sidbar">
+                            <div class="input_form">
+                                <form name="searchinput" method="post" action="../product/search.do">
+	                                <input type="text" id="keyword" class="input_text" name="keyword" placeholder="제목, 저자, 출판사 검색">
+	                                <input type = "hidden" name = "${_csrf.parameterName }" value = "${_csrf.token }"/>
+	                                <button id="searchinput" type="button" class="button">
+	                                    <i class="fa fa-search fa-lg"></i>
+	                                </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
+            </div>
+        </div>
+        <div class="header_area hdr_1">
+            <div class="container-fluid">
+                <div class="row">
+                    
+                    <div class="col-md-8 col-xs-12">
+                        <div class="main_menu_area">
+                            <div class="main-menu">
+                                <nav>
+                                        <ul id="main-custom">
+                                            <li class="active"><a href="../book/shop.do">책</a>
+                                                <ul>
+                                                    <li><a href="../book/shop.do?cate=100">소설</a></li>
+                                                    <li><a href="../book/shop.do?cate=200">경영/경제</a></li>
+                                                    <li><a href="../book/shop.do?cate=300">인문/사회/역사</a></li>
+                                                    <li><a href="../book/shop.do?cate=400">자기계발</a></li>
+                                                    <li><a href="../book/shop.do?cate=500">에세이/시</a></li>
+                                                </ul>
+                                            </li>
+                                            
+                                            <li><a id="in" href="../recommend/list.do">추천</a></li>
+                                            <li><a id="in" href="../boardc/list.do">커뮤니티</a></li>
+                                            <li class="active"><a href="">공지/문의</a>
+                                                <ul>
+                                                    <li><a href="../boardNotice/list.do">공지</a></li>
+                                                    <li><a href="../boardq/list.do">문의</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-xs-12">
+                    </div>
+                    <div class="col-md-2 col-xs-12">
+                    </div>
+                    <div class="mobile-menu-area ">
+                        <div class="mobile-menu">
+                                <nav id="mobile-menu-active">
+                                    <ul class="menu-overflow">
+                                        <li class="active"><a href="../book/shop.do">책 <i class="ion-ios-arrow-down"></i></a>
+												<ul>
+													<li><a href="../book/shop.do?cate=100">소설</a></li>
+													<li><a href="../book/shop.do?cate=200">경영/경제</a></li>
+													<li><a href="../book/shop.do?cate=300">인문/사회/역사</a></li>
+													<li><a href="../book/shop.do?cate=400">자기계발</a></li>
+													<li><a href="../book/shop.do?cate=500">에세이/시</a></li>
+												</ul>
+											</li>                                                                                
+                                        <li><a href="../recommend/list.do">추천</a></li>
+										<li><a href="">커뮤니티</a></li>
+										<li><a href="">공지/문의 <i class="ion-ios-arrow-down"></i></a>
+											<ul>
+												<li><a href="../boardNotice/list.do"> 공지</a></li>
+												<li><a href="../boardq/list.do"> 문의</a></li>
+											</ul>
+										</li>
+                                    </ul>
+                                </nav>  
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </header>
+        <!-- header end -->
+        
         <!-- Contact page content -->
         <div class="contact-page-area ">
             <!-- contact page map -->
@@ -226,13 +204,13 @@
             </div>
             <!-- contact page map -->
             <!-- contact form area -->
-            <div class="contact-form-area pt-100 pb-65">
+            <div class="contact-form-area pt-30 pb-65">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-1"></div>
                         <div class="col-lg-10">
                             <div class="contact-form-inner">
-                                <h2>Write</h2>
+                                <h2>글쓰기</h2>
                                 <form name = "input" method ="post" action ="write.do" enctype = "multipart/form-data">
                                     <!-- <div class="row">
                                         <div class="col">
@@ -240,24 +218,25 @@
                                         </div>
                                     </div> -->
                                     <div class="row">
-                                        <div class="col">
-                                            <input type="text" class="form-control" name = "m_email" placeholder="이메일을 입력해주세요.*">
+                                        <div class="col-6">
+                                            <input type="text" class="form-control" name = "m_email" placeholder="이메일을 입력해주세요.*" style="margin-bottom:10px; margin-left:20px;">
                                         </div>
-                                        <div class="col">
-                                            <input type="text" class="form-control" name = "cb_subject" placeholder="글제목을 입력해주세요*">
+                                       
+                                        <div class="col-11">
+                                            <input type="text" class="form-control" name = "cb_subject" placeholder="글제목을 입력해주세요*" style="margin-bottom:10px; margin-left:20px;">
                                         </div>
                                     </div>
                                     
                                     <div class="row">
                                         <div class="col">
-                                            <div class = "container">
-                                                <textarea class = "summernote" name = "cb_content"></textarea>                                      
+                                            <div class="container" style="margin-bottom:20px;">
+                                                <textarea class="summernote" name = "cb_content"></textarea>                                      
                                             </div>
                                         </div>
                                     </div>
                                                                                                          
                                     <div class = "row">
-                                    	<div class = "col">
+                                    	<div class = "col-11" style="margin-left:20px;">
                                     		<input type ="file" name = "files">
                                     	</div>
                                     </div>
