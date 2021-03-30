@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<mapper namespace="bit.hibooks.mapper.BoardNoticeMapper">
+		<insert id="insert" parameterType="BoardN">
+			<selectKey keyProperty="bn_seq" order="BEFORE" resultType="long">
+				select BOARDN_SEQ.nextval from dual
+			</selectKey>
+			insert into BOARDN values(
+				#{bn_seq},
+				#{bn_topic, jdbcType=VARCHAR},
+				#{bn_writer, jdbcType=VARCHAR},
+				#{bn_email, jdbcType=VARCHAR},
+				#{bn_subject, jdbcType=VARCHAR},
+				#{bn_content, jdbcType=VARCHAR},
+				SYSDATE,
+				#{bn_udate, jdbcType=DATE},
+				#{bn_count, jdbcType=INTEGER}
+			)
+		</insert>
+		<insert id="insertFile" parameterType="BNFile">
+			insert into BNFILE values(
+				BNFILE_SEQ.nextval,
+				#{bn_seq},
+				#{nf_fname, jdbcType=VARCHAR},
+				#{nf_ofname, jdbcType=VARCHAR},
+				#{nf_fsize, jdbcType=INTEGER}
+			)
+		</insert>
+	
+		<select id="selectNotice" resultType="BoardN">
+			select * from BOARDN order by BN_SEQ desc
+		</select>
+		<select id="selectNoticeContent" parameterType="long" resultType="BoardN">
+			select * from BOARDN where BN_SEQ = #{bn_seq}
+		</select>
+		<select id="selectContentFile" parameterType="long" resultType="BNFile">
+			select * from BNFILE where BN_SEQ = #{bn_seq}
+		</select>
+		<select id="selectFName" parameterType="long" resultType="String">
+			select NF_FNAME from BNFILE where NF_SEQ = #{nf_seq}
+		</select>
+		<update id="updateCnt" parameterType="long">
+			update BOARDN set BN_COUNT = BN_COUNT + 1 where BN_SEQ = #{bn_seq}
+		</update>
+		<update id="updateNotice" parameterType="BoardN">
+			update BOARDN set
+				BN_TOPIC = #{bn_topic},
+				BN_WRITER = #{bn_writer},
+				BN_SUBJECT = #{bn_subject},
+				BN_CONTENT = #{bn_content},
+				BN_UDATE = SYSDATE
+				where BN_SEQ = #{bn_seq}
+		</update>
+		<delete id="deleteNotice" parameterType="long">
+			delete from BOARDN where BN_SEQ = #{bn_seq}
+		</delete>
+		<delete id="deleteFileInfo" parameterType="long">
+			delete from BNFILE where BN_SEQ = #{bn_seq}
+		</delete>
+		
+		<select id="getMainNotice" resultType="NoticeMainResult">
+			select aa.bn_seq, aa.bn_topic, f.nf_fname 
+				from 
+					((select ROWNUM, n.bn_seq, n.bn_topic, n.bn_rdate  from (select * from BoardN order by BN_RDATE desc) n where ROWNUM &lt;=4) aa 
+    				join BNFILE f on  f.bn_seq= aa.bn_seq)
+				where ROWNUM &lt;= 4
+				order by bn_rdate desc
+		</select>
+		
+	</mapper>

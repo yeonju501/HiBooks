@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+  <mapper namespace="bit.hibooks.mapper.MemberMapper">
+  		<insert id="insertMember" parameterType="Member">
+  			insert into Member values(
+  				#{m_email},
+  				#{m_pwd},
+  				#{m_name},
+  				SYSDATE,
+  				#{m_auth},
+  				#{enabled},
+  				#{m_mailAuth},
+  				#{m_zipNum, jdbcType = VARCHAR},
+  				#{m_addr1, jdbcType = VARCHAR},
+  				#{m_addr2, jdbcType = VARCHAR},
+  				#{m_phone, jdbcType = VARCHAR})
+  		</insert>
+  		<select id="selectMemberInfo" parameterType="Member" resultType="Member">
+  			select * from Member where M_EMAIL = #{m_email}
+  		</select>
+  		<update id="updateEnabled" parameterType="Member">
+  			update Member set ENABLED = 1 where M_EMAIL = #{m_email}
+  		</update>
+  		<update id="updateMember" parameterType="Member">
+  			update Member set 
+  				M_PHONE = #{m_phone, jdbcType = VARCHAR},
+  				M_ZIPNUM = #{m_zipNum, jdbcType = VARCHAR}, 
+  				M_ADDR1 = #{m_addr1, jdbcType = VARCHAR}
+  			where M_EMAIL = #{m_email}
+  		</update>
+  		<update id="updatePwd" parameterType="Member">
+  			update Member set
+  				M_PWD = #{m_pwd}
+  			where M_EMAIL = #{m_email}
+  		</update>
+  </mapper>

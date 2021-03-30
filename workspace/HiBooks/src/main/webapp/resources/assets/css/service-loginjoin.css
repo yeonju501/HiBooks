@@ -1,0 +1,285 @@
+@font-face{
+	src:url("../fonts/RIDIBatang.otf");
+	font-family: "ridi"
+	
+}
+.main {
+    background: #084b84;
+    padding: 150px 0 200px;
+    font-size: 13px;
+    line-height: 1.8;
+    color: #222;
+    font-weight: 400;
+    font-family: ridi;
+    margin: 0;
+    padding: 0;
+    box-sizing: unset !important; 
+}
+.sign-in, .sign-up{
+    display: block;
+    padding: 100px 0 200px 0;
+}
+@media screen and (min-width: 1024px){
+    .main .container {
+        max-width: 1200px;
+    }
+}
+@media screen and (max-width: 1200px){
+    .main .container {
+        width: calc( 100% - 30px);
+        max-width: 100%;
+    }
+}
+.main .container {  
+    width: 90%;
+    background: #fff;
+    margin: 0px auto;
+    box-shadow: 0px 15px 16.83px 0.17px rgb(0 0 0 / 5%);
+    -moz-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
+    -webkit-box-shadow: 0px 15px 16.83px 0.17px rgb(0 0 0 / 5%);
+    -o-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
+    -ms-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -o-border-radius: 20px;
+    -ms-border-radius: 20px;
+}
+.signin-content {
+    padding-top: 67px;
+    padding-bottom: 87px;
+    display: -webkit-flex;
+}
+.signin-image {
+    margin-left: 110px;
+    margin-right: 20px;
+    margin-top: 10px;
+    width: 50%;
+    overflow: hidden;
+}
+.signin-content >figure {
+    margin-bottom: 50px;
+    text-align: center;
+    margin: 0;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 40px;
+    margin-inline-end: 40px;
+}
+figure >img {
+    max-width: 100%;
+    height: auto;
+}
+.signup-image-link {
+    font-size: 14px;
+    color: #222;
+    display: block;
+    text-align: left;
+    cursor: pointer;
+    text-decoration: underline;
+    margin-left: 100px;
+}
+.signin-form {
+    margin-right: 90px;
+    margin-left: 80px;
+    width: 50%;
+    overflow: hidden;
+    box-sizing: unset;
+}
+.form-title {
+    margin-bottom: 33px;
+    line-height: 1.66;
+    
+    padding: 0;
+    font-weight: bold;
+    color: #222;
+    font-family: ridi;
+    font-size: 36px;
+}
+.register-form {
+    width: 100%;
+    display: block;
+    margin-top: 0em;
+    padding: 20px;
+    border: 1px solid #ffffff;
+}
+.form-group {
+    position: relative;
+    margin-bottom: 0px;
+    overflow: hidden;
+}
+label {
+    position: relative;
+    left: 0;
+    top: 57px;
+    transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    color: #222;
+}
+input {
+    width: 100%;
+    display: block;
+    border: none;
+    border-bottom: 1px solid #999;
+    padding: 6px 30px;
+    font-family: ridi;
+    box-sizing: border-box;
+    outline: none;
+    appearance: unset !important;
+    -moz-appearance: unset !important;
+    -webkit-appearance: unset !important;
+    -o-appearance: unset !important;
+    -ms-appearance: unset !important;
+    font-size: 12px;
+    color: #626262;
+    height: 45px;
+    background: #fff;
+}
+input[type=checkbox]:not(old) {
+    width: 1em;
+    margin: 0;
+    padding: 0;
+    font-size: 1em;
+    display: block;
+    appearance: checkbox !important;
+    -moz-appearance: checkbox !important;
+    -webkit-appearance: checkbox !important;
+    -o-appearance: checkbox !important;
+    -ms-appearance: checkbox !important;
+    
+}
+.agree-term {
+    display: inline-block;
+    width: auto;
+}
+input[type=checkbox]:not(old) + label {
+    display: inline-block;
+    line-height: 1.5em;
+    margin-top: 6px;
+}
+label.label-agree-term{
+    top: 57px !important;
+    left: 20px !important;
+}
+.form-group:last-child {
+    margin-bottom: 0px;
+}
+#signin {
+    margin-top: 16px;
+}
+.form-submit {
+    display: inline-block;
+    background: #084b84;
+    color: #fff;
+    border-bottom: none;
+    width: auto;
+    padding: 15px 39px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    margin-top: 25px;
+    cursor: pointer;
+}
+.social-login {
+    align-items: center;
+    -moz-align-items: center;
+    -webkit-align-items: center;
+    -o-align-items: center;
+    -ms-align-items: center;
+    margin-top: 80px;
+    display: flex;
+    display: -webkit-flex;
+}
+.social-label {
+    display: inline-block;
+    margin-right: 15px;
+}
+.socials {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.socials li {
+    padding: 5px;
+    display: inline-block;;
+    text-align: -webkit-match-parent;
+}
+.socials li a {
+    text-decoration: none;
+}
+.socials li a i {
+    width: 30px;
+    height: 30px;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+}
+.display-flex-center {
+    justify-content: center;
+    -moz-justify-content: center;
+    -webkit-justify-content: center;
+    -o-justify-content: center;
+    -ms-justify-content: center;
+    align-items: center;
+    -moz-align-items: center;
+    -webkit-align-items: center;
+    -o-align-items: center;
+    -ms-align-items: center;
+    display: -webkit-flex;
+}
+.zmdi-facebook {
+    background: #3b5998;
+}
+.zmdi-twitter {
+    background: #1da0f2;
+}
+.zmdi-google {
+    background: #e72734;
+}
+
+.signup-content {
+    padding: 75px 0;
+    display: flex;
+    display: -webkit-flex;
+}
+.signup-form {
+    margin-left: 75px;
+    margin-right: 75px;
+    padding-left: 34px;
+    width: 50%;
+    overflow: hidden;
+}
+.signup-image {
+    margin-top: 45px;
+    margin: 0 55px;
+    width: 50%;
+    overflow: hidden;
+}
+.error_next_box {
+    display: none;
+    margin: 5px 0 0px;
+    font-size: 12px;
+    line-height: 14px;
+    color: red;
+}

@@ -1,0 +1,9 @@
+.switcher >a{
+	color: #ffffff;
+}
+
+@font-face{
+	src:url("../fonts/RIDIBatang.otf");
+	font-family: "ridi"
+	
+} 

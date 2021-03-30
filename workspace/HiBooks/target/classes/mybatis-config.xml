@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+   
+   <typeAliases>
+   	   <typeAlias alias="Member" type="bit.hibooks.domain.Member"/>
+   	   <typeAlias alias="Book" type="bit.hibooks.domain.book.Book"/>
+   	   <typeAlias alias="BookVo" type="bit.hibooks.domain.book.BookVo"/>
+   	   <typeAlias alias="ContentVo" type="bit.hibooks.domain.book.ContentVo"/>
+   	   <typeAlias alias="BookReview" type="bit.hibooks.domain.book.BookReview"/>  
+   	   <typeAlias alias="ReviewVo" type="bit.hibooks.domain.review.ReviewVo"/> 
+   	   <typeAlias alias="SearchVo" type="bit.hibooks.domain.search.SearchVo"/>
+   	   
+   	   <typeAlias alias="BoardqVo" type="bit.hibooks.domain.qboard.BoardqVo"/>
+   	   <typeAlias alias="Boardq" type="bit.hibooks.domain.qboard.Boardq"/>
+   	   <typeAlias alias="Qfile" type="bit.hibooks.domain.qboard.Qfile"/>
+   	   
+   	   <typeAlias alias="BoardcVo" type="bit.hibooks.domain.cboard.BoardcVo"/>
+   	   <typeAlias alias="BoardcListResult" type="bit.hibooks.domain.cboard.BoardcListResult"/>
+   	   <typeAlias alias="Boardc" type="bit.hibooks.domain.cboard.Boardc"/>
+   	   <typeAlias alias="BoardcFile" type="bit.hibooks.domain.file.BoardcFile"/>
+   	   
+   	   <typeAlias alias="Order" type="bit.hibooks.domain.purchase.Order"/>
+   	   <typeAlias alias="Orderdetail" type="bit.hibooks.domain.purchase.Orderdetail"/>
+   	   <typeAlias alias="ShipInfo" type="bit.hibooks.domain.purchase.ShipInfo"/>
+   	   <typeAlias alias="PurchaseResult" type="bit.hibooks.domain.purchase.PurchaseResult"/>
+   	   <typeAlias alias="OrderDetailResult" type="bit.hibooks.domain.purchase.OrderDetailResult"/>
+   	   
+   	   <typeAlias alias="MemberDetails" type="bit.hibooks.security.MemberDetails"/>
+   	   
+   	   <typeAlias alias="WishVo" type="bit.hibooks.domain.purchase.WishVo"/>
+   	   
+   	   <typeAlias alias="RecommendVo" type="bit.hibooks.domain.admin.RecommendVo"/>
+   	   <typeAlias alias="RecomListResult" type="bit.hibooks.domain.admin.RecomListResult"/>
+	   <typeAlias alias="Chart" type="bit.hibooks.domain.admin.Chart"/>
+	   <typeAlias alias="ChartCate2" type="bit.hibooks.domain.admin.ChartCate2"/>
+   	   
+   	   <typeAlias alias="BoardN" type="bit.hibooks.domain.boardn.BoardN"/>
+   	   <typeAlias alias="BNFile" type="bit.hibooks.domain.boardn.BNFile"/>
+   	   <typeAlias alias="NoticeMainResult" type="bit.hibooks.domain.boardn.NoticeMainResult"/>
+   </typeAliases>
+   <mappers>
+   	   <mapper resource="bit/hibooks/mapper/MemberMapper.xml"/>
+   	   <mapper resource="bit/hibooks/mapper/BookMapper.xml"/>
+   	   <mapper resource="bit/hibooks/mapper/CartMapper.xml"/>
+   	   <mapper resource="bit/hibooks/mapper/CheckoutMapper.xml"/>
+   	   <mapper resource="bit/hibooks/mapper/SearchMapper.xml"/>
+   	   <mapper resource="bit/hibooks/mapper/BoardqMapper.xml"/>
+   	   <mapper resource="bit/hibooks/mapper/BoardcMapper.xml"/>
+   	   <mapper resource="bit/hibooks/mapper/BoardcFileMapper.xml"/>
+   	   <mapper resource="bit/hibooks/mapper/QfileMapper.xml"/>
+   	   <mapper resource="bit/hibooks/mapper/WishListMapper.xml"/>
+	   <mapper resource="bit/hibooks/mapper/AdminMapper.xml"/>
+	   <mapper resource="bit/hibooks/mapper/BoardNoticeMapper.xml"/>
+   </mappers>
+</configuration>
