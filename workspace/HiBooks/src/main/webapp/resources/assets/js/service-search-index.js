@@ -25,7 +25,7 @@ $(function(){
 	    item.label = item.label.replace(new RegExp("(?![^&;]+;)(?!<[^<>]*)(" + $.ui.autocomplete.escapeRegex(this.term) + ")(?![^<>]*>)(?![^&;]+;)", "gi"), "<strong>$1</strong>");
 	    return $("<li></li>")
 	            .data("item.autocomplete", item)
-	             .append("<a>" + '<div class="row"> <div class="col-5">'+ item.label +'</div> <div class="col-4" style="text-align:right;">'+ item.value+ '</div><div class="col-3" style="text-align:right;">'+ item.pub+"</div></div></a>")
+	             .append("<a>" + '<div class="row"> <div class="col-5">'+ item.value +'</div> <div class="col-4" style="text-align:right;">'+ item.label+ '</div><div class="col-3" style="text-align:right;">'+ item.pub+"</div></div></a>")
 	            .appendTo(ul);
 	};
 	
@@ -53,8 +53,8 @@ $(function(){
 									item.b_publisher="";
 								}
 										 return {
-												label: item.b_title,
-												value: item.b_writer,
+												value: item.b_title,
+												label: item.b_writer,
 												pub: item.b_publisher
 										 }
 							
