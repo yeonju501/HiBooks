@@ -400,9 +400,9 @@
                                     <form id="formRecom" method="post" action="sendrecom.do" >
                                            <div class="col-lg-12">
                                                 <div class="input-group">
-                                                  <input type="text" name="re_title" class="form-control" aria-label="...">
+                                                  <input type="text" id="re_title" name="re_title" class="form-control" aria-label="...">
                                                   <div class="input-group-btn">
-                                                     <select name="re_loc" >
+                                                     <select id="re_loc" name="re_loc" >
 													    <option value="0">선택</option>
 													    <option value="1">1</option>
 													    <option value="2">2</option>
@@ -429,7 +429,7 @@
                                                         </h4>
                                                         <div class="product-price-2">
                                                             <div class="price-box">
-                                                                &ensp;<input type="button" id="${book.b_seq}" class="delete" value="삭제" style="width: 50px;height: 30px;padding-left: 5px;">
+                                                                &ensp;<input type="button" name="recomm" id="${book.b_seq}" class="delete" value="삭제" style="width: 50px;height: 30px;padding-left: 5px;">
                                                             </div>
                                                         </div>
                                                     </div>

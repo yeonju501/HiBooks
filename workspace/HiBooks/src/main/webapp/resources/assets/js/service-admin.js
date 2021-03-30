@@ -33,7 +33,7 @@
 							html += '</h4>';
 							html += '<div class="product-price-2">';
 							html += '<div class="price-box">';
-							html += '&ensp;<input type="button" id="'+responseData.b_seq+'" class="delete" value="삭제" style="width: 50px;height: 30px;padding-left: 5px;">'
+							html += '&ensp;<input type="button" name="recomm" id="'+responseData.b_seq+'" class="delete" value="삭제" style="width: 50px;height: 30px;padding-left: 5px;">'
 							html += '</div>';
 							html += '</div>';
 							html += '</div>';
@@ -52,10 +52,20 @@
 			   });
 		
 		function recomSubmit(){
+			if (document.getElementById("re_loc").value=="0"){
+				alert("옵션을 선택해주세요");
+				return false;
+			}else if(document.getElementById("re_title").value==""){
+				alert("제목을 입력해주세요");
+				return false;
+			}else if(document.getElementsByName("recomm").length < 8){
+				alert("8권을 선택해주세요");
+				return false;
+			}else{
 			var index = 0;
 			sessionStorage.setItem("index", index);
 			$("#formRecom").submit();
-			
+			}
 		}
 		
 
