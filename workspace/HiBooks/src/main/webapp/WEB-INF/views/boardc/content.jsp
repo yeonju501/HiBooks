@@ -29,7 +29,12 @@
         <link rel="stylesheet" href="../assets/css/style.css">
         <link rel="stylesheet" href="../assets/css/responsive.css">
         <link rel="stylesheet" href="../assets/css/communitycontentstyle.css">
+        <link rel="stylesheet" href="../assets/css/service-search.css">
         <script src="../assets/js/vendor/modernizr-2.8.3.min.js"></script>
+        
+	    <script src="../assets/js/vendor/jquery-1.12.0.min.js"></script>
+	    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script>
+	    <script src="../assets/js/service-search.js"></script>
         <style>
         .title-breadcrumbs-inner {
 		    background: #f1f1f1 none repeat scroll 0 0;
@@ -248,18 +253,6 @@
 	                    	
 	                    
 	                    </div>
-                       <div class="comment-respond">
-                            <h5>댓글 쓰기</h5>
-                            <small>의견을 남겨 주세요.</small>
-                            <!-- <form action="#"> -->
-                                <div class="text-filds">
-                                    <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea>
-                                </div>
-                                <div class="form-submit">
-                                    <input name="submit" type="button" id="test" class="submit" value="댓글 등록">
-                                </div>
-                            <!-- </form> -->
-                        </div>
                     </div>
 	                       <div class="contact-submit">
 	                            	<a href ='list.do'><input type="submit" value="목록으로" class="wpcf7-form-control wpcf7-submit button"></a>

@@ -29,9 +29,14 @@
         <link rel="stylesheet" href="../resources/assets/css/communitywritebundle.css">
         <link rel="stylesheet" href="../resources/assets/css/communitywritestyle.css">
         <link rel="stylesheet" href="../resources/assets/css/responsive.css">
+         <link rel="stylesheet" href="../resources/assets/css/service-search.css">
         <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">  
         <script src="../resources/assets/js/vendor/modernizr-2.8.3.min.js"></script>
        	
+       	   
+	    <script src="../resources/assets/js/vendor/jquery-1.12.0.min.js"></script>
+	    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script>
+	    <script src="../resources/assets/js/service-search.js"></script>
     </head>
 
 <body onload="input.writer.focus()">

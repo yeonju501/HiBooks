@@ -25,15 +25,13 @@ $(function(){
 	    item.label = item.label.replace(new RegExp("(?![^&;]+;)(?!<[^<>]*)(" + $.ui.autocomplete.escapeRegex(this.term) + ")(?![^<>]*>)(?![^&;]+;)", "gi"), "<strong>$1</strong>");
 	    return $("<li></li>")
 	            .data("item.autocomplete", item)
-	            .append("<a>" + item.label + "</a>")
+	            .append("<a>" + '<div class="row"> <div class="col-5">'+ item.label +'</div> <div class="col-4" style="text-align:right;">'+ item.value+ '</div><div class="col-3" style="text-align:right;">'+ item.pub+"</div></div></a>")
 	            .appendTo(ul);
 	};
-	
 	
 			
 	//input 태그 id가 name
     $( "#keyword" ).autocomplete({
-        
     	source : function( request, response ) {
     		var token = $("meta[name='_csrf']").attr("content");
     		var header = $("meta[name='_csrf_header']").attr("content"); 
@@ -41,20 +39,20 @@ $(function(){
                     type: 'post',
                     url: "../product/getauto.do",
                     dataType: "json",
-                    //request.term = $("#autocomplete").val()
                     data: { "keyword" : $("#keyword").val()},
-                    //select * from BOARD where writer like %?%;
-//                    beforeSend :function(xhr) {
-//                        xhr.setRequestHeader(header,token);
-//                     },
                     success: function(data) {
                         //서버에서 json 데이터 response 후 목록에 뿌려주기 위함
                         response(
                             $.map(data, function(item) {
-                            	console.log(item);
+                            	if(item.b_writer==null){
+									item.b_writer="";
+								}else if(item.b_publisher==null){
+									item.b_publisher="";
+								}
 										 return {
 												label: item.b_title,
-												value: item.b_title
+												value: item.b_writer,
+												pub: item.b_publisher
 										 }		                               
                             })
                         );
@@ -67,5 +65,6 @@ $(function(){
             },
         //조회를 위한 최소글자수
         minLength: 2,
+        autoFocus: true
     });
 })

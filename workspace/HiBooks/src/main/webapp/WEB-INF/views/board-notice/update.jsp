@@ -33,6 +33,7 @@
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/service-index.css">
     <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="../assets/css/service-search.css">
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"/>
     <link rel="stylesheet" href="../assets/summernote/summernote-lite.css"/>
     <script src="../assets/js/vendor/modernizr-2.8.3.min.js"></script>

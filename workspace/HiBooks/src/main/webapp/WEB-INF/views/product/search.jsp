@@ -30,6 +30,7 @@
     <!-- <link rel="stylesheet" href="../assets/css/service-search.css"> -->
     <link rel="stylesheet" href="../assets/css/responsive.css">
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <link rel="stylesheet" href="../assets/css/service-search.css">
     <!-- search page css-->
     <script src="../assets/js/vendor/modernizr-2.8.3.min.js"></script>
     <script src="../assets/js/vendor/jquery-1.12.0.min.js"></script>

@@ -32,19 +32,22 @@
     <link rel="stylesheet" href="../assets/css/meanmenu.min.css">
     <link rel="stylesheet" href="../assets/css/tippy.css">
     <link rel="stylesheet" href="../assets/css/bundle.css">
-    <link rel="stylesheet" href="../assets/css/easyzoom.css">
+   <link rel="stylesheet" href="../assets/css/easyzoom.css">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/product-details.css">
+     <link rel="stylesheet" href="../assets/css/service-index.css">
     <link rel="stylesheet" href="../assets/css/responsive.css">
-    <link rel="stylesheet" href="../assets/css/header.css">
+     <link rel="stylesheet" href="../assets/css/header.css">
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <link rel="stylesheet" href="../assets/css/service-search.css">
+    
     <script src="../assets/js/vendor/modernizr-2.8.3.min.js"></script>
     <script src="../assets/js/vendor/jquery-1.12.0.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script>
     <script src="../assets/js/service-search.js"></script>
     
     <script src="https://use.fontawesome.com/5fb42bb368.js"></script>
     
-	
 	
 	
 </head>
@@ -749,10 +752,7 @@
     <script src="../assets/js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script src="../assets/js/service-book-content.js"></script>
-    <script src="../assets/js/package.js"></script>
     
-    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script>
-    <script src="../assets/js/service-search.js"></script>
     <script>
     
     	var rightNow = $("#purchase-rightnow").attr("href");

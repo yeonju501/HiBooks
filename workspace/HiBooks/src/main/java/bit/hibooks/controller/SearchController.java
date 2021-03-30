@@ -74,7 +74,7 @@ public class SearchController {
 	@ResponseBody
 	@PostMapping("getauto.do")
 	public List<Book> getAuto(String keyword){
-		log.info("##### 자동완성");
+		//log.info("##### 자동완성");
 		List<Book> list = service.getAuto(keyword);
 		//System.out.println(list);
 		return list;

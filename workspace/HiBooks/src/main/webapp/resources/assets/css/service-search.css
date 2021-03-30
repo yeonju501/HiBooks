@@ -2,3 +2,15 @@
     background: #f8f9fa none repeat scroll 0 0;
 }
 
+@font-face{
+	src:url("../fonts/RIDIBatang.otf");
+	font-family: "ridi"
+	
+	} 
+	
+ .ui-autocomplete {
+                       font-family: 'ridi';     
+                   }   
+
+
+
