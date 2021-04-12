@@ -50,9 +50,14 @@ Final Project in BitCamp, modeling Book shop website.
    - APP을 웹 프로젝트 내부로 옮겨 컴포넌트화 하여 스케쥴러로 한달에 한 번 실행하여 신간 데이터를 추가함. 
 
 * 결과물
+  - 책 데이터 베이스
+  	![책 크롤링 결과-1](https://user-images.githubusercontent.com/75344320/114350906-d545df00-9ba4-11eb-89d6-92730688b38f.PNG)
+	![책 크롤링 결과-2](https://user-images.githubusercontent.com/75344320/114350913-d7a83900-9ba4-11eb-9e5f-f6eef12add70.PNG)
+
   - 내용기반 추천 서비스 : 키워드 데이터에서 세부카테고리 데이터의 마지막 카테고리와 중요 키워드 3개를 추가하여 하나의 책에 유사한 책 8개를 리스팅함.
-  ```
-  <select id="selectRecommendList" parameterType="ContentVo" resultType="Book">
+  	
+	```xml
+  	<select id="selectRecommendList" parameterType="ContentVo" resultType="Book">
 			select ROWNUM, b.* from (select * from book where B_CATE= #{b_cate} and not B_ITEMID = #{b_itemId} and
 			    (B_KEYWORD like '%'||#{keyword1}||'%' or
 			    B_KEYWORD like '%'||#{keyword2}||'%' or
@@ -61,7 +66,39 @@ Final Project in BitCamp, modeling Book shop website.
 			    B_KEYWORD like '%'||#{keyword5}||'%')
 			    order by b_seq) b
 			    where ROWNUM &lt;= #{number}
- </select>
-  ```
+	 </select>
+	  ```
+  
   <img src="https://user-images.githubusercontent.com/75344320/114346284-2b635400-9b9e-11eb-8ea7-f452d05fc3a4.PNG" width="400px"><img src="https://user-images.githubusercontent.com/75344320/114348103-0cb28c80-9ba1-11eb-9cb5-569bb6c20f9d.PNG" width="400px">
-
+  
+  - 신간 업데이트
+  	```java
+		package bit.hibooks.java.app;
+		import org.springframework.scheduling.annotation.Scheduled;
+		import org.springframework.stereotype.Component;
+			
+		@Component
+		public class BookDataUserNew {
+	
+			@Scheduled(cron = "0 0 0 1 * *")
+			public void updateBook() {
+				BookDataManager bdm = new BookDataManagerSec();
+				String urlNovel = "https://ridibooks.com/category/new-releases/100?&page=";	// 선택한 카테고리 url 지정(리스트 페이지)
+				String urlEconomy = "https://ridibooks.com/category/new-releases/200?page=";
+				String urlSociety = "https://ridibooks.com/category/new-releases/400?page=";
+				String urlSelf = "https://ridibooks.com/category/new-releases/300?page=";
+				String urlEssay = "https://ridibooks.com/category/new-releases/110?page=";
+				int pageNum = 1;
+				while(true) {
+					bdm.insertItemInfo(urlNovel, pageNum, 100);
+					bdm.insertItemInfo(urlEconomy, pageNum, 200);
+					bdm.insertItemInfo(urlSociety, pageNum, 300);
+					bdm.insertItemInfo(urlSelf, pageNum, 400);
+					bdm.insertItemInfo(urlEssay, pageNum, 500);
+					if(pageNum == 1) break;	// 페이지 넘버를 지정( 리스트 한 페이지에 20개의 책 )
+				}
+			bdm.closeCon();
+			}
+		}
+	```
+  
