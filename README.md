@@ -20,13 +20,13 @@ Final Project in BitCamp, modeling Book shop website.
 ## 논리적, 물리적 모델링
 <!--![회원, 책 테이블](https://user-images.githubusercontent.com/75344320/114050646-6bd58000-98c7-11eb-945f-3dcf292d5b77.PNG)![게시판 테이블](https://user-images.githubusercontent.com/75344320/114050624-65470880-98c7-11eb-8022-a3f095416ec9.PNG)![구매 테이블](https://user-images.githubusercontent.com/75344320/114050662-6ed07080-98c7-11eb-8544-ee56663a08f4.PNG)-->
  - 회원, 책 테이블
-<img src="https://user-images.githubusercontent.com/75344320/114050646-6bd58000-98c7-11eb-945f-3dcf292d5b77.PNG" width="400px">
+<img src="https://user-images.githubusercontent.com/75344320/114050646-6bd58000-98c7-11eb-945f-3dcf292d5b77.PNG" width="600px">
  
  - 구매 로직 테이블
-<img src="https://user-images.githubusercontent.com/75344320/114050662-6ed07080-98c7-11eb-8544-ee56663a08f4.PNG" width="400px">
+<img src="https://user-images.githubusercontent.com/75344320/114050662-6ed07080-98c7-11eb-8544-ee56663a08f4.PNG" width="600px">
  
  - 게시판 테이블
-<img src="https://user-images.githubusercontent.com/75344320/114050624-65470880-98c7-11eb-8022-a3f095416ec9.PNG" width="400px">
+<img src="https://user-images.githubusercontent.com/75344320/114050624-65470880-98c7-11eb-8022-a3f095416ec9.PNG" width="600px">
 
 ## 책 데이터 베이스 구성 과정
 
@@ -49,7 +49,9 @@ Final Project in BitCamp, modeling Book shop website.
    - 완성된 APP을 좀더 활용할 방법을 찾다가 리디북스에 올라온 신간 데이터를 추가하기로 함.
    - APP을 웹 프로젝트 내부로 옮겨 컴포넌트화 하여 스케쥴러로 한달에 한 번 실행하여 신간 데이터를 추가함. 
 
+* 결과물
+<!--![추천서비스 결과물-1](https://user-images.githubusercontent.com/75344320/114346284-2b635400-9b9e-11eb-8ea7-f452d05fc3a4.PNG)
+![추천서비스 결과물-2](https://user-images.githubusercontent.com/75344320/114346297-31f1cb80-9b9e-11eb-8a9d-527af44b18c6.PNG)-->
 
-
-
+<img src="https://user-images.githubusercontent.com/75344320/114346284-2b635400-9b9e-11eb-8ea7-f452d05fc3a4.PNG" width="500px"><img src="https://user-images.githubusercontent.com/75344320/114346297-31f1cb80-9b9e-11eb-8a9d-527af44b18c6.PNG" width="500px">
 
