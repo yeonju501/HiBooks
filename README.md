@@ -43,7 +43,7 @@ Final Project in BitCamp, modeling Book shop website.
   - 추천 서비스를 구현하기 위해 머하웃 라이브러리를 구글링하였는데 생각했던 것과는 달리 사용자와 구매내역에 대한 대량의 데이터가 필요하다는 것을 알게 됨.
   - 전통적인 추천 방식인 '내용기반 추천 서비스'를 구현하는 것으로 합의함.
   - 이를 위해 처음에 입력했던 책 소개 데이터를 따로 가공하여 추천 서비스를 위한 컬럼을 만들기로 함.
-  - KOMORAN 라이브러리를 이용하여 책 소개 데이터에서 명사만 추출하여 키워드 데이터를 만들고, 이를 기존의 책 DB 입력 APP에 추가하여 한번에 입력되도록 하였음.
+  - KOMORAN 라이브러리를 이용하여 책 소개 데이터에서 명사만 추출하여 세부카테고리 데이터와 합쳐, 키워드 데이터를 만들고, 이를 기존의 책 DB 입력 APP에 추가하여 한번에 입력되도록 하였음.
 
 * 신간 데이터 추가 
    - 완성된 APP을 좀더 활용할 방법을 찾다가 리디북스에 올라온 신간 데이터를 추가하기로 함.
@@ -51,7 +51,9 @@ Final Project in BitCamp, modeling Book shop website.
 
 * 결과물
 <!--![추천서비스 결과물-1](https://user-images.githubusercontent.com/75344320/114346284-2b635400-9b9e-11eb-8ea7-f452d05fc3a4.PNG)
-![추천서비스 결과물-2](https://user-images.githubusercontent.com/75344320/114346297-31f1cb80-9b9e-11eb-8a9d-527af44b18c6.PNG)-->
+![추천서비스 결과물-2](https://user-images.githubusercontent.com/75344320/114346297-31f1cb80-9b9e-11eb-8a9d-527af44b18c6.PNG)
+![추천서비스 결과물-2](https://user-images.githubusercontent.com/75344320/114348103-0cb28c80-9ba1-11eb-9cb5-569bb6c20f9d.PNG)-->
+ - 내용기반 추천 서비스 : 키워드 데이터에서 세부카테고리 데이터의 마지막 카테고리와 중요 키워드 3개를 추가하여 하나의 책에 유사한 책을 리스팅함.
 
-<img src="https://user-images.githubusercontent.com/75344320/114346284-2b635400-9b9e-11eb-8ea7-f452d05fc3a4.PNG" width="500px"><img src="https://user-images.githubusercontent.com/75344320/114346297-31f1cb80-9b9e-11eb-8a9d-527af44b18c6.PNG" width="500px">
+ <img src="https://user-images.githubusercontent.com/75344320/114346284-2b635400-9b9e-11eb-8ea7-f452d05fc3a4.PNG" width="500px"><img src="https://user-images.githubusercontent.com/75344320/114348103-0cb28c80-9ba1-11eb-9cb5-569bb6c20f9d.PNG" width="500px">
 
