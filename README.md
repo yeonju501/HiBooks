@@ -139,5 +139,4 @@ Final Project in BitCamp, modeling Book shop website.
 * 도로명주소 api 적용
 * 서머노트 api 적용
 * 구글 차트 api 적용
-* 소스 코드 : https://velog.io/@betweenhj702?tag=JavaScript
   
