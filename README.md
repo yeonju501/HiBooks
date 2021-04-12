@@ -108,9 +108,11 @@ Final Project in BitCamp, modeling Book shop website.
 * 적용 내용
 	- 회원가입시 bcrypt 클래스를 이용한 비밀번호 암호화.
 	- 시큐리티에서 Authentication 에 필요한 Enabled 변수를 이용하여 회원가입시 이메일 인증을 구현함.
+	- csrf 토큰 발행을 이용한 보안기능.
 	- Authentication 를 이용한 로그인.
 	- Authority 를 이용한 페이지 또는 서비스 접근권한 설정.
 * 아쉬운 점
+	- 도로명 주소 api를 이용할 때, 외부 url에서 가져오는 데이터때문에 csrf 보안기능을 포기하고 disabled로 설정함.
 	- 관리자 계정을 따로 테이블을 만들지 못하고, xml에서 임의의 계정을 설정하여 보안에 취약한 점.
 	- 그로 인해 Authority 를 제대로 활용하지 못함.
 * 소스 코드 : https://velog.io/@betweenhj702/%EC%8A%A4%ED%94%84%EB%A7%81-%EC%8B%9C%ED%81%90%EB%A6%AC%ED%8B%B0
