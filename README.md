@@ -1,4 +1,4 @@
-# Contents
+# HiBooks
 Final Project in BitCamp, modeling Book shop website.
 
 ## 개요
