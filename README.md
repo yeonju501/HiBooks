@@ -113,9 +113,30 @@ Final Project in BitCamp, modeling Book shop website.
 * 아쉬운 점
 	- 관리자 계정을 따로 테이블을 만들지 못하고, xml에서 임의의 계정을 설정하여 보안에 취약한 점.
 	- 그로 인해 Authority 를 제대로 활용하지 못함.
+* 소스 코드 : https://velog.io/@betweenhj702/%EC%8A%A4%ED%94%84%EB%A7%81-%EC%8B%9C%ED%81%90%EB%A6%AC%ED%8B%B0
 
 ## 관리자 페이지 구현
-* 
-## 웹페이지의 자바스크립트 구현(AJAX 및 페이지 동적 처리)
-  
+* security-context.xml 에서 임의로 설정한 계정으로 접근할 수 있게 함.
+* 페이지 구성 내용
+	- 구글 차트 api : 책 데이터베이스를 차트로 정리함.
+		![관리자 페이지 1](https://user-images.githubusercontent.com/75344320/114357627-f27eab80-9bac-11eb-9217-2b6379b1b2bf.PNG)
+
+	- 추천 상품 선택 : 관리자가 선택한 키워드로 검색한 책 리스트를 등록하여, 이 결과가 추천 페이지에 등록되도록 함.
+		![관리자 페이지-2-1](https://user-images.githubusercontent.com/75344320/114357692-09250280-9bad-11eb-8e7f-39a6a2d57014.PNG)![관리자 페이지-2-2](https://user-images.githubusercontent.com/75344320/114357700-0aeec600-9bad-11eb-9e6b-444269377fac.PNG)![관리자 페이지-2-3](https://user-images.githubusercontent.com/75344320/114357709-0c1ff300-9bad-11eb-82a4-ab1ca0a76133.PNG)
+
+	- 공지사항 작성 : 서머노트 api를 적용, 관리자가 작성한 공지사항 내용이 메인 페이지에 노출되고 유저가 확인할 수 있게 함.
+		![공지사항 1](https://user-images.githubusercontent.com/75344320/114357884-3a053780-9bad-11eb-894d-b392f07d5f5f.PNG)![공지사항 2](https://user-images.githubusercontent.com/75344320/114357889-3bcefb00-9bad-11eb-913e-345eac76c910.PNG)![공지사항 3](https://user-images.githubusercontent.com/75344320/114357892-3d002800-9bad-11eb-9ca1-81888dccf386.PNG)
+
+	- 신간 업데이트 : 스프링의 스케쥴러를 이용하여, '리디북스'의 신간 데이터를 한달에 한번 DB에 입력하고, 이 결과를 관리자가 확인할 수 있게 함.
+		![신간 1](https://user-images.githubusercontent.com/75344320/114357978-5608d900-9bad-11eb-8244-cd689d578f82.PNG)![신간 2](https://user-images.githubusercontent.com/75344320/114357981-573a0600-9bad-11eb-84cc-0e2c3d8df0e0.PNG)
+
+
+## 자바스크립트 구현(AJAX 및 페이지 동적 처리)
+* 회원가입 서비스 유효성 체크
+* 책 리뷰에 대한 동적 처리
+* Iamport 결제 api 적용
+* 도로명주소 api 적용
+* 서머노트 api 적용
+* 구글 차트 api 적용
+* 소스 코드 : https://velog.io/@betweenhj702?tag=JavaScript
   
