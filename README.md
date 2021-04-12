@@ -50,10 +50,18 @@ Final Project in BitCamp, modeling Book shop website.
    - APP을 웹 프로젝트 내부로 옮겨 컴포넌트화 하여 스케쥴러로 한달에 한 번 실행하여 신간 데이터를 추가함. 
 
 * 결과물
-<!--![추천서비스 결과물-1](https://user-images.githubusercontent.com/75344320/114346284-2b635400-9b9e-11eb-8ea7-f452d05fc3a4.PNG)
-![추천서비스 결과물-2](https://user-images.githubusercontent.com/75344320/114346297-31f1cb80-9b9e-11eb-8a9d-527af44b18c6.PNG)
-![추천서비스 결과물-2](https://user-images.githubusercontent.com/75344320/114348103-0cb28c80-9ba1-11eb-9cb5-569bb6c20f9d.PNG)-->
- - 내용기반 추천 서비스 : 키워드 데이터에서 세부카테고리 데이터의 마지막 카테고리와 중요 키워드 3개를 추가하여 하나의 책에 유사한 책을 리스팅함.
-
- <img src="https://user-images.githubusercontent.com/75344320/114346284-2b635400-9b9e-11eb-8ea7-f452d05fc3a4.PNG" width="500px"><img src="https://user-images.githubusercontent.com/75344320/114348103-0cb28c80-9ba1-11eb-9cb5-569bb6c20f9d.PNG" width="500px">
+  - 내용기반 추천 서비스 : 키워드 데이터에서 세부카테고리 데이터의 마지막 카테고리와 중요 키워드 3개를 추가하여 하나의 책에 유사한 책 8개를 리스팅함.
+  ```
+  <select id="selectRecommendList" parameterType="ContentVo" resultType="Book">
+			select ROWNUM, b.* from (select * from book where B_CATE= #{b_cate} and not B_ITEMID = #{b_itemId} and
+			    (B_KEYWORD like '%'||#{keyword1}||'%' or
+			    B_KEYWORD like '%'||#{keyword2}||'%' or
+			    B_KEYWORD like '%'||#{keyword3}||'%' and
+			    B_KEYWORD like '%'||#{keyword4}||'%' and
+			    B_KEYWORD like '%'||#{keyword5}||'%')
+			    order by b_seq) b
+			    where ROWNUM &lt;= #{number}
+ </select>
+  ```
+  <img src="https://user-images.githubusercontent.com/75344320/114346284-2b635400-9b9e-11eb-8ea7-f452d05fc3a4.PNG" width="400px"><img src="https://user-images.githubusercontent.com/75344320/114348103-0cb28c80-9ba1-11eb-9cb5-569bb6c20f9d.PNG" width="400px">
 
