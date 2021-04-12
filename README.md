@@ -28,7 +28,7 @@ Final Project in BitCamp, modeling Book shop website.
  - 게시판 테이블
 <img src="https://user-images.githubusercontent.com/75344320/114050624-65470880-98c7-11eb-8022-a3f095416ec9.PNG" width="600px">
 
-## 책 데이터 베이스 구성 과정
+## 책 데이터 베이스 구성 과정 및 결과물
 
 * 초기 기획 방안
   - 처음 계획은 알라딘 api를 가져와 BOOK 테이블에 입력하려고 함.
@@ -101,4 +101,21 @@ Final Project in BitCamp, modeling Book shop website.
 			}
 		}
 	```
+  
+## 스프링 시큐리티 적용과정 및 결과물
+* 기존의 회원가입, 로그인 서비스에 시큐리티 라이브러리를 적용함.
+* 시큐리티 설정은 xml을 이용하고, UserDetails 와 UserDetailsService 인터페이스를 커스터마이징하여 프로젝트에 적용하였음.
+* 적용 내용
+	- 회원가입시 bcrypt 클래스를 이용한 비밀번호 암호화.
+	- 시큐리티에서 Authentication 에 필요한 Enabled 변수를 이용하여 회원가입시 이메일 인증을 구현함.
+	- Authentication 를 이용한 로그인.
+	- Authority 를 이용한 페이지 또는 서비스 접근권한 설정.
+* 아쉬운 점
+	- 관리자 계정을 따로 테이블을 만들지 못하고, xml에서 임의의 계정을 설정하여 보안에 취약한 점.
+	- 그로 인해 Authority 를 제대로 활용하지 못함.
+
+## 관리자 페이지 구현
+* 
+## 웹페이지의 자바스크립트 구현(AJAX 및 페이지 동적 처리)
+  
   
