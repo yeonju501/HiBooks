@@ -1,5 +1,5 @@
 # HiBooks
-Final Project in BitCamp, modeling Book shop website.
+50일 간의 온라인 서점 모델링 프로젝트 입니다
 
 ## 개요
 
