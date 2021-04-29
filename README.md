@@ -1,5 +1,5 @@
 # HiBooks
- HiBooks는 내용 기반 도서 추천 서비스를 제공하는 온라인 서점 모델링 프로젝트 입니다
+도서 추천 서비스(Content-Based Recommendation)를 제공하는 온라인 서점 모델링 프로젝트 입니다
 
 ## 개요
 
